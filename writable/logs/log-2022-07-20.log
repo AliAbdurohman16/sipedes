@@ -1,0 +1,8 @@
+ERROR - 2022-07-20 00:58:21 --> Error connecting to the database: Unknown database 'sipedes'
+ERROR - 2022-07-20 01:08:21 --> Can't create table `sipedes`.`rt` (errno: 150 "Foreign key constraint is incorrectly formed")
+ERROR - 2022-07-20 01:09:00 --> Can't create table `sipedes`.`rt` (errno: 150 "Foreign key constraint is incorrectly formed")
+ERROR - 2022-07-20 01:10:21 --> Unknown table 'sipedes.user'
+ERROR - 2022-07-20 01:10:53 --> Unknown table 'sipedes.user'
+ERROR - 2022-07-20 01:13:58 --> Unknown table 'sipedes.user'
+ERROR - 2022-07-20 01:23:18 --> Cannot add or update a child row: a foreign key constraint fails (`sipedes`.`user`, CONSTRAINT `user_id_role_foreign` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ERROR - 2022-07-20 01:33:07 --> Cannot add or update a child row: a foreign key constraint fails (`sipedes`.`user`, CONSTRAINT `user_id_role_foreign` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
