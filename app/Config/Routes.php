@@ -37,6 +37,17 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+//login
+$routes->get('/login', 'Login::index');
+$routes->post('/login/valid_login', 'Login::valid_login');
+$routes->get('/logout', 'Login::logout');
+
+//dashboard
+$routes->get('/dashboard', 'Dashboard::index');
+
+//rt
+$routes->get('/rt', 'Rt::index');
+$routes->post('/rt/save', 'Rt::save');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

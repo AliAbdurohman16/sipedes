@@ -18,11 +18,16 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
-        'secureheaders' => SecureHeaders::class,
+        'csrf'                  => CSRF::class,
+        'toolbar'               => DebugToolbar::class,
+        'honeypot'              => Honeypot::class,
+        'invalidchars'          => InvalidChars::class,
+        'secureheaders'         => SecureHeaders::class,
+        'filterSuperadmin'      => \App\Filters\FilterSuperadmin::class,
+        // 'filterKasiPelayanan'   => \App\Filters\FilterKasiPelayanan::class,
+        // 'filterRw'              => \App\Filters\FilterRW::class,
+        // 'filterRt'              => \App\Filters\FilterRT::class,
+        // 'filterUser'            => \App\Filters\FilterUser::class
     ];
 
     /**
@@ -33,11 +38,32 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'filterSuperadmin' => [
+                'except' => ['login/*', 'login']
+            ],
+            // 'filterKasiPelayanan' => [
+            //     'except' => ['login/*', 'login']
+            // ],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
+            'filterSuperadmin' => [
+                'except' => ['dashboard/*']
+            ],
+            // 'filterKasiPelayanan' => [
+            //     'except' => ['dashboard/*', 'logActivity/*', 'RT/*', 'RW/*', 'pengajuan/*']
+            // ],
+            // 'filterRw' => [
+            //     'except' => ['dashboard/*', 'logActivity/*', 'RT/*', 'pengajuan/*']
+            // ],
+            // 'filterRt' => [
+            //     'except' => ['dashboard/*', 'logActivity/*', 'pengajuan/*']
+            // ],
+            // 'filterRt' => [
+            //     'except' => ['pengajuan/*']
+            // ],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',
