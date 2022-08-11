@@ -15,10 +15,10 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        $builder = $this->db->table('user');
-        $builder->select('*, user.name as user_name, role.name as role_name');
-        $builder->join('role', 'role.id = user.id_role');
-        $builder->where('user.id', session()->get('id'));
+        $builder = $this->db->table('users');
+        $builder->select('*, users.name as user_name, roles.name as role_name');
+        $builder->join('roles', 'roles.id = users.role_id');
+        $builder->where('users.id', session()->get('id'));
         $query = $builder->get()->getRow();
 
         $data = [

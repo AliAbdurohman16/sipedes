@@ -3,16 +3,14 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\LoginModel;
+
+use App\Models\UserModel;
 
 class Login extends BaseController
 {
-
-    protected $loginModel;
-
     public function __construct()
     {
-        $this->loginModel = new LoginModel();
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -55,15 +53,15 @@ class Login extends BaseController
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $cekUserLogin = $this->loginModel->getUser($username);
+        $cekUserLogin = $this->userModel->getUser($username);
 
         if ($cekUserLogin != null) {
-            $passworUser = $cekUserLogin['password'];
+            $passworUser = $cekUserLogin->password;
 
             if (password_verify($password, $passworUser)) {
                 $session = [
-                    'id' => $cekUserLogin['id'],
-                    'id_role' => $cekUserLogin['id_role'],
+                    'id' => $cekUserLogin->id,
+                    'id_role' => $cekUserLogin->role_id,
                 ];
 
                 session()->set($session);
