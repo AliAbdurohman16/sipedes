@@ -16,7 +16,8 @@ class RwSeed extends Seeder
         for($i = 1; $i < 50; $i++){
             $data = [
                 'name' => $faker->name(),
-                'number' => $i
+                'number' => $i,
+                'dusun_id' => $i
             ];
 
             $rwModel->insert($data);
