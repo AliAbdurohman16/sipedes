@@ -26,7 +26,8 @@ class Role extends Migration
                 'type'       => 'DATETIME'
             ],
             'deleted_at' => [
-                'type'       => 'DATETIME'
+                'type'       => 'DATETIME',
+                'null'       => true
             ]
         ]);
 
