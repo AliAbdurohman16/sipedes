@@ -39,4 +39,11 @@ class RwModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withDusun()
+    {
+        $this->select('dusun.name as dusun_name, rw.*');
+        
+        return $this->join('dusun', 'dusun.id = rw.dusun_id')->findAll();
+    }
 }

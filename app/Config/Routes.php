@@ -47,9 +47,12 @@ $routes->group("", ["filter" => "authFilter:logout"], function ($routes){
     $routes->get('/logout', 'Login::logout');
 });
 
-$routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes){
-    //dashboard
+$routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes){
+    // Route Dashboard
     $routes->get('/dashboard', 'Dashboard::index');
+
+    // Route Data Master -> Data RW
+    $routes->resource("data_rw", ['namespace' => 'App\Controllers\Admin', 'controller' => 'RwController', 'except' => 'show, new, edit']);
 });
 
 

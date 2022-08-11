@@ -27,7 +27,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
-
+    <style>
+        div.dataTables_filter, div.dataTables_length, div.dataTables_info, div.dataTables_paginate {
+            padding: 15px;
+        }
+    </style>
 </head>
 
 <body>

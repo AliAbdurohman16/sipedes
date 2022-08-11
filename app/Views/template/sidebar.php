@@ -23,8 +23,8 @@
                     <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Data Master</a>
                     <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'rt' ? 'd-block' : '') ?>">
                         <ul>
+                            <li><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'rt' ? 'active' : '') ?>"><a href="<?= base_url('rt') ?>">RT</a></li>
-                            <li><a href="index-rtl.html">RW</a></li>
                             <li><a href="index-rtl.html">Jabatan</a></li>
                             <li><a href="index-rtl.html">Pengajuan</a></li>
                         </ul>
