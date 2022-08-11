@@ -4,18 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RtModel extends Model
+class UserModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'rt';
+    protected $table            = 'users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 1;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_rt', 'no_rt', 'rw_id'];
-    
+    protected $allowedFields    = [
+        'id', 'name', 'username', 'password', 'telephone', 'role_id'
+    ];
+
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
@@ -39,4 +41,14 @@ class RtModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function getUser($username = false)
+    {
+        if ($username == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['username' => $username])->first();
+    }
 }

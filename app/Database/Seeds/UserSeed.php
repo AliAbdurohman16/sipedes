@@ -5,17 +5,21 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;
 
+use App\Models\UserModel;
+
 class UserSeed extends Seeder
 {
     public function run()
     {
-        $data = [
+        $userModel = new UserModel;
+        
+        $users = [
             [
                 'name'          => 'Super User',
                 'username'      => 'superuser',
                 'password'      => password_hash("1234567890", PASSWORD_DEFAULT),
                 'telephone'     => '1234567890',
-                'id_role'       => '1',
+                'role_id'       => '1',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
@@ -24,13 +28,12 @@ class UserSeed extends Seeder
                 'username'      => 'kasipelayanan',
                 'password'      => password_hash("1234567890", PASSWORD_DEFAULT),
                 'telephone'     => '1234567890',
-                'id_role'       => '3',
+                'role_id'       => '3',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
         ];
 
-        // Using Query Builder
-        $this->db->table('user')->insertBatch($data);
+        $userModel->insertBatch($users);
     }
 }
