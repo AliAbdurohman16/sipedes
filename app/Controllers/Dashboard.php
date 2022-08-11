@@ -8,11 +8,10 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        dd(session()->get('user'));
-        // $data = [
-        //     'title' => 'Dashboard'
-        // ];
+        $data = [
+            'title' => 'Dashboard'
+        ];
 
-        // return view('dashboard/index', $data);
+        return view('dashboard/index', $data);
     }
 }
