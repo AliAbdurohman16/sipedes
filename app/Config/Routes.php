@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use \App\Controllers\Admin;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -25,7 +27,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-//$routes->setAutoRoute(false);
+// $routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -51,9 +53,14 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
     //dashboard
     $routes->get('/dashboard', 'Dashboard::index');
 
-    //rt
-    $routes->get('/rt', 'Rt::index');
-    $routes->post('/rt/save', 'Rt::save');
+    // Route Data Master -> Data RW
+    $routes->resource("data_rw", ['namespace' => 'App\Controllers\Admin', 'controller' => 'RwController', 'except' => 'show, new, edit']);
+
+    // Jabatan
+    $routes->get('data_jabatan', 'JabatanController::index');
+    $routes->post('data_jabatan/create', 'JabatanController::create');
+    $routes->put('data_jabatan/update/(:num)', 'JabatanController::update/$1');
+    $routes->delete('data_jabatan/(:num)', 'JabatanController::delete/$1');
 });
 
 

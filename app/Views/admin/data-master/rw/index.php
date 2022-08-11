@@ -25,13 +25,13 @@
                 <?php endif ?>
                 <div class="card">
                     <div class="card-body">
-					
+
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
                                 Tambah Data +
                             </button>
                         </div>
-                            <div class="table-responsive shadow rounded">
+                        <div class="table-responsive shadow rounded">
                             <!-- Button trigger modal -->
                             <table class="table table-center bg-white mb-0" id="table">
                                 <thead>
@@ -62,7 +62,7 @@
                                             <td class="text-center p-3"><?= $rw->dusun_name ?></td>
                                             <td class="p-3">
                                                 <a href="#" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#editModal<?= $rw->id ?>"><i class="fa-solid fa-pen"></i> Edit</a>
-                                                <form id="delete-form" class="form-inline" action="<?= site_url('admin/data_rw/'.$rw->id) ?>" method="POST">
+                                                <form id="delete-form" class="form-inline" action="<?= site_url('admin/data_rw/' . $rw->id) ?>" method="POST">
                                                     <?= csrf_field() ?>
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     <button type="submit" class="btn btn-danger ms-2" onClick="alert('Apakah anda yakin ingin menghapus data ini?');"><i class="fa-solid fa-trash"></i> Hapus</button>
@@ -118,11 +118,11 @@
                             <div class="mb-3">
                                 <label class="form-label" for="inputNamaDusun">Dusun <span class="text-danger">*</span></label>
                                 <select class="form-control" id="inputNamaDusun" name="dusun_id">
-									<option value="" selected disabled>-- Pilih --</option>
-                                    <?php foreach($dusun as $item): ?>
+                                    <option value="" selected disabled>-- Pilih --</option>
+                                    <?php foreach ($dusun as $item) : ?>
                                         <option value="<?= $item->id ?>" <?= $item->id == old('dusun_id') ? 'selected' : '' ?>><?= $item->name ?></option>
                                     <?php endforeach ?>
-								</select>
+                                </select>
                                 <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
@@ -137,58 +137,58 @@
     </div>
 </div>
 
-<?php foreach($rws as $rw): ?>
+<?php foreach ($rws as $rw) : ?>
     <div class="modal fade" id="editModal<?= $rw->id ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Data <?= $rw->name ?></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Data <?= $rw->name ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="<?= site_url('admin/data_rw/' . $rw->id) ?>" method="POST">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="inputNamaKetuaRW">Nama Ketua RW <span class="text-danger">*</span></label>
+                                    <input name="name" id="inputNamaKetuaRW" type="text" class="form-control" placeholder="Nama Lengkap" value="<?= $rw->name ?? old('name') ?>">
+                                    <span class="text text-danger text-sm error" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="inputNomorRW">Nomor RW <span class="text-danger">*</span></label>
+                                    <input name="number" id="inputNomorRW" type="number" class="form-control" placeholder="No RW" value="<?= $rw->number ?? old('number') ?>">
+                                    <span class="text text-danger text-sm error" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="inputNamaDusun">Dusun <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="inputNamaDusun" name="dusun_id">
+                                        <option value="" selected disabled>-- Pilih --</option>
+                                        <?php foreach ($dusun as $item) : ?>
+                                            <option value="<?= $item->id ?>" <?= $item->id == ($rw->dusun_id ?? old('dusun_id')) ? 'selected' : '' ?>><?= $item->name ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <span class="text text-danger text-sm error" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+                    </div>
+                </form>
             </div>
-            <form action="<?= site_url('admin/data_rw/' . $rw->id) ?>" method="POST">
-                <?= csrf_field() ?>
-                <input type="hidden" name="_method" value="PUT" />
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="inputNamaKetuaRW">Nama Ketua RW <span class="text-danger">*</span></label>
-                                <input name="name" id="inputNamaKetuaRW" type="text" class="form-control" placeholder="Nama Lengkap" value="<?= $rw->name ?? old('name') ?>">
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="inputNomorRW">Nomor RW <span class="text-danger">*</span></label>
-                                <input name="number" id="inputNomorRW" type="number" class="form-control" placeholder="No RW" value="<?= $rw->number ?? old('number') ?>">
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label" for="inputNamaDusun">Dusun <span class="text-danger">*</span></label>
-                                <select class="form-control" id="inputNamaDusun" name="dusun_id">
-									<option value="" selected disabled>-- Pilih --</option>
-                                    <?php foreach($dusun as $item): ?>
-                                        <option value="<?= $item->id ?>" <?= $item->id == ($rw->dusun_id ?? old('dusun_id')) ? 'selected' : '' ?>><?= $item->name ?></option>
-                                    <?php endforeach ?>
-								</select>
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary" id="edit">Edit</button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
 <?php endforeach ?>
 <?= $this->endSection(); ?>
