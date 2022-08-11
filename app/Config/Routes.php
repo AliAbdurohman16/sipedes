@@ -54,9 +54,6 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
     //rt
     $routes->get('/rt', 'Rt::index');
     $routes->post('/rt/save', 'Rt::save');
-
-    //rt
-    $routes->get('/jabatan', 'Jabatan::index');
 });
 
 

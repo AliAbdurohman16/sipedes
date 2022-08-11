@@ -4,23 +4,21 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-use App\Models\RwModel;
+use App\Models\DusunModel;
 
-class RwSeed extends Seeder
+class DusunSeed extends Seeder
 {
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
-        $rwModel = new RwModel;
+        $dusunModel = new DusunModel;
 
         for($i = 1; $i < 50; $i++){
             $data = [
-                'name' => $faker->name(),
-                'number' => $i,
-                'dusun_id' => $i
+                'name' => $faker->word()
             ];
 
-            $rwModel->insert($data);
+            $dusunModel->insert($data);
         }
     }
 }

@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RwModel extends Model
+class DusunModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'rw';
+    protected $table            = 'dusun';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 1;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'number', 'dusun_id'];
+    protected $allowedFields    = ['name'];
 
     // Dates
     protected $useTimestamps = true;
@@ -39,11 +39,4 @@ class RwModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function withDusun()
-    {
-        $this->select('dusun.name as dusun_name, rw.*');
-        
-        return $this->join('dusun', 'dusun.id = rw.dusun_id')->findAll();
-    }
 }
