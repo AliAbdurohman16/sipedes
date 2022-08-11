@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary btn-sm mb-3" style="float: right;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary btn-sm mb-3" style="float: right;" id="buttonAdd">
                     Tambah Data
                 </button>
                 <div class="table-responsive shadow rounded">
@@ -38,19 +38,18 @@
                             foreach ($rts as $rt) { ?>
                                 <tr>
                                     <th class="text-center p-3"><?= $no++; ?></th>
-                                    <td class="text-center p-3">
-                                        <a href="#" class="text-primary">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/client/01.jpg" class="avatar avatar-ex-small rounded-circle shadow" alt="">
-                                                <span class="ms-2"><?= $rt->name ?></span>
-                                            </div>
-                                        </a>
-                                    </td>
+                                    <td class="p-3"><?= $rt->name ?></td>
                                     <td class="text-center p-3"><?= $rt->number ?></td>
                                     <td class="text-center p-3"><?= $rt->number_rw ?></td>
                                     <td class="p-3">
-                                        <a href="#" class="btn btn-warning btn-sm ms-2"><i class="fa-solid fa-pen"></i> Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm ms-2"><i class="fa-solid fa-trash"></i> Hapus</a>
+                                        <button type="button" class="btn btn-warning btn-sm ms-2" onclick="edit(<?= $rt->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <form action="rt/destroy/<?= $rt->id ?>" method="post" class="d-inline">
+                                            <?php csrf_field(); ?>
+                                            <button class="btn btn-danger btn-sm ms-2">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <i class="fa-solid fa-trash"></i> Hapus
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -65,53 +64,65 @@
     </div>
 </div>
 <!--end container-->
+<div class="viewmodal" style="display: none;"></div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="rt/save" method="post">
-                <div class="modal-body">
-                    <?= csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input name="name" id="nama" type="text" class="form-control" placeholder="Nama Lengkap :">
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">No RT <span class="text-danger">*</span></label>
-                                <input name="name" id="no_rt" type="number" class="form-control" placeholder="No RT :">
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">No RW <span class="text-danger">*</span></label>
-                                <input name="name" id="no_rw" type="number" class="form-control" placeholder="No RW :">
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" id="save">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<?= $this->endSection(); ?>
 
+<?= $this->section('javascript'); ?>
+<script>
+    $(function() {
+        <?php if (session()->has("success")) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat!',
+                text: '<?= session("success") ?>'
+            })
+        <?php } ?>
+    });
+
+    function edit(id) {
+        $.ajax({
+            url: "<?= site_url('rt/edit') ?>",
+            dataType: "json",
+            data: {
+                id: id
+            },
+            success: function(response) {
+                if (response.data) {
+                    if (response.data) {
+                        $('.viewmodal').html(response.data).show();
+                        $('#exampleModal').on('shown.bs.modal', function(event) {
+                            $('#nama').focus();
+                        });
+                        $('#exampleModal').modal('show');
+                    }
+                }
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $('#buttonAdd').click(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "<?= site_url('rt/add') ?>",
+                dataType: "json",
+                type: "get",
+                success: function(response) {
+                    if (response.data) {
+                        $('.viewmodal').html(response.data).show();
+                        $('#exampleModal').on('shown.bs.modal', function(event) {
+                            $('#nama').focus();
+                        });
+                        $('#exampleModal').modal('show');
+                    }
+                },
+                error: function(xhr, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            });
+        });
+    });
+</script>
 <?= $this->endSection(); ?>

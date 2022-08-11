@@ -55,7 +55,11 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes){
 
 //rt
 $routes->get('/rt', 'Rt::index');
+$routes->get('/rt/add', 'Rt::add');
 $routes->post('/rt/save', 'Rt::save');
+$routes->get('/rt/edit', 'Rt::edit');
+$routes->put('/rt/update/(:num)', 'Rt::update/$1');
+$routes->delete('/rt/destroy/(:num)', 'Rt::destroy/$1');
 
 /*
  * --------------------------------------------------------------------
