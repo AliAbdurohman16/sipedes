@@ -22,6 +22,7 @@ class Users extends Migration
             'username' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
+                'unique'     => true,
             ],
             'password' => [
                 'type'       => 'VARCHAR',
@@ -31,31 +32,29 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '13',
             ],
-            'id_role' => [
+            'role_id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
             'created_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'updated_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'deleted_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
-            ],
+                'type'       => 'DATETIME'
+            ]
         ]);
+
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_role', 'role', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('user');
+        $this->forge->addForeignKey('role_id', 'roles', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('users');
     }
 
     public function down()
     {
-        $this->forge->dropTable('user');
+        $this->forge->dropTable('users');
     }
 }

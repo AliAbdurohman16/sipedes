@@ -20,24 +20,22 @@ class Role extends Migration
                 'constraint' => '255',
             ],
             'created_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'updated_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'deleted_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
-            ],
+                'type'       => 'DATETIME'
+            ]
         ]);
+
         $this->forge->addKey('id', true);
-        $this->forge->createTable('role');
+        $this->forge->createTable('roles');
     }
 
     public function down()
     {
-        $this->forge->dropTable('role');
+        $this->forge->dropTable('roles');
     }
 }
