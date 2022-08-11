@@ -14,7 +14,7 @@ class RwModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'number'];
+    protected $allowedFields    = ['name', 'number', 'dusun_id'];
 
     // Dates
     protected $useTimestamps = true;
