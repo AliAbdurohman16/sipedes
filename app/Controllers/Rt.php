@@ -91,24 +91,22 @@ class Rt extends BaseController
         $result = $this->rtModel->update($id, $paramRt);
 
         if ($result) {
-            session()->setFlashdata('success', 'Data RT berhasil ditambahkan!');
+            session()->setFlashdata('success', 'Data RT berhasil diubah!');
         } else {
-            session()->setFlashdata('error', 'Data RT gagal ditambahkan!');
+            session()->setFlashdata('error', 'Data RT gagal diubah!');
         }
 
         return redirect()->to('/rt');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         if ($this->request->isAJAX()) {
-
-            $id = $this->request->getVar('id');
 
             $this->rtModel->delete($id);
 
             $message = [
-                'success' => 'Data RT berhasil dihapus'
+                'success' => 'Data RT berhasil dihapus!'
             ];
     
             echo json_encode($message);
