@@ -45,16 +45,6 @@ class Rt extends BaseController
 
     public function save()
     {
-        // if(!$this->validate([
-        //     'name' => 'required|min_length[3]|string',
-        //     'no_rt' => 'required|integer',
-        //     'dusun_id' => 'required|integer'
-        // ])){
-        //     session()->setFlashdata('error', $this->validator->listErrors());
-
-        //     return redirect()->back()->withInput();
-        // }
-
         $paramRt = [
             'name'   => $this->request->getVar('name'),
             'number' => $this->request->getVar('no_rt'),
@@ -92,16 +82,6 @@ class Rt extends BaseController
 
     public function update($id)
     {
-        // if(!$this->validate([
-        //     'name' => 'required|min_length[3]|string',
-        //     'no_rt' => 'required|integer',
-        //     'dusun_id' => 'required|integer'
-        // ])){
-        //     session()->setFlashdata('error', $this->validator->listErrors());
-
-        //     return redirect()->back()->withInput();
-        // }
-
         $paramRt = [
             'name'   => $this->request->getVar('name'),
             'number' => $this->request->getVar('no_rt'),

@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= site_url('rt/update/'. $rt->id) ?>" method="post" class="needs-validation" id="update" novalidate="">
+            <form action="<?= site_url('rt/update/' . $rt->id) ?>" method="post" class="needs-validation" id="update" novalidate>
                 <div class="modal-body">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="PUT">
@@ -15,7 +15,9 @@
                             <div class="mb-3">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
                                 <input name="name" id="nama" type="text" class="form-control" value="<?= $rt->name ?? old('name') ?>" placeholder="Nama Lengkap :" required>
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
+                                <div class="invalid-feedback">
+                                    Nama tidak boleh kosong
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -24,7 +26,9 @@
                             <div class="mb-3">
                                 <label class="form-label">No RT <span class="text-danger">*</span></label>
                                 <input name="no_rt" id="no_rt" type="number" class="form-control" value="<?= $rt->number ?? old('no_rt') ?>" placeholder="No RT :" required>
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
+                                <div class="invalid-feedback">
+                                    No RT tidak boleh kosong
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +42,9 @@
                                         <option value="<?= $r->id; ?>" <?= $r->id == ($rt->rw_id ?? old('rw_id')) ? 'selected' : '' ?>>RW <?= $r->number; ?></option>
                                     <?php } ?>
                                 </select>
-                                <span class="text text-danger text-sm error" style="display: none;"></span>
+                                <div class="invalid-feedback">
+                                    No RW tidak boleh kosong
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,36 +58,56 @@
     </div>
 </div>
 
-<!-- <script>
-    $(document).ready(function() {
-        $('#update').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                dataType: "json",
-                beforeSend: function() {
-                    $('#buttonUpdate').prop('disabled', true);
-                    $('#buttonUpdate').html('<i class="fa fa-spin fa-spinner"></i>');
-                },
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire(
-                            'Berhasil!',
-                            response.success,
-                            'success'
-                        ).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload();
-                            }
-                        });
-                    }
-                },
-                error: function(xhr, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
                 }
-            });
-        });
-    });
-</script> -->
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    // $(document).ready(function() {
+    //     $('#update').submit(function(e) {
+    //         e.preventDefault();
+    //         $.ajax({
+    //             type: "post",
+    //             url: $(this).attr('action'),
+    //             data: $(this).serialize(),
+    //             dataType: "json",
+    //             beforeSend: function() {
+    //                 $('#buttonUpdate').prop('disabled', true);
+    //                 $('#buttonUpdate').html('<i class="fa fa-spin fa-spinner"></i>');
+    //             },
+    //             success: function(response) {
+    //                 if (response.success) {
+    //                     Swal.fire(
+    //                         'Berhasil!',
+    //                         response.success,
+    //                         'success'
+    //                     ).then((result) => {
+    //                         if (result.isConfirmed) {
+    //                             location.reload();
+    //                         }
+    //                     });
+    //                 }
+    //             },
+    //             error: function(xhr, thrownError) {
+    //                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+    //             }
+    //         });
+    //     });
+    // });
+</script>
