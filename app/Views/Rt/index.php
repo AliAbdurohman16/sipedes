@@ -64,21 +64,21 @@
 
 <?= $this->section('javascript'); ?>
 <script>
-    // $(function() {
-    //     <?php if (session()->has("success")) { ?>
-    //         Swal.fire({
-    //             icon: 'success',
-    //             title: 'Selamat!',
-    //             text: '<?= session("success") ?>'
-    //         })
-    //     <?php } else if (session()->has("error")) { ?>
-    //         Swal.fire({
-    //             icon: 'error',
-    //             title: 'Gagal!',
-    //             text: '<?= session("error") ?>'
-    //         })
-    //     <?php }?>
-    // });
+    $(function() {
+        <?php if (session()->has("success")) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat!',
+                text: '<?= session("success") ?>'
+            })
+        <?php } else if (session()->has("error")) { ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= session("error") ?>'
+            })
+        <?php }?>
+    });
 
     function hapus(id) {
         Swal.fire({
@@ -93,8 +93,9 @@
         }).then((result) => {
             if (result) {
                 $.ajax({
-                    type: "DELETE",
+                    type: "delete",
                     url: "rt/destroy/" + id,
+                    // data: { id : id },
                     dataType: "json",
                     success: function(response) {
                         if (response.success) {

@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="rt/save" method="post" class="needs-validation" id="save" novalidate>
+            <form action="<?= site_url('rt/save') ?>" method="POST" class="needs-validation" id="form" novalidate>
                 <div class="modal-body">
                     <?= csrf_field(); ?>
                     <div class="row">
@@ -56,56 +56,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-
-    // $(document).ready(function() {
-    //     $('#save').submit(function(e) {
-    //         e.preventDefault();
-    //         $.ajax({
-    //             url: $(this).attr('action'),
-    //             data: $(this).serialize(),
-    //             dataType: "json",
-    //             beforeSend: function() {
-    //                 $('#buttonSave').prop('disabled', true);
-    //                 $('#buttonSave').html('<i class="fa fa-spin fa-spinner"></i>');
-    //             },
-    //             success: function(response) {
-    //                 if (response.success) {
-    //                     Swal.fire(
-    //                         'Berhasil!',
-    //                         response.success,
-    //                         'success'
-    //                     ).then((result) => {
-    //                         if (result.isConfirmed) {
-    //                             location.reload();
-    //                         }
-    //                     });
-    //                 }
-    //             },
-    //             error: function(xhr, thrownError) {
-    //                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-    //             }
-    //         });
-    //     });
-    // });
-</script>
