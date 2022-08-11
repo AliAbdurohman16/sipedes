@@ -142,6 +142,32 @@
         $(document).ready(function() {
             $('#table').DataTable();
         });
+
+        $('.delete-confirm').on('click', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah yakin ingin menghapus data ini?',
+                text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let action = $(this).attr('data-action');
+
+                    $('body').html("<form class='form-inline remove-form' method='POST' action='" +
+                    action + "'></form>");
+                    $('body').find('.remove-form').append(
+                        '<input name="_method" type="hidden" value="DELETE">');
+                    $('body').find('.remove-form').append(
+                    '<?= csrf_field() ?>');
+                    $('body').find('.remove-form').submit();
+                }
+            })
+        });
     </script>
 </body>
 

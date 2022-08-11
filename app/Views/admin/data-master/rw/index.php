@@ -62,11 +62,7 @@
                                             <td class="text-center p-3"><?= $rw->dusun_name ?></td>
                                             <td class="p-3">
                                                 <a href="#" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#editModal<?= $rw->id ?>"><i class="fa-solid fa-pen"></i> Edit</a>
-                                                <form id="delete-form" class="form-inline" action="<?= site_url('admin/data_rw/'.$rw->id) ?>" method="POST">
-                                                    <?= csrf_field() ?>
-                                                    <input type="hidden" name="_method" value="DELETE" />
-                                                    <button type="submit" class="btn btn-danger ms-2" onClick="alert('Apakah anda yakin ingin menghapus data ini?');"><i class="fa-solid fa-trash"></i> Hapus</button>
-                                                </form>
+                                                <button type="button" class="btn btn-danger ms-2 delete-confirm" data-action="<?= site_url('admin/data_rw/'.$rw->id) ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
                                             </td>
                                         </tr>
                                     <?php } ?>
