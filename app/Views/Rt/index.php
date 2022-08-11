@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center border-bottom p-3">#</th>
-                                <th class="border-bottom p-3">Nama</th>
+                                <th class="border-bottom p-3">Nama Ketua RT</th>
                                 <th class="text-center border-bottom p-3">No RT</th>
                                 <th class="text-center border-bottom p-3">No RW</th>
                                 <th class="border-bottom p-3">Aksi</th>
@@ -35,19 +35,19 @@
                             <!-- Start -->
                             <?php
                             $no = 1;
-                            foreach ($rt as $row) { ?>
+                            foreach ($rts as $rt) { ?>
                                 <tr>
                                     <th class="text-center p-3"><?= $no++; ?></th>
                                     <td class="text-center p-3">
                                         <a href="#" class="text-primary">
                                             <div class="d-flex align-items-center">
                                                 <img src="assets/images/client/01.jpg" class="avatar avatar-ex-small rounded-circle shadow" alt="">
-                                                <span class="ms-2"><?= $row['nama_rt'] ?></span>
+                                                <span class="ms-2"><?= $rt->name ?></span>
                                             </div>
                                         </a>
                                     </td>
-                                    <td class="text-center p-3"><?= $row['no_rt'] ?></td>
-                                    <td class="text-center p-3"><?= $row['id_rw'] ?></td>
+                                    <td class="text-center p-3"><?= $rt->number ?></td>
+                                    <td class="text-center p-3"><?= $rt->number_rw ?></td>
                                     <td class="p-3">
                                         <a href="#" class="btn btn-warning btn-sm ms-2"><i class="fa-solid fa-pen"></i> Edit</a>
                                         <a href="#" class="btn btn-danger btn-sm ms-2"><i class="fa-solid fa-trash"></i> Hapus</a>

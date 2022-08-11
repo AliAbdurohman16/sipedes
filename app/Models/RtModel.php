@@ -42,7 +42,7 @@ class RtModel extends Model
 
     public function withRw()
     {
-        $this->select('rw.number as number_rw');
+        $this->select('rw.number as number_rw, rt.*');
         
         return $this->join('rw', 'rw.id = rt.rw_id')->findAll();
     }
