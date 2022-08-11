@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class FilterRT implements FilterInterface
+class AuthFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,8 +25,18 @@ class FilterRT implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session()->id_role == '') {
-            return redirect()->to('/login');
+        if($arguments[0] == 'loggedIn'){
+            if (!session()->has('user')) {
+                return redirect()->to('/login');
+            }
+        } else if($arguments[0] == 'login') {
+            if (session()->has('user')) {
+                return redirect()->to('/dashboard');
+            }
+        } else if($arguments[0] == 'logout') {
+            if (!session()->has('user')) {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
         }
     }
 
@@ -44,8 +54,6 @@ class FilterRT implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (session()->id_role == 5) {
-            return redirect()->to('/dashboard');
-        }
+        //
     }
 }

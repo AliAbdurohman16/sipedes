@@ -39,4 +39,9 @@ class RoleModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getRole(int $roleId)
+    {
+        return $this->find($roleId);  
+    }
 }

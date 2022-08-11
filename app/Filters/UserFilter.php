@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class FilterRW implements FilterInterface
+class UserFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,8 +25,8 @@ class FilterRW implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session()->id_role == '') {
-            return redirect()->to('/login');
+        if (session()->get('role')->name != $arguments) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 
@@ -44,8 +44,6 @@ class FilterRW implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (session()->id_role == 4) {
-            return redirect()->to('/dashboard');
-        }
+        //
     }
 }

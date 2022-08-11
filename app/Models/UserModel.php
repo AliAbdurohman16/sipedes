@@ -42,13 +42,8 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-
-    public function getUser($username = false)
+    public function getUser(String $username)
     {
-        if ($username == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['username' => $username])->first();
+        return $this->where('username', $username)->first();
     }
 }

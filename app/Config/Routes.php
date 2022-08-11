@@ -38,16 +38,25 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 //login
-$routes->get('/login', 'Login::index');
-$routes->post('/login/valid_login', 'Login::valid_login');
-$routes->get('/logout', 'Login::logout');
+$routes->group("", ["filter" => "authFilter:login"], function ($routes){
+    $routes->get('/login', 'Login::index');
+    $routes->post('/login/valid_login', 'Login::valid_login');
+});
 
-//dashboard
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->group("", ["filter" => "authFilter:logout"], function ($routes){
+    $routes->get('/logout', 'Login::logout');
+});
+
+$routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes){
+    //dashboard
+    $routes->get('/dashboard', 'Dashboard::index');
+});
+
 
 //rt
 $routes->get('/rt', 'Rt::index');
 $routes->post('/rt/save', 'Rt::save');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

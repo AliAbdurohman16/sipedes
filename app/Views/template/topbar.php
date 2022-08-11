@@ -111,8 +111,8 @@
                             <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
                                 <img src="<?= base_url() ?>/assets/images/client/05.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                 <div class="flex-1 ms-2">
-                                    <span class="d-block"><?= $user->user_name ?></span>
-                                    <small class="text-muted"><?= $user->role_name ?></small>
+                                    <span class="d-block"><?= session()->get('user')->name ?></span>
+                                    <small class="text-muted"><?= session()->get('role')->name ?></small>
                                 </div>
                             </a>
                             <a class="dropdown-item text-dark" href="index.html"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>

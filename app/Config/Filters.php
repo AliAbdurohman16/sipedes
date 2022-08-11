@@ -23,11 +23,9 @@ class Filters extends BaseConfig
         'honeypot'              => Honeypot::class,
         'invalidchars'          => InvalidChars::class,
         'secureheaders'         => SecureHeaders::class,
-        'filterSuperadmin'      => \App\Filters\FilterSuperadmin::class,
-        // 'filterKasiPelayanan'   => \App\Filters\FilterKasiPelayanan::class,
-        // 'filterRw'              => \App\Filters\FilterRW::class,
-        // 'filterRt'              => \App\Filters\FilterRT::class,
-        // 'filterUser'            => \App\Filters\FilterUser::class
+
+        'authFilter' => \App\Filters\AuthFilter::class,
+        'userFilter' => \App\Filters\UserFilter::class
     ];
 
     /**
@@ -38,32 +36,11 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'filterSuperadmin' => [
-                'except' => ['login/*', 'login']
-            ],
-            // 'filterKasiPelayanan' => [
-            //     'except' => ['login/*', 'login']
-            // ],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
-            'filterSuperadmin' => [
-                'except' => ['dashboard/*']
-            ],
-            // 'filterKasiPelayanan' => [
-            //     'except' => ['dashboard/*', 'logActivity/*', 'RT/*', 'RW/*', 'pengajuan/*']
-            // ],
-            // 'filterRw' => [
-            //     'except' => ['dashboard/*', 'logActivity/*', 'RT/*', 'pengajuan/*']
-            // ],
-            // 'filterRt' => [
-            //     'except' => ['dashboard/*', 'logActivity/*', 'pengajuan/*']
-            // ],
-            // 'filterRt' => [
-            //     'except' => ['pengajuan/*']
-            // ],
             'toolbar',
             // 'honeypot',
             // 'secureheaders',
