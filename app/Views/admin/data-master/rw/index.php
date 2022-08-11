@@ -27,7 +27,7 @@
                     <div class="card-body">
 					
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
+                            <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
                                 Tambah Data +
                             </button>
                         </div>
@@ -61,8 +61,8 @@
                                             <td class="text-center p-3"><?= $rw->number ?></td>
                                             <td class="text-center p-3"><?= $rw->dusun_name ?></td>
                                             <td class="p-3">
-                                                <a href="#" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#editModal<?= $rw->id ?>"><i class="fa-solid fa-pen"></i> Edit</a>
-                                                <button type="button" class="btn btn-danger ms-2 delete-confirm" data-action="<?= site_url('admin/data_rw/'.$rw->id) ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
+                                                <a href="#" class="btn btn-warning btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#editModal<?= $rw->id ?>"><i class="fa-solid fa-pen"></i> Edit</a>
+                                                <button type="button" class="btn btn-danger btn-sm ms-2 delete-confirm" data-action="<?= site_url('admin/data_rw/'.$rw->id) ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
                                             </td>
                                         </tr>
                                     <?php } ?>

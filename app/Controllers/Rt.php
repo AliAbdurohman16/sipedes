@@ -20,7 +20,7 @@ class Rt extends BaseController
         $rts = $this->rtModel->withRw();
 
         $data = [
-            'title' => 'RT',
+            'title' => 'Data Rukun Tetangga',
             'rts' => $rts
         ];
 
@@ -31,7 +31,6 @@ class Rt extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'title'  => 'Tambah Data RT',
                 'rw'     => $this->rwModel->findAll(),
             ];
 
