@@ -15,6 +15,7 @@ class RW extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+<<<<<<< HEAD
             'nama_rw' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
@@ -36,6 +37,26 @@ class RW extends Migration
                 'null' => true,
             ],
         ]);
+=======
+            'name' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'number' => [
+                'type'       => 'INT'
+            ],
+            'created_at' => [
+                'type'       => 'DATETIME'
+            ],
+            'updated_at' => [
+                'type'       => 'DATETIME'
+            ],
+            'deleted_at' => [
+                'type'       => 'DATETIME'
+            ]
+        ]);
+
+>>>>>>> 098a84fdad075a2b21fe878093c2d766d5c8bd8a
         $this->forge->addKey('id', true);
         $this->forge->createTable('rw');
     }

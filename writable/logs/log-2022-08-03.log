@@ -1,0 +1,1 @@
+ERROR - 2022-08-03 04:01:31 --> Can't create table `sipedes`.`rt` (errno: 150 "Foreign key constraint is incorrectly formed")

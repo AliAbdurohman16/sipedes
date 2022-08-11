@@ -15,34 +15,31 @@ class RT extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nama_rt' => [
+            'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'no_rt' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
+            'number' => [
+                'type'       => 'INT'
             ],
-            'id_rw' => [
+            'rw_id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
             'created_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'updated_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
+                'type'       => 'DATETIME'
             ],
             'deleted_at' => [
-                'type' => 'TIMESTAMP',
-                'null' => true,
-            ],
+                'type'       => 'DATETIME'
+            ]
         ]);
+
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_rw', 'rw', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('rw_id', 'rw', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('rt');
     }
 
