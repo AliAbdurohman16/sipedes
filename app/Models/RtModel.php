@@ -14,7 +14,7 @@ class RtModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_rt', 'no_rt', 'rw_id'];
+    protected $allowedFields    = ['name', 'number', 'rw_id'];
     
     // Dates
     protected $useTimestamps = true;
@@ -39,4 +39,11 @@ class RtModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withRw()
+    {
+        $this->select('rw.number as number_rw');
+        
+        return $this->join('rw', 'rw.id = rt.rw_id')->findAll();
+    }
 }
