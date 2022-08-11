@@ -138,36 +138,139 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
     <?= $this->renderSection('javascript'); ?>
+    
     <script>
         $(document).ready(function() {
             $('#table').DataTable();
-        });
+            
+            <?php if (session()->has("success")) { ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '<?= session("success") ?>'
+                })
+            <?php } else if (session()->has("error")) { ?>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '<?= session("error") ?>'
+                })
+            <?php }?>
 
-        $('.delete-confirm').on('click', function (event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Apakah yakin ingin menghapus data ini?',
-                text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    let action = $(this).attr('data-action');
+            $('#buttonAdd').click(function(e) {
+                e.preventDefault();
 
-                    $('body').html("<form class='form-inline remove-form' method='POST' action='" +
-                    action + "'></form>");
-                    $('body').find('.remove-form').append(
-                        '<input name="_method" type="hidden" value="DELETE">');
-                    $('body').find('.remove-form').append(
-                    '<?= csrf_field() ?>');
-                    $('body').find('.remove-form').submit();
-                }
-            })
+                $.ajax({
+                    url: $(this).attr('data-action'),
+                    dataType: "json",
+                    type: "get",
+                    success: function(response) {
+                        if (response.data) {
+                            $('.viewmodal').html(response.data).show();
+                            $('#exampleModal').on('shown.bs.modal', function(event) {
+                                $('#form :input:enabled:visible:first').focus();
+
+                                const forms = document.querySelectorAll('.needs-validation')
+
+                                Array.from(forms).forEach(form => {
+                                    form.addEventListener('submit', event => {
+                                        if (!form.checkValidity()) {
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                        }
+
+                                        form.classList.add('was-validated')
+                                    }, false)
+                                });
+                            });
+                            $('#exampleModal').modal('show');
+                        }
+                    },
+                    error: function(xhr, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                });
+            });
+
+            $('.button-edit').click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('data-action'),
+                    dataType: "json",
+                    data: {
+                        id: $(this).attr('data-id')
+                    },
+                    success: function(response) {
+                        if (response.data) {
+                            if (response.data) {
+                                $('.viewmodal').html(response.data).show();
+                                $('#exampleModal').on('shown.bs.modal', function(event) {
+                                    $('#form :input:enabled:visible:first').focus();
+
+                                    const forms = document.querySelectorAll('.needs-validation')
+
+                                    Array.from(forms).forEach(form => {
+                                        form.addEventListener('submit', event => {
+                                            if (!form.checkValidity()) {
+                                                event.preventDefault()
+                                                event.stopPropagation()
+                                            }
+
+                                            form.classList.add('was-validated')
+                                        }, false)
+                                    });
+                                });
+                                $('#exampleModal').modal('show');
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('.button-delete').click(function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah yakin ingin menghapus data ini?',
+                    text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "POST",
+                            url: $(this).attr('data-action'),
+                            data: { 
+                                id : $(this).attr('data-id') 
+                            },
+                            dataType: "json",
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire(
+                                        'Berhasil!',
+                                        response.success,
+                                        'success'
+                                    ).then((result) => {
+                                        if (result.isConfirmed) {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                            },
+                            error: function(xhr, thrownError) {
+                                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

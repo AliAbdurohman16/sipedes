@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary btn-sm mb-3" style="float: right;" id="buttonAdd">
+                <button type="button" class="btn btn-primary btn-sm mb-3" style="float: right;" data-action="<?= site_url('rt/add') ?>" id="buttonAdd">
                     Tambah Data
                 </button>
                 <div class="table-responsive shadow rounded">
@@ -42,8 +42,8 @@
                                     <td class="text-center p-3"><?= $rt->number ?></td>
                                     <td class="text-center p-3"><?= $rt->number_rw ?></td>
                                     <td class="p-3">
-                                        <button type="button" class="btn btn-warning btn-sm ms-2" onclick="edit(<?= $rt->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm ms-2" onclick="hapus(<?= $rt->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
+                                        <button type="button" class="btn btn-warning btn-sm ms-2 button-edit" data-action="<?= site_url('rt/edit') ?>" data-id="<?= $rt->id ?>"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm ms-2 button-delete" data-action="<?= site_url('rt/destroy') ?>" data-id="<?= $rt->id ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -58,109 +58,5 @@
     </div>
 </div>
 <!--end container-->
-<div class="viewmodal" style="display: none;"></div>
-
-<?= $this->endSection(); ?>
-
-<?= $this->section('javascript'); ?>
-<script>
-    $(function() {
-        <?php if (session()->has("success")) { ?>
-            Swal.fire({
-                icon: 'success',
-                title: 'Selamat!',
-                text: '<?= session("success") ?>'
-            })
-        <?php } else if (session()->has("error")) { ?>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: '<?= session("error") ?>'
-            })
-        <?php }?>
-    });
-
-    function hapus(id) {
-        Swal.fire({
-            title: 'Apakah yakin ingin menghapus data ini?',
-            text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus!',
-            cancelButtonText: 'Tidak'
-        }).then((result) => {
-            if (result) {
-                $.ajax({
-                    type: "post",
-                    url: "<?= site_url('rt/destroy')?>",
-                    data: { id : id },
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire(
-                                'Selamat!',
-                                response.success,
-                                'success'
-                            ).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }
-                            });
-                        }
-                    },
-                    error: function(xhr, thrownError) {
-                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                    }
-                });
-            }
-        });
-    }
-
-    function edit(id) {
-        $.ajax({
-            url: "<?= site_url('rt/edit') ?>",
-            dataType: "json",
-            data: {
-                id: id
-            },
-            success: function(response) {
-                if (response.data) {
-                    if (response.data) {
-                        $('.viewmodal').html(response.data).show();
-                        $('#exampleModal').on('shown.bs.modal', function(event) {
-                            $('#nama').focus();
-                        });
-                        $('#exampleModal').modal('show');
-                    }
-                }
-            }
-        });
-    }
-
-    $(document).ready(function() {
-        $('#buttonAdd').click(function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url: "<?= site_url('rt/add') ?>",
-                dataType: "json",
-                type: "get",
-                success: function(response) {
-                    if (response.data) {
-                        $('.viewmodal').html(response.data).show();
-                        $('#exampleModal').on('shown.bs.modal', function(event) {
-                            $('#nama').focus();
-                        });
-                        $('#exampleModal').modal('show');
-                    }
-                },
-                error: function(xhr, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
-            });
-        });
-    });
-</script>
+<div class="viewmodal" class="d-none"></div>
 <?= $this->endSection(); ?>
