@@ -135,15 +135,139 @@
     <!-- Main Js -->
     <script src="<?= base_url() ?>/assets/js/plugins.init.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.js"></script>
+    <script src="<?= base_url() ?>/assets/js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
+    <?= $this->renderSection('javascript'); ?>
+    
     <script>
         $(document).ready(function() {
             $('#table').DataTable();
+            
+            <?php if (session()->has("success")) { ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '<?= session("success") ?>'
+                })
+            <?php } else if (session()->has("error")) { ?>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '<?= session("error") ?>'
+                })
+            <?php }?>
+
+            $('#buttonAdd').click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('data-action'),
+                    dataType: "json",
+                    type: "get",
+                    success: function(response) {
+                        if (response.data) {
+                            $('.viewmodal').html(response.data).show();
+                            $('#exampleModal').on('shown.bs.modal', function(event) {
+                                $('#form :input:enabled:visible:first').focus();
+
+                                const forms = document.querySelectorAll('.needs-validation')
+
+                                Array.from(forms).forEach(form => {
+                                    form.addEventListener('submit', event => {
+                                        if (!form.checkValidity()) {
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                        }
+
+                                        form.classList.add('was-validated')
+                                    }, false)
+                                });
+                            });
+                            $('#exampleModal').modal('show');
+                        }
+                    },
+                    error: function(xhr, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                });
+            });
+
+            $('.button-edit').click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('data-action'),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.data) {
+                            if (response.data) {
+                                $('.viewmodal').html(response.data).show();
+                                $('#exampleModal').on('shown.bs.modal', function(event) {
+                                    $('#form :input:enabled:visible:first').focus();
+
+                                    const forms = document.querySelectorAll('.needs-validation')
+
+                                    Array.from(forms).forEach(form => {
+                                        form.addEventListener('submit', event => {
+                                            if (!form.checkValidity()) {
+                                                event.preventDefault()
+                                                event.stopPropagation()
+                                            }
+
+                                            form.classList.add('was-validated')
+                                        }, false)
+                                    });
+                                });
+                                $('#exampleModal').modal('show');
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('.button-delete').click(function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah yakin ingin menghapus data ini?',
+                    text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "delete",
+                            url: $(this).attr('data-action'),
+                            dataType: "json",
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire(
+                                        'Berhasil!',
+                                        response.success,
+                                        'success'
+                                    ).then((result) => {
+                                        if (result.isConfirmed) {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                            },
+                            error: function(xhr, thrownError) {
+                                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

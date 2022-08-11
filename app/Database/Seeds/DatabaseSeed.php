@@ -13,5 +13,6 @@ class DatabaseSeed extends Seeder
         $this->call('DusunSeed');
         $this->call('RwSeed');
         $this->call('RtSeed');
+        $this->call('JabatanSeed');
     }
 }
