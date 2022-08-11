@@ -21,11 +21,11 @@
                 <li><a href="index.html"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
                 <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'rt' ? 'active' : '') ?>">
                     <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Data Master</a>
-                    <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'rt' ? 'd-block' : '') ?>">
+                    <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'rt' || $uri->getSegment(1) == 'jabatan' ? 'd-block' : '') ?>">
                         <ul>
                             <li class="<?= ($uri->getSegment(1) == 'rt' ? 'active' : '') ?>"><a href="<?= base_url('rt') ?>">RT</a></li>
                             <li><a href="index-rtl.html">RW</a></li>
-                            <li><a href="index-rtl.html">Jabatan</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'jabatan' ? 'active' : '') ?>"><a href="<?= base_url('jabatan') ?>">Jabatan</a></li>
                             <li><a href="index-rtl.html">Pengajuan</a></li>
                         </ul>
                     </div>
