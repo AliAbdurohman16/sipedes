@@ -42,8 +42,8 @@
                                     <td class="text-center p-3"><?= $rt->number ?></td>
                                     <td class="text-center p-3"><?= $rt->number_rw ?></td>
                                     <td class="p-3">
-                                        <button type="button" class="btn btn-warning btn-sm ms-2 button-edit" data-action="<?= site_url('rt/edit') ?>" data-id="<?= $rt->id ?>"><i class="fa-solid fa-pen"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm ms-2 button-delete" data-action="<?= site_url('rt/destroy') ?>" data-id="<?= $rt->id ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
+                                        <button type="button" class="btn btn-warning btn-sm ms-2 button-edit" data-action="<?= site_url('rt/edit/' . $rt->id) ?>"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm ms-2 button-delete" data-action="<?= site_url('rt/destroy/'. $rt->id) ?>"><i class="fa-solid fa-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
                             <?php } ?>

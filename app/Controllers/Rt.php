@@ -62,10 +62,9 @@ class Rt extends BaseController
         return redirect()->to('/rt');
     }
 
-    public function edit()
+    public function edit($id)
     {
         if ($this->request->isAJAX()) {
-            $id = $this->request->getVar('id');
 
             $data = [
                 'rt'    => $this->rtModel->find($id),
@@ -99,10 +98,9 @@ class Rt extends BaseController
         return redirect()->to('/rt');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         if ($this->request->isAJAX()) {
-            $id = $this->request->getVar('id');
 
             $this->rtModel->delete($id);
 

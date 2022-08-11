@@ -61,9 +61,9 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes){
 $routes->get('/rt', 'Rt::index');
 $routes->get('/rt/add', 'Rt::add');
 $routes->post('/rt/save', 'Rt::save');
-$routes->get('/rt/edit', 'Rt::edit');
+$routes->get('/rt/edit/(:num)', 'Rt::edit/$1');
 $routes->put('/rt/update/(:num)', 'Rt::update/$1');
-$routes->post('/rt/destroy', 'Rt::destroy');
+$routes->delete('/rt/destroy/(:num)', 'Rt::destroy/$1');
 
 
 /*

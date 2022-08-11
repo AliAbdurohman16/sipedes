@@ -200,9 +200,6 @@
                 $.ajax({
                     url: $(this).attr('data-action'),
                     dataType: "json",
-                    data: {
-                        id: $(this).attr('data-id')
-                    },
                     success: function(response) {
                         if (response.data) {
                             if (response.data) {
@@ -245,11 +242,8 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            type: "POST",
+                            type: "delete",
                             url: $(this).attr('data-action'),
-                            data: { 
-                                id : $(this).attr('data-id') 
-                            },
                             dataType: "json",
                             success: function(response) {
                                 if (response.success) {
