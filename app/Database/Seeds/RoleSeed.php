@@ -5,23 +5,27 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;
 
+use App\Models\RoleModel;
+
 class RoleSeed extends Seeder
 {
     public function run()
     {
-        $data = [
+        $roleModel = new RoleModel;
+
+        $roles = [
             [
-                'name' => 'Super User',
+                'name' => 'SUPERUSER',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
             [
-                'name' => 'User',
+                'name' => 'USER',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
             [
-                'name' => 'Kasi Pelayanan',
+                'name' => 'KASI_PELAYANAN',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
@@ -37,7 +41,6 @@ class RoleSeed extends Seeder
             ],
         ];
 
-        // Using Query Builder
-        $this->db->table('role')->insertBatch($data);
+        $roleModel->insertBatch($roles);
     }
 }
