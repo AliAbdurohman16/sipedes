@@ -13,10 +13,8 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input name="name" id="nama" type="text" class="form-control" placeholder="Nama Lengkap :" required>
-                                <div class="valid-feedback">
-                                    Nama tidak boleh kosong
-                                </div>
+                                <input name="name" id="nama" type="text" class="form-control" placeholder="Nama Lengkap :" value="<?= old('name') ?>" required>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>
@@ -24,10 +22,8 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">No RT <span class="text-danger">*</span></label>
-                                <input name="no_rt" id="no_rt" type="number" class="form-control" placeholder="No RT :" required>
-                                <div class="valid-feedback">
-                                    No RT tidak boleh kosong
-                                </div>
+                                <input name="no_rt" id="no_rt" type="number" class="form-control" placeholder="No RT :" value="<?= old('no_rt') ?>" required>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>
@@ -41,9 +37,7 @@
                                         <option value="<?= $r->id ?>">RW <?= $r->number ?></option>
                                     <?php } ?>
                                 </select>
-                                <div class="valid-feedback">
-                                    No RW tidak boleh kosong
-                                </div>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>

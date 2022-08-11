@@ -14,10 +14,8 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input name="name" id="nama" type="text" class="form-control" value="<?= $rt->name ?>" placeholder="Nama Lengkap :" required>
-                                <div class="valid-feedback">
-                                    Nama tidak boleh kosong
-                                </div>
+                                <input name="name" id="nama" type="text" class="form-control" value="<?= $rt->name ?? old('name') ?>" placeholder="Nama Lengkap :" required>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>
@@ -25,10 +23,8 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">No RT <span class="text-danger">*</span></label>
-                                <input name="no_rt" id="no_rt" type="number" class="form-control" value="<?= $rt->number ?>" placeholder="No RT :" required>
-                                <div class="valid-feedback">
-                                    No RT tidak boleh kosong
-                                </div>
+                                <input name="no_rt" id="no_rt" type="number" class="form-control" value="<?= $rt->number ?? old('no_rt') ?>" placeholder="No RT :" required>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>
@@ -37,14 +33,12 @@
                             <div class="mb-3">
                                 <label class="form-label">No RW <span class="text-danger">*</span></label>
                                 <select name="no_rw" class="form-control" required>
-                                    <option value="">--Pilih--</option>
+                                    <option value="">-- Pilih --</option>
                                     <?php foreach ($rw as $r) { ?>
-                                        <option <?php if ($rt->rw_id == $r->id) { echo "selected='selected'"; } ?> value="<?= $r->id; ?>">RW <?= $r->number; ?></option>
+                                        <option value="<?= $r->id; ?>" <?= $r->id == ($rt->rw_id ?? old('rw_id')) ? 'selected' : '' ?>>RW <?= $r->number; ?></option>
                                     <?php } ?>
                                 </select>
-                                <div class="valid-feedback">
-                                    No RW tidak boleh kosong
-                                </div>
+                                <span class="text text-danger text-sm error" style="display: none;"></span>
                             </div>
                         </div>
                     </div>
