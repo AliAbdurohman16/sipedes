@@ -99,9 +99,10 @@ class Rt extends BaseController
         return redirect()->to('/rt');
     }
 
-    public function destroy($id)
+    public function destroy()
     {
         if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
 
             $this->rtModel->delete($id);
 
