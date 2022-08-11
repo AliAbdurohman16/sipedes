@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Role extends Migration
+class CreateDusunTable extends Migration
 {
     public function up()
     {
@@ -32,11 +32,11 @@ class Role extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('roles');
+        $this->forge->createTable('dusun');
     }
 
     public function down()
     {
-        $this->forge->dropTable('roles');
+        $this->forge->dropTable('dusun');
     }
 }

@@ -27,7 +27,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
-
+    <style>
+        div.dataTables_filter, div.dataTables_length, div.dataTables_info, div.dataTables_paginate {
+            padding: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -138,6 +142,32 @@
     <script>
         $(document).ready(function() {
             $('#table').DataTable();
+        });
+
+        $('.delete-confirm').on('click', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah yakin ingin menghapus data ini?',
+                text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let action = $(this).attr('data-action');
+
+                    $('body').html("<form class='form-inline remove-form' method='POST' action='" +
+                    action + "'></form>");
+                    $('body').find('.remove-form').append(
+                        '<input name="_method" type="hidden" value="DELETE">');
+                    $('body').find('.remove-form').append(
+                    '<?= csrf_field() ?>');
+                    $('body').find('.remove-form').submit();
+                }
+            })
         });
     </script>
 </body>
