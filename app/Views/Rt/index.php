@@ -43,13 +43,7 @@
                                     <td class="text-center p-3"><?= $rt->number_rw ?></td>
                                     <td class="p-3">
                                         <button type="button" class="btn btn-warning btn-sm ms-2" onclick="edit(<?= $rt->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
-                                        <form action="rt/destroy/<?= $rt->id ?>" method="post" class="d-inline">
-                                            <?php csrf_field(); ?>
-                                            <button class="btn btn-danger btn-sm ms-2">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <i class="fa-solid fa-trash"></i> Hapus
-                                            </button>
-                                        </form>
+                                        <button type="button" class="btn btn-danger btn-sm ms-2" onclick="hapus(<?= $rt->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -77,8 +71,52 @@
                 title: 'Selamat!',
                 text: '<?= session("success") ?>'
             })
-        <?php } ?>
+        <?php } else if (session()->has("error")) { ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= session("error") ?>'
+            })
+        <?php }?>
     });
+
+    function hapus(id) {
+        Swal.fire({
+            title: 'Apakah yakin ingin menghapus data ini?',
+            text: "Jika data dihapus maka data yang bersangkutan akan ikut terhapus juga!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    type: "post",
+                    url: "<?= site_url('rt/destroy')?>",
+                    data: { id : id },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire(
+                                'Selamat!',
+                                response.success,
+                                'success'
+                            ).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                });
+            }
+        });
+    }
 
     function edit(id) {
         $.ajax({

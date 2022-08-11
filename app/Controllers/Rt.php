@@ -45,23 +45,30 @@ class Rt extends BaseController
 
     public function save()
     {
-        $name = $this->request->getVar('name');
-        $no_rt = $this->request->getVar('no_rt');
-        $no_rw = $this->request->getVar('no_rw');
+        // if(!$this->validate([
+        //     'name' => 'required|min_length[3]|string',
+        //     'no_rt' => 'required|integer',
+        //     'dusun_id' => 'required|integer'
+        // ])){
+        //     session()->setFlashdata('error', $this->validator->listErrors());
+
+        //     return redirect()->back()->withInput();
+        // }
 
         $paramRt = [
-            'name'   => $name,
-            'number' => $no_rt,
-            'rw_id'  => $no_rw,
+            'name'   => $this->request->getVar('name'),
+            'number' => $this->request->getVar('no_rt'),
+            'rw_id'  => $no_rw = $this->request->getVar('no_rw'),
         ];
 
-        $this->rtModel->insert($paramRt);
+        $result = $this->rtModel->insert($paramRt);
 
-        $message = [
-            'success' => 'Data RT berhasil ditambahkan'
-        ];
+        if ($result) {
+            session()->setFlashdata('success', 'Data RT berhasil ditambahkan!');
+        } else {
+            session()->setFlashdata('error', 'Data RT gagal ditambahkan!');
+        }
 
-        session()->setFlashdata($message);
         return redirect()->to('/rt');
     }
 
@@ -85,35 +92,46 @@ class Rt extends BaseController
 
     public function update($id)
     {
-        $name = $this->request->getVar('name');
-        $no_rt = $this->request->getVar('no_rt');
-        $no_rw = $this->request->getVar('no_rw');
+        // if(!$this->validate([
+        //     'name' => 'required|min_length[3]|string',
+        //     'no_rt' => 'required|integer',
+        //     'dusun_id' => 'required|integer'
+        // ])){
+        //     session()->setFlashdata('error', $this->validator->listErrors());
+
+        //     return redirect()->back()->withInput();
+        // }
 
         $paramRt = [
-            'name'   => $name,
-            'number' => $no_rt,
-            'rw_id'  => $no_rw,
+            'name'   => $this->request->getVar('name'),
+            'number' => $this->request->getVar('no_rt'),
+            'rw_id'  => $no_rw = $this->request->getVar('no_rw'),
         ];
 
-        $this->rtModel->update($id, $paramRt);
+        $result = $this->rtModel->update($id, $paramRt);
 
-        $message = [
-            'success' => 'Data RT berhasil diubah!'
-        ];
+        if ($result) {
+            session()->setFlashdata('success', 'Data RT berhasil ditambahkan!');
+        } else {
+            session()->setFlashdata('error', 'Data RT gagal ditambahkan!');
+        }
 
-        session()->setFlashdata($message);
         return redirect()->to('/rt');
     }
 
-    public function destroy($id)
+    public function destroy()
     {
-        $this->rtModel->delete($id);
+        if ($this->request->isAJAX()) {
 
-        $message = [
-            'success' => 'Data RT berhasil dihapus!'
-        ];
+            $id = $this->request->getVar('id');
 
-        session()->setFlashdata($message);
-        return redirect()->to('/rt');
+            $this->rtModel->delete($id);
+
+            $message = [
+                'success' => 'Data RT berhasil dihapus'
+            ];
+    
+            echo json_encode($message);
+        }
     }
 }
