@@ -10,6 +10,7 @@ class DatabaseSeed extends Seeder
     {
         $this->call('RoleSeed');
         $this->call('UserSeed');
+        $this->call('DusunSeed');
         $this->call('RwSeed');
         $this->call('RtSeed');
     }
