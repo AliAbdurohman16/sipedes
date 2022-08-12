@@ -45,17 +45,25 @@ $routes->group("", ["filter" => "authFilter:login"], function ($routes) {
     $routes->post('/login/valid_login', 'Login::valid_login');
 });
 
-$routes->group("", ["filtexr" => "authFilter:logout"], function ($routes) {
+$routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
     $routes->get('/logout', 'Login::logout');
 });
 
 //dashboard
 $routes->get('/dashboard', 'Dashboard::index');
 
-$routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
+$routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
 
     // Route Data Master -> Data RW
     $routes->resource("data_rw", ['namespace' => 'App\Controllers\Admin', 'controller' => 'RwController', 'except' => 'show, new, edit']);
+
+    // Route Data Master -> Data Dusun
+    $routes->get('data_dusun', 'Admin\DusunController::index');
+    $routes->get('data_dusun/new', 'Admin\DusunController::new');
+    $routes->post('data_dusun/create', 'Admin\DusunController::create');
+    $routes->post('data_dusun/edit', 'Admin\DusunController::edit');
+    $routes->post('data_dusun/update', 'Admin\DusunController::update');
+    $routes->post('data_dusun/delete', 'Admin\DusunController::delete');
 
     // Jabatan
     $routes->get('data_jabatan', 'JabatanController::index');
