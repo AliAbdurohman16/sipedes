@@ -6,14 +6,14 @@
                 <h5 class="modal-title" id="addModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('data_jabatan/create', ['class' => 'formJabatan']); ?>
+            <?= form_open('admin/data_jabatan/create', ['class' => 'formJabatan']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Nama Jabatan <span class="text-danger">*</span></label>
-                            <input name="name" id="name" type="text" class="form-control" value="<?= old('name') ?>" placeholder="Nama Jabatan :">
+                            <input name="name" id="name" type="text" class="form-control" value="<?= old('name') ?>" placeholder="Nama Jabatan">
                             <div class="invalid-feedback errorName">
                             </div>
                         </div>

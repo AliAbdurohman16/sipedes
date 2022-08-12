@@ -34,7 +34,7 @@
     function editJabatan(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('data_jabatan/edit') ?>",
+            url: "<?= site_url('admin/data_jabatan/edit') ?>",
             data: {
                 id: id
             },
@@ -65,7 +65,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: '<?= site_url('data_jabatan/delete') ?>',
+                    url: '<?= site_url('admin/data_jabatan/delete') ?>',
                     data: {
                         id: id
                     },

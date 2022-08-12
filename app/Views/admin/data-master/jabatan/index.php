@@ -41,7 +41,7 @@
 <script>
     function dataJabatan() {
         $.ajax({
-            url: "<?= site_url('data_jabatan/getData') ?>",
+            url: "<?= site_url('admin/data_jabatan/getData') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -57,7 +57,7 @@
 
         $('.addButton').click(function() {
             $.ajax({
-                url: "<?= site_url('data_jabatan/new') ?>",
+                url: "<?= site_url('admin/data_jabatan/new') ?>",
                 dataType: "json",
                 success: function(response) {
                     $('.viewModal').html(response.data).show();

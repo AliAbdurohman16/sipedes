@@ -24,8 +24,8 @@
                     <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'rt' || $uri->getSegment(1) == 'data_jabatan' ? 'd-block' : '') ?>">
                         <ul>
                             <li><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
-                            <li class="<?= ($uri->getSegment(1) == 'rt' ? 'active' : '') ?>"><a href="<?= base_url('rt') ?>">Data RT</a></li>
-                            <li class="<?= ($uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>"><a href="<?= base_url('data_jabatan') ?>">Data Jabatan</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'rt' ? 'active' : '') ?>"><a href="<?= base_url('admin/rt') ?>">Data RT</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_jabatan') ?>">Data Jabatan</a></li>
                             <li><a href="index-rtl.html">Pengajuan</a></li>
                         </ul>
                     </div>

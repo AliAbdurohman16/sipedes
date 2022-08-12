@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('data_jabatan/update', ['class' => 'formJabatan']); ?>
+            <?= form_open('admin/data_jabatan/update', ['class' => 'formJabatan']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="row">
@@ -14,7 +14,7 @@
                         <div class="mb-3">
                             <label class="form-label">Nama Jabatan <span class="text-danger">*</span></label>
                             <input type="hidden" name="id" value="<?= $id ?>">
-                            <input name="name" id="name" type="text" class="form-control" value="<?= $name ?>" placeholder="Nama Jabatan :">
+                            <input name="name" id="name" type="text" class="form-control" value="<?= $name ?>" placeholder="Nama Jabatan">
                             <div class="invalid-feedback errorName">
                             </div>
                         </div>
