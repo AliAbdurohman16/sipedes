@@ -53,10 +53,6 @@ $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
 $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
-
-    // Route Data Master -> Data RW
-    $routes->resource("data_rw", ['namespace' => 'App\Controllers\Admin', 'controller' => 'RwController', 'except' => 'show, new, edit']);
-
     // Route Data Master -> Data Dusun
     $routes->get('data_dusun', 'Admin\DusunController::index');
     $routes->get('data_dusun/new', 'Admin\DusunController::new');
@@ -64,6 +60,14 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('data_dusun/edit', 'Admin\DusunController::edit');
     $routes->post('data_dusun/update', 'Admin\DusunController::update');
     $routes->post('data_dusun/delete', 'Admin\DusunController::delete');
+
+    // Route Data Master -> Data RW
+    $routes->get('data_rw', 'Admin\RwController::index');
+    $routes->get('data_rw/new', 'Admin\RwController::new');
+    $routes->post('data_rw/create', 'Admin\RwController::create');
+    $routes->post('data_rw/edit', 'Admin\RwController::edit');
+    $routes->post('data_rw/update', 'Admin\RwController::update');
+    $routes->post('data_rw/delete', 'Admin\RwController::delete');
 
     // Jabatan
     $routes->get('data_jabatan', 'JabatanController::index');

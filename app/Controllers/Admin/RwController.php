@@ -2,148 +2,216 @@
 
 namespace App\Controllers\Admin;
 
-use CodeIgniter\RESTful\ResourceController;
+use App\Controllers\BaseController;
 
+use App\Models\RwModel;
 use App\Models\DusunModel;
 
-class RwController extends ResourceController
+class RwController extends BaseController
 {
-    protected $modelName = 'App\Models\RwModel';
+    protected $rwModel, $dusunModel;
 
     public function __construct()
     {
-        $this->Dusun = new DusunModel;
+        $this->rwModel = new RwModel();
+        $this->dusunModel = new DusunModel();
     }
 
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
-        $data = [
-            'title' => 'Data Rukun Warga (RW)',
-            'rws' => $this->model->withDusun(),
-            'dusun' => $this->Dusun->findAll()
-        ];
+        if ($this->request->isAJAX()) {
+            $rws = $this->rwModel->withDusun();
 
-        return view('admin/data-master/rw/index', $data);
+            $data = [
+                'rws' => $rws
+            ];
+
+            $msg = [
+                'data' => view('admin/data-master/rw/table', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            $data = [
+                'title' => 'Data Rukun Warga (RW)'
+            ];
+    
+            return view('admin/data-master/rw/index', $data);
+        }
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
-    public function show($id = null)
-    {
-        //
-    }
-
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
     public function new()
     {
-        //
+        if ($this->request->isAJAX()) {
+            $dusuns = $this->dusunModel->findAll();
+
+            $data = [
+                'dusuns' => $dusuns
+            ];
+
+            $msg = [
+                'data' => view('admin/data-master/rw/add', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
-        if(!$this->validate([
-            'name' => 'required|min_length[3]|string',
-            'number' => 'required|integer',
-            'dusun_id' => 'required|integer'
-        ])){
-            session()->setFlashdata('error', $this->validator->listErrors());
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate(
+                [
+                    'name' => [
+                        'label' => 'Nama Ketua RW',
+                        'rules' => 'required|string',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'string' => '{field} harus berupa alphanumeric'
+                        ]
+                    ],
+                    'number' => [
+                        'label' => 'Nomor RW',
+                        'rules' => 'required|integer',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'integer' => '{field} harus berupa angka'
+                        ]
+                    ],
+                    'dusun_id' => [
+                        'label' => 'Nama Dusun',
+                        'rules' => 'required|integer',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'integer' => '{field} harus berupa angka'
+                        ]
+                    ]
+                ]
+            );
 
-            return redirect()->back()->withInput();
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'name' => $validation->getError('name'),
+                        'number' => $validation->getError('number'),
+                        'dusun_id' => $validation->getError('dusun_id')
+                    ]
+                ];
+            } else {
+                $request = [
+                    'name' => $this->request->getPost('name'),
+                    'number' => $this->request->getPost('number'),
+                    'dusun_id' => $this->request->getPost('dusun_id')
+                ];
+
+                $this->rwModel->save($request);
+                $msg = ['success' => 'Data RW berhasil di simpan'];
+            }
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-
-        $request = [
-            'name' => $this->request->getPost('name'),
-            'number' => $this->request->getPost('number'),
-            'dusun_id' => $this->request->getPost('dusun_id')
-        ];
-
-        $result = $this->model->save($request);
-
-        if($result){
-            session()->setFlashdata('message', 'Tambah Data RW Berhasil');
-        }else{
-            session()->setFlashdata('error', 'Tambah Data RW Tidak Berhasil');
-        }
-
-        return redirect()->to('admin/data_rw');
     }
 
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
+    public function edit()
     {
-        //
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+
+            $row = $this->rwModel->find($id);
+
+            $dusuns = $this->dusunModel->findAll();
+
+            $data = [
+                'id' => $row->id,
+                'name' => $row->name,
+                'number' => $row->number,
+                'dusun_id' => $row->dusun_id,
+                'dusuns' => $dusuns
+            ];
+
+            $msg = ['success' => view('admin/data-master/rw/edit', $data)];
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
+    public function update()
     {
-        if(!$this->validate([
-            'name' => 'required|min_length[3]|string',
-            'number' => 'required|integer',
-            'dusun_id' => 'required|integer'
-        ])){
-            session()->setFlashdata('error', $this->validator->listErrors());
+        $id = $this->request->getVar('id');
 
-            return redirect()->back()->withInput();
+        $oldJabatan = $this->rwModel->find($id);
+        
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate(
+                [
+                    'name' => [
+                        'label' => 'Nama Ketua RW',
+                        'rules' => 'required|string',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'string' => '{field} harus berupa alphanumeric'
+                        ]
+                    ],
+                    'number' => [
+                        'label' => 'Nomor RW',
+                        'rules' => 'required|integer',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'integer' => '{field} harus berupa angka'
+                        ]
+                    ],
+                    'dusun_id' => [
+                        'label' => 'Nama Dusun',
+                        'rules' => 'required|integer',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'integer' => '{field} harus berupa angka'
+                        ]
+                    ]
+                ]
+            );
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'name' => $validation->getError('name'),
+                        'number' => $validation->getError('number'),
+                        'dusun_id' => $validation->getError('dusun_id')
+                    ]
+                ];
+            } else {
+                $request = [
+                    'name' => $this->request->getPost('name'),
+                    'number' => $this->request->getPost('number'),
+                    'dusun_id' => $this->request->getPost('dusun_id'),
+                ];
+
+                $id = $this->request->getVar('id');
+
+                $this->rwModel->update($id, $request);
+                $msg = ['success' => 'Data RW berhasil di simpan'];
+            }
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-
-        $request = [
-            'name' => $this->request->getPost('name'),
-            'number' => $this->request->getPost('number'),
-            'dusun_id' => $this->request->getPost('dusun_id')
-        ];
-
-        $result = $this->model->update($id, $request);
-
-        if($result){
-            session()->setFlashdata('message', 'Edit Data RW Berhasil');
-        }else{
-            session()->setFlashdata('error', 'Edit Data RW Tidak Berhasil');
-        }
-
-        return redirect()->to('admin/data_rw');
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
+    public function delete()
     {
-        $result = $this->model->delete($id);
-
-        if($result){
-            session()->setFlashdata('message', 'Hapus Data RW Berhasil');
-        }else{
-            session()->setFlashdata('error', 'Hapus Data RW Tidak Berhasil');
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getPost();
+            $this->rwModel->delete($id);
+            $msg = ['success' => 'Data RW berhasil di hapus'];
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-
-        return redirect()->to('admin/data_rw');
     }
 }
