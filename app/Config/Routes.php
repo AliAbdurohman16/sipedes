@@ -49,20 +49,31 @@ $routes->group("", ["filtexr" => "authFilter:logout"], function ($routes) {
     $routes->get('/logout', 'Login::logout');
 });
 
+//dashboard
+$routes->get('/dashboard', 'Dashboard::index');
+
 $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
-    //dashboard
-    $routes->get('/dashboard', 'Dashboard::index');
 
     // Route Data Master -> Data RW
     $routes->resource("data_rw", ['namespace' => 'App\Controllers\Admin', 'controller' => 'RwController', 'except' => 'show, new, edit']);
 
     // Jabatan
     $routes->get('data_jabatan', 'JabatanController::index');
+    $routes->get('data_jabatan/getData', 'JabatanController::getData');
+    $routes->get('data_jabatan/new', 'JabatanController::new');
     $routes->post('data_jabatan/create', 'JabatanController::create');
-    $routes->put('data_jabatan/update/(:num)', 'JabatanController::update/$1');
-    $routes->delete('data_jabatan/(:num)', 'JabatanController::delete/$1');
+    $routes->post('data_jabatan/edit', 'JabatanController::edit');
+    $routes->post('data_jabatan/update', 'JabatanController::update');
+    $routes->post('data_jabatan/delete', 'JabatanController::delete');
 });
 
+//rt
+$routes->get('/rt', 'Rt::index');
+$routes->get('/rt/add', 'Rt::add');
+$routes->post('/rt/save', 'Rt::save');
+$routes->get('/rt/edit/(:num)', 'Rt::edit/$1');
+$routes->put('/rt/update/(:num)', 'Rt::update/$1');
+$routes->delete('/rt/destroy/(:num)', 'Rt::destroy/$1');
 
 /*
  * --------------------------------------------------------------------

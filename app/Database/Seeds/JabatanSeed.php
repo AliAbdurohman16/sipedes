@@ -16,7 +16,7 @@ class JabatanSeed extends Seeder
                 'updated_at'    => Time::now(),
             ],
             [
-                'name' => 'Sekretari Desa',
+                'name' => 'Sekretaris Desa',
                 'created_at'    => Time::now(),
                 'updated_at'    => Time::now(),
             ],
