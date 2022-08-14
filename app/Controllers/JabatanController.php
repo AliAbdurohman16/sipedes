@@ -34,7 +34,7 @@ class JabatanController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/jabatan/dataJabatan', $data)
+                'data' => view('admin/data-master/jabatan/table', $data)
             ];
 
             echo json_encode($msg);

@@ -1,20 +1,19 @@
 <!-- Add Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
+                <h5 class="modal-title" id="addModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('admin/data_rw/update', ['class' => 'formRw']); ?>
+            <?= form_open('admin/data_rt/create', ['class' => 'formRt']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
-                <input type="hidden" name="id" value="<?= $id ?>">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nama Ketua RW <span class="text-danger">*</span></label>
-                            <input name="name" id="name" type="text" class="form-control" value="<?= $name ?>" placeholder="Nama Ketua RW">
+                            <label class="form-label">Nama Ketua RT <span class="text-danger">*</span></label>
+                            <input name="name" id="name" type="text" class="form-control" value="<?= old('name') ?>" placeholder="Nama Ketua RT">
                             <div class="invalid-feedback errorName">
                             </div>
                         </div>
@@ -23,8 +22,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nomor RW <span class="text-danger">*</span></label>
-                            <input name="number" id="number" type="number" class="form-control" value="<?= $number ?>" placeholder="No RW">
+                            <label class="form-label">Nomor RT <span class="text-danger">*</span></label>
+                            <input name="number" id="number" type="number" class="form-control" value="<?= old('number') ?>" placeholder="No RT">
                             <div class="invalid-feedback errorNumber">
                             </div>
                         </div>
@@ -33,14 +32,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nama Dusun <span class="text-danger">*</span></label>
-                            <select class="form-control" id="inputNamaDusun" name="dusun_id">
+                            <label class="form-label">Nomor Rw <span class="text-danger">*</span></label>
+                            <select class="form-control" id="rw_id" name="rw_id">
                                 <option value="" selected disabled>-- Pilih --</option>
-                                <?php foreach ($dusuns as $dusun) : ?>
-                                    <option value="<?= $dusun->id ?>" <?= $dusun->id == $dusun_id ? 'selected' : '' ?>><?= $dusun->name ?></option>
+                                <?php foreach ($rws as $rw) : ?>
+                                    <option value="<?= $rw->id ?>" <?= $rw->id == old('rw_id') ? 'selected' : '' ?>><?= $rw->number ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <div class="invalid-feedback errorDusunId">
+                            <div class="invalid-feedback errorRwId">
                             </div>
                         </div>
                     </div>
@@ -57,7 +56,7 @@
 
 
 <script>
-    $('.formRw').submit(function(e) {
+    $('.formRt').submit(function(e) {
         e.preventDefault();
         $.ajax({
             type: "post",
@@ -77,17 +76,17 @@
                     if (response.error.name) {
                         $('#name').addClass('is-invalid');
                         $('#number').addClass('is-invalid');
-                        $('#dusun_id').addClass('is-invalid');
+                        $('#rw_id').addClass('is-invalid');
                         $('.errorName').html(response.error.name);
                         $('.errorNumber').html(response.error.number);
-                        $('.errorDusunId').html(response.error.dusun_id);
+                        $('.errorRwId').html(response.error.rw_id);
                     } else {
                         $('#name').removeClass('is-invalid');
                         $('#number').removeClass('is-invalid');
-                        $('#dusun_id').removeClass('is-invalid');
+                        $('#rw_id').removeClass('is-invalid');
                         $('.errorName').html('');
                         $('.errorNumber').html('');
-                        $('.errorDusunId').html('');
+                        $('.errorRwId').html('');
                     }
                 } else {
                     Swal.fire({
@@ -95,8 +94,8 @@
                         title: 'Sukses',
                         text: response.success,
                     })
-                    $('#editModal').modal('hide');
-                    dataRw();
+                    $('#addModal').modal('hide');
+                    dataRt();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

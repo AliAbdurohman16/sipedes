@@ -77,15 +77,15 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('data_jabatan/edit', 'JabatanController::edit');
     $routes->post('data_jabatan/update', 'JabatanController::update');
     $routes->post('data_jabatan/delete', 'JabatanController::delete');
-});
 
-//rt
-$routes->get('/rt', 'Rt::index');
-$routes->get('/rt/add', 'Rt::add');
-$routes->post('/rt/save', 'Rt::save');
-$routes->get('/rt/edit/(:num)', 'Rt::edit/$1');
-$routes->put('/rt/update/(:num)', 'Rt::update/$1');
-$routes->delete('/rt/destroy/(:num)', 'Rt::destroy/$1');
+    // Route Data Master -> Data RT
+    $routes->get('data_rt', 'Admin\RtController::index');
+    $routes->get('data_rt/new', 'Admin\RtController::new');
+    $routes->post('data_rt/create', 'Admin\RtController::create');
+    $routes->post('data_rt/edit', 'Admin\RtController::edit');
+    $routes->post('data_rt/update', 'Admin\RtController::update');
+    $routes->post('data_rt/delete', 'Admin\RtController::delete');
+});
 
 /*
  * --------------------------------------------------------------------
