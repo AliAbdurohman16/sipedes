@@ -34,7 +34,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Nama Dusun <span class="text-danger">*</span></label>
-                            <select class="form-control" id="inputNamaDusun" name="dusun_id">
+                            <select class="form-control" id="dusun_id" name="dusun_id">
                                 <option value="" selected disabled>-- Pilih --</option>
                                 <?php foreach ($dusuns as $dusun) : ?>
                                     <option value="<?= $dusun->id ?>" <?= $dusun->id == $dusun_id ? 'selected' : '' ?>><?= $dusun->name ?></option>
@@ -76,17 +76,25 @@
                 if (response.error) {
                     if (response.error.name) {
                         $('#name').addClass('is-invalid');
-                        $('#number').addClass('is-invalid');
-                        $('#dusun_id').addClass('is-invalid');
                         $('.errorName').html(response.error.name);
-                        $('.errorNumber').html(response.error.number);
-                        $('.errorDusunId').html(response.error.dusun_id);
                     } else {
                         $('#name').removeClass('is-invalid');
-                        $('#number').removeClass('is-invalid');
-                        $('#dusun_id').removeClass('is-invalid');
                         $('.errorName').html('');
+                    }
+
+                    if (response.error.number) {
+                        $('#number').addClass('is-invalid');
+                        $('.errorNumber').html(response.error.number);
+                    } else {
+                        $('#number').removeClass('is-invalid');
                         $('.errorNumber').html('');
+                    }
+
+                    if (response.error.dusun_id) {
+                        $('#dusun_id').addClass('is-invalid');
+                        $('.errorDusunId').html(response.error.dusun_id);
+                    } else {
+                        $('#dusun_id').removeClass('is-invalid');
                         $('.errorDusunId').html('');
                     }
                 } else {

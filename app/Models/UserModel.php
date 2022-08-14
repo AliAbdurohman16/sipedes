@@ -15,7 +15,7 @@ class UserModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id', 'name', 'username', 'password', 'telephone', 'role_id'
+        'image', 'name', 'username', 'password', 'telephone', 'role_id'
     ];
 
     // Dates
@@ -49,8 +49,8 @@ class UserModel extends Model
 
     public function withRole()
     {
-        $this->select('roles.name as name_role, user.*');
+        $this->select('roles.name as name_role, users.*');
         
-        return $this->join('roles', 'roles.id = user.role_id')->findAll();
+        return $this->join('roles', 'roles.id = users.role_id')->findAll();
     }
 }

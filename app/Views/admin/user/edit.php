@@ -6,15 +6,15 @@
                 <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('admin/data_rt/update', ['class' => 'formRt']); ?>
+            <?= form_open('admin/users/update', ['class' => 'formUser']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <input type="hidden" name="id" value="<?= $id ?>">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nama Ketua RT <span class="text-danger">*</span></label>
-                            <input name="name" id="name" type="text" class="form-control" value="<?= $name ?>" placeholder="Nama Ketua RT">
+                            <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                            <input name="name" id="name" type="text" class="form-control" value="<?= $name ?>" placeholder="Nama Lengkap">
                             <div class="invalid-feedback errorName">
                             </div>
                         </div>
@@ -23,9 +23,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nomor RT <span class="text-danger">*</span></label>
-                            <input name="number" id="number" type="number" class="form-control" value="<?= $number ?>" placeholder="No RT">
-                            <div class="invalid-feedback errorNumber">
+                            <label class="form-label">Username <span class="text-danger">*</span></label>
+                            <input name="username" id="username" type="text" class="form-control" value="<?= $username ?>" placeholder="Username">
+                            <div class="invalid-feedback errorUsername">
                             </div>
                         </div>
                     </div>
@@ -33,14 +33,44 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Nomor RW <span class="text-danger">*</span></label>
-                            <select class="form-control" id="inputNomorRW" name="rw_id">
+                            <label class="form-label">Kata Sandi <span class="text-danger">*</span></label>
+                            <input name="password" id="password" type="password" class="form-control" value="<?= $password ?>" placeholder="Kata Sandi">
+                            <div class="invalid-feedback errorPassword">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Konfirmasi Kata Sandi <span class="text-danger">*</span></label>
+                            <input name="confirm_password" id="confirm_password" type="password" class="form-control" value="<?= $password ?>" placeholder="Konfirmasi Kata Sandi">
+                            <div class="invalid-feedback errorConfirmPassword">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Nomor Telepon <span class="text-danger">*</span></label>
+                            <input name="telephone" id="telephone" type="tel" class="form-control" value="<?= $telephone ?>" placeholder="Nomor Telepone">
+                            <div class="invalid-feedback errorTelephone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Hak Akses <span class="text-danger">*</span></label>
+                            <select class="form-control" id="role_id" name="role_id">
                                 <option value="" selected disabled>-- Pilih --</option>
-                                <?php foreach ($rws as $rw) : ?>
-                                    <option value="<?= $rw->id ?>" <?= $rw->id == $rw_id ? 'selected' : '' ?>><?= $rw->number ?></option>
+                                <?php foreach ($roles as $role) : ?>
+                                    <option value="<?= $role->id ?>" <?= $role->id == $role_id ? 'selected' : '' ?>><?= $role->name ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <div class="invalid-feedback errorRwId">
+                            <div class="invalid-feedback errorRoleId">
                             </div>
                         </div>
                     </div>
@@ -57,7 +87,7 @@
 
 
 <script>
-    $('.formRt').submit(function(e) {
+    $('.formUser').submit(function(e) {
         e.preventDefault();
         $.ajax({
             type: "post",
@@ -76,18 +106,50 @@
                 if (response.error) {
                     if (response.error.name) {
                         $('#name').addClass('is-invalid');
-                        $('#number').addClass('is-invalid');
-                        $('#rw_id').addClass('is-invalid');
                         $('.errorName').html(response.error.name);
-                        $('.errorNumber').html(response.error.number);
-                        $('.errorRwId').html(response.error.rw_id);
                     } else {
                         $('#name').removeClass('is-invalid');
-                        $('#number').removeClass('is-invalid');
-                        $('#rw_id').removeClass('is-invalid');
                         $('.errorName').html('');
-                        $('.errorNumber').html('');
-                        $('.errorRwId').html('');
+                    }
+
+                    if (response.error.username) {
+                        $('#username').addClass('is-invalid');
+                        $('.errorUsername').html(response.error.username);
+                    } else {
+                        $('#username').removeClass('is-invalid');
+                        $('.errorUsername').html('');
+                    }
+
+                    if (response.error.password) {
+                        $('#password').addClass('is-invalid');
+                        $('.errorPassword').html(response.error.password);
+                    } else {
+                        $('#password').addClass('is-invalid');
+                        $('.errorPassword').html('');
+                    }
+
+                    if (response.error.confirm_password) {
+                        $('#confirm_password').addClass('is-invalid');
+                        $('.errorConfirmPassword').html(response.error.confirm_password);
+                    } else {
+                        $('#confirm_password').addClass('is-invalid');
+                        $('.errorConfirmPassword').html('');
+                    }
+
+                    if (response.error.telephone) {
+                        $('#telephone').addClass('is-invalid');
+                        $('.errorTelephone').html(response.error.telephone);
+                    } else {
+                        $('#telephone').removeClass('is-invalid');
+                        $('.errorTelephone').html('');
+                    }
+
+                    if (response.error.role_id) {
+                        $('#role_id').addClass('is-invalid');
+                        $('.errorRoleId').html(response.error.role_id);
+                    } else {
+                        $('#role_id').removeClass('is-invalid');
+                        $('.errorRoleId').html('');
                     }
                 } else {
                     Swal.fire({
@@ -96,7 +158,7 @@
                         text: response.success,
                     })
                     $('#editModal').modal('hide');
-                    dataRt();
+                    users();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

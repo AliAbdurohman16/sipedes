@@ -39,9 +39,9 @@
 <div class="viewModal" style="display: none;"></div>
 
 <script>
-    function dataRt() {
+    function users() {
         $.ajax({
-            url: "<?= site_url('admin/data_rt') ?>",
+            url: "<?= site_url('admin/users') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -53,11 +53,11 @@
     }
 
     $(document).ready(function() {
-        dataRt();
+        users();
 
         $('.addButton').click(function() {
             $.ajax({
-                url: "<?= site_url('admin/data_rt/new') ?>",
+                url: "<?= site_url('admin/users/new') ?>",
                 dataType: "json",
                 success: function(response) {
                     $('.viewModal').html(response.data).show();

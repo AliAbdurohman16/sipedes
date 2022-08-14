@@ -22,7 +22,7 @@ class AddDusunIdToRwTable extends Migration
 
     public function down()
     {
-        $forge->dropForeignKey('rw', 'rw_ibfk_1');
+        $this->forge->dropForeignKey('rw', 'rw_ibfk_1');
         $this->forge->dropColumn('rw', 'dusun_id');
     }
 }

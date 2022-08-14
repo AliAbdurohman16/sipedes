@@ -2,9 +2,10 @@
     <thead>
         <tr>
             <th class="text-center border-bottom p-3">No</th>
-            <th class="border-bottom p-3">Nama Ketua RW</th>
-            <th class="border-bottom p-3">Nomor RW</th>
-            <th class="border-bottom p-3">Nama Dusun</th>
+            <th class="border-bottom p-3">Nama Lengkap</th>
+            <th class="border-bottom p-3">Username</th>
+            <th class="border-bottom p-3">Nomor Telepone</th>
+            <th class="border-bottom p-3">Hak Akses</th>
             <th class="border-bottom p-3">Aksi</th>
         </tr>
     </thead>
@@ -12,16 +13,17 @@
         <!-- Start -->
         <?php
         $no = 1;
-        foreach ($rts as $rt) :
+        foreach ($users as $user) :
         ?>
             <tr>
                 <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
-                <td class="p-3"><?= $rt->name; ?></td>
-                <td class="p-3"><?= $rt->number; ?></td>
-                <td class="p-3"><?= $rt->number_rw; ?></td>
+                <td class="p-3"><?= $user->name; ?></td>
+                <td class="p-3"><?= $user->username; ?></td>
+                <td class="p-3"><?= $user->telephone; ?></td>
+                <td class="p-3"><?= $user->name_role; ?></td>
                 <td style="width: 25%;">
-                    <button type="button" class="btn btn-warning btn-sm" onclick="editRt(<?= $rt->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteRt(<?= $rt->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    <button type="button" class="btn btn-warning btn-sm" onclick="editUser(<?= $user->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteUser(<?= $user->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -35,10 +37,10 @@
     })
 
 
-    function editRt(id) {
+    function editUser(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('admin/data_rt/edit') ?>",
+            url: "<?= site_url('admin/users/edit') ?>",
             data: {
                 id: id
             },
@@ -55,7 +57,7 @@
         });
     }
 
-    function deleteRt(id) {
+    function deleteUser(id) {
         Swal.fire({
             title: 'Hapus',
             text: "Apakah anda yakin?",
@@ -69,7 +71,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: '<?= site_url('admin/data_rt/delete') ?>',
+                    url: '<?= site_url('admin/users/delete') ?>',
                     data: {
                         id: id
                     },
@@ -81,7 +83,7 @@
                                 title: 'Sukses',
                                 text: response.success,
                             });
-                            dataRt();
+                            users();
                         }
                     },
                     error: function(xhr, ajaxOptions, thrownError) {

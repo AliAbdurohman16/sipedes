@@ -15,6 +15,7 @@ class UserSeed extends Seeder
         
         $users = [
             [
+                'image'         => 'Avatar.png',
                 'name'          => 'Super User',
                 'username'      => 'superuser',
                 'password'      => password_hash("1234567890", PASSWORD_DEFAULT),
@@ -24,6 +25,7 @@ class UserSeed extends Seeder
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
             [
+                'image'         => 'Avatar.png',
                 'name'          => 'Kasi Pelayanan',
                 'username'      => 'kasipelayanan',
                 'password'      => password_hash("1234567890", PASSWORD_DEFAULT),

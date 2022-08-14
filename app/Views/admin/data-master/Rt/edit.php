@@ -34,7 +34,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Nomor RW <span class="text-danger">*</span></label>
-                            <select class="form-control" id="inputNomorRW" name="rw_id">
+                            <select class="form-control" id="rw_id" name="rw_id">
                                 <option value="" selected disabled>-- Pilih --</option>
                                 <?php foreach ($rws as $rw) : ?>
                                     <option value="<?= $rw->id ?>" <?= $rw->id == $rw_id ? 'selected' : '' ?>><?= $rw->number ?></option>
@@ -76,17 +76,25 @@
                 if (response.error) {
                     if (response.error.name) {
                         $('#name').addClass('is-invalid');
-                        $('#number').addClass('is-invalid');
-                        $('#rw_id').addClass('is-invalid');
                         $('.errorName').html(response.error.name);
-                        $('.errorNumber').html(response.error.number);
-                        $('.errorRwId').html(response.error.rw_id);
                     } else {
                         $('#name').removeClass('is-invalid');
-                        $('#number').removeClass('is-invalid');
-                        $('#rw_id').removeClass('is-invalid');
                         $('.errorName').html('');
+                    }
+
+                    if (response.error.number) {
+                        $('#number').addClass('is-invalid');
+                        $('.errorNumber').html(response.error.number);
+                    } else {
+                        $('#number').removeClass('is-invalid');
                         $('.errorNumber').html('');
+                    }
+
+                    if (response.error.rw_id) {
+                        $('#rw_id').addClass('is-invalid');
+                        $('.errorRwId').html(response.error.rw_id);
+                    } else {
+                        $('#rw_id').removeClass('is-invalid');
                         $('.errorRwId').html('');
                     }
                 } else {
