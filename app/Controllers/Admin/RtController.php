@@ -31,7 +31,7 @@ class RtController extends BaseController
             echo json_encode($msg);
         } else {
             $data = [
-                'title' => 'Data Rukun Tetangga (RW)'
+                'title' => 'Data Rukun Tetangga (RT)'
             ];
     
             return view('admin/data-master/Rt/index', $data);
