@@ -4,37 +4,37 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-use App\Models\RtModel;
-use App\Models\RwModel;
+use App\Models\UserModel;
+use App\Models\RoleModel;
 
-class RtController extends BaseController
+class UserController extends BaseController
 {
     public function __construct()
     {
-        $this->rtModel = new RtModel();
-        $this->rwModel = new RwModel();
+        $this->userModel = new UserModel();
+        $this->roleModel = new RoleModel();
     }
 
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $rts = $this->rtModel->withRw();
+            $users = $this->userModel->withRole();
 
             $data = [
-                'rts' => $rts
+                'users' => $users
             ];
 
             $msg = [
-                'data' => view('admin/data-master/rt/table', $data)
+                'data' => view('admin/user/table', $data)
             ];
 
             echo json_encode($msg);
         } else {
             $data = [
-                'title' => 'Data Rukun Tetangga (RT)'
+                'title' => 'Data Pengguna'
             ];
     
-            return view('admin/data-master/rt/index', $data);
+            return view('admin/user/index', $data);
         }
     }
 
@@ -42,11 +42,11 @@ class RtController extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'rws'     => $this->rwModel->findAll(),
+                'roles'     => $this->roleModel->findAll(),
             ];
 
             $view = [
-                'data' => view('admin/data-master/rt/add', $data)
+                'data' => view('admin/user/add', $data)
             ];
 
             echo json_encode($view);
@@ -129,7 +129,7 @@ class RtController extends BaseController
                 'rws' => $rws
             ];
 
-            $msg = ['success' => view('admin/data-master/rt/edit', $data)];
+            $msg = ['success' => view('admin/data-master/Rt/edit', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

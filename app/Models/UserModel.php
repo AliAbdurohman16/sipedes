@@ -46,4 +46,11 @@ class UserModel extends Model
     {
         return $this->where('username', $username)->first();
     }
+
+    public function withRole()
+    {
+        $this->select('roles.name as name_role, user.*');
+        
+        return $this->join('roles', 'roles.id = user.role_id')->findAll();
+    }
 }

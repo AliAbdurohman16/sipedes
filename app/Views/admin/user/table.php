@@ -2,9 +2,9 @@
     <thead>
         <tr>
             <th class="text-center border-bottom p-3">No</th>
-            <th class="border-bottom p-3">Nama Ketua RT</th>
-            <th class="border-bottom p-3">Nomor RT</th>
+            <th class="border-bottom p-3">Nama Ketua RW</th>
             <th class="border-bottom p-3">Nomor RW</th>
+            <th class="border-bottom p-3">Nama Dusun</th>
             <th class="border-bottom p-3">Aksi</th>
         </tr>
     </thead>

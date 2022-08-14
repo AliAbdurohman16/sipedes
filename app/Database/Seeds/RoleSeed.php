@@ -25,7 +25,7 @@ class RoleSeed extends Seeder
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
             [
-                'name' => 'KASI_PELAYANAN',
+                'name' => 'KASI PELAYANAN',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],

@@ -85,6 +85,14 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('data_rt/edit', 'Admin\RtController::edit');
     $routes->post('data_rt/update', 'Admin\RtController::update');
     $routes->post('data_rt/delete', 'Admin\RtController::delete');
+
+    // Route Admin -> Data Users
+    $routes->get('users', 'Admin\UserController::index');
+    $routes->get('users/new', 'Admin\UserController::new');
+    $routes->post('users/create', 'Admin\UserController::create');
+    $routes->post('users/edit', 'Admin\UserController::edit');
+    $routes->post('users/update', 'Admin\UserController::update');
+    $routes->post('users/delete', 'Admin\UserController::delete');
 });
 
 /*
