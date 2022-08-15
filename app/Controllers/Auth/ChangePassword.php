@@ -48,13 +48,13 @@ class ChangePassword extends BaseController
             return redirect()->to('/change_password')->withInput();
         }
 
-        $session = session('user');
+        $id = session('id');
 
         $param = [
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
         ];
 
-        $this->db->table('users')->where(['username' => $session])->update($param);
+        $this->userModel->update($id, $param);
         session()->remove('user');
         $sessSucc = [
             'success' => 'Kata sandi berhasil diubah!'

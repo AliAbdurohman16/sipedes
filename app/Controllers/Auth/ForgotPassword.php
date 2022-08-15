@@ -38,11 +38,12 @@ class ForgotPassword extends BaseController
             return redirect()->to('/forgot_password')->withInput();
         }
 
-        $check = $this->userModel->getUser($this->request->getVar('username'));
+        $username = $this->request->getVar('username');
+        $check = $this->userModel->getWhere(['username' => $username])->getRow();
 
         if ($check) {
             session()->set('id', $check->id);
-            session()->set('user', $check);
+            session()->set('user', $check->username);
             return redirect()->to('/change_password');
         } else {
             $sessError = [
