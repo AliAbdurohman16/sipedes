@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Auth;
 
 use App\Controllers\BaseController;
 
@@ -18,11 +18,11 @@ class Login extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Login',
+            'title' => 'Masuk',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('login/index', $data);
+        return view('auth/login', $data);
     }
 
     public function valid_login()
@@ -30,9 +30,10 @@ class Login extends BaseController
         if (!$this->validate([
             'username' => [
                 'label' => 'Username',
-                'rules' => 'required',
+                'rules' => 'required|alpha_dash',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong.',
+                    'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung.',
                 ]
             ],
             'password' => [

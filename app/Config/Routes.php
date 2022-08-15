@@ -41,12 +41,24 @@ $routes->get('/', 'Home::index');
 
 //login
 $routes->group("", ["filter" => "authFilter:login"], function ($routes) {
-    $routes->get('/login', 'Login::index');
-    $routes->post('/login/valid_login', 'Login::valid_login');
+    $routes->get('login', 'Auth\Login::index');
+    $routes->post('login/valid_login', 'Auth\Login::valid_login');
+});
+
+// Forgot Password
+$routes->group("", ["filter" => "authFilter:forgotPassword"], function ($routes) {
+    $routes->get('forgot_password', 'Auth\ForgotPassword::index');
+    $routes->post('forgot_password/send', 'Auth\ForgotPassword::send');
+});
+
+// Change Password
+$routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    $routes->get('change_password', 'Auth\ChangePassword::index');
+    $routes->post('change_password/send', 'Auth\ChangePassword::send');
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
-    $routes->get('/logout', 'Login::logout');
+    $routes->get('logout', 'Auth\Login::logout');
 });
 
 //dashboard
@@ -69,14 +81,14 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('data_rw/update', 'Admin\RwController::update');
     $routes->post('data_rw/delete', 'Admin\RwController::delete');
 
-    // Jabatan
-    $routes->get('data_jabatan', 'JabatanController::index');
-    $routes->get('data_jabatan/getData', 'JabatanController::getData');
-    $routes->get('data_jabatan/new', 'JabatanController::new');
-    $routes->post('data_jabatan/create', 'JabatanController::create');
-    $routes->post('data_jabatan/edit', 'JabatanController::edit');
-    $routes->post('data_jabatan/update', 'JabatanController::update');
-    $routes->post('data_jabatan/delete', 'JabatanController::delete');
+    // Route Data Master -> Jabatan
+    $routes->get('data_jabatan', 'Admin\JabatanController::index');
+    $routes->get('data_jabatan/getData', 'Admin\JabatanController::getData');
+    $routes->get('data_jabatan/new', 'Admin\JabatanController::new');
+    $routes->post('data_jabatan/create', 'Admin\JabatanController::create');
+    $routes->post('data_jabatan/edit', 'Admin\JabatanController::edit');
+    $routes->post('data_jabatan/update', 'Admin\JabatanController::update');
+    $routes->post('data_jabatan/delete', 'Admin\JabatanController::delete');
 
     // Route Data Master -> Data RT
     $routes->get('data_rt', 'Admin\RtController::index');

@@ -37,6 +37,11 @@ class AuthFilter implements FilterInterface
             if (!session()->has('user')) {
                 throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
             }
+        } else if($arguments[0] == 'forgotPassword') {
+            if (session()->has('user')) {
+                session()->remove('user');
+                return redirect()->to('/forgot_password');
+            }
         }
     }
 

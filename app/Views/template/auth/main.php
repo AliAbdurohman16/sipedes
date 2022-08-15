@@ -40,49 +40,7 @@
     <!-- Loader -->
 
     <!-- Hero Start -->
-    <section class="bg-home bg-circle-gradiant d-flex align-items-center">
-        <div class="bg-overlay bg-overlay-white"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card form-signin p-4 rounded shadow">
-                        <?= form_open('login/valid_login') ?>
-                        <?= csrf_field(); ?>
-                        <a href="index.html"><img src="<?= base_url() ?>/assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
-                        <h5 class="mb-3 text-center">SISTEM PELAYANAN DESA</h5>
-                        <div class="form-floating mb-2">
-                            <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" id="username" name="username" placeholder="Username" value="<?= old('username') ?>" autofocus>
-                            <label for="username">Username</label>
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('username'); ?>
-                            </div>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Password">
-                            <label for="password">Password</label>
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('password'); ?>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary w-100" type="submit">Sign in</button>
-                        <!-- 
-                        <div class="col-12 text-center mt-3">
-                            <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="signup.html" class="text-dark fw-bold">Sign Up</a></p>
-                        </div> -->
-                        <!--end col-->
-
-                        <p class="mb-0 text-muted mt-3 text-center">© <script>
-                                document.write(new Date().getFullYear())
-                            </script> Landrick.</p>
-                        <?= form_close() ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--end container-->
-    </section>
-    <!--end section-->
+    <?= $this->renderSection('content'); ?>
     <!-- Hero End -->
 
     <!-- javascript -->
@@ -104,6 +62,12 @@
                     icon: 'error',
                     title: 'Oops...',
                     text: '<?= session("error_message") ?>'
+                })
+            <?php } else if (session()->has("success")) { ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Selamat!',
+                    text: '<?= session("success") ?>'
                 })
             <?php } ?>
         });
