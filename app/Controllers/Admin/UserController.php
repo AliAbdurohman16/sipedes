@@ -75,7 +75,7 @@ class UserController extends BaseController
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
                             'string' => '{field} harus berupa alphanumeric',
-                            'is_unique' => '{field} tidak boleh sama',
+                            'is_unique' => '{field} sudah ada, Silahkan ganti dengan yang lain',
                             'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
                         ]
                     ],
