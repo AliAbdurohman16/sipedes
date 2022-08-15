@@ -71,10 +71,12 @@ class UserController extends BaseController
                     ],
                     'username' => [
                         'label' => 'Username',
-                        'rules' => 'required|string',
+                        'rules' => 'required|string|alpha_dash|is_unique[users.username]',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
-                            'string' => '{field} harus berupa alphanumeric'
+                            'string' => '{field} harus berupa alphanumeric',
+                            'is_unique' => '{field} tidak boleh sama',
+                            'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
                         ]
                     ],
                     'password' => [
@@ -132,6 +134,7 @@ class UserController extends BaseController
             } else {
                 $request = [
                     'name' => $this->request->getPost('name'),
+                    'image' => 'Avatar.png',
                     'username' => $this->request->getPost('username'),
                     'password' => $this->request->getPost('password'),
                     'telephone' => $this->request->getPost('telephone'),
@@ -191,30 +194,11 @@ class UserController extends BaseController
                     ],
                     'username' => [
                         'label' => 'Username',
-                        'rules' => 'required|string',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong',
-                            'string' => '{field} harus berupa alphanumeric'
-                        ]
-                    ],
-                    'password' => [
-                        'label' => 'Kata Sandi',
-                        'rules' => 'required|string|min_length[5]|matches[confirm_password]',
+                        'rules' => 'required|string|alpha_dash',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
                             'string' => '{field} harus berupa alphanumeric',
-                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                            'matches' => '{field} tidak sama dengan {param}',
-                        ]
-                    ],
-                    'confirm_password' => [
-                        'label' => 'konfirmasi kata sandi',
-                        'rules' => 'required|string|min_length[5]|matches[password]',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong',
-                            'string' => '{field} harus berupa alphanumeric',
-                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                            'matches' => '{field} tidak sama dengan {param}',
+                            'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
                         ]
                     ],
                     'telephone' => [
@@ -243,25 +227,37 @@ class UserController extends BaseController
                     'error' => [
                         'name' => $validation->getError('name'),
                         'username' => $validation->getError('username'),
-                        'password' => $validation->getError('password'),
-                        'confirm_password' => $validation->getError('confirm_password'),
                         'telephone' => $validation->getError('telephone'),
                         'role_id' => $validation->getError('role_id')
                     ]
                 ];
             } else {
-                $request = [
-                    'name' => $this->request->getPost('name'),
-                    'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
-                    'telephone' => $this->request->getPost('telephone'),
-                    'role_id' => $this->request->getPost('role_id')
-                ];
+                if ($this->request->getPost('password') == '') {
+                    $request = [
+                        'name' => $this->request->getPost('name'),
+                        'username' => $this->request->getPost('username'),
+                        'telephone' => $this->request->getPost('telephone'),
+                        'role_id' => $this->request->getPost('role_id')
+                    ];
 
-                $id = $this->request->getVar('id');
+                    $id = $this->request->getVar('id');
 
-                $this->userModel->update($id, $request);
-                $msg = ['success' => 'Data Pengguna berhasil di simpan'];
+                    $this->userModel->update($id, $request);
+                    $msg = ['success' => 'Data Pengguna berhasil di simpan'];
+                } else {
+                    $request = [
+                        'name' => $this->request->getPost('name'),
+                        'username' => $this->request->getPost('username'),
+                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                        'telephone' => $this->request->getPost('telephone'),
+                        'role_id' => $this->request->getPost('role_id')
+                    ];
+
+                    $id = $this->request->getVar('id');
+
+                    $this->userModel->update($id, $request);
+                    $msg = ['success' => 'Data Pengguna berhasil di simpan'];
+                }
             }
             echo json_encode($msg);
         } else {

@@ -34,19 +34,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Kata Sandi <span class="text-danger">*</span></label>
-                            <input name="password" id="password" type="password" class="form-control" value="<?= $password ?>" placeholder="Kata Sandi">
-                            <div class="invalid-feedback errorPassword">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label class="form-label">Konfirmasi Kata Sandi <span class="text-danger">*</span></label>
-                            <input name="confirm_password" id="confirm_password" type="password" class="form-control" value="<?= $password ?>" placeholder="Konfirmasi Kata Sandi">
-                            <div class="invalid-feedback errorConfirmPassword">
-                            </div>
+                            <input name="password" id="password" type="password" class="form-control" placeholder="Kata Sandi">
                         </div>
                     </div>
                 </div>
@@ -118,22 +106,6 @@
                     } else {
                         $('#username').removeClass('is-invalid');
                         $('.errorUsername').html('');
-                    }
-
-                    if (response.error.password) {
-                        $('#password').addClass('is-invalid');
-                        $('.errorPassword').html(response.error.password);
-                    } else {
-                        $('#password').addClass('is-invalid');
-                        $('.errorPassword').html('');
-                    }
-
-                    if (response.error.confirm_password) {
-                        $('#confirm_password').addClass('is-invalid');
-                        $('.errorConfirmPassword').html(response.error.confirm_password);
-                    } else {
-                        $('#confirm_password').addClass('is-invalid');
-                        $('.errorConfirmPassword').html('');
                     }
 
                     if (response.error.telephone) {
