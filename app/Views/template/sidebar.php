@@ -31,7 +31,7 @@
                     </div>
                 </li>
             <?php endif; ?>
-            <li><a href="index.html"><i class="fa-solid fa-users-between-lines me-2"></i>Penduduk</a></li>
+            <li class="<?= ($uri->getSegment(1) == 'penduduk' ? 'active' : '') ?>"><a href="<?= base_url('admin/penduduk') ?>"><i class="fa-solid fa-users-between-lines me-2"></i>Penduduk</a></li>
             <li class="<?= ($uri->getSegment(1) == 'users' ? 'active' : '') ?>"><a href="<?= base_url('admin/users') ?>"><i class="fa-solid fa-users me-2"></i>Pengguna</a></li>
             <li class="sidebar-dropdown">
                 <a href="javascript:void(0)"><i class="fa-solid fa-envelope me-2"></i>Surat</a>

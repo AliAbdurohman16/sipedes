@@ -49,8 +49,11 @@
         </div>
     </div>
     <!-- Loader -->
-
-    <div class="page-wrapper toggled">
+    <?php
+    $uri = new \CodeIgniter\HTTP\URI();
+    $uri = service('uri');
+    ?>
+    <div class="page-wrapper <?= ($uri->getSegment(2) == 'penduduk' ? '' : 'toggled') ?>">
         <?= $this->include('template/sidebar'); ?>
 
         <!-- Start Page Content -->
@@ -142,7 +145,6 @@
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
     <?= $this->renderSection('javascript'); ?>
-
     <script>
         $(document).ready(function() {
             $('#table').DataTable();

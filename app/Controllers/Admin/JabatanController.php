@@ -16,16 +16,6 @@ class JabatanController extends BaseController
 
     public function index()
     {
-        $data = [
-            'title' => 'Data Jabatan'
-        ];
-
-        return view('admin/data-master/jabatan/index', $data);
-    }
-
-
-    public function getData()
-    {
         if ($this->request->isAJAX()) {
             $jabatan = $this->jabatanModel->findAll();
             $data = [
@@ -39,7 +29,11 @@ class JabatanController extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit("Maaf data tidak dapat di proses");
+            $data = [
+                'title' => 'Data Jabatan'
+            ];
+
+            return view('admin/data-master/jabatan/index', $data);
         }
     }
 
@@ -52,7 +46,7 @@ class JabatanController extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit("Maaf data tidak dapat di proses");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 
@@ -89,7 +83,7 @@ class JabatanController extends BaseController
             }
             echo json_encode($msg);
         } else {
-            exit("Maaf data tidak dapat di proses");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 
@@ -108,7 +102,7 @@ class JabatanController extends BaseController
             $msg = ['success' => view('admin/data-master/jabatan/edit', $data)];
             echo json_encode($msg);
         } else {
-            exit("Maaf data tidak dapat di proses");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 

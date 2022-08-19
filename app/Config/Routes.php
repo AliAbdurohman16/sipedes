@@ -83,7 +83,6 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
 
     // Route Data Master -> Jabatan
     $routes->get('data_jabatan', 'Admin\JabatanController::index');
-    $routes->get('data_jabatan/getData', 'Admin\JabatanController::getData');
     $routes->get('data_jabatan/new', 'Admin\JabatanController::new');
     $routes->post('data_jabatan/create', 'Admin\JabatanController::create');
     $routes->post('data_jabatan/edit', 'Admin\JabatanController::edit');
@@ -105,6 +104,15 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('users/edit', 'Admin\UserController::edit');
     $routes->post('users/update', 'Admin\UserController::update');
     $routes->post('users/delete', 'Admin\UserController::delete');
+
+    // Route Admin -> Data Penduduk
+    $routes->get('penduduk', 'Admin\PendudukController::index');
+    $routes->get('penduduk/new', 'Admin\PendudukController::new');
+    $routes->post('penduduk/create', 'Admin\PendudukController::create');
+    $routes->post('penduduk/edit', 'Admin\PendudukController::edit');
+    $routes->post('penduduk/update', 'Admin\PendudukController::update');
+    $routes->post('penduduk/delete', 'Admin\PendudukController::delete');
+    $routes->post('penduduk/detail', 'Admin\PendudukController::detail');
 });
 
 /*
