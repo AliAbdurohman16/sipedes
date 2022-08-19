@@ -531,34 +531,11 @@ class PendudukController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getVar('id');
 
-            $query = $this->pendudukModel->query("SELECT penduduk.*, rt.name, rt.number as rt_number, rw.name, rw.number as rw_number FROM penduduk JOIN rt ON rt.id = penduduk.rt_id JOIN rw ON rw.id = penduduk.rw_id WHERE penduduk.id = '$id'");
+            $query = $this->pendudukModel->query("SELECT penduduk.*, rt.name as rt_name, rt.number as rt_number, rw.name as rw_name, rw.number as rw_number FROM penduduk JOIN rt ON rt.id = penduduk.rt_id JOIN rw ON rw.id = penduduk.rw_id WHERE penduduk.id = '$id'");
 
             $data = [
                 'penduduk' => $query->getResult()
             ];
-            // $data = [
-            //     'id' => $row->id,
-            //     'nik' => $row->nik,
-            //     'name' => $row->name,
-            //     'jenis_kelamin' => $row->jenis_kelamin,
-            //     'tempat_lahir' => $row->tempat_lahir,
-            //     'tgl_lahir' => $row->tgl_lahir,
-            //     'rt_id' => $row->rt_id,
-            //     'rw_id' => $row->rw_id,
-            //     'kelurahan' => $row->kelurahan,
-            //     'kecamatan' => $row->kecamatan,
-            //     'kabupaten' => $row->kabupaten,
-            //     'provinsi' => $row->provinsi,
-            //     'alamat' => $row->alamat,
-            //     'gol_darah' => $row->gol_darah,
-            //     'agama' => $row->agama,
-            //     'status_kawin' => $row->status_kawin,
-            //     'pendidikan_terakhir' => $row->pendidikan_terakhir,
-            //     'pekerjaan' => $row->pekerjaan,
-            //     'nama_ibu' => $row->nama_ibu,
-            //     'nama_ayah' => $row->nama_ayah,
-            // ];
-
             $msg = [
                 'data' => view('admin/data-master/penduduk/detail', $data)
             ];

@@ -57,6 +57,8 @@
                             <div class="invalid-feedback errorProvinsi">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Kabupaten <span class="text-danger">*</span></label>
                             <select name="kabupaten" id="kabupaten" class="form-control">
@@ -69,8 +71,6 @@
                             <div class="invalid-feedback errorKabupaten">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Kecamatan <span class="text-danger">*</span></label>
                             <select name="kecamatan" id="kecamatan" class="form-control">
@@ -97,30 +97,33 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">RW <span class="text-danger">*</span></label>
-                            <select name="rw" id="rw" class="form-control">
-                                <option value="">-- Pilih RW --</option>
-                                <?php foreach ($rws as $rw) : ?>
-                                    <option value="<?= $rw->id ?>" <?= $rw->id == $rw_id ? 'selected' : '' ?>><?= $rw->number ?> - <?= $rw->name ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="invalid-feedback errorRw">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">RT<span class="text-danger">*</span></label>
-                            <select name="rt" id="rt" class="form-control">
-                                <option value="">-- Pilih RT --</option>
-                                <?php foreach ($rts as $rt) : ?>
-                                    <option value="<?= $rt->id ?>" <?= $rt->id == $rt_id ? 'selected' : '' ?>><?= $rt->number ?> - <?= $rt->name ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="invalid-feedback errorRt">
+                            <label class="form-label">RT / RW <span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select name="rt" id="rt" class="form-control">
+                                        <option value="">-- Pilih RT --</option>
+                                        <?php foreach ($rts as $rt) : ?>
+                                            <option value="<?= $rt->id ?>" <?= $rt->id == $rt_id ? 'selected' : '' ?>><?= $rt->number ?> - <?= $rt->name ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="invalid-feedback errorRt">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="rw" id="rw" class="form-control">
+                                        <option value="">-- Pilih RW --</option>
+                                        <?php foreach ($rws as $rw) : ?>
+                                            <option value="<?= $rw->id ?>" <?= $rw->id == $rw_id ? 'selected' : '' ?>><?= $rw->number ?> - <?= $rw->name ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="invalid-feedback errorRw">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Alamat <span class="text-danger">*</span></label>
-                            <textarea name="alamat" id="alamat" rows="1" class="form-control"><?= $alamat; ?></textarea>
+                            <textarea name="alamat" id="alamat" rows="1" class="form-control" placeholder="Alamat"><?= $alamat; ?></textarea>
                             <div class="invalid-feedback errorAlamat">
                             </div>
                         </div>
@@ -136,6 +139,8 @@
                             <div class="invalid-feedback errorGolDarah">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Agama <span class="text-danger">*</span></label>
                             <select name="agama" id="agama" class="form-control">
@@ -150,8 +155,6 @@
                             <div class="invalid-feedback errorAgama">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Status Kawin <span class="text-danger">*</span></label>
                             <select name="status_kawin" id="status_kawin" class="form-control">
