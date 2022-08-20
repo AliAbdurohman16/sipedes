@@ -179,6 +179,12 @@ class UserController extends BaseController
     public function update()
     {
         $id = $this->request->getVar('id');
+        $row = $this->userModel->find($id);
+        if ($row->username == $this->request->getVar('username')) {
+            $rules_username = 'required|string|alpha_dash';
+        } else {
+            $rules_username = 'required|is_unique[users.username]|string|alpha_dash';
+        }
 
         if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
@@ -194,10 +200,11 @@ class UserController extends BaseController
                     ],
                     'username' => [
                         'label' => 'Username',
-                        'rules' => 'required|string|alpha_dash',
+                        'rules' => $rules_username,
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
                             'string' => '{field} harus berupa alphanumeric',
+                            'is_unique' => '{field} sudah ada, Silahkan ganti dengan yang lain',
                             'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
                         ]
                     ],
