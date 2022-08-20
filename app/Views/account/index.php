@@ -21,75 +21,49 @@
                         <h5 class="text-md-start text-center mb-0">Personal Detail :</h5>
 
                         <div class="mt-4 text-md-start text-center d-sm-flex">
-                            <img src="assets/images/client/05.jpg"
-                                class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="">
+                            <img src="<?= site_url('images/avatar/' . $users->image) ?>" class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="">
 
                             <div class="mt-md-4 mt-3 mt-sm-0">
-                                <a href="javascript:void(0)" class="btn btn-primary mt-2">Change Picture</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">Delete</a>
+                                <a href="javascript:void(0)" class="btn btn-primary mt-2">Ubah Foto</a>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">Hapus</a>
                             </div>
                         </div>
 
-                        <form>
-                            <div class="row mt-4">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">First Name</label>
-                                        <div class="form-icon position-relative">
-                                            <i data-feather="user" class="fea icon-sm icons"></i>
-                                            <input name="name" id="first" type="text" class="form-control ps-5" placeholder="First Name :">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Last Name</label>
-                                        <div class="form-icon position-relative">
-                                            <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                            <input name="name" id="last" type="text" class="form-control ps-5" placeholder="Last Name :">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Your Email</label>
-                                        <div class="form-icon position-relative">
-                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                            <input name="email" id="email" type="email" class="form-control ps-5" placeholder="Your email :">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Occupation</label>
-                                        <div class="form-icon position-relative">
-                                            <i data-feather="bookmark" class="fea icon-sm icons"></i>
-                                            <input name="name" id="occupation" type="text" class="form-control ps-5" placeholder="Occupation :">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Description</label>
-                                        <div class="form-icon position-relative">
-                                            <i data-feather="message-circle" class="fea icon-sm icons"></i>
-                                            <textarea name="comments" id="comments" rows="4" class="form-control ps-5" placeholder="Description :"></textarea>
-                                        </div>
+                        <form action="account/create" method="POST">
+                            <div class="col-md-12 mt-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <input name="name" id="first" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name?>">
                                     </div>
                                 </div>
                             </div>
-                            <!--end row-->
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save Changes">
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                        <input name="username" id="last" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username?>">
+                                    </div>
                                 </div>
-                                <!--end col-->
                             </div>
-                            <!--end row-->
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">No. Telepon</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="phone" class="fea icon-sm icons"></i>
+                                        <input name="telephone" id="email" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save Changes">
+                            </div>
+                            <!--end col-->
                         </form>
                         <!--end form-->
                     </div>
@@ -99,15 +73,15 @@
 
             <div class="col-lg-6 mt-4">
                 <div class="card border-0 rounded shadow p-4">
-                    <h5 class="mb-0">Change password :</h5>
-                    <form>
+                    <h5 class="mb-0">Ubah Kata Sandi :</h5>
+                    <form action="account/change_password" method="POST">
                         <div class="row mt-4">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Old password :</label>
+                                    <label class="form-label">Kata Sandi Lama :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" class="form-control ps-5" placeholder="Old password" required="">
+                                        <input type="password" name="oldPassword" class="form-control ps-5" placeholder="Kata Sandi Lama :" required="">
                                     </div>
                                 </div>
                             </div>
@@ -115,10 +89,10 @@
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label class="form-label">New password :</label>
+                                    <label class="form-label">Kata Sandi Baru :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" class="form-control ps-5" placeholder="New password" required="">
+                                        <input type="password" name="newPassword" class="form-control ps-5" placeholder="Kata Sandi Baru :" required="">
                                     </div>
                                 </div>
                             </div>
@@ -126,10 +100,10 @@
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Re-type New password :</label>
+                                    <label class="form-label">Konfirmasi Kata Sandi :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" class="form-control ps-5" placeholder="Re-type New password" required="">
+                                        <input type="password" name="confirmPassword" class="form-control ps-5" placeholder="Konfirmasi Kata Sandi :" required="">
                                     </div>
                                 </div>
                             </div>

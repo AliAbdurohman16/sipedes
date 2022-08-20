@@ -59,6 +59,8 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
     $routes->get('dashboard', 'DashboardController::index');
     // Account
     $routes->get('account', 'AccountController::index');
+    $routes->post('account/update', 'AccountController::create');
+    $routes->post('account/change_password', 'AccountController::changePassword');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
