@@ -29,13 +29,16 @@
                             </div>
                         </div>
 
-                        <form action="account/create" method="POST">
+                        <form action="account/update" method="POST" class="formProfile">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?= $users->id ?>">
                             <div class="col-md-12 mt-4">
                                 <div class="mb-3">
                                     <label class="form-label">Nama Lengkap</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="user" class="fea icon-sm icons"></i>
-                                        <input name="name" id="first" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name?>">
+                                        <input name="name" id="name" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
+                                        <div class="invalid-feedback errorName"></div>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +48,8 @@
                                     <label class="form-label">Username</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                        <input name="username" id="last" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username?>">
+                                        <input name="username" id="username" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username ?>">
+                                        <div class="invalid-feedback errorUsername"></div>
                                     </div>
                                 </div>
                             </div>
@@ -55,13 +59,14 @@
                                     <label class="form-label">No. Telepon</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="phone" class="fea icon-sm icons"></i>
-                                        <input name="telephone" id="email" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone?>">
+                                        <input name="telephone" id="telephone" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
+                                        <div class="invalid-feedback errorTelephone"></div>
                                     </div>
                                 </div>
                             </div>
                             <!--end col-->
                             <div class="col-md-12">
-                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save Changes">
+                                <button type="submit" id="save" class="btn btn-primary">Simpan Profil</button>
                             </div>
                             <!--end col-->
                         </form>
@@ -74,14 +79,17 @@
             <div class="col-lg-6 mt-4">
                 <div class="card border-0 rounded shadow p-4">
                     <h5 class="mb-0">Ubah Kata Sandi :</h5>
-                    <form action="account/change_password" method="POST">
+                    <form action="account/changePassword" method="POST" class="formPassword">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="id" value="<?= $users->id ?>">
                         <div class="row mt-4">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label class="form-label">Kata Sandi Lama :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="oldPassword" class="form-control ps-5" placeholder="Kata Sandi Lama :" required="">
+                                        <input type="password" name="oldPassword" id="oldPassword" class="form-control ps-5 <?= ($validation->hasError('oldPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Lama :">
+                                        <div class="invalid-feedback errorOldPassword"></div>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +100,8 @@
                                     <label class="form-label">Kata Sandi Baru :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="newPassword" class="form-control ps-5" placeholder="Kata Sandi Baru :" required="">
+                                        <input type="password" name="newPassword" id="newPassword" class="form-control ps-5 <?= ($validation->hasError('newPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Baru :">
+                                        <div class="invalid-feedback errorNewPassword"></div>
                                     </div>
                                 </div>
                             </div>
@@ -103,14 +112,15 @@
                                     <label class="form-label">Konfirmasi Kata Sandi :</label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="confirmPassword" class="form-control ps-5" placeholder="Konfirmasi Kata Sandi :" required="">
+                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control ps-5 <?= ($validation->hasError('confirmPassword')) ? 'is-invalid' : '' ?>" placeholder="Konfirmasi Kata Sandi :">
+                                        <div class="invalid-feedback errorConfirmPassword"></div>
                                     </div>
                                 </div>
                             </div>
                             <!--end col-->
 
                             <div class="col-lg-12 mt-2 mb-0">
-                                <button class="btn btn-primary">Save password</button>
+                                <button type="submit" class="btn btn-primary" id="savePassword">Simpan Kata Sandi</button>
                             </div>
                             <!--end col-->
                         </div>
@@ -124,4 +134,134 @@
     </div>
 </div>
 <!--end container-->
+
+<script>
+    $('.formProfile').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            beforeSend: function() {
+                $('#save').attr('disable', 'disabled');
+                $('#save').html('<i class="fa-solid fa-spin fa-spinner"></i>');
+            },
+            complete: function() {
+                $('#save').removeAttr('disable');
+                $('#save').html('Simpan Profil');
+            },
+            success: function(response) {
+                if (response.error) {
+                    if (response.error.name) {
+                        $('#name').addClass('is-invalid');
+                        $('.errorName').html(response.error.name);
+                    } else {
+                        $('#name').removeClass('is-invalid');
+                        $('.errorName').html('');
+                    }
+
+                    if (response.error.username) {
+                        $('#username').addClass('is-invalid');
+                        $('.errorUsername').html(response.error.username);
+                    } else {
+                        $('#username').removeClass('is-invalid');
+                        $('.errorUsername').html('');
+                    }
+
+                    if (response.error.telephone) {
+                        $('#telephone').addClass('is-invalid');
+                        $('.errorTelephone').html(response.error.telephone);
+                    } else {
+                        $('#telephone').removeClass('is-invalid');
+                        $('.errorTelephone').html('');
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: response.success,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                    });
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        })
+
+        return false;
+    })
+
+    $('.formPassword').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "post",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            beforeSend: function() {
+                $('#savePassword').attr('disable', 'disabled');
+                $('#savePassword').html('<i class="fa-solid fa-spin fa-spinner"></i>');
+            },
+            complete: function() {
+                $('#savePassword').removeAttr('disable');
+                $('#savePassword').html('Simpan Kata Sandi');
+            },
+            success: function(response) {
+                if (response.error) {
+                    if (response.error.oldPassword) {
+                        $('#oldPassword').addClass('is-invalid');
+                        $('.errorOldPassword').html(response.error.oldPassword);
+                    } else {
+                        $('#oldPassword').removeClass('is-invalid');
+                        $('.errorOldPassword').html('');
+                    }
+
+                    if (response.error.newPassword) {
+                        $('#newPassword').addClass('is-invalid');
+                        $('.errorNewPassword').html(response.error.newPassword);
+                    } else {
+                        $('#newPassword').removeClass('is-invalid');
+                        $('.errorNewPassword').html('');
+                    }
+
+                    if (response.error.confirmPassword) {
+                        $('#confirmPassword').addClass('is-invalid');
+                        $('.errorConfirmPassword').html(response.error.confirmPassword);
+                    } else {
+                        $('#confirmPassword').removeClass('is-invalid');
+                        $('.errorConfirmPassword').html('');
+                    }
+                } else {
+                    if (response.wrong) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: response.wrong,
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Sukses',
+                            text: response.success,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        })
+
+        return false;
+    })
+</script>
 <?= $this->endSection(); ?>

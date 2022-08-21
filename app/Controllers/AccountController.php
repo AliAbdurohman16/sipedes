@@ -18,8 +18,9 @@ class AccountController extends BaseController
         $users = $this->userModel->find(session()->get('user')->id);
 
         $data = [
-            'title' => 'Akun Saya',
-            'users' => $users
+            'title'      => 'Akun Saya',
+            'users'      => $users,
+            'validation' => \Config\Services::validation()
         ];
 
         return view('account/index', $data);
@@ -88,7 +89,7 @@ class AccountController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->userModel->update($id, $request);
-                $msg = ['success' => 'Profil berhasil di simpan'];
+                $msg = ['success' => 'Profil berhasil di ubah!'];
             }
             echo json_encode($msg);
         } else {
@@ -98,6 +99,73 @@ class AccountController extends BaseController
 
     public function changePassword()
     {
-        // 
+        $id = $this->request->getVar('id');
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate(
+                [
+                    'oldPassword' => [
+                        'label' => 'Kata Sandi Lama',
+                        'rules' => 'required|min_length[5]',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
+                        ]
+                    ],
+                    'newPassword' => [
+                        'label' => 'Kata Sandi Baru',
+                        'rules' => 'required|min_length[5]|matches[confirmPassword]',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
+                            'matches' => '{field} tidak sama dengan {param}',
+                        ]
+                    ],
+                    'confirmPassword' => [
+                        'label' => 'Konfirmasi Kata Sandi',
+                        'rules' => 'required|min_length[5]|matches[newPassword]',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
+                            'matches' => '{field} tidak sama dengan {param}',
+                        ]
+                    ],
+                ]
+            );
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'oldPassword' => $validation->getError('oldPassword'),
+                        'newPassword' => $validation->getError('newPassword'),
+                        'confirmPassword' => $validation->getError('confirmPassword'),
+                    ]
+                ];
+                echo json_encode($msg);
+            } else {
+                $id = $this->request->getVar('id') ;
+                $check = $this->userModel->getWhere(['id' => $id])->getRow();
+                
+                if ($check) {
+                    if (password_verify($this->request->getVar('oldPassword'), $check->password)) {
+                        $result = [
+                            'password' => password_hash($this->request->getVar('newPassword'), PASSWORD_DEFAULT)
+                        ];
+
+                        $this->userModel->update($id, $result);
+                        $msg = [
+                            'success' => 'Kata Sandi berhasil di ubah!',
+                        ];
+                    } else {
+                        $msg = [
+                            'wrong' => 'Kata Sandi anda yang lama salah!',
+                        ];
+                    }                    
+                    echo json_encode($msg);
+                }
+            }
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 }
