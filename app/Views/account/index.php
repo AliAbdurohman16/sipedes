@@ -20,18 +20,25 @@
                     <div class="card-body">
                         <h5 class="text-md-start text-center mb-0">Personal Detail :</h5>
 
-                        <div class="mt-4 text-md-start text-center d-sm-flex">
-                            <img src="<?= site_url('images/avatar/' . $users->image) ?>" class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="">
-
-                            <div class="mt-md-4 mt-3 mt-sm-0">
-                                <a href="javascript:void(0)" class="btn btn-primary mt-2">Ubah Foto</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">Hapus</a>
-                            </div>
+                        <div class="mt-4">
+                            <center>
+                                <img src="<?= site_url('images/avatar/' . $users->image) ?>" class="avatar avatar-medium rounded-circle shadow me-md-4" id="chosen-image" alt="">
+                            </center>
                         </div>
 
-                        <form action="account/update" method="POST" class="formProfile">
+                        <form action="account/update" method="POST" class="formProfile" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $users->id ?>">
+                            <div class="col-md-12 mt-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Foto</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="image" class="fea icon-sm icons"></i>
+                                        <input name="image" id="upload-file" type="file" class="form-control ps-5">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
                             <div class="col-md-12 mt-4">
                                 <div class="mb-3">
                                     <label class="form-label">Nama Lengkap</label>

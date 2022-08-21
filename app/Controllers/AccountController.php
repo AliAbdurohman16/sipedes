@@ -80,13 +80,37 @@ class AccountController extends BaseController
                     ]
                 ];
             } else {
-                $request = [
-                    'name' => $this->request->getPost('name'),
-                    'username' => $this->request->getPost('username'),
-                    'telephone' => $this->request->getPost('telephone'),
-                ];
-
                 $id = $this->request->getVar('id');
+                $username = $this->request->getPost('username');
+                $uploadImage = $_FILES['image']['name'];
+                $profile = $this->userModel->find($id);
+
+                if ($uploadImage != NULL) {
+                    if ($profile->image == "Avatar.png") {
+                        $nameFileImage = "$username";
+                        $fileImage = $this->request->getFile('image');
+                        $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
+
+                        $pathImage = $fileImage->getName();
+                    } else {
+                        unlink('images/avatar/' . $profile->image);
+
+                        $nameFileImage = "$username";
+                        $fileImage = $this->request->getFile('image');
+                        $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
+
+                        $pathImage = $fileImage->getName();
+                    }
+                } else {
+                    $pathImage = $profile->image;
+                }
+
+                $request = [
+                    'name'      => $this->request->getPost('name'),
+                    'username'  => $username,
+                    'telephone' => $this->request->getPost('telephone'),
+                    'image'     => $pathImage,
+                ];
 
                 $this->userModel->update($id, $request);
                 $msg = ['success' => 'Profil berhasil di ubah!'];
@@ -143,9 +167,9 @@ class AccountController extends BaseController
                 ];
                 echo json_encode($msg);
             } else {
-                $id = $this->request->getVar('id') ;
-                $check = $this->userModel->getWhere(['id' => $id])->getRow();
-                
+                $id = $this->request->getVar('id');
+                $check = $this->userModel->find($id);
+
                 if ($check) {
                     if (password_verify($this->request->getVar('oldPassword'), $check->password)) {
                         $result = [
@@ -160,7 +184,7 @@ class AccountController extends BaseController
                         $msg = [
                             'wrong' => 'Kata Sandi anda yang lama salah!',
                         ];
-                    }                    
+                    }
                     echo json_encode($msg);
                 }
             }
