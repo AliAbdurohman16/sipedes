@@ -113,6 +113,10 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('penduduk/update', 'Admin\PendudukController::update');
     $routes->post('penduduk/delete', 'Admin\PendudukController::delete');
     $routes->post('penduduk/detail', 'Admin\PendudukController::detail');
+
+    // Route Admin -> Data Kartu Keluarga
+    $routes->get('kartu-keluarga', 'Admin\KartuKeluargaController::index');
+    $routes->get('kartu-keluarga/new', 'Admin\KartuKeluargaController::new');
 });
 
 /*

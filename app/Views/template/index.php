@@ -53,7 +53,7 @@
     $uri = new \CodeIgniter\HTTP\URI();
     $uri = service('uri');
     ?>
-    <div class="page-wrapper <?= ($uri->getSegment(2) == 'penduduk' ? '' : 'toggled') ?>">
+    <div class="page-wrapper <?= ($uri->getSegment(2) == 'penduduk' || $uri->getSegment(2) == 'kartu-keluarga' ? '' : 'toggled') ?>">
         <?= $this->include('template/sidebar'); ?>
 
         <!-- Start Page Content -->
