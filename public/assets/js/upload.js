@@ -1,4 +1,4 @@
-let uploadButton = document.getElementById("upload-file");
+let uploadButton = document.getElementById("image");
 let chosenImage = document.getElementById("chosen-image");
 
 uploadButton.onchange = () => {

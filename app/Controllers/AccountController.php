@@ -67,6 +67,15 @@ class AccountController extends BaseController
                             'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
                             'max_length' => '{field} maksimal memiliki panjang {param} karakter',
                         ]
+                    ],
+                    'image' => [
+                        'label' => 'Foto',
+                        'rules' => 'mime_in[image,image/png,image/jpg,image/jpeg]|is_image[image]|max_size[image,1024]',
+                        'errors' => [
+                            'mime_in' => '{field} yang anda pilih bukan gambar',
+                            'is_image' => '{field} yang anda pilih bukan gambar',
+                            'max_size' => '{field} ukurannya tidak boleh lebih dari 1MB',
+                        ]
                     ]
                 ]
             );
@@ -77,6 +86,7 @@ class AccountController extends BaseController
                         'name' => $validation->getError('name'),
                         'username' => $validation->getError('username'),
                         'telephone' => $validation->getError('telephone'),
+                        'image' => $validation->getError('image'),
                     ]
                 ];
             } else {

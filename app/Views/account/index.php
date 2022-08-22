@@ -26,57 +26,58 @@
                             </center>
                         </div>
 
-                        <form action="account/update" method="POST" class="formProfile" enctype="multipart/form-data">
-                            <?= csrf_field(); ?>
-                            <input type="hidden" name="id" value="<?= $users->id ?>">
-                            <div class="col-md-12 mt-4">
-                                <div class="mb-3">
-                                    <label class="form-label">Foto</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="image" class="fea icon-sm icons"></i>
-                                        <input name="image" id="upload-file" type="file" class="form-control ps-5">
-                                    </div>
+                        <?= form_open_multipart('account/update', ['class' => 'formProfile']) ?>
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="id" value="<?= $users->id ?>">
+                        <div class="col-md-12 mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">Foto</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="image" class="fea icon-sm icons"></i>
+                                    <input name="image" id="image" type="file" class="form-control ps-5">
+                                    <div class="invalid-feedback errorImage"></div>
                                 </div>
                             </div>
-                            <!--end col-->
-                            <div class="col-md-12 mt-4">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama Lengkap</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="user" class="fea icon-sm icons"></i>
-                                        <input name="name" id="name" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
-                                        <div class="invalid-feedback errorName"></div>
-                                    </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-12 mt-4">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Lengkap</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                    <input name="name" id="name" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
+                                    <div class="invalid-feedback errorName"></div>
                                 </div>
                             </div>
-                            <!--end col-->
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Username</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                        <input name="username" id="username" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username ?>">
-                                        <div class="invalid-feedback errorUsername"></div>
-                                    </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                    <input name="username" id="username" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username ?>">
+                                    <div class="invalid-feedback errorUsername"></div>
                                 </div>
                             </div>
-                            <!--end col-->
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">No. Telepon</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="phone" class="fea icon-sm icons"></i>
-                                        <input name="telephone" id="telephone" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
-                                        <div class="invalid-feedback errorTelephone"></div>
-                                    </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">No. Telepon</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="phone" class="fea icon-sm icons"></i>
+                                    <input name="telephone" id="telephone" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
+                                    <div class="invalid-feedback errorTelephone"></div>
                                 </div>
                             </div>
-                            <!--end col-->
-                            <div class="col-md-12">
-                                <button type="submit" id="save" class="btn btn-primary">Simpan Profil</button>
-                            </div>
-                            <!--end col-->
-                        </form>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-12">
+                            <button type="submit" id="save" class="btn btn-primary">Simpan Profil</button>
+                        </div>
+                        <!--end col-->
+                        <?= form_close(); ?>
                         <!--end form-->
                     </div>
                 </div>
@@ -86,53 +87,53 @@
             <div class="col-lg-6 mt-4">
                 <div class="card border-0 rounded shadow p-4">
                     <h5 class="mb-0">Ubah Kata Sandi :</h5>
-                    <form action="account/changePassword" method="POST" class="formPassword">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="id" value="<?= $users->id ?>">
-                        <div class="row mt-4">
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Kata Sandi Lama :</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="oldPassword" id="oldPassword" class="form-control ps-5 <?= ($validation->hasError('oldPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Lama :">
-                                        <div class="invalid-feedback errorOldPassword"></div>
-                                    </div>
+                    <?= form_open('account/changePassword', ['class' => 'formPassword']); ?>
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="id" value="<?= $users->id ?>">
+                    <div class="row mt-4">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label">Kata Sandi Lama :</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="key" class="fea icon-sm icons"></i>
+                                    <input type="password" name="oldPassword" id="oldPassword" class="form-control ps-5 <?= ($validation->hasError('oldPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Lama :">
+                                    <div class="invalid-feedback errorOldPassword"></div>
                                 </div>
                             </div>
-                            <!--end col-->
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Kata Sandi Baru :</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="newPassword" id="newPassword" class="form-control ps-5 <?= ($validation->hasError('newPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Baru :">
-                                        <div class="invalid-feedback errorNewPassword"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Konfirmasi Kata Sandi :</label>
-                                    <div class="form-icon position-relative">
-                                        <i data-feather="key" class="fea icon-sm icons"></i>
-                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control ps-5 <?= ($validation->hasError('confirmPassword')) ? 'is-invalid' : '' ?>" placeholder="Konfirmasi Kata Sandi :">
-                                        <div class="invalid-feedback errorConfirmPassword"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-lg-12 mt-2 mb-0">
-                                <button type="submit" class="btn btn-primary" id="savePassword">Simpan Kata Sandi</button>
-                            </div>
-                            <!--end col-->
                         </div>
-                        <!--end row-->
-                    </form>
+                        <!--end col-->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label">Kata Sandi Baru :</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="key" class="fea icon-sm icons"></i>
+                                    <input type="password" name="newPassword" id="newPassword" class="form-control ps-5 <?= ($validation->hasError('newPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Baru :">
+                                    <div class="invalid-feedback errorNewPassword"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label">Konfirmasi Kata Sandi :</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="key" class="fea icon-sm icons"></i>
+                                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control ps-5 <?= ($validation->hasError('confirmPassword')) ? 'is-invalid' : '' ?>" placeholder="Konfirmasi Kata Sandi :">
+                                    <div class="invalid-feedback errorConfirmPassword"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+
+                        <div class="col-lg-12 mt-2 mb-0">
+                            <button type="submit" class="btn btn-primary" id="savePassword">Simpan Kata Sandi</button>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                    <?= form_close(); ?>
                 </div>
             </div>
             <!--end col-->
@@ -149,6 +150,7 @@
             type: "post",
             url: $(this).attr('action'),
             data: $(this).serialize(),
+            enctype: 'multipart/form-data',
             dataType: 'json',
             beforeSend: function() {
                 $('#save').attr('disable', 'disabled');
@@ -182,6 +184,11 @@
                     } else {
                         $('#telephone').removeClass('is-invalid');
                         $('.errorTelephone').html('');
+                    }
+
+                    if (response.error.image) {
+                        $('#image').addClass('is-invalid');
+                        $('.errorImage').html(response.error.image);
                     }
                 } else {
                     Swal.fire({
