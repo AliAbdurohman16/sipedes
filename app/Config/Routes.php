@@ -51,18 +51,17 @@ $routes->group("", ["filter" => "authFilter:forgotPassword"], function ($routes)
     $routes->post('forgot_password/send', 'Auth\ForgotPassword::send');
 });
 
-// Change Password
 $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    // Forgot Password -> Change Password
     $routes->get('change_password', 'Auth\ChangePassword::index');
     $routes->post('change_password/send', 'Auth\ChangePassword::send');
+    // Dashboard
+    $routes->get('dashboard', 'DashboardController::index');
+    // Account
+    $routes->get('account', 'AccountController::index');
+    $routes->post('account/update', 'AccountController::update');
+    $routes->post('account/changePassword', 'AccountController::changePassword');
 });
-
-$routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
-    $routes->get('logout', 'Auth\Login::logout');
-});
-
-//dashboard
-$routes->get('/dashboard', 'Dashboard::index');
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Route Data Master -> Data Dusun
@@ -117,6 +116,10 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     // Route Admin -> Data Kartu Keluarga
     $routes->get('kartu-keluarga', 'Admin\KartuKeluargaController::index');
     $routes->get('kartu-keluarga/new', 'Admin\KartuKeluargaController::new');
+});
+
+$routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
+    $routes->get('logout', 'Auth\Login::logout');
 });
 
 /*

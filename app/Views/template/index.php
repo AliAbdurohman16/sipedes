@@ -139,17 +139,12 @@
     <!-- Main Js -->
     <script src="<?= base_url() ?>/assets/js/plugins.init.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.js"></script>
+    <script src="<?= base_url() ?>/assets/js/upload.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
-    <?= $this->renderSection('javascript'); ?>
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-        });
-    </script>
 </body>
 
 </html>
