@@ -24,10 +24,10 @@ class PendudukController extends BaseController
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $penduduk = $this->pendudukModel->findAll();
+            $query = $this->pendudukModel->query("SELECT penduduk.*, anggota_penduduk.kk_id, anggota_penduduk.penduduk_id, kartu_keluarga.no_kk, kartu_keluarga.nama_kepala FROM `penduduk` LEFT JOIN anggota_penduduk ON anggota_penduduk.penduduk_id = penduduk.id LEFT JOIN kartu_keluarga ON anggota_penduduk.kk_id = kartu_keluarga.id WHERE penduduk.status = 'ada'");
             $data = [
                 'title' => 'Data Penduduk',
-                'penduduks' => $penduduk
+                'penduduks' => $query->getResult()
             ];
 
             $msg = [
@@ -252,6 +252,7 @@ class PendudukController extends BaseController
                     'pekerjaan' => $this->request->getPost('pekerjaan'),
                     'nama_ibu' => $this->request->getPost('nama_ibu'),
                     'nama_ayah' => $this->request->getPost('nama_ayah'),
+                    'status' => 'ada',
                 ];
 
                 $this->pendudukModel->save($request);

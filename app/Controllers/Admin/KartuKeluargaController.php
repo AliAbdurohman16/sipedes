@@ -54,7 +54,7 @@ class KartuKeluargaController extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 'rts' => $this->rtModel->findAll(),
-                'rws' => $this->rwModel->findAll()
+                'rws' => $this->rwModel->findAll(),
             ];
 
             $msg = [
@@ -345,11 +345,13 @@ class KartuKeluargaController extends BaseController
     {
         if ($this->request->isAJAX()) {
             $id = $this->request->getVar('id');
-
             $row = $this->kartuKeluargaModel->find($id);
+
+            $query = $this->anggotaPendudukModel->query("SELECT anggota_penduduk.*, penduduk.nik, penduduk.name, penduduk.jenis_kelamin FROM `anggota_penduduk` JOIN penduduk ON anggota_penduduk.penduduk_id = penduduk.id WHERE anggota_penduduk.kk_id = '$id'");
 
             $data = [
                 'penduduks' => $this->pendudukModel->findAll(),
+                'anggota_penduduk' => $query->getResult(),
                 'id' => $row->id,
                 'no_kk' => $row->no_kk,
                 'nama_kepala' => $row->nama_kepala,
@@ -413,6 +415,18 @@ class KartuKeluargaController extends BaseController
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+
+    public function delete_anggota()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getPost();
+            $this->anggotaPendudukModel->delete($id);
+            $msg = ['success' => 'Data penduduk berhasil di hapus'];
+            echo json_encode($msg);
+        } else {
+            exit("Maaf data tidak dapat di proses");
         }
     }
 }

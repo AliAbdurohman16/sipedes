@@ -3,7 +3,7 @@
         Tambah Data +
     </button>
 </div>
-<div class="table-responsive shadow rounded ">
+<div class="table-responsive shadow rounded">
     <table class="table table-center bg-white mb-0" id="table">
         <thead>
             <tr>

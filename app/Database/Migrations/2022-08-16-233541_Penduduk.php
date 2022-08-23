@@ -71,8 +71,8 @@ class Penduduk extends Migration
                 'constraint' => '100',
             ],
             'status_kawin' => [
-                'type'       => 'ENUM',
-                'constraint' => ['Belum', 'Sudah'],
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
             ],
             'pendidikan_terakhir' => [
                 'type'       => 'VARCHAR',
@@ -89,6 +89,10 @@ class Penduduk extends Migration
             'nama_ayah' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
+            ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['ada', 'meninggal', 'pindah'],
             ],
             'created_at' => [
                 'type'       => 'DATETIME'

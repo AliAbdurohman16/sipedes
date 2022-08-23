@@ -34,7 +34,7 @@
     <div class="col-sm-4">
         <select name="status_hubungan" id="status_hubungan" class="form-control">
             <option value="">-- Hubungan Keluarga --</option>
-            <option value="Suami">Suami</option>
+            <option value="Kepala Keluarga">Kepala Keluarga</option>
             <option value="Istri">Istri</option>
             <option value="Anak">Anak</option>
             <option value="Menantu">Menantu</option>
@@ -65,6 +65,23 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Start -->
+            <?php
+            $no = 1;
+            foreach ($anggota_penduduk as $row) :
+            ?>
+                <tr>
+                    <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
+                    <td class="p-3"><?= $row->nik; ?></td>
+                    <td class="p-3"><?= $row->name; ?></td>
+                    <td class="p-3"><?= $row->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan'; ?></td>
+                    <td class="p-3"><?= $row->status_hubungan; ?></td>
+                    <td style="width: 20%;">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteAnggotaKeluarga(<?= $row->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            <!-- End -->
         </tbody>
     </table>
 </div>
@@ -137,4 +154,41 @@
         })
         return false
     })
+
+    function deleteAnggotaKeluarga(id) {
+        Swal.fire({
+            title: 'Hapus',
+            text: "Apakah anda yakin?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: '<?= site_url('admin/kartu-keluarga/delete_anggota') ?>',
+                    data: {
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sukses',
+                                text: response.success,
+                            });
+                            dataKartuKeluarga();
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                })
+            }
+        })
+    }
 </script>

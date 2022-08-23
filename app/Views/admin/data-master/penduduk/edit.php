@@ -161,6 +161,8 @@
                                 <option value="">-- Pilih Status Kawin --</option>
                                 <option value="Sudah" <?= $status_kawin == 'Sudah' ? 'selected' : '' ?>>Sudah Menikah</option>
                                 <option value="Belum" <?= $status_kawin == 'Belum' ? 'selected' : '' ?>>Belum Menikah</option>
+                                <option value="Cerai Hidup" <?= $status_kawin == 'Cerai Hidup' ? 'selected' : '' ?>>Cerai Hidup</option>
+                                <option value="Cerai Mati" <?= $status_kawin == '"Cerai Mati' ? 'selected' : '' ?>>Cerai Mati</option>
                             </select>
                             <div class="invalid-feedback errorStatusKawin">
                             </div>

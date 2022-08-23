@@ -15,7 +15,7 @@ class PendudukModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nik', 'name', 'jenis_kelamin', 'tempat_lahir', 'tgl_lahir', 'rt_id', 'rw_id', 'kelurahan', 'kecamatan', 'kabupaten', 'provinsi', 'alamat', 'gol_darah', 'agama', 'status_kawin', 'pendidikan_terakhir', 'pekerjaan', 'nama_ibu', 'nama_ayah'
+        'nik', 'name', 'jenis_kelamin', 'tempat_lahir', 'tgl_lahir', 'rt_id', 'rw_id', 'kelurahan', 'kecamatan', 'kabupaten', 'provinsi', 'alamat', 'gol_darah', 'agama', 'status_kawin', 'pendidikan_terakhir', 'pekerjaan', 'nama_ibu', 'nama_ayah', 'status'
     ];
 
     // Dates

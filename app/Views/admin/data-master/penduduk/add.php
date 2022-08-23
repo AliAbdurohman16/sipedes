@@ -1,4 +1,3 @@
-<!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl ">
         <div class="modal-content">
@@ -161,6 +160,8 @@
                                 <option value="">-- Pilih Status Kawin --</option>
                                 <option value="Sudah">Sudah Menikah</option>
                                 <option value="Belum">Belum Menikah</option>
+                                <option value="Cerai Hidup">Cerai Hidup</option>
+                                <option value="Cerai Mati">Cerai Mati</option>
                             </select>
                             <div class="invalid-feedback errorStatusKawin">
                             </div>

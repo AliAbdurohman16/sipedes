@@ -28,7 +28,7 @@
                     <td class="p-3"><?= $penduduk->name; ?></td>
                     <td class="p-3"><?= $penduduk->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
                     <td class="p-3"><?= $penduduk->alamat; ?></td>
-                    <td class="p-3">3201584548484548</td>
+                    <td class="p-3"><?= $penduduk->no_kk . " - " . $penduduk->nama_kepala ?></td>
                     <td style="width: 20%;">
                         <button type="button" class="btn btn-info btn-sm" onclick="detailPenduduk(<?= $penduduk->id ?>)"><i class="fa-solid fa-eye"></i> Detail</button>
                         <button type="button" class="btn btn-warning btn-sm" onclick="editPenduduk(<?= $penduduk->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
