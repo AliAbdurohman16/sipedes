@@ -26,58 +26,66 @@
                             </center>
                         </div>
 
-                        <?= form_open_multipart('account/update', ['class' => 'formProfile']) ?>
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="id" value="<?= $users->id ?>">
-                        <div class="col-md-12 mt-4">
-                            <div class="mb-3">
-                                <label class="form-label">Foto</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="image" class="fea icon-sm icons"></i>
-                                    <input name="image" id="image" type="file" class="form-control ps-5">
-                                    <div class="invalid-feedback errorImage"></div>
+                        <form action="<?= site_url('account/update') ?>" method="post" class="formProfile" enctype="multipart/form-data">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?= $users->id ?>">
+                            <div class="col-md-12 mt-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Foto</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="image" class="fea icon-sm icons"></i>
+                                        <input name="image" id="image" type="file" class="form-control ps-5 <?= ($validation->hasError('image')) ? 'is-invalid' : '' ?>">
+                                        <div class="invalid-feedback errorImage">
+                                        <?= $validation->getError('image'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-md-12 mt-4">
-                            <div class="mb-3">
-                                <label class="form-label">Nama Lengkap</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="user" class="fea icon-sm icons"></i>
-                                    <input name="name" id="name" type="text" class="form-control ps-5" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
-                                    <div class="invalid-feedback errorName"></div>
+                            <!--end col-->
+                            <div class="col-md-12 mt-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                        <input name="name" id="name" type="text" class="form-control ps-5 <?= ($validation->hasError('name')) ? 'is-invalid' : '' ?>" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
+                                        <div class="invalid-feedback errorName">
+                                        <?= $validation->getError('name'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">Username</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                    <input name="username" id="username" type="text" class="form-control ps-5" placeholder="Username :" value="<?= $users->username ?>">
-                                    <div class="invalid-feedback errorUsername"></div>
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                        <input name="username" id="username" type="text" class="form-control ps-5 <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" placeholder="Username :" value="<?= $users->username ?>">
+                                        <div class="invalid-feedback errorUsername">
+                                        <?= $validation->getError('username'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label class="form-label">No. Telepon</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="phone" class="fea icon-sm icons"></i>
-                                    <input name="telephone" id="telephone" type="number" class="form-control ps-5" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
-                                    <div class="invalid-feedback errorTelephone"></div>
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">No. Telepon</label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="phone" class="fea icon-sm icons"></i>
+                                        <input name="telephone" id="telephone" type="number" class="form-control ps-5 <?= ($validation->hasError('telephone')) ? 'is-invalid' : '' ?>" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
+                                        <div class="invalid-feedback errorTelephone">
+                                        <?= $validation->getError('telephone'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-md-12">
-                            <button type="submit" id="save" class="btn btn-primary">Simpan Profil</button>
-                        </div>
-                        <!--end col-->
-                        <?= form_close(); ?>
+                            <!--end col-->
+                            <div class="col-md-12">
+                                <button type="submit" id="save" class="btn btn-primary">Simpan Profil</button>
+                            </div>
+                            <!--end col-->
+                        </form>
                         <!--end form-->
                     </div>
                 </div>
@@ -144,71 +152,15 @@
 <!--end container-->
 
 <script>
-    $('.formProfile').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "post",
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            enctype: 'multipart/form-data',
-            dataType: 'json',
-            beforeSend: function() {
-                $('#save').attr('disable', 'disabled');
-                $('#save').html('<i class="fa-solid fa-spin fa-spinner"></i>');
-            },
-            complete: function() {
-                $('#save').removeAttr('disable');
-                $('#save').html('Simpan Profil');
-            },
-            success: function(response) {
-                if (response.error) {
-                    if (response.error.name) {
-                        $('#name').addClass('is-invalid');
-                        $('.errorName').html(response.error.name);
-                    } else {
-                        $('#name').removeClass('is-invalid');
-                        $('.errorName').html('');
-                    }
-
-                    if (response.error.username) {
-                        $('#username').addClass('is-invalid');
-                        $('.errorUsername').html(response.error.username);
-                    } else {
-                        $('#username').removeClass('is-invalid');
-                        $('.errorUsername').html('');
-                    }
-
-                    if (response.error.telephone) {
-                        $('#telephone').addClass('is-invalid');
-                        $('.errorTelephone').html(response.error.telephone);
-                    } else {
-                        $('#telephone').removeClass('is-invalid');
-                        $('.errorTelephone').html('');
-                    }
-
-                    if (response.error.image) {
-                        $('#image').addClass('is-invalid');
-                        $('.errorImage').html(response.error.image);
-                    }
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Sukses',
-                        text: response.success,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            location.reload();
-                        }
-                    });
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        })
-
-        return false;
-    })
+    $(function() {
+        <?php if (session()->has("success")) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat!',
+                text: '<?= session("success") ?>'
+            })
+        <?php } ?>
+    });
 
     $('.formPassword').submit(function(e) {
         e.preventDefault();
