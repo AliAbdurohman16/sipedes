@@ -1,25 +1,26 @@
-<!-- Add Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('admin/kartu-keluarga/create', ['class' => 'formKartuKeluarga']); ?>
+            <?= form_open('admin/kartu-keluarga/update', ['class' => 'formKartuKeluarga']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label class="form-label">Nomor Kartu Keluarga <span class="text-danger">*</span></label>
-                            <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= old('no_kk') ?>" placeholder="Nomor Kartu Keluarga">
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= $no_kk ?>" placeholder="Nomor Kartu Keluarga">
                             <div class="invalid-feedback errorNoKK">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nama Kepala <span class="text-danger">*</span></label>
-                            <input name="nama_kepala" id="nama_kepala" type="text" class="form-control" value="<?= old('nama_kepala') ?>" placeholder="Nama Lengkap">
+                            <input name="nama_kepala" id="nama_kepala" type="text" class="form-control" value="<?= $nama_kepala ?>" placeholder="Nama Lengkap">
                             <div class="invalid-feedback errorNamaKepala">
                             </div>
                         </div>
@@ -27,9 +28,9 @@
                             <label class="form-label">Provinsi <span class="text-danger">*</span></label>
                             <select name="provinsi" id="provinsi" class="form-control">
                                 <option value="">-- Pilih Provinsi --</option>
-                                <option value="Jawa Barat">Jawa Barat</option>
-                                <option value="Jawa Tengah">Jawa Tengah</option>
-                                <option value="Jawa Timur">Jawa Timur</option>
+                                <option value="Jawa Barat" <?= $provinsi == 'Jawa Barat' ? 'selected' : ''; ?>>Jawa Barat</option>
+                                <option value="Jawa Tengah" <?= $provinsi == 'Jawa Tengah' ? 'selected' : ''; ?>>Jawa Tengah</option>
+                                <option value="Jawa Timur" <?= $provinsi == 'Jawa Timur' ? 'selected' : ''; ?>>Jawa Timur</option>
                             </select>
                             <div class="invalid-feedback errorProvinsi">
                             </div>
@@ -38,10 +39,10 @@
                             <label class="form-label">Kabupaten <span class="text-danger">*</span></label>
                             <select name="kabupaten" id="kabupaten" class="form-control">
                                 <option value="">-- Pilih Kabupaten --</option>
-                                <option value="Cirebon">Cirebon</option>
-                                <option value="Indramayu">Indramayu</option>
-                                <option value="Kuningan">Kuningan</option>
-                                <option value="Majalengka">Majalengka</option>
+                                <option value="Cirebon" <?= $kabupaten == 'Cirebon' ? 'selected' : ''; ?>>Cirebon</option>
+                                <option value="Indramayu" <?= $kabupaten == 'Indramayu' ? 'selected' : ''; ?>>Indramayu</option>
+                                <option value="Kuningan" <?= $kabupaten == 'Kuningan' ? 'selected' : ''; ?>>Kuningan</option>
+                                <option value="Majalengka" <?= $kabupaten == 'Majalengka' ? 'selected' : ''; ?>>Majalengka</option>
                             </select>
                             <div class="invalid-feedback errorKabupaten">
                             </div>
@@ -52,11 +53,11 @@
                             <label class="form-label">Kecamatan <span class="text-danger">*</span></label>
                             <select name="kecamatan" id="kecamatan" class="form-control">
                                 <option value="">-- Pilih Kecamatan --</option>
-                                <option value="Ciawigebang">Ciawigebang</option>
-                                <option value="Cibeureum">Cibeureum</option>
-                                <option value="Cibingbin">Cibingbin</option>
-                                <option value="Cigugur">Cigugur</option>
-                                <option value="Kuningan">Kuningan</option>
+                                <option value="Ciawigebang" <?= $kecamatan == 'Ciawigebang' ? 'selected' : ''; ?>>Ciawigebang</option>
+                                <option value="Cibeureum" <?= $kecamatan == 'Cibeureum' ? 'selected' : ''; ?>>Cibeureum</option>
+                                <option value="Cibingbin" <?= $kecamatan == 'Cibingbin' ? 'selected' : ''; ?>>Cibingbin</option>
+                                <option value="Cigugur" <?= $kecamatan == 'Cigugur' ? 'selected' : ''; ?>>Cigugur</option>
+                                <option value="Kuningan" <?= $kecamatan == 'Kuningan' ? 'selected' : ''; ?>>Kuningan</option>
                             </select>
                             <div class="invalid-feedback errorKecamatan">
                             </div>
@@ -65,10 +66,10 @@
                             <label class="form-label">Kelurahan <span class="text-danger">*</span></label>
                             <select name="kelurahan" id="kelurahan" class="form-control">
                                 <option value="">-- Pilih Kelurahan --</option>
-                                <option value="Cibeurem">Cibeurem</option>
-                                <option value="Ancaran">Ancaran</option>
-                                <option value="Cibinuang">Cibinuang</option>
-                                <option value="Karangtawang">Karangtawang</option>
+                                <option value="Cibeurem" <?= $kelurahan == 'Cibeurem' ? 'selected' : ''; ?>>Cibeurem</option>
+                                <option value="Ancaran" <?= $kelurahan == 'Ancaran' ? 'selected' : ''; ?>>Ancaran</option>
+                                <option value="Cibinuang" <?= $kelurahan == 'Cibinuang' ? 'selected' : ''; ?>>Cibinuang</option>
+                                <option value="Karangtawang" <?= $kelurahan == 'Karangtawang' ? 'selected' : ''; ?>>Karangtawang</option>
                             </select>
                             <div class="invalid-feedback errorKelurahan">
                             </div>
@@ -80,7 +81,7 @@
                                     <select name="rt" id="rt" class="form-control">
                                         <option value="">-- Pilih RT --</option>
                                         <?php foreach ($rts as $rt) : ?>
-                                            <option value="<?= $rt->id ?>"><?= $rt->number ?> - <?= $rt->name ?></option>
+                                            <option value="<?= $rt->id ?>" <?= $rt->id == $rt_id ? 'selected' : '' ?>><?= $rt->number ?> - <?= $rt->name ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback errorRt">
@@ -90,7 +91,7 @@
                                     <select name="rw" id="rw" class="form-control">
                                         <option value="">-- Pilih RW --</option>
                                         <?php foreach ($rws as $rw) : ?>
-                                            <option value="<?= $rw->id ?>"><?= $rw->number ?> - <?= $rw->name ?></option>
+                                            <option value="<?= $rw->id ?>" <?= $rw->id == $rw_id ? 'selected' : '' ?>><?= $rw->number ?> - <?= $rw->name ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback errorRw">
@@ -100,7 +101,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Alamat <span class="text-danger">*</span></label>
-                            <textarea name="alamat" id="alamat" rows="1" class="form-control" placeholder="Alamat"></textarea>
+                            <textarea name="alamat" id="alamat" rows="1" class="form-control" placeholder="Alamat"><?= $alamat; ?></textarea>
                             <div class="invalid-feedback errorAlamat">
                             </div>
                         </div>
@@ -214,13 +215,14 @@
                         $('#alamat').removeClass('is-invalid');
                         $('.errorAlamat').html('');
                     }
+
                 } else {
                     Swal.fire({
                         icon: 'success',
                         title: 'Sukses',
                         text: response.success,
                     })
-                    $('#addModal').modal('hide');
+                    $('#editModal').modal('hide');
                     dataKartuKeluarga();
                 }
             },

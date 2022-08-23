@@ -410,7 +410,7 @@
                         text: response.success,
                     })
                     $('#editModal').modal('hide');
-                    dataJabatan();
+                    dataPenduduk();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

@@ -527,7 +527,6 @@ class PendudukController extends BaseController
 
     public function detail()
     {
-
         if ($this->request->isAJAX()) {
             $id = $this->request->getVar('id');
 
@@ -536,6 +535,7 @@ class PendudukController extends BaseController
             $data = [
                 'penduduk' => $query->getResult()
             ];
+
             $msg = [
                 'data' => view('admin/data-master/penduduk/detail', $data)
             ];

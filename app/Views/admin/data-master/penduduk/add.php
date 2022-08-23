@@ -409,7 +409,7 @@
                         text: response.success,
                     })
                     $('#addModal').modal('hide');
-                    dataJabatan();
+                    dataPenduduk();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

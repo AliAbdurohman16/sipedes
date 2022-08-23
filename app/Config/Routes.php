@@ -116,6 +116,12 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     // Route Admin -> Data Kartu Keluarga
     $routes->get('kartu-keluarga', 'Admin\KartuKeluargaController::index');
     $routes->get('kartu-keluarga/new', 'Admin\KartuKeluargaController::new');
+    $routes->post('kartu-keluarga/create', 'Admin\KartuKeluargaController::create');
+    $routes->post('kartu-keluarga/edit', 'Admin\KartuKeluargaController::edit');
+    $routes->post('kartu-keluarga/update', 'Admin\KartuKeluargaController::update');
+    $routes->post('kartu-keluarga/delete', 'Admin\KartuKeluargaController::delete');
+    $routes->post('kartu-keluarga/anggota-kk', 'Admin\KartuKeluargaController::anggota_kk');
+    $routes->post('kartu-keluarga/create_anggota', 'Admin\KartuKeluargaController::create_anggota');
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
