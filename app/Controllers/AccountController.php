@@ -36,99 +36,85 @@ class AccountController extends BaseController
             $rules_username = 'required|is_unique[users.username]|string|alpha_dash';
         }
 
-        if ($this->request->isAJAX()) {
-            $validation = \Config\Services::validation();
-            $valid = $this->validate(
-                [
-                    'name' => [
-                        'label' => 'Nama Lengkap',
-                        'rules' => 'required|string',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong',
-                            'string' => '{field} harus berupa alphanumeric'
-                        ]
-                    ],
-                    'username' => [
-                        'label' => 'Username',
-                        'rules' => $rules_username,
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong',
-                            'string' => '{field} harus berupa alphanumeric',
-                            'is_unique' => '{field} sudah ada, Silahkan ganti dengan yang lain',
-                            'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
-                        ]
-                    ],
-                    'telephone' => [
-                        'label' => 'Nomor Telepon',
-                        'rules' => 'required|numeric|min_length[10]|max_length[13]',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong',
-                            'numeric' => '{field} harus berupa angka',
-                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                            'max_length' => '{field} maksimal memiliki panjang {param} karakter',
-                        ]
-                    ],
-                    'image' => [
-                        'label' => 'Foto',
-                        'rules' => 'mime_in[image,image/png,image/jpg,image/jpeg]|is_image[image]|max_size[image,1024]',
-                        'errors' => [
-                            'mime_in' => '{field} yang anda pilih bukan gambar',
-                            'is_image' => '{field} yang anda pilih bukan gambar',
-                            'max_size' => '{field} ukurannya tidak boleh lebih dari 1MB',
-                        ]
-                    ]
+        if (!$this->validate([
+            'name' => [
+                'label' => 'Nama Lengkap',
+                'rules' => 'required|string',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'string' => '{field} harus berupa alphanumeric'
                 ]
-            );
-
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'name' => $validation->getError('name'),
-                        'username' => $validation->getError('username'),
-                        'telephone' => $validation->getError('telephone'),
-                        'image' => $validation->getError('image'),
-                    ]
-                ];
-            } else {
-                $id = $this->request->getVar('id');
-                $username = $this->request->getPost('username');
-                $uploadImage = $_FILES['image']['name'];
-                $profile = $this->userModel->find($id);
-
-                if ($uploadImage != NULL) {
-                    if ($profile->image == "Avatar.png") {
-                        $nameFileImage = "$username";
-                        $fileImage = $this->request->getFile('image');
-                        $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
-
-                        $pathImage = $fileImage->getName();
-                    } else {
-                        unlink('images/avatar/' . $profile->image);
-
-                        $nameFileImage = "$username";
-                        $fileImage = $this->request->getFile('image');
-                        $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
-
-                        $pathImage = $fileImage->getName();
-                    }
-                } else {
-                    $pathImage = $profile->image;
-                }
-
-                $request = [
-                    'name'      => $this->request->getPost('name'),
-                    'username'  => $username,
-                    'telephone' => $this->request->getPost('telephone'),
-                    'image'     => $pathImage,
-                ];
-
-                $this->userModel->update($id, $request);
-                $msg = ['success' => 'Profil berhasil di ubah!'];
-            }
-            echo json_encode($msg);
-        } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            ],
+            'username' => [
+                'label' => 'Username',
+                'rules' => $rules_username,
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'string' => '{field} harus berupa alphanumeric',
+                    'is_unique' => '{field} sudah ada, Silahkan ganti dengan yang lain',
+                    'alpha_dash' => '{field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung',
+                ]
+            ],
+            'telephone' => [
+                'label' => 'Nomor Telepon',
+                'rules' => 'required|numeric|min_length[10]|max_length[13]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'numeric' => '{field} harus berupa angka',
+                    'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
+                    'max_length' => '{field} maksimal memiliki panjang {param} karakter',
+                ]
+            ],
+            'image' => [
+                'label' => 'Foto',
+                'rules' => 'mime_in[image,image/png,image/jpg,image/jpeg]|is_image[image]|max_size[image,2024]',
+                'errors' => [
+                    'mime_in' => '{field} yang anda pilih bukan gambar berformat jpg,jpeg,png',
+                    'is_image' => '{field} yang anda pilih bukan gambar',
+                    'max_size' => '{field} ukurannya tidak boleh lebih dari 2MB',
+                ]
+            ]
+        ])) {
+            return redirect()->to('account')->withInput();
         }
+
+        $id = $this->request->getVar('id');
+        $username = $this->request->getPost('username');
+        $uploadImage = $_FILES['image']['name'];
+        $profile = $this->userModel->find($id);
+
+        if ($uploadImage != NULL) {
+            if ($profile->image == "Avatar.png") {
+                $nameFileImage = "$username";
+                $fileImage = $this->request->getFile('image');
+                $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
+
+                $pathImage = $fileImage->getName();
+            } else {
+                unlink('images/avatar/' . $profile->image);
+
+                $nameFileImage = "$username";
+                $fileImage = $this->request->getFile('image');
+                $fileImage->move('images/avatar/', $nameFileImage . '.' . $fileImage->getExtension());
+
+                $pathImage = $fileImage->getName();
+            }
+        } else {
+            $pathImage = $profile->image;
+        }
+
+        $request = [
+            'name'      => $this->request->getPost('name'),
+            'username'  => $username,
+            'telephone' => $this->request->getPost('telephone'),
+            'image'     => $pathImage,
+        ];
+
+        $this->userModel->update($id, $request);
+        $msg = ['success' => 'Profil berhasil di ubah!'];
+        session()->setFlashdata($msg);
+
+        return redirect()->to('account');
     }
 
     public function changePassword()

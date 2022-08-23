@@ -104,21 +104,26 @@
                     </div>
                 </li>
 
+                <?php
+                    $db = db_connect();
+                    $user = $db->table('users')->getWhere(['id' => session()->get('user')->id])->getRow();
+                ?>
+
                 <li class="list-inline-item mb-0 ms-1">
                     <div class="dropdown dropdown-primary">
-                        <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url('images/avatar/' . session()->get('user')->image) ?>" class="avatar avatar-ex-small rounded" alt=""></button>
+                        <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url('images/avatar/' . $user->image) ?>" class="avatar avatar-ex-small rounded" alt=""></button>
                         <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3" style="min-width: 200px;">
                             <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
-                                <img src="<?= base_url('images/avatar/' . session()->get('user')->image) ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                                <img src="<?= base_url('images/avatar/' . $user->image) ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                 <div class="flex-1 ms-2">
-                                    <span class="d-block"><?= session()->get('user')->name ?></span>
+                                    <span class="d-block"><?= $user->name ?></span>
                                     <small class="text-muted"><?= session()->get('role')->name ?></small>
                                 </div>
                             </a>
-                            <a class="dropdown-item text-dark" href="<?= site_url('dashboard')?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
-                            <a class="dropdown-item text-dark" href="<?= site_url('account')?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Akun Saya</a>
+                            <a class="dropdown-item text-dark" href="<?= site_url('dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
+                            <a class="dropdown-item text-dark" href="<?= site_url('account') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Akun Saya</a>
                             <div class="dropdown-divider border-top"></div>
-                            <a class="dropdown-item text-dark" href="<?= site_url('logout')?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Keluar</a>
+                            <a class="dropdown-item text-dark" href="<?= site_url('logout') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Keluar</a>
                         </div>
                     </div>
                 </li>
