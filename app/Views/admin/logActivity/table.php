@@ -3,7 +3,7 @@
         <tr>
             <th class="text-center border-bottom p-3">No</th>
             <th class="border-bottom p-3">Nama Pengguna</th>
-            <th class="border-bottom p-3">Aktifitas</th>
+            <th class="border-bottom p-3">Aktivitas</th>
             <th class="border-bottom p-3">Tanggal dan Waktu</th>
         </tr>
     </thead>

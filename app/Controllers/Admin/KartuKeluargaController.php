@@ -8,6 +8,8 @@ use App\Models\KartuKeluargaModel;
 use App\Models\PendudukModel;
 use App\Models\RtModel;
 use App\Models\RwModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class KartuKeluargaController extends BaseController
 {
@@ -24,6 +26,7 @@ class KartuKeluargaController extends BaseController
         $this->anggotaPendudukModel = new AnggotaPendudukModel();
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -171,6 +174,16 @@ class KartuKeluargaController extends BaseController
                 ];
 
                 $this->kartuKeluargaModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Kartu Keluarga',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data penduduk berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -321,6 +334,16 @@ class KartuKeluargaController extends BaseController
                 ];
 
                 $this->kartuKeluargaModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data Kartu Keluarga',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data penduduk berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -334,6 +357,14 @@ class KartuKeluargaController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->kartuKeluargaModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Kartu Keluarga',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data penduduk berhasil di hapus'];
             echo json_encode($msg);
         } else {
@@ -410,6 +441,16 @@ class KartuKeluargaController extends BaseController
                 ];
 
                 $this->anggotaPendudukModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Anggota Kartu Keluarga',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data penduduk berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -424,6 +465,14 @@ class KartuKeluargaController extends BaseController
             $id = $this->request->getPost();
             $this->anggotaPendudukModel->delete($id);
             $msg = ['success' => 'Data penduduk berhasil di hapus'];
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Anggota Kartu Keluarga',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             echo json_encode($msg);
         } else {
             exit("Maaf data tidak dapat di proses");

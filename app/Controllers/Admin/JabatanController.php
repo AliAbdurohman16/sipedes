@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\JabatanModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class JabatanController extends BaseController
 {
@@ -12,6 +14,7 @@ class JabatanController extends BaseController
     public function __construct()
     {
         $this->jabatanModel = new JabatanModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -79,6 +82,16 @@ class JabatanController extends BaseController
                 ];
 
                 $this->jabatanModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Jabatan',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data jabatan berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -146,6 +159,16 @@ class JabatanController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->jabatanModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data Jabatan',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data jabatan berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -159,6 +182,14 @@ class JabatanController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->jabatanModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Jabatan',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data jabatan berhasil di hapus'];
             echo json_encode($msg);
         } else {
