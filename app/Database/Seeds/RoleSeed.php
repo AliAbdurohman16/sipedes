@@ -39,6 +39,11 @@ class RoleSeed extends Seeder
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
+            [
+                'name' => 'PENDUDUK',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
+                'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
+            ],
         ];
 
         $roleModel->insertBatch($roles);
