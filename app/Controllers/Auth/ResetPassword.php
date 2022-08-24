@@ -62,7 +62,7 @@ class ResetPassword extends BaseController
         // Log Activity
         $params = [
             'user_id'       => $id,
-            'information'   => 'Reset Kata Sandi',
+            'activities'    => 'Reset Kata Sandi',
             'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
         ];
 

@@ -14,7 +14,7 @@ class LogActivityModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'information', 'created_at'];
+    protected $allowedFields    = ['user_id', 'activities', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

@@ -234,7 +234,7 @@ class RwController extends BaseController
             // Log Activity
             $params = [
                 'user_id'       => session()->get('user')->id,
-                'information'   => 'Hapus Data RW',
+                'activities'    => 'Hapus Data RW',
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
             ];
 

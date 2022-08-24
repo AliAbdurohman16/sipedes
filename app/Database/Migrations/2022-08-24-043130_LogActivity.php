@@ -20,7 +20,7 @@ class LogActivity extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'information' => [
+            'activities' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
