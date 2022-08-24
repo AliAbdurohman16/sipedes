@@ -41,6 +41,11 @@ class Users extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['Offline', 'Online'],
+                'default'    => 'Offline',
+            ],
             'created_at' => [
                 'type'       => 'DATETIME'
             ],
