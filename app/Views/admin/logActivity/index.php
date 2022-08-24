@@ -18,11 +18,6 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-primary mb-3 btn-sm addButton">
-                                Tambah Data +
-                            </button>
-                        </div>
                         <div class="table-responsive shadow rounded viewdata">
 
                         </div>
