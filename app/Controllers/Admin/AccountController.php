@@ -5,12 +5,15 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 
 use App\Models\UserModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class AccountController extends BaseController
 {
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -111,6 +114,16 @@ class AccountController extends BaseController
         ];
 
         $this->userModel->update($id, $request);
+
+        // Log Activity
+        $params = [
+            'user_id'       => session()->get('user')->id,
+            'activities'    => 'Ubah Profil',
+            'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+        ];
+
+        $this->logModel->insert($params);
+
         $msg = ['success' => 'Profil berhasil di ubah!'];
         session()->setFlashdata($msg);
 
@@ -173,6 +186,16 @@ class AccountController extends BaseController
                         ];
 
                         $this->userModel->update($id, $result);
+
+                        // Log Activity
+                        $params = [
+                            'user_id'       => session()->get('user')->id,
+                            'activities'    => 'Ubah Kata Sandi',
+                            'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                        ];
+
+                        $this->logModel->insert($params);
+
                         $msg = [
                             'success' => 'Kata Sandi berhasil di ubah!',
                         ];
