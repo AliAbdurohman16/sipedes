@@ -74,7 +74,7 @@ class Login extends BaseController
                 // Log Activity
                 $params = [
                     'user_id'       => session()->get('user')->id,
-                    'information'   => 'Login',
+                    'information'   => 'Masuk',
                     'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
@@ -113,7 +113,7 @@ class Login extends BaseController
         // Log Activity
         $params = [
             'user_id'       => session()->get('user')->id,
-            'information'   => 'Logout',
+            'information'   => 'Keluar',
             'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
         ];
 
