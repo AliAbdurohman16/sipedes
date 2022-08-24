@@ -64,6 +64,9 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    // Log Activity
+    $routes->get('log_activity', 'Admin\LogActivityController::index');
+
     // Route Data Master -> Data Dusun
     $routes->get('data_dusun', 'Admin\DusunController::index');
     $routes->get('data_dusun/new', 'Admin\DusunController::new');
