@@ -115,7 +115,7 @@ class RwController extends BaseController
                 // Log Activity
                 $params = [
                     'user_id'       => session()->get('user')->id,
-                    'information'   => 'Tambah Data RW',
+                    'activities'    => 'Tambah Data RW',
                     'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
@@ -212,7 +212,7 @@ class RwController extends BaseController
                 // Log Activity
                 $params = [
                     'user_id'       => session()->get('user')->id,
-                    'information'   => 'Edit Data RW',
+                    'activities'    => 'Edit Data RW',
                     'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
