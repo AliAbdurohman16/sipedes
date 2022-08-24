@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
@@ -23,7 +23,7 @@ class AccountController extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('account/index', $data);
+        return view('admin/account/index', $data);
     }
 
     public function update()
@@ -75,7 +75,7 @@ class AccountController extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('account')->withInput();
+            return redirect()->to('admin/account')->withInput();
         }
 
         $id = $this->request->getVar('id');
@@ -114,7 +114,7 @@ class AccountController extends BaseController
         $msg = ['success' => 'Profil berhasil di ubah!'];
         session()->setFlashdata($msg);
 
-        return redirect()->to('account');
+        return redirect()->to('admin/account');
     }
 
     public function changePassword()

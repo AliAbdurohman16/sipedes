@@ -31,7 +31,7 @@ class AuthFilter implements FilterInterface
             }
         } else if($arguments[0] == 'login') {
             if (session()->has('user')) {
-                return redirect()->to('/dashboard');
+                return redirect()->to('admin/dashboard');
             }
         } else if($arguments[0] == 'logout') {
             if (!session()->has('user')) {

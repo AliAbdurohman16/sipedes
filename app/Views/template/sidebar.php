@@ -16,9 +16,9 @@
             $uri = new \CodeIgniter\HTTP\URI();
             $uri = service('uri');
             ?>
-            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
+            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('admin/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
             <?php if (session()->get('role')->id == 1) : ?>
-                <li><a href="index.html"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
+                <li class="<?= ($uri->getSegment(1) == 'log_activity' ? 'active' : '') ?>"><a href="<?= base_url('admin/log_activity') ?>"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
                 <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>">
                     <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Data Master</a>
                     <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'd-block' : '') ?>">

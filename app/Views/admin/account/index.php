@@ -26,7 +26,7 @@
                             </center>
                         </div>
 
-                        <form action="<?= site_url('account/update') ?>" method="post" class="formProfile" enctype="multipart/form-data">
+                        <form action="<?= site_url('admin/account/update') ?>" method="post" class="formProfile" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $users->id ?>">
                             <div class="col-md-12 mt-4">
@@ -95,7 +95,7 @@
             <div class="col-lg-6 mt-4">
                 <div class="card border-0 rounded shadow p-4">
                     <h5 class="mb-0">Ubah Kata Sandi :</h5>
-                    <?= form_open('account/changePassword', ['class' => 'formPassword']); ?>
+                    <?= form_open('admin/account/changePassword', ['class' => 'formPassword']); ?>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $users->id ?>">
                     <div class="row mt-4">
