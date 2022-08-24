@@ -2,9 +2,9 @@
     <thead>
         <tr>
             <th class="text-center border-bottom p-3">No</th>
-            <th class="border-bottom p-3">User</th>
-            <th class="border-bottom p-3">Information</th>
-            <th class="border-bottom p-3">Datetime</th>
+            <th class="border-bottom p-3">Nama Pengguna</th>
+            <th class="border-bottom p-3">Aktifitas</th>
+            <th class="border-bottom p-3">Tanggal dan Waktu</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +16,7 @@
             <tr>
                 <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
                 <td class="p-3"><?= $log->name; ?></td>
-                <td class="p-3"><?= $log->information; ?></td>
+                <td class="p-3"><?= $log->activities; ?></td>
                 <td class="p-3"><?= $log->created_at; ?></td>
             </tr>
         <?php endforeach; ?>
