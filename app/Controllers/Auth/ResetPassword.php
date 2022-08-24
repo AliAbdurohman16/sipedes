@@ -5,22 +5,25 @@ namespace App\Controllers\Auth;
 use App\Controllers\BaseController;
 
 use App\Models\UserModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
-class ChangePassword extends BaseController
+class ResetPassword extends BaseController
 {
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
     {
         $data = [
-            'title' => 'Ubah Kata Sandi',
+            'title' => 'Reset Kata Sandi',
             'validation' => \Config\Services::validation()
         ];
 
-        return view('auth/changePassword', $data);
+        return view('auth/resetPassword', $data);
     }
 
     public function send()
@@ -45,7 +48,7 @@ class ChangePassword extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/change_password')->withInput();
+            return redirect()->to('/reset_password')->withInput();
         }
 
         $id = session('id');
@@ -55,6 +58,16 @@ class ChangePassword extends BaseController
         ];
 
         $this->userModel->update($id, $param);
+
+        // Log Activity
+        $params = [
+            'user_id'       => $id,
+            'information'   => 'Reset Kata Sandi',
+            'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+        ];
+
+        $this->logModel->insert($params);
+
         session()->remove('user');
         $sessSucc = [
             'success' => 'Kata sandi berhasil diubah!'

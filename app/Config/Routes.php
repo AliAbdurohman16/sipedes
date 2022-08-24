@@ -52,9 +52,9 @@ $routes->group("", ["filter" => "authFilter:forgotPassword"], function ($routes)
 });
 
 $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
-    // Forgot Password -> Change Password
-    $routes->get('change_password', 'Auth\ChangePassword::index');
-    $routes->post('change_password/send', 'Auth\ChangePassword::send');
+    // Forgot Password -> Reset Password
+    $routes->get('reset_password', 'Auth\ResetPassword::index');
+    $routes->post('reset_password/send', 'Auth\ResetPassword::send');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {

@@ -39,4 +39,11 @@ class LogActivityModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withUser()
+    {
+        $this->select('users.name, users.status, log_activity.*');
+        
+        return $this->join('users', 'users.id = log_activity.user_id')->orderBy('id','DESC')->findAll();
+    }
 }

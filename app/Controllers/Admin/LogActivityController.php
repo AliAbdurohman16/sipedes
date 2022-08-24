@@ -3,16 +3,22 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\LogActivityModel;
 
 class LogActivityController extends BaseController
 {
+    public function __construct()
+    {
+        $this->logModel = new LogActivityModel();
+    }
+
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $rts = $this->rtModel->withRw();
+            $logs = $this->logModel->withUser();
 
             $data = [
-                'rts' => $rts
+                'logs' => $logs
             ];
 
             $msg = [
@@ -22,7 +28,7 @@ class LogActivityController extends BaseController
             echo json_encode($msg);
         } else {
             $data = [
-                'title' => 'Data Rukun Tetangga (RT)'
+                'title' => 'Log Activity'
             ];
     
             return view('admin/logActivity/index', $data);

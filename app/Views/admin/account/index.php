@@ -151,6 +151,7 @@
 </div>
 <!--end container-->
 
+<script src="<?= base_url() ?>/assets/js/upload.js"></script>
 <script>
     $(function() {
         <?php if (session()->has("success")) { ?>
