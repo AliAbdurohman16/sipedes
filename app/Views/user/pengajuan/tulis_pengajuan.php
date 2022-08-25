@@ -83,7 +83,7 @@
                         <!--end row-->
                         <div class="row">
                             <div class="col-sm-12">
-                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Send Message">
+                                <input type="submit" class="btn btn-primary" value="Kirim Pengajuan">
                             </div>
                             <!--end col-->
                         </div>

@@ -34,6 +34,11 @@ class Pengajuan extends Migration
             'keterangan' => [
                 'type'       => 'TEXT',
             ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['Dikirim', 'Sudah Dibuat'],
+                'default'    => 'Dikirim',
+            ],
             'created_at' => [
                 'type'       => 'DATETIME'
             ],

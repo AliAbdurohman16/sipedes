@@ -51,9 +51,9 @@
                 </div>
             </li>
             <li><a href="index.html"><i class="fa-solid fa-chart-column me-2"></i>Laporan</a></li>
-            <li class="sidebar-dropdown">
+            <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'tulis_pengajuan' || $uri->getSegment(1) == 'pengajuan_dikirim' || $uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>">
                 <a href="javascript:void(0)"><i class="fa-solid fa-user-pen me-2"></i>Pengajuan</a>
-                <div class="sidebar-submenu">
+                <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'tulis_pengajuan' || $uri->getSegment(1) == 'pengajuan_dikirim' || $uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'd-block' : '') ?>">
                     <ul>
                         <li class="<?= ($uri->getSegment(1) == 'tulis_pengajuan' ? 'active' : '') ?>"><a href="<?= base_url('user/tulis_pengajuan') ?>">Tulis Pengajuan</a></li>
                         <li class="<?= ($uri->getSegment(1) == 'pengajuan_dikirim' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_dikirim') ?>">Pengajuan Dikirim</a></li>
