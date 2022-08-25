@@ -48,20 +48,6 @@
 
     $(document).ready(function() {
         dataRt();
-
-        $('.addButton').click(function() {
-            $.ajax({
-                url: "<?= site_url('admin/data_rt/new') ?>",
-                dataType: "json",
-                success: function(response) {
-                    $('.viewModal').html(response.data).show();
-                    $('#addModal').modal('show');
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
-            });
-        })
     });
 </script>
 <?= $this->endSection(); ?>

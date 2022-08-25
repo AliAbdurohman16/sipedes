@@ -63,6 +63,10 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
     $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
     // Pengajuan -> Pengajuan Dikirim
     $routes->get('pengajuan_dikirim', 'User\PengajuanDikirimController::index');
+    $routes->post('pengajuan_dikirim/edit', 'User\PengajuanDikirimController::edit');
+    $routes->post('pengajuan_dikirim/update', 'User\PengajuanDikirimController::update');
+    $routes->post('pengajuan_dikirim/detail', 'User\PengajuanDikirimController::detail');
+    $routes->post('pengajuan_dikirim/delete', 'User\PengajuanDikirimController::delete');
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
 });
@@ -70,7 +74,7 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');
-    
+
     // Log Activity
     $routes->get('log_activity', 'Admin\LogActivityController::index');
 
