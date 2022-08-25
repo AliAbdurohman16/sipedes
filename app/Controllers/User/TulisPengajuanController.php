@@ -23,7 +23,7 @@ class TulisPengajuanController extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('user/pengajuan/tulis_pengajuan', $data);
+        return view('user/pengajuan/tulis_pengajuan/index', $data);
     }
 
     public function create()
