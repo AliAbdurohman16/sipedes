@@ -51,6 +51,24 @@
                     </ul>
                 </div>
             </li>
+            <li class="sidebar-dropdown">
+                <a href="javascript:void(0)"><i class="fa-solid fa-envelope-circle-check me-2"></i>Data Surat Pengajuan</a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li><a href="">Surat Keterangan Nama</a></li>
+                        <li><a href="">Surat Keterangan Domisli</a></li>
+                        <li><a href="">Surat Keterangan Belum Nikah</a></li>
+                        <li><a href="">Surat Keterangan Lahir</a></li>
+                        <li><a href="">Surat Keterangan Penghasilan</a></li>
+                        <li><a href="">Surat Keterangan Pindah KK</a></li>
+                        <li><a href="">Surat Keterangan Rame-rame</a></li>
+                        <li><a href="">Surat Keterangan SKU</a></li>
+                        <li><a href="">Surat Keterangan SKTM</a></li>
+                        <li><a href="">Surat Keterangan SKCK</a></li>
+                        <li><a href="">Surat Keterangan Kematian</a></li>
+                    </ul>
+                </div>
+            </li>
             <li><a href="index.html"><i class="fa-solid fa-chart-column me-2"></i>Laporan</a></li>
             <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'tulis_pengajuan' || $uri->getSegment(1) == 'pengajuan_dikirim' || $uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>">
                 <a href="javascript:void(0)"><i class="fa-solid fa-user-pen me-2"></i>Pengajuan</a>
