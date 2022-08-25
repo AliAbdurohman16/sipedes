@@ -26,7 +26,6 @@
                             <li><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_rt' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_rt') ?>">Data RT</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_jabatan') ?>">Data Jabatan</a></li>
-                            <li><a href="index-rtl.html">Data Pengajuan</a></li>
                         </ul>
                     </div>
                 </li>
@@ -43,15 +42,25 @@
             </li>
             <li class="<?= ($uri->getSegment(1) == 'users' ? 'active' : '') ?>"><a href="<?= base_url('admin/users') ?>"><i class="fa-solid fa-users me-2"></i>Pengguna</a></li>
             <li class="sidebar-dropdown">
-                <a href="javascript:void(0)"><i class="fa-solid fa-envelope me-2"></i>Surat</a>
+                <a href="javascript:void(0)"><i class="fa-solid fa-envelope-open-text me-2"></i>Data Pengajuan</a>
                 <div class="sidebar-submenu">
                     <ul>
-                        <li><a href="chat.html">Surat Keluar</a></li>
-                        <li><a href="email.html">Surat Masuk</a></li>
+                        <li><a href="chat.html">Data Pengajuan Masuk</a></li>
+                        <li><a href="email.html">Data Pengajuan Sudah Dibuat</a></li>
                     </ul>
                 </div>
             </li>
-            <li><a href="index.html"><i class="fa-solid fa-user-pen me-2"></i></i>Pengajuan</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-chart-column me-2"></i>Laporan</a></li>
+            <li class="sidebar-dropdown">
+                <a href="javascript:void(0)"><i class="fa-solid fa-user-pen me-2"></i>Pengajuan</a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li><a href="chat.html">Tulis Pengajuan</a></li>
+                        <li><a href="chat.html">Pengajuan Dikirim</a></li>
+                        <li><a href="email.html">Pengajuan Sudah Dibuat</a></li>
+                    </ul>
+                </div>
+            </li>
             <li><a href="<?= base_url() . '/logout' ?>"><i class="fa-solid fa-right-from-bracket me-2"></i>Keluar</a></li>
 
         </ul>
