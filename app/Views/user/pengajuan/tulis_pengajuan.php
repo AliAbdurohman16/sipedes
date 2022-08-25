@@ -42,7 +42,7 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">No Telepon</label>
+                                    <label class="form-label">No Telepon <span class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="phone" class="fea icon-sm icons"></i>
                                         <input name="telepon" type="number" class="form-control ps-5" placeholder="No Telepon :">
@@ -52,7 +52,7 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Jenis Pengajuan Surat</label>
+                                    <label class="form-label">Jenis Pengajuan Surat <span class="text-danger">*</span></label>
                                     <select class="form-select form-control" name="jenis" aria-label="Default select example">
                                         <option selected>Pilih Jenis Pengajuan Surat</option>
                                         <option value="Keterangan Nama">Keterangan Nama</option>
@@ -72,7 +72,7 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Keterangan</label>
+                                    <label class="form-label">Keterangan <span class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="message-circle" class="fea icon-sm icons"></i>
                                         <textarea name="keterangan" rows="4" class="form-control ps-5" placeholder="Keterangan :"></textarea>
