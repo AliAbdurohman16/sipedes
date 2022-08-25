@@ -31,7 +31,7 @@ class PendudukController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/penduduk/table', $data)
+                'data' => view('admin/penduduk/table', $data)
             ];
 
             echo json_encode($msg);
@@ -40,7 +40,7 @@ class PendudukController extends BaseController
                 'title' => 'Data Penduduk'
             ];
 
-            return view('admin/data-master/penduduk/index', $data);
+            return view('admin/penduduk/index', $data);
         }
     }
 
@@ -53,7 +53,7 @@ class PendudukController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/penduduk/add', $data)
+                'data' => view('admin/penduduk/add', $data)
             ];
 
             echo json_encode($msg);
@@ -296,7 +296,7 @@ class PendudukController extends BaseController
                 'nama_ayah' => $row->nama_ayah,
             ];
 
-            $msg = ['success' => view('admin/data-master/penduduk/edit', $data)];
+            $msg = ['success' => view('admin/penduduk/edit', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -538,7 +538,7 @@ class PendudukController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/penduduk/detail', $data)
+                'data' => view('admin/penduduk/detail', $data)
             ];
 
             echo json_encode($msg);

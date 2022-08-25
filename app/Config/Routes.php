@@ -123,6 +123,11 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('kartu-keluarga/anggota-kk', 'Admin\KartuKeluargaController::anggota_kk');
     $routes->post('kartu-keluarga/create_anggota', 'Admin\KartuKeluargaController::create_anggota');
     $routes->post('kartu-keluarga/delete_anggota', 'Admin\KartuKeluargaController::delete_anggota');
+
+    // Route Admin -> Aparat 
+    $routes->get('aparat-desa', 'Admin\AparatDesaController::index');
+    $routes->get('aparat-desa/new', 'Admin\AparatDesaController::new');
+    $routes->post('aparat-desa/create', 'Admin\AparatDesaController::create');
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {

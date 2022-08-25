@@ -42,6 +42,7 @@
                 </div>
             </li>
             <li class="<?= ($uri->getSegment(1) == 'users' ? 'active' : '') ?>"><a href="<?= base_url('admin/users') ?>"><i class="fa-solid fa-users me-2"></i>Pengguna</a></li>
+            <li class="<?= ($uri->getSegment(1) == 'aparat-desa' ? 'active' : '') ?>"><a href="<?= base_url('admin/aparat-desa') ?>"><i class="fa-solid fa-user-tie me-2"></i>Aparat Desa</a></li>
             <li class="sidebar-dropdown">
                 <a href="javascript:void(0)"><i class="fa-solid fa-envelope me-2"></i>Surat</a>
                 <div class="sidebar-submenu">

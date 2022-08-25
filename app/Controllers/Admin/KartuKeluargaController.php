@@ -36,7 +36,7 @@ class KartuKeluargaController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/KartuKeluarga/table', $data)
+                'data' => view('admin/KartuKeluarga/table', $data)
             ];
 
             echo json_encode($msg);
@@ -45,7 +45,7 @@ class KartuKeluargaController extends BaseController
                 'title' => 'Data Kartu Keluarga'
             ];
 
-            return view('admin/data-master/KartuKeluarga/index', $data);
+            return view('admin/KartuKeluarga/index', $data);
         }
     }
 
@@ -58,7 +58,7 @@ class KartuKeluargaController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/data-master/KartuKeluarga/add', $data)
+                'data' => view('admin/KartuKeluarga/add', $data)
             ];
 
             echo json_encode($msg);
@@ -201,7 +201,7 @@ class KartuKeluargaController extends BaseController
                 'alamat' => $row->alamat,
             ];
 
-            $msg = ['success' => view('admin/data-master/KartuKeluarga/edit', $data)];
+            $msg = ['success' => view('admin/KartuKeluarga/edit', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -364,7 +364,7 @@ class KartuKeluargaController extends BaseController
                 'alamat' => $row->alamat,
             ];
 
-            $msg = ['data' => view('admin/data-master/KartuKeluarga/anggota_kk', $data)];
+            $msg = ['data' => view('admin/KartuKeluarga/anggota_kk', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
