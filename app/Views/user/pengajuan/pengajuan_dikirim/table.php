@@ -17,22 +17,20 @@
         $no = 1;
         foreach ($pds as $pd) :
         ?>
-            <?php if ($pd->status == 'Belum Dibuat') { ?>
-                <tr>
-                    <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
-                    <td class="p-3"><?= $pd->no_kk; ?></td>
-                    <td class="p-3"><?= $pd->nik; ?></td>
-                    <td class="p-3"><?= $pd->telepon; ?></td>
-                    <td class="p-3"><?= $pd->jenis; ?></td>
-                    <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
-                    <td class="p-3"><span class="badge bg-soft-danger"> <?= $pd->status; ?> </span></td>
-                    <td style="width: 12%;">
-                        <button type="button" class="btn btn-info btn-sm mb-2" onclick="detailPengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-eye"></i> Detail</button>
-                        <button type="button" class="btn btn-warning btn-sm mb-2" onclick="editPengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm mb-2" onclick="deletePengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
-                    </td>
-                </tr>
-            <?php } ?>
+            <tr>
+                <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
+                <td class="p-3"><?= $pd->no_kk; ?></td>
+                <td class="p-3"><?= $pd->nik; ?></td>
+                <td class="p-3"><?= $pd->telepon; ?></td>
+                <td class="p-3"><?= $pd->jenis; ?></td>
+                <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
+                <td class="p-3"><span class="badge bg-soft-danger"> <?= $pd->status; ?> </span></td>
+                <td style="width: 12%;">
+                    <button type="button" class="btn btn-info btn-sm mb-2" onclick="detailPengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-eye"></i> Detail</button>
+                    <button type="button" class="btn btn-warning btn-sm mb-2" onclick="editPengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-pen"></i> Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm mb-2" onclick="deletePengajuanDikirim(<?= $pd->id ?>)"><i class="fa-solid fa-trash"></i> Hapus</button>
+                </td>
+            </tr>
         <?php endforeach; ?>
         <!-- End -->
     </tbody>
@@ -62,7 +60,7 @@
             }
         });
     }
-    
+
     function detailPengajuanDikirim(id) {
         $.ajax({
             type: 'post',

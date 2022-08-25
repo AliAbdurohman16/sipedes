@@ -51,21 +51,21 @@
                     </ul>
                 </div>
             </li>
-            <li class="sidebar-dropdown">
+            <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'surat_keterangan_nama' || $uri->getSegment(1) == 'surat_keterangan_domisli' || $uri->getSegment(1) == 'surat_keterangan_belum_nikah' ? 'active' : '') ?>">
                 <a href="javascript:void(0)"><i class="fa-solid fa-envelope-circle-check me-2"></i>Data Surat Pengajuan</a>
-                <div class="sidebar-submenu">
+                <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'surat_keterangan_nama' || $uri->getSegment(1) == 'surat_keterangan_domisli' || $uri->getSegment(1) == 'surat_keterangan_belum_nikah' ? 'd-block' : '') ?>">
                     <ul>
-                        <li><a href="">Surat Keterangan Nama</a></li>
-                        <li><a href="">Surat Keterangan Domisli</a></li>
-                        <li><a href="">Surat Keterangan Belum Nikah</a></li>
-                        <li><a href="">Surat Keterangan Lahir</a></li>
-                        <li><a href="">Surat Keterangan Penghasilan</a></li>
-                        <li><a href="">Surat Keterangan Pindah KK</a></li>
-                        <li><a href="">Surat Keterangan Rame-rame</a></li>
-                        <li><a href="">Surat Keterangan SKU</a></li>
-                        <li><a href="">Surat Keterangan SKTM</a></li>
-                        <li><a href="">Surat Keterangan SKCK</a></li>
-                        <li><a href="">Surat Keterangan Kematian</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_nama' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_nama') ?>">Surat Keterangan Nama</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_domisli' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_domisli') ?>">Surat Keterangan Domisli</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_belum_nikah' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_belum_nikah') ?>">Surat Keterangan Belum Nikah</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_lahir' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_lahir') ?>">Surat Keterangan Lahir</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_penghasilan' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_penghasilan') ?>">Surat Keterangan Penghasilan</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_pindah_kk' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_pindah_kk') ?>">Surat Keterangan Pindah KK</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_rame_rame' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_rame_rame') ?>">Surat Keterangan Rame-rame</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_sku' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_sku') ?>">Surat Keterangan SKU</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_sktm' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_sktm') ?>">Surat Keterangan SKTM</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_skck' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_skck') ?>">Surat Keterangan SKCK</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_kematian' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_kematian') ?>">Surat Keterangan Kematian</a></li>
                     </ul>
                 </div>
             </li>

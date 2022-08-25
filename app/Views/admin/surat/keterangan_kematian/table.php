@@ -7,7 +7,6 @@
             <th class="border-bottom p-3">No Telepon</th>
             <th class="border-bottom p-3">Jenis Pengajuan Surat</th>
             <th class="border-bottom p-3">Keterangan</th>
-            <th class="border-bottom p-3">Status</th>
             <th class="border-bottom p-3">Aksi</th>
         </tr>
     </thead>
@@ -24,9 +23,8 @@
                 <td class="p-3"><?= $pd->telepon; ?></td>
                 <td class="p-3"><?= $pd->jenis; ?></td>
                 <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
-                <td class="p-3"><span class="badge bg-soft-success"> <?= $pd->status; ?> </span></td>
                 <td style="width: 12%;">
-                    <button type="button" class="btn btn-info btn-sm mb-2" onclick="detailPengajuanDibuat(<?= $pd->id ?>)"><i class="fa-solid fa-circle-info"></i> Informasi</button>
+                    <button type="button" class="btn btn-info btn-sm mb-2" onclick="detail(<?= $pd->id ?>)"><i class="fa-solid fa-circle-info"></i> Informasi</button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -39,10 +37,10 @@
         $('#table').DataTable();
     })
 
-    function detailPengajuanDibuat(id) {
+    function detail(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('user/pengajuan_sudah_dibuat/detail') ?>",
+            url: "<?= site_url('admin/surat_keterangan_kematian/detail') ?>",
             data: {
                 id: id
             },
