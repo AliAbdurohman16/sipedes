@@ -45,6 +45,9 @@
                             <label class="form-label">Jabatan <span class="text-danger">*</span></label>
                             <select name="jabatan" id="jabatan" class="form-control">
                                 <option value="">-- Pilih Jabatan --</option>
+                                <?php foreach ($jabatan as $row) : ?>
+                                    <option value="<?= $row->id ?>"><?= $row->name; ?></option>
+                                <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback errorJabatan">
                             </div>
@@ -83,8 +86,15 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Foto</label>
-                            <input name="foto" id="foto" type="file" class="form-control" value="<?= old('foto') ?>" placeholder="Tempat Lahir">
-                            <div class="invalid-feedback errorFoto">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="/images/aparat/Avatar.png" alt="default-sampul" class="img-thumbnail img-preview">
+                                </div>
+                                <div class="col-md-8">
+                                    <input name="foto" id="foto" type="file" class="form-control img-preview" value="<?= old('foto') ?>" placeholder="Foto" onchange="previewImg()">
+                                    <div class="invalid-feedback errorFoto">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,6 +110,19 @@
 </div>
 
 <script>
+    function previewImg() {
+        const foto = document.querySelector('#foto');
+        const imgPreview = document.querySelector('.img-preview');
+        const fileFoto = new FileReader();
+
+        fileFoto.readAsDataURL(foto.files[0]);
+
+        fileFoto.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+
+
     $("#save").click(function(e) {
         e.preventDefault();
         let form = $('.formAparatDesa')[0];
@@ -187,6 +210,14 @@
                         $('#foto').removeClass('is-invalid');
                         $('.errorFoto').html('');
                     }
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: response.success,
+                    })
+                    $('#addModal').modal('hide');
+                    dataAparat();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

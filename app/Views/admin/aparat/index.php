@@ -16,16 +16,8 @@
         <div class="row">
             <div class="col-12 mt-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body viewdata">
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="button" class="btn btn-primary mb-3 btn-sm addButton">
-                                Tambah Data +
-                            </button>
-                        </div>
-                        <div class="table-responsive shadow rounded viewdata">
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -53,20 +45,6 @@
 
     $(document).ready(function() {
         dataAparat();
-
-        $('.addButton').click(function() {
-            $.ajax({
-                url: "<?= site_url('admin/aparat-desa/new') ?>",
-                dataType: "json",
-                success: function(response) {
-                    $('.viewModal').html(response.data).show();
-                    $('#addModal').modal('show');
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
-            });
-        })
     });
 </script>
 <?= $this->endSection(); ?>

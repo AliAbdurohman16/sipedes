@@ -369,7 +369,7 @@ class KartuKeluargaController extends BaseController
             $msg = ['success' => 'Data penduduk berhasil di hapus'];
             echo json_encode($msg);
         } else {
-            exit("Maaf data tidak dapat di proses");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
 

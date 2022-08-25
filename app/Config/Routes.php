@@ -70,7 +70,7 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');
-    
+
     // Log Activity
     $routes->get('log_activity', 'Admin\LogActivityController::index');
 
@@ -143,6 +143,10 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->get('aparat-desa', 'Admin\AparatDesaController::index');
     $routes->get('aparat-desa/new', 'Admin\AparatDesaController::new');
     $routes->post('aparat-desa/create', 'Admin\AparatDesaController::create');
+    $routes->post('aparat-desa/edit', 'Admin\AparatDesaController::edit');
+    $routes->post('aparat-desa/update', 'Admin\AparatDesaController::update');
+    $routes->post('aparat-desa/delete', 'Admin\AparatDesaController::delete');
+    $routes->post('aparat-desa/detail', 'Admin\AparatDesaController::detail');
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
