@@ -69,6 +69,7 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
     $routes->post('pengajuan_dikirim/delete', 'User\PengajuanDikirimController::delete');
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
+    $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
