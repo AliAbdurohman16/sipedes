@@ -46,5 +46,9 @@
             }
         });
     }
+
+    $(document).ready(function() {
+        pengajuanDikirim();
+    });
 </script>
 <?= $this->endSection(); ?>

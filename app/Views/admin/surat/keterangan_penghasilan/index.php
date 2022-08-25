@@ -8,6 +8,7 @@
 
             <nav aria-label="breadcrumb" class="d-inline-block mt-2 mt-sm-0">
                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+                    <li class="breadcrumb-item text-capitalize"><a href="index.html">Data Surat Pengajuan</a></li>
                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><?= $title ?></li>
                 </ul>
             </nav>
@@ -33,9 +34,9 @@
 <div class="viewModal" style="display: none;"></div>
 
 <script>
-    function dataRt() {
+    function data() {
         $.ajax({
-            url: "<?= site_url('admin/log_activity') ?>",
+            url: "<?= site_url('admin/surat_keterangan_penghasilan') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -47,7 +48,7 @@
     }
 
     $(document).ready(function() {
-        dataRt();
+        data();
     });
 </script>
 <?= $this->endSection(); ?>

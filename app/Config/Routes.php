@@ -63,8 +63,13 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
     $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
     // Pengajuan -> Pengajuan Dikirim
     $routes->get('pengajuan_dikirim', 'User\PengajuanDikirimController::index');
+    $routes->post('pengajuan_dikirim/edit', 'User\PengajuanDikirimController::edit');
+    $routes->post('pengajuan_dikirim/update', 'User\PengajuanDikirimController::update');
+    $routes->post('pengajuan_dikirim/detail', 'User\PengajuanDikirimController::detail');
+    $routes->post('pengajuan_dikirim/delete', 'User\PengajuanDikirimController::delete');
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
+    $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
@@ -147,6 +152,49 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('aparat-desa/update', 'Admin\AparatDesaController::update');
     $routes->post('aparat-desa/delete', 'Admin\AparatDesaController::delete');
     $routes->post('aparat-desa/detail', 'Admin\AparatDesaController::detail');
+
+    // Route Admin -> Surat Keterangan Nama
+    $routes->get('surat_keterangan_nama', 'Admin\Surat\KeteranganNamaController::index');
+    $routes->post('surat_keterangan_nama/detail', 'Admin\Surat\KeteranganNamaController::detail');
+
+    // Route Admin -> Surat Keterangan Domisli
+    $routes->get('surat_keterangan_domisli', 'Admin\Surat\KeteranganDomisliController::index');
+    $routes->post('surat_keterangan_domisli/detail', 'Admin\Surat\KeteranganDomisliController::detail');
+
+    // Route Admin -> Surat Keterangan Belum Nikah
+    $routes->get('surat_keterangan_belum_nikah', 'Admin\Surat\KeteranganBelumNikahController::index');
+
+    // Route Admin -> Surat Keterangan Lahir
+    $routes->get('surat_keterangan_lahir', 'Admin\Surat\KeteranganLahirController::index');
+    $routes->post('surat_keterangan_lahir/detail', 'Admin\Surat\KeteranganLahirController::detail');
+
+    // Route Admin -> Surat Keterangan Penghasilan
+    $routes->get('surat_keterangan_penghasilan', 'Admin\Surat\KeteranganPenghasilanController::index');
+    $routes->post('surat_keterangan_penghasilan/detail', 'Admin\Surat\KeteranganPenghasilanController::detail');
+
+    // Route Admin -> Surat Keterangan Pindah KK
+    $routes->get('surat_keterangan_pindah_kk', 'Admin\Surat\KeteranganPindahKKController::index');
+    $routes->post('surat_keterangan_pindah_kk/detail', 'Admin\Surat\KeteranganPindahKKController::detail');
+
+    // Route Admin -> Surat Keterangan Rame-rame
+    $routes->get('surat_keterangan_rame_rame', 'Admin\Surat\KeteranganRameRameController::index');
+    $routes->post('surat_keterangan_rame_rame/detail', 'Admin\Surat\KeteranganRameRameController::detail');
+
+    // Route Admin -> Surat Keterangan SKU
+    $routes->get('surat_keterangan_sku', 'Admin\Surat\KeteranganSKUController::index');
+    $routes->post('surat_keterangan_sku/detail', 'Admin\Surat\KeteranganSKUController::detail');
+
+    // Route Admin -> Surat Keterangan SKTM
+    $routes->get('surat_keterangan_sktm', 'Admin\Surat\KeteranganSKTMController::index');
+    $routes->post('surat_keterangan_sktm/detail', 'Admin\Surat\KeteranganSKTMController::detail');
+
+    // Route Admin -> Surat Keterangan SKTM
+    $routes->get('surat_keterangan_skck', 'Admin\Surat\KeteranganSKCKController::index');
+    $routes->post('surat_keterangan_skck/detail', 'Admin\Surat\KeteranganSKCKController::detail');
+
+    // Route Admin -> Surat Keterangan Kematian
+    $routes->get('surat_keterangan_kematian', 'Admin\Surat\KeteranganKematianController::index');
+    $routes->post('surat_keterangan_kematian/detail', 'Admin\Surat\KeteranganKematianController::detail');
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
