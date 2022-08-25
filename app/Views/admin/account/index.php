@@ -36,7 +36,7 @@
                                         <i data-feather="image" class="fea icon-sm icons"></i>
                                         <input name="image" id="image" type="file" class="form-control ps-5 <?= ($validation->hasError('image')) ? 'is-invalid' : '' ?>">
                                         <div class="invalid-feedback errorImage">
-                                        <?= $validation->getError('image'); ?>
+                                            <?= $validation->getError('image'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                         <i data-feather="user" class="fea icon-sm icons"></i>
                                         <input name="name" id="name" type="text" class="form-control ps-5 <?= ($validation->hasError('name')) ? 'is-invalid' : '' ?>" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
                                         <div class="invalid-feedback errorName">
-                                        <?= $validation->getError('name'); ?>
+                                            <?= $validation->getError('name'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                         <i data-feather="user-check" class="fea icon-sm icons"></i>
                                         <input name="username" id="username" type="text" class="form-control ps-5 <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" placeholder="Username :" value="<?= $users->username ?>">
                                         <div class="invalid-feedback errorUsername">
-                                        <?= $validation->getError('username'); ?>
+                                            <?= $validation->getError('username'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                         <i data-feather="phone" class="fea icon-sm icons"></i>
                                         <input name="telephone" id="telephone" type="number" class="form-control ps-5 <?= ($validation->hasError('telephone')) ? 'is-invalid' : '' ?>" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
                                         <div class="invalid-feedback errorTelephone">
-                                        <?= $validation->getError('telephone'); ?>
+                                            <?= $validation->getError('telephone'); ?>
                                         </div>
                                     </div>
                                 </div>

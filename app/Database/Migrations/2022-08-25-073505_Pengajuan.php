@@ -15,10 +15,6 @@ class Pengajuan extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'no_kk' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 16,
-            ],
             'nik' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 16,

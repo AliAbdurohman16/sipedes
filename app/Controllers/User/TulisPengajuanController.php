@@ -5,7 +5,6 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
 use App\Models\PendudukModel;
-use App\Models\KartuKeluargaModel;
 
 class TulisPengajuanController extends BaseController
 {
@@ -13,7 +12,6 @@ class TulisPengajuanController extends BaseController
     {
         $this->pengajuanModel = new PengajuanModel();
         $this->pendudukModel = new PendudukModel();
-        $this->kartuKeluargaModel = new KartuKeluargaModel();
     }
 
     public function index()
@@ -28,6 +26,6 @@ class TulisPengajuanController extends BaseController
 
     public function create()
     {
-        //
+        $nik = $this->request->getVar('no_kk');
     }
 }
