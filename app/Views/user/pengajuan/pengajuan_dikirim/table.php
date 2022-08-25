@@ -5,6 +5,7 @@
             <th class="border-bottom p-3">No Kartu Keluarga</th>
             <th class="border-bottom p-3">NIK</th>
             <th class="border-bottom p-3">No Telepon</th>
+            <th class="border-bottom p-3">Jenis Pengajuan</th>
             <th class="border-bottom p-3">Keterangan</th>
             <th class="border-bottom p-3">Status</th>
             <th class="border-bottom p-3">Aksi</th>
@@ -22,6 +23,7 @@
                     <td class="p-3"><?= $pd->no_kk; ?></td>
                     <td class="p-3"><?= $pd->nik; ?></td>
                     <td class="p-3"><?= $pd->telepon; ?></td>
+                    <td class="p-3"><?= $pd->jenis; ?></td>
                     <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
                     <td class="p-3"><span class="badge bg-soft-danger"> <?= $pd->status; ?> </span></td>
                     <td style="width: 12%;">
