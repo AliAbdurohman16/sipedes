@@ -61,6 +61,10 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Pengajuan -> Tulis Pengajuan
     $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
     $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
+    // Pengajuan -> Pengajuan Dikirim
+    $routes->get('pengajuan_dikirim', 'User\PengajuanDikirimController::index');
+    // Pengajuan -> Pengajuan Sudah Dibuat
+    $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {

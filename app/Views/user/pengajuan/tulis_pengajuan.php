@@ -52,12 +52,20 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Jenis Pengajuan</label>
+                                    <label class="form-label">Jenis Pengajuan Surat</label>
                                     <select class="form-select form-control" name="jenis" aria-label="Default select example">
-                                        <option selected>Pilih Jenis Pengajuan</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>Pilih Jenis Pengajuan Surat</option>
+                                        <option value="Keterangan Nama">Keterangan Nama</option>
+                                        <option value="Keterangan Domisli">Keterangan Domisli</option>
+                                        <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
+                                        <option value="Keterangan Lahir">Keterangan Lahir</option>
+                                        <option value="Keterangan Penghasilan">Keterangan Penghasilan</option>
+                                        <option value="Keterangan Pindah KK">Keterangan Pindah KK</option>
+                                        <option value="Keterangan Rame-rame">Keterangan Rame-rame</option>
+                                        <option value="Keterangan SKU">Keterangan SKU</option>
+                                        <option value="Keterangan SKTM">Keterangan SKTM</option>
+                                        <option value="Keterangan SKCK">Keterangan SKCK</option>
+                                        <option value="Keterangan Kematian">Keterangan Kematian</option>
                                     </select>
                                 </div>
                             </div>
@@ -88,7 +96,6 @@
         <!--end col-->
     </div>
     <!--end row-->
-</div>
 </div>
 <!--end container-->
 <?= $this->endSection(); ?>
