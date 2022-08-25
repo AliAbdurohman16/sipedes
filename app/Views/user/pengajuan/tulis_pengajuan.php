@@ -19,10 +19,22 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="<?= site_url('tulis_pengajuan/create') ?>" method="POST">
+                        <form action="<?= site_url('user/tulis_pengajuan/create') ?>" method="POST">
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">No Kartu Keluarga <span class="text-danger">*</span></label>
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="user" class="fea icon-sm icons"></i>
+                                            <input name="no_kk" type="number" class="form-control ps-5 <?= ($validation->hasError('no_kk')) ? 'is-invalid' : '' ?>" value="<?= old('no_kk') ?>" placeholder="No Kartu Keluarga :">
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('no_kk'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!--end col-->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">NIK <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
@@ -53,7 +65,7 @@
                                         <label class="form-label">Jenis Pengajuan Surat <span class="text-danger">*</span></label>
                                         <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" aria-label="Default select example">
                                             <option selected>Pilih Jenis Pengajuan Surat</option>
-                                            <option value="Keterangan Nama" <?= old('jenis') ?>>Keterangan Nama</option>
+                                            <option value="Keterangan Nama">Keterangan Nama</option>
                                             <option value="Keterangan Domisli">Keterangan Domisli</option>
                                             <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
                                             <option value="Keterangan Lahir">Keterangan Lahir</option>
@@ -103,4 +115,22 @@
     <!--end row-->
 </div>
 <!--end container-->
+
+<script>
+        $(function() {
+            <?php if (session()->has("error_message")) { ?>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '<?= session("error_message") ?>'
+                })
+            <?php } else if (session()->has("success_message")) { ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Selamat!',
+                    text: '<?= session("success_message") ?>'
+                })
+            <?php } ?>
+        });
+    </script>
 <?= $this->endSection(); ?>

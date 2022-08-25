@@ -78,12 +78,13 @@ class KartuKeluargaController extends BaseController
                 [
                     'no_kk' => [
                         'label' => 'Nomor kartu keluarga',
-                        'rules' => 'required|is_unique[kartu_keluarga.no_kk]|numeric|max_length[16]',
+                        'rules' => 'required|is_unique[kartu_keluarga.no_kk]|numeric|max_length[16]|min_length[16]',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
                             'max_length' => '{field} maksimal 16 angka',
+                            'min_length' => '{field} minimal 16 angka',
                         ]
                     ],
                     'nama_kepala' => [

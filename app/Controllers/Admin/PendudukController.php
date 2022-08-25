@@ -322,9 +322,9 @@ class PendudukController extends BaseController
         $nikOld = $this->pendudukModel->find($id);
 
         if ($nikOld->nik == $this->request->getVar('nik')) {
-            $rules_nik = 'required|numeric|max_length[16]';
+            $rules_nik = 'required|numeric|max_length[16]|min_length[16]';
         } else {
-            $rules_nik = 'required|is_unique[penduduk.nik]|numeric|max_length[16]';
+            $rules_nik = 'required|is_unique[penduduk.nik]|numeric|max_length[16]|min_length[16]';
         }
 
         if ($this->request->isAJAX()) {
@@ -339,6 +339,7 @@ class PendudukController extends BaseController
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
                             'max_length' => '{field} maksimal 16 angka',
+                            'min_length' => '{field} minimal 16 angka',
                         ]
                     ],
                     'name' => [
