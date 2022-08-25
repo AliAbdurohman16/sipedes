@@ -57,6 +57,12 @@ $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
     $routes->post('reset_password/send', 'Auth\ResetPassword::send');
 });
 
+$routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    // Pengajuan -> Tulis Pengajuan
+    $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
+    $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
+});
+
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');

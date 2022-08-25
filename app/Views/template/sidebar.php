@@ -55,9 +55,9 @@
                 <a href="javascript:void(0)"><i class="fa-solid fa-user-pen me-2"></i>Pengajuan</a>
                 <div class="sidebar-submenu">
                     <ul>
-                        <li><a href="chat.html">Tulis Pengajuan</a></li>
-                        <li><a href="chat.html">Pengajuan Dikirim</a></li>
-                        <li><a href="email.html">Pengajuan Sudah Dibuat</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'tulis_pengajuan' ? 'active' : '') ?>"><a href="<?= base_url('user/tulis_pengajuan') ?>">Tulis Pengajuan</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'pengajuan_dikirim' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_dikirim') ?>">Pengajuan Dikirim</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_sudah_dibuat') ?>">Pengajuan Sudah Dibuat</a></li>
                     </ul>
                 </div>
             </li>
