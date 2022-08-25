@@ -26,7 +26,7 @@
                             <li><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_rt' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_rt') ?>">Data RT</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_jabatan') ?>">Data Jabatan</a></li>
-                            <li><a href="index-rtl.html">Pengajuan</a></li>
+                            <li><a href="index-rtl.html">Data Pengajuan</a></li>
                         </ul>
                     </div>
                 </li>
