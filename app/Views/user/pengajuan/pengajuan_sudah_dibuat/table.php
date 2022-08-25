@@ -5,7 +5,7 @@
             <th class="border-bottom p-3">No Kartu Keluarga</th>
             <th class="border-bottom p-3">NIK</th>
             <th class="border-bottom p-3">No Telepon</th>
-            <th class="border-bottom p-3">Jenis Pengajuan</th>
+            <th class="border-bottom p-3">Jenis Pengajuan Surat</th>
             <th class="border-bottom p-3">Keterangan</th>
             <th class="border-bottom p-3">Status</th>
             <th class="border-bottom p-3">Aksi</th>

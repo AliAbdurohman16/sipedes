@@ -11,10 +11,10 @@
                     <input type="hidden" name="id" value="<?= $pd->id ?>">
                     <div class="row">
                         <input type="hidden" name="id" value="<?= $pd->id ?>">
-                        <div class="col-sm-5 mb-3">
+                        <div class="col-md-5 mb-3">
                             <label class="form-label">No Kartu Keluarga : </label>
                         </div>
-                        <div class="col-sm-7 mb-3">
+                        <div class="col-md-7 mb-3">
                             <?= $pd->no_kk ?>
                         </div>
                     </div>
