@@ -36,8 +36,8 @@ class Pengajuan extends Migration
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['Dikirim', 'Sudah Dibuat'],
-                'default'    => 'Dikirim',
+                'constraint' => ['Belum Dibuat', 'Sudah Dibuat'],
+                'default'    => 'Belum Dibuat',
             ],
             'created_at' => [
                 'type'       => 'DATETIME'

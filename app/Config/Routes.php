@@ -70,12 +70,15 @@ $routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');
+    
     // Log Activity
     $routes->get('log_activity', 'Admin\LogActivityController::index');
+
     // Account
     $routes->get('account', 'Admin\AccountController::index');
     $routes->post('account/update', 'Admin\AccountController::update');
     $routes->post('account/changePassword', 'Admin\AccountController::changePassword');
+
     // Route Data Master -> Data Dusun
     $routes->get('data_dusun', 'Admin\DusunController::index');
     $routes->get('data_dusun/new', 'Admin\DusunController::new');
