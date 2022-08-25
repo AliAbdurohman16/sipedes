@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 use App\Models\RtModel;
 use App\Models\RwModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class RtController extends BaseController
 {
@@ -13,6 +15,7 @@ class RtController extends BaseController
     {
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -104,6 +107,16 @@ class RtController extends BaseController
                 ];
 
                 $this->rtModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data RT',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data RT berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -189,6 +202,16 @@ class RtController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->rtModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data RT',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data RT berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -202,6 +225,14 @@ class RtController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->rtModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data RT',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data RT berhasil di hapus'];
             echo json_encode($msg);
         } else {

@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\PendudukModel;
 use App\Models\RtModel;
 use App\Models\RwModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class PendudukController extends BaseController
 {
@@ -19,6 +21,7 @@ class PendudukController extends BaseController
         $this->pendudukModel = new PendudukModel();
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -256,6 +259,16 @@ class PendudukController extends BaseController
                 ];
 
                 $this->pendudukModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Penduduk',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data penduduk berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -309,9 +322,9 @@ class PendudukController extends BaseController
         $nikOld = $this->pendudukModel->find($id);
 
         if ($nikOld->nik == $this->request->getVar('nik')) {
-            $rules_nik = 'required|numeric|max_length[16]';
+            $rules_nik = 'required|numeric|max_length[16]|min_length[16]';
         } else {
-            $rules_nik = 'required|is_unique[penduduk.nik]|numeric|max_length[16]';
+            $rules_nik = 'required|is_unique[penduduk.nik]|numeric|max_length[16]|min_length[16]';
         }
 
         if ($this->request->isAJAX()) {
@@ -326,6 +339,7 @@ class PendudukController extends BaseController
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
                             'max_length' => '{field} maksimal 16 angka',
+                            'min_length' => '{field} minimal 16 angka',
                         ]
                     ],
                     'name' => [
@@ -506,6 +520,16 @@ class PendudukController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->pendudukModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data Penduduk',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data penduduk berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -519,6 +543,14 @@ class PendudukController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->pendudukModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Penduduk',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data penduduk berhasil di hapus'];
             echo json_encode($msg);
         } else {

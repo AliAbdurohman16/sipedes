@@ -26,7 +26,7 @@
                             </center>
                         </div>
 
-                        <form action="<?= site_url('account/update') ?>" method="post" class="formProfile" enctype="multipart/form-data">
+                        <form action="<?= site_url('admin/account/update') ?>" method="post" class="formProfile" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $users->id ?>">
                             <div class="col-md-12 mt-4">
@@ -36,7 +36,7 @@
                                         <i data-feather="image" class="fea icon-sm icons"></i>
                                         <input name="image" id="image" type="file" class="form-control ps-5 <?= ($validation->hasError('image')) ? 'is-invalid' : '' ?>">
                                         <div class="invalid-feedback errorImage">
-                                        <?= $validation->getError('image'); ?>
+                                            <?= $validation->getError('image'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -44,12 +44,12 @@
                             <!--end col-->
                             <div class="col-md-12 mt-4">
                                 <div class="mb-3">
-                                    <label class="form-label">Nama Lengkap</label>
+                                    <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="user" class="fea icon-sm icons"></i>
                                         <input name="name" id="name" type="text" class="form-control ps-5 <?= ($validation->hasError('name')) ? 'is-invalid' : '' ?>" placeholder="Nama Lengkap :" value="<?= $users->name ?>">
                                         <div class="invalid-feedback errorName">
-                                        <?= $validation->getError('name'); ?>
+                                            <?= $validation->getError('name'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -57,12 +57,12 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Username</label>
+                                    <label class="form-label">Username <span class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="user-check" class="fea icon-sm icons"></i>
                                         <input name="username" id="username" type="text" class="form-control ps-5 <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" placeholder="Username :" value="<?= $users->username ?>">
                                         <div class="invalid-feedback errorUsername">
-                                        <?= $validation->getError('username'); ?>
+                                            <?= $validation->getError('username'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -70,12 +70,12 @@
                             <!--end col-->
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">No. Telepon</label>
+                                    <label class="form-label">No. Telepon <span class="text-danger">*</span></label>
                                     <div class="form-icon position-relative">
                                         <i data-feather="phone" class="fea icon-sm icons"></i>
                                         <input name="telephone" id="telephone" type="number" class="form-control ps-5 <?= ($validation->hasError('telephone')) ? 'is-invalid' : '' ?>" placeholder="No. Telepon :" value="<?= $users->telephone ?>">
                                         <div class="invalid-feedback errorTelephone">
-                                        <?= $validation->getError('telephone'); ?>
+                                            <?= $validation->getError('telephone'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -94,14 +94,14 @@
 
             <div class="col-lg-6 mt-4">
                 <div class="card border-0 rounded shadow p-4">
-                    <h5 class="mb-0">Ubah Kata Sandi :</h5>
-                    <?= form_open('account/changePassword', ['class' => 'formPassword']); ?>
+                    <h5 class="mb-0">Ubah Kata Sandi : </h5>
+                    <?= form_open('admin/account/changePassword', ['class' => 'formPassword']); ?>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $users->id ?>">
                     <div class="row mt-4">
                         <div class="col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label">Kata Sandi Lama :</label>
+                                <label class="form-label">Kata Sandi Lama : <span class="text-danger">*</span></label>
                                 <div class="form-icon position-relative">
                                     <i data-feather="key" class="fea icon-sm icons"></i>
                                     <input type="password" name="oldPassword" id="oldPassword" class="form-control ps-5 <?= ($validation->hasError('oldPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Lama :">
@@ -113,7 +113,7 @@
 
                         <div class="col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label">Kata Sandi Baru :</label>
+                                <label class="form-label">Kata Sandi Baru : <span class="text-danger">*</span></label>
                                 <div class="form-icon position-relative">
                                     <i data-feather="key" class="fea icon-sm icons"></i>
                                     <input type="password" name="newPassword" id="newPassword" class="form-control ps-5 <?= ($validation->hasError('newPassword')) ? 'is-invalid' : '' ?>" placeholder="Kata Sandi Baru :">
@@ -125,7 +125,7 @@
 
                         <div class="col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label">Konfirmasi Kata Sandi :</label>
+                                <label class="form-label">Konfirmasi Kata Sandi : <span class="text-danger">*</span></label>
                                 <div class="form-icon position-relative">
                                     <i data-feather="key" class="fea icon-sm icons"></i>
                                     <input type="password" name="confirmPassword" id="confirmPassword" class="form-control ps-5 <?= ($validation->hasError('confirmPassword')) ? 'is-invalid' : '' ?>" placeholder="Konfirmasi Kata Sandi :">
@@ -151,6 +151,7 @@
 </div>
 <!--end container-->
 
+<script src="<?= base_url() ?>/assets/js/upload.js"></script>
 <script>
     $(function() {
         <?php if (session()->has("success")) { ?>

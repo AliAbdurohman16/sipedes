@@ -52,18 +52,33 @@ $routes->group("", ["filter" => "authFilter:forgotPassword"], function ($routes)
 });
 
 $routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
-    // Forgot Password -> Change Password
-    $routes->get('change_password', 'Auth\ChangePassword::index');
-    $routes->post('change_password/send', 'Auth\ChangePassword::send');
-    // Dashboard
-    $routes->get('dashboard', 'DashboardController::index');
-    // Account
-    $routes->get('account', 'AccountController::index');
-    $routes->post('account/update', 'AccountController::update');
-    $routes->post('account/changePassword', 'AccountController::changePassword');
+    // Forgot Password -> Reset Password
+    $routes->get('reset_password', 'Auth\ResetPassword::index');
+    $routes->post('reset_password/send', 'Auth\ResetPassword::send');
+});
+
+$routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    // Pengajuan -> Tulis Pengajuan
+    $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
+    $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
+    // Pengajuan -> Pengajuan Dikirim
+    $routes->get('pengajuan_dikirim', 'User\PengajuanDikirimController::index');
+    // Pengajuan -> Pengajuan Sudah Dibuat
+    $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
+    // Dashboard
+    $routes->get('dashboard', 'Admin\DashboardController::index');
+    
+    // Log Activity
+    $routes->get('log_activity', 'Admin\LogActivityController::index');
+
+    // Account
+    $routes->get('account', 'Admin\AccountController::index');
+    $routes->post('account/update', 'Admin\AccountController::update');
+    $routes->post('account/changePassword', 'Admin\AccountController::changePassword');
+
     // Route Data Master -> Data Dusun
     $routes->get('data_dusun', 'Admin\DusunController::index');
     $routes->get('data_dusun/new', 'Admin\DusunController::new');

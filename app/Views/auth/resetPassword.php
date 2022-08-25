@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="card form-signin p-4 rounded shadow">
-                    <form action="<?= site_url('change_password/send') ?>" method="POST">
+                    <form action="<?= site_url('reset_password/send') ?>" method="POST">
                         <?= csrf_field(); ?>
                         <a href="index.html"><img src="assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
-                        <h5 class="mb-3 text-center">Ubah kata sandi</h5>
+                        <h5 class="mb-3 text-center">Reset kata sandi</h5>
 
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" name="password" id="floatingInput" placeholder="Kata Sandi Baru" value="<?= old('password') ?>" >

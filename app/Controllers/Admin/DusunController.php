@@ -5,6 +5,8 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 
 use App\Models\DusunModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class DusunController extends BaseController
 {
@@ -13,6 +15,7 @@ class DusunController extends BaseController
     public function __construct()
     {
         $this->dusunModel = new DusunModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -80,6 +83,16 @@ class DusunController extends BaseController
                 ];
 
                 $this->dusunModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Dusun',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data dusun berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -148,6 +161,16 @@ class DusunController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->dusunModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data Dusun',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data dusun berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -161,6 +184,14 @@ class DusunController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->dusunModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Dusun',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data dusun berhasil di hapus'];
             echo json_encode($msg);
         } else {

@@ -4,19 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class PengajuanModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
+    protected $table            = 'pengajuan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $insertID         = 1;
+    protected $insertID         = 0;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'image', 'name', 'username', 'password', 'telephone', 'role_id', 'status'
-    ];
+    protected $allowedFields    = ['no_kk', 'nik', 'telepon', 'jenis', 'keterangan'];
 
     // Dates
     protected $useTimestamps = true;
@@ -41,16 +39,4 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function getUser(String $username)
-    {
-        return $this->where('username', $username)->first();
-    }
-
-    public function withRole()
-    {
-        $this->select('roles.name as name_role, users.*');
-        
-        return $this->join('roles', 'roles.id = users.role_id')->findAll();
-    }
 }

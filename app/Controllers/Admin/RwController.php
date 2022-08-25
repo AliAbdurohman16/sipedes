@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 use App\Models\RwModel;
 use App\Models\DusunModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class RwController extends BaseController
 {
@@ -15,6 +17,7 @@ class RwController extends BaseController
     {
         $this->rwModel = new RwModel();
         $this->dusunModel = new DusunModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -35,7 +38,7 @@ class RwController extends BaseController
             $data = [
                 'title' => 'Data Rukun Warga (RW)'
             ];
-    
+
             return view('admin/data-master/rw/index', $data);
         }
     }
@@ -108,6 +111,16 @@ class RwController extends BaseController
                 ];
 
                 $this->rwModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data RW',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data RW berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -145,7 +158,7 @@ class RwController extends BaseController
         $id = $this->request->getVar('id');
 
         $oldJabatan = $this->rwModel->find($id);
-        
+
         if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
             $valid = $this->validate(
@@ -195,6 +208,16 @@ class RwController extends BaseController
                 $id = $this->request->getVar('id');
 
                 $this->rwModel->update($id, $request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Edit Data RW',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data RW berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -208,6 +231,14 @@ class RwController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->rwModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data RW',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data RW berhasil di hapus'];
             echo json_encode($msg);
         } else {

@@ -16,17 +16,17 @@
             $uri = new \CodeIgniter\HTTP\URI();
             $uri = service('uri');
             ?>
-            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
+            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('admin/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
             <?php if (session()->get('role')->id == 1) : ?>
-                <li><a href="index.html"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
-                <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>">
+                <li class="<?= ($uri->getSegment(1) == 'log_activity' ? 'active' : '') ?>"><a href="<?= base_url('admin/log_activity') ?>"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
+                <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'data_dusun' || $uri->getSegment(1) == 'data_rw' || $uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>">
                     <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Data Master</a>
                     <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'd-block' : '') ?>">
                         <ul>
-                            <li><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'data_dusun' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_dusun') ?>">Data Dusun</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'data_rw' ? 'active' : '') ?>"><a href="<?= site_url('admin/data_rw') ?>">Data RW</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_rt' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_rt') ?>">Data RT</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>"><a href="<?= base_url('admin/data_jabatan') ?>">Data Jabatan</a></li>
-                            <li><a href="index-rtl.html">Pengajuan</a></li>
                         </ul>
                     </div>
                 </li>
@@ -44,15 +44,25 @@
             <li class="<?= ($uri->getSegment(1) == 'users' ? 'active' : '') ?>"><a href="<?= base_url('admin/users') ?>"><i class="fa-solid fa-users me-2"></i>Pengguna</a></li>
             <li class="<?= ($uri->getSegment(1) == 'aparat-desa' ? 'active' : '') ?>"><a href="<?= base_url('admin/aparat-desa') ?>"><i class="fa-solid fa-user-tie me-2"></i>Aparat Desa</a></li>
             <li class="sidebar-dropdown">
-                <a href="javascript:void(0)"><i class="fa-solid fa-envelope me-2"></i>Surat</a>
+                <a href="javascript:void(0)"><i class="fa-solid fa-envelope-open-text me-2"></i>Data Pengajuan</a>
                 <div class="sidebar-submenu">
                     <ul>
-                        <li><a href="chat.html">Surat Keluar</a></li>
-                        <li><a href="email.html">Surat Masuk</a></li>
+                        <li><a href="chat.html">Data Pengajuan Masuk</a></li>
+                        <li><a href="email.html">Data Pengajuan Sudah Dibuat</a></li>
                     </ul>
                 </div>
             </li>
-            <li><a href="index.html"><i class="fa-solid fa-user-pen me-2"></i></i>Pengajuan</a></li>
+            <li><a href="index.html"><i class="fa-solid fa-chart-column me-2"></i>Laporan</a></li>
+            <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'tulis_pengajuan' || $uri->getSegment(1) == 'pengajuan_dikirim' || $uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>">
+                <a href="javascript:void(0)"><i class="fa-solid fa-user-pen me-2"></i>Pengajuan</a>
+                <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'tulis_pengajuan' || $uri->getSegment(1) == 'pengajuan_dikirim' || $uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'd-block' : '') ?>">
+                    <ul>
+                        <li class="<?= ($uri->getSegment(1) == 'tulis_pengajuan' ? 'active' : '') ?>"><a href="<?= base_url('user/tulis_pengajuan') ?>">Tulis Pengajuan</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'pengajuan_dikirim' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_dikirim') ?>">Pengajuan Dikirim</a></li>
+                        <li class="<?= ($uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_sudah_dibuat') ?>">Pengajuan Sudah Dibuat</a></li>
+                    </ul>
+                </div>
+            </li>
             <li><a href="<?= base_url() . '/logout' ?>"><i class="fa-solid fa-right-from-bracket me-2"></i>Keluar</a></li>
 
         </ul>

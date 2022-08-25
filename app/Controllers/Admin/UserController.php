@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 use App\Models\RoleModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class UserController extends BaseController
 {
@@ -13,6 +15,7 @@ class UserController extends BaseController
     {
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -142,6 +145,16 @@ class UserController extends BaseController
                 ];
 
                 $this->userModel->save($request);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Tambah Data Pengguna',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
                 $msg = ['success' => 'Data Pengguna berhasil di simpan'];
             }
             echo json_encode($msg);
@@ -250,6 +263,16 @@ class UserController extends BaseController
                     $id = $this->request->getVar('id');
 
                     $this->userModel->update($id, $request);
+
+                    // Log Activity
+                    $params = [
+                        'user_id'       => session()->get('user')->id,
+                        'activities'    => 'Edit Data Pengguna',
+                        'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                    ];
+
+                    $this->logModel->insert($params);
+
                     $msg = ['success' => 'Data Pengguna berhasil di simpan'];
                 } else {
                     $request = [
@@ -263,6 +286,16 @@ class UserController extends BaseController
                     $id = $this->request->getVar('id');
 
                     $this->userModel->update($id, $request);
+
+                    // Log Activity
+                    $params = [
+                        'user_id'       => session()->get('user')->id,
+                        'activities'    => 'Edit Data Pengguna',
+                        'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                    ];
+
+                    $this->logModel->insert($params);
+
                     $msg = ['success' => 'Data Pengguna berhasil di simpan'];
                 }
             }
@@ -277,6 +310,14 @@ class UserController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost();
             $this->userModel->delete($id);
+            // Log Activity
+            $params = [
+                'user_id'       => session()->get('user')->id,
+                'activities'    => 'Hapus Data Pengguna',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+            ];
+
+            $this->logModel->insert($params);
             $msg = ['success' => 'Data Pengguna berhasil di hapus'];
             echo json_encode($msg);
         } else {

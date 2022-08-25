@@ -4,22 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class LogActivityModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
+    protected $table            = 'log_activity';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 1;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'image', 'name', 'username', 'password', 'telephone', 'role_id', 'status'
-    ];
+    protected $allowedFields    = ['user_id', 'activities', 'created_at'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -42,15 +40,10 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getUser(String $username)
+    public function withUser()
     {
-        return $this->where('username', $username)->first();
-    }
-
-    public function withRole()
-    {
-        $this->select('roles.name as name_role, users.*');
+        $this->select('users.name, users.status, log_activity.*');
         
-        return $this->join('roles', 'roles.id = users.role_id')->findAll();
+        return $this->join('users', 'users.id = log_activity.user_id')->orderBy('id','DESC')->findAll();
     }
 }

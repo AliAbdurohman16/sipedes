@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Users extends Migration
+class Pengajuan extends Migration
 {
     public function up()
     {
@@ -15,36 +15,29 @@ class Users extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'image' => [
+            'no_kk' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 16,
+            ],
+            'nik' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 16,
+            ],
+            'telepon' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 13,
+            ],
+            'jenis' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'name' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'username' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-                'unique'     => true,
-            ],
-            'password' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'telephone' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '13',
-            ],
-            'role_id' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+            'keterangan' => [
+                'type'       => 'TEXT',
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['Offline', 'Online'],
-                'default'    => 'Offline',
+                'constraint' => ['Belum Dibuat', 'Sudah Dibuat'],
+                'default'    => 'Belum Dibuat',
             ],
             'created_at' => [
                 'type'       => 'DATETIME'
@@ -59,12 +52,11 @@ class Users extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('role_id', 'roles', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('users');
+        $this->forge->createTable('pengajuan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('pengajuan');
     }
 }

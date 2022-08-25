@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 use App\Models\RoleModel;
+use App\Models\LogActivityModel;
+use CodeIgniter\I18n\Time;
 
 class Login extends BaseController
 {
@@ -13,6 +15,7 @@ class Login extends BaseController
     {
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
+        $this->logModel = new LogActivityModel();
     }
 
     public function index()
@@ -61,7 +64,23 @@ class Login extends BaseController
                 session()->set('user', $checkUser);
                 session()->set('role', $roleUser);
 
-                return redirect()->to('/dashboard');
+                $status = [
+                    'status' => 'Online'
+                ];
+
+                $id = session()->get('user')->id;
+                $this->userModel->update($id, $status);
+
+                // Log Activity
+                $params = [
+                    'user_id'       => session()->get('user')->id,
+                    'activities'    => 'Masuk',
+                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                ];
+
+                $this->logModel->insert($params);
+
+                return redirect()->to('admin/dashboard');
             } else {
                 $sessError = [
                     'error_message' => 'Password yang anda masukan salah!'
@@ -84,6 +103,22 @@ class Login extends BaseController
 
     public function logout()
     {
+        $status = [
+            'status' => 'Offline'
+        ];
+
+        $id = session()->get('user')->id;
+        $this->userModel->update($id, $status);
+
+        // Log Activity
+        $params = [
+            'user_id'       => session()->get('user')->id,
+            'activities'    => 'Keluar',
+            'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+        ];
+
+        $this->logModel->insert($params);
+
         session()->destroy();
 
         return redirect()->to('/login');

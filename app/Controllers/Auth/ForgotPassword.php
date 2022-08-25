@@ -44,7 +44,7 @@ class ForgotPassword extends BaseController
         if ($check) {
             session()->set('id', $check->id);
             session()->set('user', $check->username);
-            return redirect()->to('/change_password');
+            return redirect()->to('/reset_password');
         } else {
             $sessError = [
                 'error_message' => 'Username yang anda masukan salah!'
