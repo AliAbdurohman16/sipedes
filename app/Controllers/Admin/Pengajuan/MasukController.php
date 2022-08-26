@@ -87,8 +87,6 @@ class MasukController extends BaseController
                 $telepon = $this->request->getVar('telepon');
                 $informasi = $this->request->getVar('informasi');
 
-                $result = file_get_contents('https://localhost:5000/msg?number='.$telepon.'&message='.$informasi);
-
                 $request = [
                     'informasi' => $informasi,
                 ];
