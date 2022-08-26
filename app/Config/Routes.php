@@ -153,6 +153,16 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     $routes->post('aparat-desa/delete', 'Admin\AparatDesaController::delete');
     $routes->post('aparat-desa/detail', 'Admin\AparatDesaController::detail');
 
+    // Route Admin -> Data Pengajuan Masuk
+    $routes->get('data_pengajuan_masuk', 'Admin\Pengajuan\MasukController::index');
+    $routes->post('data_pengajuan_masuk/validasi', 'Admin\Pengajuan\MasukController::validasi');
+    $routes->post('data_pengajuan_masuk/create', 'Admin\Pengajuan\MasukController::create');
+    $routes->post('data_pengajuan_masuk/detail', 'Admin\Pengajuan\MasukController::detail');
+
+    // Route Admin -> Data Pengajuan Sudah Dibuat
+    $routes->get('data_pengajuan_sudah_dibuat', 'Admin\Pengajuan\DibuatController::index');
+    $routes->post('data_pengajuan_sudah_dibuat/detail', 'Admin\Pengajuan\DibuatController::detail');
+
     // Route Admin -> Surat Keterangan Nama
     $routes->get('surat_keterangan_nama', 'Admin\Surat\KeteranganNamaController::index');
     $routes->post('surat_keterangan_nama/detail', 'Admin\Surat\KeteranganNamaController::detail');
