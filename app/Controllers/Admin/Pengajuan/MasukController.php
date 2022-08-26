@@ -84,11 +84,14 @@ class MasukController extends BaseController
                     ]
                 ];
             } else {
-                $telepon = $this->request->getVar('telepon');
+                // $telepon = $this->request->getVar('telepon');
                 $informasi = $this->request->getVar('informasi');
+
+                // file_get_contents('https://api.whatsapp.com/send?phone='.$telepon.'&text='.$informasi);
 
                 $request = [
                     'informasi' => $informasi,
+                    'status'    => 'Sudah Dibuat'
                 ];
 
                 $id = $this->request->getVar('id');
