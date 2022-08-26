@@ -129,4 +129,4 @@ nb-configuration.xml
 
 /.php-cs-fixer.php
 
-/lib/node_modules
+./lib/node_modules
