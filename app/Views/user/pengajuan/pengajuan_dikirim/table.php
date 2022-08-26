@@ -4,7 +4,7 @@
             <th class="text-center border-bottom p-3">No</th>
             <th class="border-bottom p-3">No Kartu Keluarga</th>
             <th class="border-bottom p-3">NIK</th>
-            <th class="border-bottom p-3">No Telepon</th>
+            <th class="border-bottom p-3">No Whatsapp</th>
             <th class="border-bottom p-3">Jenis Pengajuan Surat</th>
             <th class="border-bottom p-3">Keterangan</th>
             <th class="border-bottom p-3">Status</th>

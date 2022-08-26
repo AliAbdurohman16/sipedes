@@ -10,7 +10,7 @@
                 <div class="card form-signin p-4 rounded shadow">
                     <?= form_open('login/valid_login') ?>
                     <?= csrf_field(); ?>
-                    <a href="index.html"><img src="<?= base_url() ?>/assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
+                    <a href="index.html"><img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
                     <h5 class="mb-3 text-center">SISTEM PELAYANAN DESA</h5>
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" id="username" name="username" placeholder="Username" value="<?= old('username') ?>" autofocus>
@@ -39,7 +39,7 @@
                     <p class="mb-0 text-muted mt-3 text-center">
                         © <script>
                             document.write(new Date().getFullYear())
-                        </script> Landrick.</p>
+                        </script> Sipedes.</p>
                     <?= form_close() ?>
                 </div>
             </div>

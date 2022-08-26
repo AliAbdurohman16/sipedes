@@ -49,10 +49,11 @@
                                 <!--end col-->
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label">No Telepon <span class="text-danger">*</span></label>
+                                        <label class="form-label">No Whatsapp <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="phone" class="fea icon-sm icons"></i>
-                                            <input name="telepon" type="number" class="form-control ps-5 <?= ($validation->hasError('telepon')) ? 'is-invalid' : '' ?>" value="<?= old('telepon') ?>" placeholder="No Telepon :">
+                                            <input name="telepon" type="number" class="form-control ps-5 <?= ($validation->hasError('telepon')) ? 'is-invalid' : '' ?>" value="<?= old('telepon') ?>" placeholder="No Whatsapp : contoh 628****">
+                                            <small>Gunakan no whatsapp di awali dengan 62 seperti contoh : 6281234***</small>
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('telepon'); ?>
                                             </div>

@@ -49,7 +49,7 @@ class TulisPengajuanController extends BaseController
             ],
             'telepon' => [
                 'label' => 'No Telepon',
-                'rules' => 'required|min_length[10]|max_length[13]',
+                'rules' => 'required|min_length[10]|max_length[15]',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong.',
                     'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',

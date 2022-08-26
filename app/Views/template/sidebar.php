@@ -2,13 +2,15 @@
 <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
     <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
         <div class="sidebar-brand">
-            <a href="index.html">
-                <img src="<?= base_url() ?>/assets/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
-                <img src="<?= base_url() ?>/assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
-                <span class="sidebar-colored">
-                    <img src="<?= base_url() ?>/assets/images/logo-light.png" height="24" alt="">
-                </span>
-            </a>
+            <center>
+                <a href="<?= base_url() ?>">
+                    <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="logo-light-mode" alt="">
+                    <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="logo-dark-mode" alt="">
+                    <span class="sidebar-colored">
+                        <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" alt="">
+                    </span>
+                </a>
+            </center>
         </div>
 
         <ul class="sidebar-menu">

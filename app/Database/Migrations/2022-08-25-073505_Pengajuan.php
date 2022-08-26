@@ -25,7 +25,7 @@ class Pengajuan extends Migration
             ],
             'telepon' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 13,
+                'constraint'     => 15,
             ],
             'jenis' => [
                 'type'       => 'VARCHAR',

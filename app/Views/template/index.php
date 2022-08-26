@@ -13,7 +13,7 @@
     <meta name="Version" content="v4.2.0" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logoSaja.png" />
     <!-- Css -->
     <link href="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
     <!-- Bootstrap Css -->
@@ -70,7 +70,7 @@
                             <div class="text-sm-start text-center mx-md-2">
                                 <p class="mb-0 text-muted">© <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                                    </script> Sipedes. Design with <i class="mdi mdi-heart text-danger"></i> by PPK ORMAWA PBK FKOM UNIKU.</p>
                             </div>
                         </div>
                         <!--end col-->

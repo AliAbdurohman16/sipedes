@@ -30,7 +30,7 @@
                     <!--end col-->
                     <div class="row">
                         <div class="col-md-5 mb-3">
-                            <label class="form-label">No Telepon : </label>
+                            <label class="form-label">No Whatsapp : </label>
                         </div>
                         <div class="col-md-7 mb-3">
                             <?= $pd->telepon ?>

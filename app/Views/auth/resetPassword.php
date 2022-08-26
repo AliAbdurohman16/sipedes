@@ -10,7 +10,7 @@
                 <div class="card form-signin p-4 rounded shadow">
                     <form action="<?= site_url('reset_password/send') ?>" method="POST">
                         <?= csrf_field(); ?>
-                        <a href="index.html"><img src="assets/images/logo-icon.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
+                        <a href="index.html"><img src="/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
                         <h5 class="mb-3 text-center">Reset kata sandi</h5>
 
                         <div class="form-floating mb-3">
@@ -38,7 +38,7 @@
 
                         <p class="mb-0 text-muted mt-3 text-center">© <script>
                                 document.write(new Date().getFullYear())
-                            </script> Landrick.</p>
+                            </script> Sipedes.</p>
                     </form>
                 </div>
             </div>
