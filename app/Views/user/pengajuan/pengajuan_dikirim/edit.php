@@ -15,8 +15,7 @@
                         <div class="mb-3">
                             <label class="form-label">No Kartu Keluarga <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= $pd->no_kk ?>" placeholder="No Kartu Keluarga :">
-                                <div class="invalid-feedback errorNoKK"></div>
+                                <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= $pd->no_kk ?>" placeholder="No Kartu Keluarga :" readonly>
                             </div>
                         </div>
                     </div>
@@ -25,8 +24,7 @@
                         <div class="mb-3">
                             <label class="form-label">NIK <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="nik" id="nik" type="number" class="form-control" value="<?= $pd->nik ?>" placeholder="NIK :">
-                                <div class="invalid-feedback errorNIK"></div>
+                                <input name="nik" id="nik" type="number" class="form-control" value="<?= $pd->nik ?>" placeholder="NIK :" readonly>
                             </div>
                         </div>
                     </div>
@@ -101,22 +99,6 @@
             },
             success: function(response) {
                 if (response.error) {
-                    if (response.error.no_kk) {
-                        $('#no_kk').addClass('is-invalid');
-                        $('.errorNoKK').html(response.error.no_kk);
-                    } else {
-                        $('#no_kk').removeClass('is-invalid');
-                        $('.errorNoKK').html('');
-                    }
-                    
-                    if (response.error.nik) {
-                        $('#nik').addClass('is-invalid');
-                        $('.errorNIK').html(response.error.nik);
-                    } else {
-                        $('#nik').removeClass('is-invalid');
-                        $('.errorNIK').html('');
-                    }
-                    
                     if (response.error.telepon) {
                         $('#telepon').addClass('is-invalid');
                         $('.errorTelepon').html(response.error.telepon);

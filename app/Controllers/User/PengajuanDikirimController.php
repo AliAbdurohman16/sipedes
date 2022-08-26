@@ -64,24 +64,6 @@ class PengajuanDikirimController extends BaseController
             $validation = \Config\Services::validation();
             $valid = $this->validate(
                 [
-                    'no_kk' => [
-                        'label' => 'No Kartu Keluarga',
-                        'rules' => 'required|min_length[16]|max_length[16]',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong.',
-                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                            'max_length' => '{field} maksimal memiliki panjang {param} karakter'
-                        ]
-                    ],
-                    'nik' => [
-                        'label' => 'NIK',
-                        'rules' => 'required|min_length[16]|max_length[16]',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong.',
-                            'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                            'max_length' => '{field} maksimal memiliki panjang {param} karakter'
-                        ]
-                    ],
                     'telepon' => [
                         'label' => 'No Telepon',
                         'rules' => 'required|min_length[10]|max_length[15]',
@@ -111,8 +93,6 @@ class PengajuanDikirimController extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
-                        'no_kk' => $validation->getError('no_kk'),
-                        'nik' => $validation->getError('nik'),
                         'telepon' => $validation->getError('telepon'),
                         'jenis' => $validation->getError('jenis'),
                         'keterangan' => $validation->getError('keterangan'),
@@ -127,8 +107,6 @@ class PengajuanDikirimController extends BaseController
                     $checkNik = $this->pendudukModel->getWhere(['nik' => $nik])->getRow();
                     if ($checkNik) {
                         $request = [
-                            'no_kk' => $no_kk,
-                            'nik' => $nik,
                             'telepon' => $this->request->getVar('telepon'),
                             'jenis' => $this->request->getVar('jenis'),
                             'keterangan' => $this->request->getVar('keterangan'),
