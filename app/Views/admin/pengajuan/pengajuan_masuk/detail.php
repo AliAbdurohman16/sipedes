@@ -8,51 +8,66 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="id" value="<?= $pd->id ?>">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label class="form-label">No Kartu Keluarga : </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <?= $kk->no_kk ?>
-                    </div>
-                </div>
-                <!--end col-->
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label class="form-label">Kepala Keluarga : </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <?= $kk->nama_kepala ?>
-                    </div>
-                </div>
-                <!--end col-->
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label class="form-label">NIK : </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <?= $pddk->nik ?>
-                    </div>
-                </div>
-                <!--end col-->
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label class="form-label">No Whatsapp : </label>
-                    </div>
-                    <div class="col-sm-10">
-                        <?= $pd->telepon ?>
-                    </div>
-                </div>
-                <!--end col-->
                 <div class="row mb-5">
-                    <div class="col-sm-2">
-                        <label class="form-label">Jenis Pengajuan Surat : </label>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">No Kartu Keluarga : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $kk->no_kk ?>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Kepala Keluarga : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $kk->nama_kepala ?>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">NIK : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $pddk->nik ?>
+                            </div>
+                        </div>
+                        <!--end col-->
                     </div>
-                    <div class="col-sm-10">
-                        <?= $pd->jenis ?>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">No Whatsapp : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $pd->telepon ?>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Jenis Pengajuan Surat : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $pd->jenis ?>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Keterangan : </label>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $pd->keterangan ?>
+                            </div>
+                        </div>
+                        <!--end col-->
                     </div>
                 </div>
-                <!--end col-->
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="row">
