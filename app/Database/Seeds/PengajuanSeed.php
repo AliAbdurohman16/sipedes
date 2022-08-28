@@ -4,6 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use App\Models\PengajuanModel;
+use CodeIgniter\I18n\Time;
 
 class PengajuanSeed extends Seeder
 {
@@ -14,13 +15,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Nama',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -28,9 +30,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Nama',
                 'keterangan' => 'Cek',
@@ -42,13 +44,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Domisli',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -56,9 +59,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 10; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Domisli',
                 'keterangan' => 'Cek',
@@ -70,13 +73,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Belum Nikah',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -84,9 +88,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 15; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Belum Nikah',
                 'keterangan' => 'Cek',
@@ -98,13 +102,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Lahir',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -112,9 +117,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 20; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Lahir',
                 'keterangan' => 'Cek',
@@ -126,13 +131,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Penghasilan',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -140,9 +146,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 18; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Penghasilan',
                 'keterangan' => 'Cek',
@@ -154,13 +160,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Pindah KK',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -168,9 +175,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 22; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Pindah KK',
                 'keterangan' => 'Cek',
@@ -182,13 +189,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Rame-rame',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -196,9 +204,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 12; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Rame-rame',
                 'keterangan' => 'Cek',
@@ -210,13 +218,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKU',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -224,9 +233,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 7; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKU',
                 'keterangan' => 'Cek',
@@ -238,13 +247,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKTM',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -252,9 +262,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 30; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKTM',
                 'keterangan' => 'Cek',
@@ -266,13 +276,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKCK',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -280,9 +291,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 25; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan SKCK',
                 'keterangan' => 'Cek',
@@ -294,13 +305,14 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 5; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Kematian',
                 'keterangan' => 'Cek',
                 'status' => 'Belum Dibuat',
+                'created_at' => Time::now('Asia/Jakarta', 'en_ID'),
             ];
 
             $pengajuanModel->insert($data);
@@ -308,9 +320,9 @@ class PengajuanSeed extends Seeder
 
         for($i = 1; $i < 35; $i++){
             $data = [
-                'no_kk' => rand(16),
-                'nik' => rand(16),
-                'name' => $faker->name(),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'nama' => $faker->name(),
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => 'Keterangan Kematian',
                 'keterangan' => 'Cek',

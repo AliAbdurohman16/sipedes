@@ -14,7 +14,7 @@ class KartuKeluargaSeed extends Seeder
 
         for($i = 1; $i < 50; $i++){
             $data = [
-                'no_kk' => rand(16),
+                'no_kk' => rand(1000000000000000, 9999999999999999),
                 'name' => $faker->name(),
                 'rt_id' => $i,
                 'rw_id' => $i,

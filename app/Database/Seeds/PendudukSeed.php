@@ -14,9 +14,36 @@ class PendudukSeed extends Seeder
 
         for($i = 1; $i < 20; $i++){
             $data = [
-                'nik' => rand(16),
+                'nik' => rand(1000000000000000, 9999999999999999),
                 'name' => $faker->name(),
                 'jenis_kelamin' => 'L',
+                'tempat_lahir' => $faker->city(),
+                'tgl_lahir' => $faker->date(),
+                'rt_id' => $i,
+                'rw_id' => $i,
+                'kelurahan' => 'Cibinuang',
+                'kecamatan' => 'Kuningan',
+                'kabupaten' => 'Kuningan',
+                'provinsi' => 'Jawa Barat',
+                'alamat' => $faker->name(),
+                'gol_darah' => 'O',
+                'agama' => 'Islam',
+                'status_kawin' => 'Belum',
+                'pendidikan_terakhir' => 'SMA',
+                'pekerjaan' => 'PNS',
+                'nama_ibu' => $faker->name('female'),
+                'nama_ayah' => $faker->name('male'),
+                'status' => 'ada',
+            ];
+
+            $pddkModel->insert($data);
+        }
+
+        for($i = 1; $i < 15; $i++){
+            $data = [
+                'nik' => rand(1000000000000000, 9999999999999999),
+                'name' => $faker->name(),
+                'jenis_kelamin' => 'P',
                 'tempat_lahir' => $faker->city(),
                 'tgl_lahir' => $faker->date(),
                 'rt_id' => $i,
