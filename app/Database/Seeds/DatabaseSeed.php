@@ -16,6 +16,6 @@ class DatabaseSeed extends Seeder
         $this->call('JabatanSeed');
         $this->call('KartuKeluargaSeed');
         $this->call('PendudukSeed');
-        $this->call('PengajuanSeed');
+        // $this->call('PengajuanSeed');
     }
 }
