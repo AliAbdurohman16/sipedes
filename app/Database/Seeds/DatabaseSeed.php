@@ -14,5 +14,8 @@ class DatabaseSeed extends Seeder
         $this->call('RwSeed');
         $this->call('RtSeed');
         $this->call('JabatanSeed');
+        $this->call('KartuKeluargaSeed');
+        $this->call('PendudukSeed');
+        $this->call('PengajuanSeed');
     }
 }
