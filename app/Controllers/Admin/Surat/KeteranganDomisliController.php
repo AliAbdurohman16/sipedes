@@ -33,7 +33,7 @@ class KeteranganDomisliController extends BaseController
             echo json_encode($msg);
         } else {
             $data = [
-                'title' => 'Surat Keterangan Nama'
+                'title' => 'Surat Keterangan Domisli'
             ];
 
             return view('admin/surat/keterangan_domisli/index', $data);

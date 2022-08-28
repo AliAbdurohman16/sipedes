@@ -31,6 +31,15 @@
                     <!--end col-->
                     <div class="col-md-12">
                         <div class="mb-3">
+                            <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                            <div class="form-icon position-relative">
+                                <input name="name" id="name" type="text" class="form-control" value="<?= $pd->nama ?>" placeholder="Nama Lengkap :" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-md-12">
+                        <div class="mb-3">
                             <label class="form-label">No Whatsapp <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
                                 <input name="telepon" id="telepon" type="number" class="form-control" value="<?= $pd->telepon ?>" placeholder="No Whatsapp : contoh 628****">

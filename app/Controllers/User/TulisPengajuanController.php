@@ -84,6 +84,7 @@ class TulisPengajuanController extends BaseController
                 $result = [
                     'no_kk' => $no_kk,
                     'nik' => $nik,
+                    'nama' => $checkNik->name,
                     'telepon' => $this->request->getVar('telepon'),
                     'jenis' => $this->request->getVar('jenis'),
                     'keterangan' => $this->request->getVar('keterangan'),

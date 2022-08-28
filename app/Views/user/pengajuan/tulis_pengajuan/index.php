@@ -65,7 +65,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Jenis Pengajuan Surat <span class="text-danger">*</span></label>
                                         <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" aria-label="Default select example">
-                                            <option selected>Pilih Jenis Pengajuan Surat</option>
+                                            <option value="">Pilih Jenis Pengajuan Surat</option>
                                             <option value="Keterangan Nama">Keterangan Nama</option>
                                             <option value="Keterangan Domisli">Keterangan Domisli</option>
                                             <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>

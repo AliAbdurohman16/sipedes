@@ -30,6 +30,15 @@
                     <!--end col-->
                     <div class="row">
                         <div class="col-md-5 mb-3">
+                            <label class="form-label">Nama Lengkap : </label>
+                        </div>
+                        <div class="col-md-7 mb-3">
+                            <?= $pd->nama ?>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
                             <label class="form-label">No Whatsapp : </label>
                         </div>
                         <div class="col-md-7 mb-3">

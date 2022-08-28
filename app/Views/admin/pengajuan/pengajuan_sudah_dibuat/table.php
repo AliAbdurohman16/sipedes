@@ -4,6 +4,7 @@
             <th class="text-center border-bottom p-3">No</th>
             <th class="border-bottom p-3">No Kartu Keluarga</th>
             <th class="border-bottom p-3">NIK</th>
+            <th class="border-bottom p-3">Nama Lengkap</th>
             <th class="border-bottom p-3">No Whatsapp</th>
             <th class="border-bottom p-3">Jenis Pengajuan Surat</th>
             <th class="border-bottom p-3">Keterangan</th>
@@ -21,6 +22,7 @@
                 <th class="text-center p-3" style="width: 5%;"><?= $no++; ?></th>
                 <td class="p-3"><?= $pd->no_kk; ?></td>
                 <td class="p-3"><?= $pd->nik; ?></td>
+                <td class="p-3"><?= $pd->nama; ?></td>
                 <td class="p-3"><?= $pd->telepon; ?></td>
                 <td class="p-3"><?= $pd->jenis; ?></td>
                 <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>

@@ -39,7 +39,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-//login
+// Login
 $routes->group("", ["filter" => "authFilter:login"], function ($routes) {
     $routes->get('login', 'Auth\Login::index');
     $routes->post('login/valid_login', 'Auth\Login::valid_login');
@@ -173,6 +173,7 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
 
     // Route Admin -> Surat Keterangan Belum Nikah
     $routes->get('surat_keterangan_belum_nikah', 'Admin\Surat\KeteranganBelumNikahController::index');
+    $routes->post('surat_keterangan_belum_nikah/detail', 'Admin\Surat\KeteranganBelumNikahController::detail');
 
     // Route Admin -> Surat Keterangan Lahir
     $routes->get('surat_keterangan_lahir', 'Admin\Surat\KeteranganLahirController::index');
@@ -205,6 +206,11 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
     // Route Admin -> Surat Keterangan Kematian
     $routes->get('surat_keterangan_kematian', 'Admin\Surat\KeteranganKematianController::index');
     $routes->post('surat_keterangan_kematian/detail', 'Admin\Surat\KeteranganKematianController::detail');
+
+    // Route Admin -> Laporan
+    $routes->get('laporan', 'Admin\ReportController::index');
+    $routes->post('laporan/print', 'Admin\ReportController::print');
+
 });
 
 $routes->group("", ["filter" => "authFilter:logout"], function ($routes) {

@@ -14,7 +14,7 @@ class PengajuanModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_kk', 'nik', 'telepon', 'jenis', 'keterangan', 'informasi', 'status'];
+    protected $allowedFields    = ['no_kk', 'nik', 'nama', 'telepon', 'jenis', 'keterangan', 'informasi', 'status'];
 
     // Dates
     protected $useTimestamps = true;
@@ -39,4 +39,11 @@ class PengajuanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function report($start, $end)
+    {
+        return $this->select('pengajuan.*')->where('status', 'Sudah Dibuat')
+                    ->where('created_at >=', $start)->where('created_at <=', $end)
+                    ->findAll();
+    }
 }

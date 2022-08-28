@@ -23,6 +23,10 @@ class Pengajuan extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => 16,
             ],
+            'nama' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 255,
+            ],
             'telepon' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 15,
