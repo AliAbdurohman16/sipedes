@@ -133,16 +133,8 @@
                 <div class="card shadow border-0 p-4 pb-0 rounded">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0 fw-bold">Statistik Pengajuan</h6>
-
-                        <div class="mb-0 position-relative">
-                            <select class="form-select form-control" id="yearchart">
-                                <option selected>2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                            </select>
-                        </div>
                     </div>
-                    <div id="dashboard" class="apex-chart"></div>
+                    <canvas id="myChart" style="width: 100%; height: 390px;"></canvas>
                 </div>
             </div>
             <!--end col-->
@@ -219,4 +211,57 @@
     </div>
 </div>
 <!--end container-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" type="text/javascript"></script>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'Keterangan Nama',
+            'Keterangan Domisli',
+            'Keterangan Belum Nikah',
+            'Keterangan Lahir',
+            'Keterangan Penghasilan',
+            'Keterangan Pindah KK',
+            'Keterangan Rame-rame',
+            'Keterangan SKU',
+            'Keterangan SKTM',
+            'Keterangan SKCK',
+            'Keterangan Kematian',
+        ],
+        datasets: [{
+            label: 'Pengajuan',
+            data: [
+                <?= $ketNama?>, 
+                <?= $ketDomisli?>, 
+                <?= $ketBlmNikah?>, 
+                <?= $ketLahir?>,
+                <?= $ketPenghasilan?>,
+                <?= $ketPindahKK?>,
+                <?= $ketRame?>,
+                <?= $ketSKU?>,
+                <?= $ketSKTM?>,
+                <?= $ketSKCK?>,
+                <?= $ketKematian?>,
+            ],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 <?= $this->endSection(); ?>

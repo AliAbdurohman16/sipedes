@@ -12,25 +12,9 @@
                 <a id="close-sidebar" class="btn btn-icon btn-soft-light" href="javascript:void(0)">
                     <i class="ti ti-menu-2"></i>
                 </a>
-                <div class="search-bar p-0 d-none d-md-block ms-2">
-                    <div id="search" class="menu-search mb-0">
-                        <form role="search" method="get" id="searchform" class="searchform">
-                            <div>
-                                <input type="text" class="form-control border rounded" name="s" id="s" placeholder="Search Keywords...">
-                                <input type="submit" id="searchsubmit" value="Search">
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
 
             <ul class="list-unstyled mb-0">
-                <li class="list-inline-item mb-0">
-                    <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <div class="btn btn-icon btn-soft-light"><i class="ti ti-settings"></i></div>
-                    </a>
-                </li>
-
                 <li class="list-inline-item mb-0 ms-1">
                     <div class="dropdown dropdown-primary">
                         <button type="button" class="btn btn-icon btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti ti-bell"></i></button>
