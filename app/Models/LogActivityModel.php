@@ -46,4 +46,11 @@ class LogActivityModel extends Model
         
         return $this->join('users', 'users.id = log_activity.user_id')->orderBy('id','DESC')->findAll();
     }
+
+    public function withLimit()
+    {
+        return $this->select('users.name, users.status, log_activity.*')
+                    ->join('users', 'users.id = log_activity.user_id')
+                    ->orderBy('id', 'DESC')->limit(5)->get()->getResult();
+    }
 }
