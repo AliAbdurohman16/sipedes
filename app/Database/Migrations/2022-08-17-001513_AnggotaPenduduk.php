@@ -29,6 +29,11 @@ class AnggotaPenduduk extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'role_id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+            ],
             'created_at' => [
                 'type'       => 'DATETIME'
             ],
@@ -44,6 +49,7 @@ class AnggotaPenduduk extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('kk_id', 'kartu_keluarga', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('penduduk_id', 'penduduk', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('role_id', 'roles', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('anggota_penduduk');
     }
 

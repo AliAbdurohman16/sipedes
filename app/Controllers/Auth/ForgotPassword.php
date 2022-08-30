@@ -35,7 +35,7 @@ class ForgotPassword extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('/forgot_password')->withInput();
+            return redirect()->to('admin/forgot_password')->withInput();
         }
 
         $username = $this->request->getVar('username');
@@ -44,7 +44,7 @@ class ForgotPassword extends BaseController
         if ($check) {
             session()->set('id', $check->id);
             session()->set('user', $check->username);
-            return redirect()->to('/reset_password');
+            return redirect()->to('admin/reset_password');
         } else {
             $sessError = [
                 'error_message' => 'Username yang anda masukan salah!'
@@ -52,7 +52,7 @@ class ForgotPassword extends BaseController
 
             session()->setFlashdata($sessError);
 
-            return redirect()->to('/forgot_password');
+            return redirect()->to('admin/forgot_password');
         }
     }
 }

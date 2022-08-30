@@ -39,40 +39,51 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-// Login
-$routes->group("", ["filter" => "authFilter:login"], function ($routes) {
+// Login Penduduk
+$routes->group("", ["filter" => "authFilter:loginPenduduk"], function ($routes) {
+    $routes->get('login', 'Auth\User\LoginController::index');
+    $routes->post('login/valid_login', 'Auth\User\LoginController::valid_login');
+});
+
+// Login Pengurus
+$routes->group("admin", ["filter" => "authFilter:loginAdmin"], function ($routes) {
     $routes->get('login', 'Auth\Login::index');
     $routes->post('login/valid_login', 'Auth\Login::valid_login');
 });
 
 // Forgot Password
-$routes->group("", ["filter" => "authFilter:forgotPassword"], function ($routes) {
+$routes->group("admin", ["filter" => "authFilter:forgotPassword"], function ($routes) {
     $routes->get('forgot_password', 'Auth\ForgotPassword::index');
     $routes->post('forgot_password/send', 'Auth\ForgotPassword::send');
 });
 
-$routes->group("", ["filter" => "authFilter:loggedIn"], function ($routes) {
+$routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($routes) {
     // Forgot Password -> Reset Password
     $routes->get('reset_password', 'Auth\ResetPassword::index');
     $routes->post('reset_password/send', 'Auth\ResetPassword::send');
 });
 
-$routes->group("user", ["filter" => "authFilter:loggedIn"], function ($routes) {
+$routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($routes) {
+    // Dashboard
+    $routes->get('dashboard', 'Admin\DashboardController::index');
+
     // Pengajuan -> Tulis Pengajuan
     $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
     $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
+
     // Pengajuan -> Pengajuan Dikirim
     $routes->get('pengajuan_dikirim', 'User\PengajuanDikirimController::index');
     $routes->post('pengajuan_dikirim/edit', 'User\PengajuanDikirimController::edit');
     $routes->post('pengajuan_dikirim/update', 'User\PengajuanDikirimController::update');
     $routes->post('pengajuan_dikirim/detail', 'User\PengajuanDikirimController::detail');
     $routes->post('pengajuan_dikirim/delete', 'User\PengajuanDikirimController::delete');
+
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
     $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
 });
 
-$routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) {
+$routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($routes) {
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');
 
@@ -213,7 +224,11 @@ $routes->group("admin", ["filter" => "authFilter:loggedIn"], function ($routes) 
 
 });
 
-$routes->group("", ["filter" => "authFilter:logout"], function ($routes) {
+$routes->group("user", ["filter" => "authFilter:logoutPenduduk"], function ($routes) {
+    $routes->get('logout', 'Auth\User\LoginController::logout');
+});
+
+$routes->group("admin", ["filter" => "authFilter:logoutAdmin"], function ($routes) {
     $routes->get('logout', 'Auth\Login::logout');
 });
 

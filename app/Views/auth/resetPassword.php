@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="card form-signin p-4 rounded shadow">
-                    <form action="<?= site_url('reset_password/send') ?>" method="POST">
+                    <form action="<?= site_url('admin/reset_password/send') ?>" method="POST">
                         <?= csrf_field(); ?>
                         <a href="index.html"><img src="/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
                         <h5 class="mb-3 text-center">Reset kata sandi</h5>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" name="password" id="floatingInput" placeholder="Kata Sandi Baru" value="<?= old('password') ?>" >
+                            <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" name="password" id="floatingInput" placeholder="Kata Sandi Baru" value="<?= old('password') ?>" autofocus>
                             <label for="floatingInput">Kata Sandi Baru</label>
                             <div class="invalid-feedback">
                                 <?= $validation->getError('password'); ?>
@@ -32,7 +32,7 @@
                         <button class="btn btn-primary w-100" type="submit">Simpan</button>
 
                         <div class="col-12 text-center mt-3">
-                            <p class="mb-0 mt-3"><a href="<?= site_url('forgot_password') ?>" class="text-dark fw-bold">Kembali</a></p>
+                            <p class="mb-0 mt-3"><a href="<?= site_url('admin/forgot_password') ?>" class="text-dark fw-bold">Kembali</a></p>
                         </div>
                         <!--end col-->
 

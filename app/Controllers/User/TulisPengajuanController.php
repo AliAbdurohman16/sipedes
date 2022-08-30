@@ -34,8 +34,8 @@ class TulisPengajuanController extends BaseController
                 'rules' => 'required|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong.',
-                    'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                    'max_length' => '{field} maksimal memiliki panjang {param} karakter'
+                    'min_length' => '{field} harus memiliki panjang {param} angka',
+                    'max_length' => '{field} harus memiliki panjang {param} angka'
                 ]
             ],
             'nik' => [
@@ -43,8 +43,8 @@ class TulisPengajuanController extends BaseController
                 'rules' => 'required|min_length[16]|max_length[16]',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong.',
-                    'min_length' => '{field} harus memiliki panjang setidaknya {param} karakter',
-                    'max_length' => '{field} maksimal memiliki panjang {param} karakter'
+                    'min_length' => '{field} harus memiliki panjang {param} angka',
+                    'max_length' => '{field} harus memiliki panjang {param} angka'
                 ]
             ],
             'telepon' => [

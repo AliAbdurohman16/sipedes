@@ -73,12 +73,13 @@ class PendudukController extends BaseController
                 [
                     'nik' => [
                         'label' => 'Nomor induk kependudukan',
-                        'rules' => 'required|is_unique[penduduk.nik]|numeric|max_length[16]',
+                        'rules' => 'required|is_unique[penduduk.nik]|numeric|min_length[16]|max_length[16]',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
-                            'max_length' => '{field} maksimal 16 angka',
+                            'min_length' => '{field} harus 16 angka',
+                            'max_length' => '{field} harus 16 angka',
                         ]
                     ],
                     'name' => [
@@ -338,8 +339,8 @@ class PendudukController extends BaseController
                             'required' => '{field} tidak boleh kosong',
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
-                            'max_length' => '{field} maksimal 16 angka',
-                            'min_length' => '{field} minimal 16 angka',
+                            'max_length' => '{field} harus 16 angka',
+                            'min_length' => '{field} harus 16 angka',
                         ]
                     ],
                     'name' => [

@@ -47,7 +47,7 @@ class Login extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/login')->withInput();
+            return redirect()->to('admin/login')->withInput();
         }
 
         $username = $this->request->getPost('username');
@@ -88,7 +88,7 @@ class Login extends BaseController
 
                 session()->setFlashdata($sessError);
 
-                return redirect()->to('/login');
+                return redirect()->to('admin/login');
             }
         } else {
             $sessError = [
@@ -97,7 +97,7 @@ class Login extends BaseController
 
             session()->setFlashdata($sessError);
 
-            return redirect()->to('/login');
+            return redirect()->to('admin/login');
         }
     }
 
@@ -121,6 +121,6 @@ class Login extends BaseController
 
         session()->destroy();
 
-        return redirect()->to('/login');
+        return redirect()->to('admin/login');
     }
 }

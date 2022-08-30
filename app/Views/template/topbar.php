@@ -104,10 +104,17 @@
                                     <small class="text-muted"><?= session()->get('role')->name ?></small>
                                 </div>
                             </a>
-                            <a class="dropdown-item text-dark" href="<?= site_url('admin/dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
-                            <a class="dropdown-item text-dark" href="<?= site_url('admin/account') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Akun Saya</a>
+                            <?php if (session()->get('role')->id == 2) : ?>
+                            <a class="dropdown-item text-dark" href="<?= site_url('user/dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
+                            <a class="dropdown-item text-dark" href="<?= site_url('user/account') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Akun Saya</a>
                             <div class="dropdown-divider border-top"></div>
-                            <a class="dropdown-item text-dark" href="<?= site_url('logout') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Keluar</a>
+                            <a class="dropdown-item text-dark" href="<?= site_url('user/logout') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Keluar</a>
+                            <?php else : ?>
+                                <a class="dropdown-item text-dark" href="<?= site_url('admin/dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
+                                <a class="dropdown-item text-dark" href="<?= site_url('admin/account') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Akun Saya</a>
+                                <div class="dropdown-divider border-top"></div>
+                                <a class="dropdown-item text-dark" href="<?= site_url('admin/logout') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Keluar</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </li>

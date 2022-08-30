@@ -25,22 +25,34 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if($arguments[0] == 'loggedIn'){
-            if (!session()->has('user')) {
-                return redirect()->to('/login');
+        if($arguments[0] == 'loggedInPenduduk'){
+            if (!session()->has('penduduk')) {
+                return redirect()->to('login');
             }
-        } else if($arguments[0] == 'login') {
+        }else if($arguments[0] == 'loggedInAdmin'){    
+            if (!session()->has('user')) {
+                return redirect()->to('admin/login');
+            }
+        } else if($arguments[0] == 'loginPenduduk') {
+            if (session()->has('penduduk')) {
+                return redirect()->to('user/dashboard');
+            }
+        } else if($arguments[0] == 'loginAdmin') {
             if (session()->has('user')) {
                 return redirect()->to('admin/dashboard');
             }
-        } else if($arguments[0] == 'logout') {
+        } else if($arguments[0] == 'logoutPenduduk') {
+            if (!session()->has('penduduk')) {
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+            }
+        } else if($arguments[0] == 'logoutAdmin') {
             if (!session()->has('user')) {
                 throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
             }
         } else if($arguments[0] == 'forgotPassword') {
             if (session()->has('user')) {
                 session()->remove('user');
-                return redirect()->to('/forgot_password');
+                return redirect()->to('admin/forgot_password');
             }
         }
     }

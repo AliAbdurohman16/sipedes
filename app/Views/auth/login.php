@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card form-signin p-4 rounded shadow">
-                    <?= form_open('login/valid_login') ?>
+                    <?= form_open('admin/login/valid_login') ?>
                     <?= csrf_field(); ?>
                     <a href="index.html"><img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
                     <h5 class="mb-3 text-center">SISTEM PELAYANAN DESA</h5>
@@ -32,7 +32,7 @@
 
                     <div class="d-flex justify-content-center">
                         <p class="forgot-pass mt-3">
-                            <a href="<?= site_url('forgot_password')?>" class="text-dark small fw-bold">Lupa Kata Sandi ?</a>
+                            <a href="<?= site_url('admin/forgot_password')?>" class="text-dark small fw-bold">Lupa Kata Sandi ?</a>
                         </p>
                     </div>
 

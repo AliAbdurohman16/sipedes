@@ -48,7 +48,7 @@ class ResetPassword extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/reset_password')->withInput();
+            return redirect()->to('admin/reset_password')->withInput();
         }
 
         $id = session('id');
@@ -75,6 +75,6 @@ class ResetPassword extends BaseController
 
         session()->setFlashdata($sessSucc);
 
-        return redirect()->to('/login');
+        return redirect()->to('admin/login');
     }
 }

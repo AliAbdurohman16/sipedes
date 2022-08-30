@@ -83,8 +83,8 @@ class KartuKeluargaController extends BaseController
                             'required' => '{field} tidak boleh kosong',
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
-                            'max_length' => '{field} maksimal 16 angka',
-                            'min_length' => '{field} minimal 16 angka',
+                            'max_length' => '{field} harus 16 angka',
+                            'min_length' => '{field} harus 16 angka',
                         ]
                     ],
                     'nama_kepala' => [
@@ -229,9 +229,9 @@ class KartuKeluargaController extends BaseController
             $kkOld = $this->kartuKeluargaModel->find($id);
 
             if ($kkOld->no_kk == $this->request->getVar('no_kk')) {
-                $rules_kk = 'required|numeric|max_length[16]';
+                $rules_kk = 'required|numeric|min_length[16]|max_length[16]';
             } else {
-                $rules_kk = 'required|is_unique[kartu_keluarga.no_kk]|numeric|max_length[16]';
+                $rules_kk = 'required|is_unique[kartu_keluarga.no_kk]|numeric|min_length[16]|max_length[16]';
             }
 
             $validation = \Config\Services::validation();
@@ -244,7 +244,8 @@ class KartuKeluargaController extends BaseController
                             'required' => '{field} tidak boleh kosong',
                             'is_unique' => '{field} sudah tersedia',
                             'numeric' => '{field} harus berupa angka',
-                            'max_length' => '{field} maksimal 16 angka',
+                            'min_length' => '{field} harus 16 angka',
+                            'max_length' => '{field} harus 16 angka',
                         ]
                     ],
                     'nama_kepala' => [
@@ -438,6 +439,7 @@ class KartuKeluargaController extends BaseController
                 $request = [
                     'kk_id' => $this->request->getPost('kk_id'),
                     'penduduk_id' => $this->request->getPost('penduduk'),
+                    'role_id' => '2',
                     'status_hubungan' => $this->request->getPost('status_hubungan'),
                 ];
 
