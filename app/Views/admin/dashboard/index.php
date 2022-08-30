@@ -103,34 +103,34 @@
                 <!--end col-->
             <?php endif; ?>
             <?php if (session()->get('role')->id == 1 || session()->get('role')->id == 3) : ?>
-            <div class="col mt-4">
-                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center rounded shadow p-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon text-center rounded-pill">
-                            <i class="fa-solid fa-envelope-open-text fs-4 mb-0"></i>
+                <div class="col mt-4">
+                    <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center rounded shadow p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="icon text-center rounded-pill">
+                                <i class="fa-solid fa-envelope-open-text fs-4 mb-0"></i>
+                            </div>
+                            <div class="flex-1 ms-3">
+                                <h6 class="mb-0 text-muted">Data Pengajuan Belum Dibuat</h6>
+                                <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?= $blm_dibuat ?>">0</span></p>
+                            </div>
                         </div>
-                        <div class="flex-1 ms-3">
-                            <h6 class="mb-0 text-muted">Data Pengajuan Belum Dibuat</h6>
-                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?= $blm_dibuat ?>">0</span></p>
+                    </a>
+                </div>
+                <!--end col-->
+                <div class="col mt-4">
+                    <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center rounded shadow p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="icon text-center rounded-pill">
+                                <i class="fa-solid fa-envelope-circle-check fs-4 mb-0"></i>
+                            </div>
+                            <div class="flex-1 ms-3">
+                                <h6 class="mb-0 text-muted">Data Pengajuan Sudah Dibuat</h6>
+                                <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?= $sdh_dibuat ?>">0</span></p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!--end col-->
-            <div class="col mt-4">
-                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center rounded shadow p-3">
-                    <div class="d-flex align-items-center">
-                        <div class="icon text-center rounded-pill">
-                            <i class="fa-solid fa-envelope-circle-check fs-4 mb-0"></i>
-                        </div>
-                        <div class="flex-1 ms-3">
-                            <h6 class="mb-0 text-muted">Data Pengajuan Sudah Dibuat</h6>
-                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?= $sdh_dibuat ?>">0</span></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!--end col-->
+                    </a>
+                </div>
+                <!--end col-->
             <?php endif; ?>
         </div>
         <!--end row-->
@@ -290,56 +290,58 @@
 </div>
 <!--end container-->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" type="text/javascript"></script>
-<script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
-                'Keterangan Nama',
-                'Keterangan Domisli',
-                'Keterangan Belum Nikah',
-                'Keterangan Lahir',
-                'Keterangan Penghasilan',
-                'Keterangan Pindah KK',
-                'Keterangan Rame-rame',
-                'Keterangan SKU',
-                'Keterangan SKTM',
-                'Keterangan SKCK',
-                'Keterangan Kematian',
-            ],
-            datasets: [{
-                label: 'Pengajuan',
-                data: [
-                    <?= $ketNama ?>,
-                    <?= $ketDomisli ?>,
-                    <?= $ketBlmNikah ?>,
-                    <?= $ketLahir ?>,
-                    <?= $ketPenghasilan ?>,
-                    <?= $ketPindahKK ?>,
-                    <?= $ketRame ?>,
-                    <?= $ketSKU ?>,
-                    <?= $ketSKTM ?>,
-                    <?= $ketSKCK ?>,
-                    <?= $ketKematian ?>,
+<?php if (session()->get('role')->id == 1 || session()->get('role')->id == 3) : ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" type="text/javascript"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Keterangan Nama',
+                    'Keterangan Domisli',
+                    'Keterangan Belum Nikah',
+                    'Keterangan Lahir',
+                    'Keterangan Penghasilan',
+                    'Keterangan Pindah KK',
+                    'Keterangan Rame-rame',
+                    'Keterangan SKU',
+                    'Keterangan SKTM',
+                    'Keterangan SKCK',
+                    'Keterangan Kematian',
                 ],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+                datasets: [{
+                    label: 'Pengajuan',
+                    data: [
+                        <?= $ketNama ?>,
+                        <?= $ketDomisli ?>,
+                        <?= $ketBlmNikah ?>,
+                        <?= $ketLahir ?>,
+                        <?= $ketPenghasilan ?>,
+                        <?= $ketPindahKK ?>,
+                        <?= $ketRame ?>,
+                        <?= $ketSKU ?>,
+                        <?= $ketSKTM ?>,
+                        <?= $ketSKCK ?>,
+                        <?= $ketKematian ?>,
+                    ],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+<?php endif; ?>
 <?= $this->endSection(); ?>
