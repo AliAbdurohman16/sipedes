@@ -52,7 +52,7 @@ class LoginController extends BaseController
             return redirect()->to('user/dashboard');
         } else {
             $sessError = [
-                'error_message' => 'Maaf, user tidak terdaftar!'
+                'error_message' => 'Maaf, NIK yang anda masukkan salah!'
             ];
 
             session()->setFlashdata($sessError);
