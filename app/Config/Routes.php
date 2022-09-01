@@ -67,6 +67,9 @@ $routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($r
     // Dashboard
     $routes->get('dashboard', 'User\DashboardController::index');
 
+    // Account
+    $routes->get('account', 'User\AccountController::index');
+
     // Pengajuan -> Tulis Pengajuan
     $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
     $routes->post('tulis_pengajuan/create', 'User\TulisPengajuanController::create');
