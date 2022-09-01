@@ -18,6 +18,7 @@
             $uri = new \CodeIgniter\HTTP\URI();
             $uri = service('uri');
             ?>
+            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('user/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
             <li class="<?= ($uri->getSegment(1) == 'tulis_pengajuan' ? 'active' : '') ?>"><a href="<?= base_url('user/tulis_pengajuan') ?>"><i class="fa-solid fa-user-pen me-2"></i>Tulis Pengajuan</a></li>
             <li class="<?= ($uri->getSegment(1) == 'pengajuan_dikirim' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_dikirim') ?>"><i class="fa-solid fa-envelope-open-text me-2"></i>Pengajuan Dikirim</a></li>
             <li class="<?= ($uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_sudah_dibuat') ?>"><i class="fa-solid fa-envelope-circle-check me-2"></i>Pengajuan Sudah Dibuat</a></li>

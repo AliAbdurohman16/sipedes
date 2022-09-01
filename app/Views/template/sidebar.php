@@ -18,11 +18,7 @@
             $uri = new \CodeIgniter\HTTP\URI();
             $uri = service('uri');
             ?>
-            <?php if (session()->get('role')->id == 2) : ?>
-                <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('user/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
-            <?php else : ?>
-                <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('admin/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
-            <?php endif; ?>
+            <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('admin/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
             <?php if (session()->get('role')->id == 1 || session()->get('role')->id == 3 || session()->get('role')->id == 4) : ?>
                 <li class="<?= ($uri->getSegment(1) == 'log_activity' ? 'active' : '') ?>"><a href="<?= base_url('admin/log_activity') ?>"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
             <?php endif; ?>
@@ -84,14 +80,7 @@
                 </li>
                 <li class="<?= ($uri->getSegment(1) == 'laporan' ? 'active' : '') ?>"><a href="<?= base_url('admin/laporan') ?>"><i class="fa-solid fa-chart-column me-2"></i>Laporan</a></li>
             <?php endif; ?>
-            <?php if (session()->get('role')->id == 2) : ?>
-                <li class="<?= ($uri->getSegment(1) == 'tulis_pengajuan' ? 'active' : '') ?>"><a href="<?= base_url('user/tulis_pengajuan') ?>"><i class="fa-solid fa-user-pen me-2"></i>Tulis Pengajuan</a></li>
-                <li class="<?= ($uri->getSegment(1) == 'pengajuan_dikirim' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_dikirim') ?>"><i class="fa-solid fa-envelope-open-text me-2"></i>Pengajuan Dikirim</a></li>
-                <li class="<?= ($uri->getSegment(1) == 'pengajuan_sudah_dibuat' ? 'active' : '') ?>"><a href="<?= base_url('user/pengajuan_sudah_dibuat') ?>"><i class="fa-solid fa-envelope-circle-check me-2"></i>Pengajuan Sudah Dibuat</a></li>
-                <li><a href="<?= base_url('user/logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i>Keluar</a></li>
-            <?php else : ?>
-                <li><a href="<?= base_url('admin/logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i>Keluar</a></li>
-            <?php endif; ?>
+            <li><a href="<?= base_url('admin/logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i>Keluar</a></li>
 
         </ul>
         <!-- sidebar-menu  -->
