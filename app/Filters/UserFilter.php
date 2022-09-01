@@ -25,7 +25,7 @@ class UserFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session()->get('role')->name != $arguments) {
+        if (session()->get('role')->id != $arguments) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
