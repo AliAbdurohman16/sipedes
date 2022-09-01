@@ -65,7 +65,7 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
 
 $routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($routes) {
     // Dashboard
-    $routes->get('dashboard', 'Admin\DashboardController::index');
+    $routes->get('dashboard', 'User\DashboardController::index');
 
     // Pengajuan -> Tulis Pengajuan
     $routes->get('tulis_pengajuan', 'User\TulisPengajuanController::index');
