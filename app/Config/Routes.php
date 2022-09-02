@@ -171,7 +171,7 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     $routes->get('data_pengajuan_masuk', 'Admin\Pengajuan\MasukController::index');
     $routes->post('data_pengajuan_masuk/validasi', 'Admin\Pengajuan\MasukController::validasi');
     $routes->post('data_pengajuan_masuk/create', 'Admin\Pengajuan\MasukController::create');
-    $routes->post('data_pengajuan_masuk/detail', 'Admin\Pengajuan\MasukController::detail');
+    $routes->post('data_pengajuan_masuk/detail_notification', 'Admin\Pengajuan\MasukController::detailNotification');
 
     // Route Admin -> Data Pengajuan Sudah Dibuat
     $routes->get('data_pengajuan_sudah_dibuat', 'Admin\Pengajuan\DibuatController::index');

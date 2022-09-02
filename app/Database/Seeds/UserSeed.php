@@ -34,6 +34,16 @@ class UserSeed extends Seeder
                 'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
                 'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
             ],
+            [
+                'image'         => 'Avatar.png',
+                'name'          => 'RW 01',
+                'username'      => 'rw01',
+                'password'      => password_hash("1234567890", PASSWORD_DEFAULT),
+                'telephone'     => '1234567890',
+                'role_id'       => '3',
+                'created_at'    => Time::now('Asia/Jakarta', 'en_ID'),
+                'updated_at'    => Time::now('Asia/Jakarta', 'en_ID'),
+            ],
         ];
 
         $userModel->insertBatch($users);

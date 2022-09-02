@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
 use App\Models\PendudukModel;
 use App\Models\KartuKeluargaModel;
+use CodeIgniter\I18n\Time;
 
 class TulisPengajuanController extends BaseController
 {
@@ -88,6 +89,7 @@ class TulisPengajuanController extends BaseController
                     'telepon' => $this->request->getVar('telepon'),
                     'jenis' => $this->request->getVar('jenis'),
                     'keterangan' => $this->request->getVar('keterangan'),
+                    'created_at' => Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
                 $this->pengajuanModel->insert($result);
