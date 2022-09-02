@@ -15,7 +15,7 @@
                         <div class="mb-3">
                             <label class="form-label">No Kartu Keluarga <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= $pd->no_kk ?>" placeholder="No Kartu Keluarga :" readonly>
+                                <input name="no_kk" id="no_kk" type="number" class="form-control" value="<?= $pd->no_kk ?>" placeholder="No Kartu Keluarga :" disabled>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="mb-3">
                             <label class="form-label">NIK <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="nik" id="nik" type="number" class="form-control" value="<?= $pd->nik ?>" placeholder="NIK :" readonly>
+                                <input name="nik" id="nik" type="number" class="form-control" value="<?= $pd->nik ?>" placeholder="NIK :" disabled>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class="mb-3">
                             <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="name" id="name" type="text" class="form-control" value="<?= $pd->nama ?>" placeholder="Nama Lengkap :" readonly>
+                                <input name="name" id="name" type="text" class="form-control" value="<?= $pd->nama ?>" placeholder="Nama Lengkap :" disabled>
                             </div>
                         </div>
                     </div>

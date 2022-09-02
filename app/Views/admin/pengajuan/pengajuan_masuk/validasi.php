@@ -15,7 +15,7 @@
                         <div class="mb-3">
                             <label class="form-label">No Whatsapp <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="telepon" id="telepon" type="number" class="form-control" value="<?= $pd->telepon ?>" placeholder="No Whatsapp : contoh 628****" readonly>
+                                <input name="telepon" id="telepon" type="number" class="form-control" value="<?= $pd->telepon ?>" placeholder="No Whatsapp : contoh 628****" disabled>
                                 <small>Gunakan no whatsapp di awali dengan 62 seperti contoh : 6281234***</small>
                             </div>
                         </div>

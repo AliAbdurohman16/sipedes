@@ -91,7 +91,8 @@ class MasukController extends BaseController
 
                 $request = [
                     'informasi' => $informasi,
-                    'status'    => 'Sudah Dibuat'
+                    'status'    => 'Sudah Dibuat',
+                    'updated_at'    => Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
                 $id = $this->request->getVar('id');
@@ -132,6 +133,28 @@ class MasukController extends BaseController
             ];
 
             $msg = ['success' => view('admin/pengajuan/pengajuan_masuk/detail', $data)];
+            echo json_encode($msg);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+    }
+
+    public function detailNotification()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+
+            $data = [
+                'pd' => $this->pengajuanModel->find($id),
+            ];
+
+            $param = [
+                'read_admin' => 'yes'
+            ];
+
+            $this->pengajuanModel->update($id, $param);
+
+            $msg = ['success' => view('admin/pengajuan/pengajuan_masuk/detailNotif', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

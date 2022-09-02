@@ -20,7 +20,9 @@ class PengajuanDikirimController extends BaseController
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $pd = $this->pengajuanModel->where('status', 'Belum Dibuat')->get()->getResult();
+            $nik = session()->get('penduduk')->nik;
+
+            $pd = $this->pengajuanModel->where('status', 'Belum Dibuat')->where('nik', $nik)->get()->getResult();
 
             $data = [
                 'pds' => $pd
