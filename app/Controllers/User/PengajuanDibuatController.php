@@ -20,7 +20,9 @@ class PengajuanDibuatController extends BaseController
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->get()->getResult();
+            $nik = session()->get('penduduk')->nik;
+
+            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->where('nik', $nik)->get()->getResult();
 
             $data = [
                 'pds' => $pd
@@ -48,6 +50,12 @@ class PengajuanDibuatController extends BaseController
             $data = [
                 'pd' => $this->pengajuanModel->find($id),
             ];
+
+            $param = [
+                'read_user' => 'yes'
+            ];
+
+            $this->pengajuanModel->update($id, $param);
 
             $msg = ['success' => view('user/pengajuan/pengajuan_sudah_dibuat/detail', $data)];
             echo json_encode($msg);

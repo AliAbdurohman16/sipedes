@@ -46,6 +46,16 @@ class Pengajuan extends Migration
                 'constraint' => ['Belum Dibuat', 'Sudah Dibuat'],
                 'default'    => 'Belum Dibuat',
             ],
+            'read_user' => [
+                'type'       => 'ENUM',
+                'constraint' => ['no', 'yes'],
+                'default'    => 'no',
+            ],
+            'read_admin' => [
+                'type'       => 'ENUM',
+                'constraint' => ['no', 'yes'],
+                'default'    => 'no',
+            ],
             'created_at' => [
                 'type'       => 'DATETIME'
             ],
