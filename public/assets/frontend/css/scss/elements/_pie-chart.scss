@@ -1,0 +1,22 @@
+//
+// Pie Chart styles //
+//
+.pie-chart {
+	position: relative;
+	display: inline-block;
+}
+.pie-chart-content {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	@include transform(translateY(-50%));
+	width: 100%;
+	margin-top: -3px;
+	padding: 0 20px;
+	text-align: center;
+}
+.pie-chart-content .percent {
+	&::after {
+		content: '%';
+	}
+}

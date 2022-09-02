@@ -349,7 +349,7 @@ class AparatDesaController extends BaseController
             }
             $this->aparatDesaModel->delete($id);
 
-            // Log Activity
+            // Log Activitya
             $params = [
                 'user_id'       => session()->get('user')->id,
                 'activities'    => 'Hapus Data Aparat Desa',

@@ -1,0 +1,193 @@
+//
+// Box Styles //
+//
+.box-shadow {
+	@include box-shadow(0 10px 36px 0 rgba(22,24,26,0.13));
+}
+.box-shadow-with-hover {
+	@include box-shadow(0 10px 36px 0 rgba(22,24,26,0.13));
+	@include transition(ease-out 0.16s);
+	&:hover {
+		@include box-shadow(0 10px 40px 0 rgba(22,24,26,0.19));
+	}
+}
+.hover-shadow {
+	@include transition(ease-out 0.16s);
+	&:hover {
+		@include box-shadow(0 10px 36px 0 rgba(22,24,26,0.13));
+	}
+}
+.hover-float {
+	@include transition(ease-out 0.16s);
+	&:hover {
+		@include transform(translateY(-4px));
+	}
+}
+.hover-scale {
+	@include transition(ease-out 0.16s);
+	&:hover {
+		@include transform(scale(1.015));
+	}
+}
+.hover-shrink {
+	@include transition(ease-out 0.16s);
+	&:hover {
+		@include transform(scale(0.985));
+	}
+}
+
+//
+// Square box //
+//
+div[class^="square-box"], div[class*=" square-box"], 
+div[class^="circle-box"], div[class*=" circle-box"] {
+	display: inline-block;
+	text-align: center;
+	* {
+		margin: 0;
+		vertical-align: middle;
+	}
+}
+.square-box-xs {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	* {
+		line-height: 40px;
+	}
+}
+.square-box-sm {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	* {
+		line-height: 50px;
+	}
+}
+.square-box, .square-box-md {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	* {
+		line-height: 60px;
+	}
+}
+.square-box-lg {
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	* {
+		line-height: 70px;
+	}
+}
+.square-box-xl {
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	* {
+		line-height: 80px;
+	}
+}
+
+//
+// Circle Box //
+//
+div[class^="circle-box"], div[class*=" circle-box"] {
+	border-radius: 50%;
+}
+.circle-box-xs {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	* {
+		line-height: 40px;
+	}
+}
+.circle-box-sm {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	* {
+		line-height: 50px;
+	}
+}
+.circle-box, .circle-box-md {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	* {
+		line-height: 60px;
+	}
+}
+.circle-box-lg {
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	* {
+		line-height: 70px;
+	}
+}
+.circle-box-xl {
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	* {
+		line-height: 80px;
+	}
+}
+
+//
+// Box border radius //
+//
+.border-radius, .border-radius-0375 { border-radius: 0.375em; }
+.border-radius-025 { border-radius: 0.25em; }
+.border-radius-05 { border-radius: 0.5em; }
+.border-radius-10 { border-radius: 1em; }
+.border-radius-15 { border-radius: 1.5em; }
+.border-radius-20 { border-radius: 2em; }
+.border-radius-25 { border-radius: 2.5em; }
+.border-radius-30 { border-radius: 3em; }
+
+//
+// Move boxes //
+//
+.move-top-100 {
+	@include transform(translateY(-100px));
+	margin-bottom: -100px;
+}
+.move-top-90 {
+	@include transform(translateY(-90px));
+	margin-bottom: -90px;
+}
+.move-top-80 {
+	@include transform(translateY(-80px));
+	margin-bottom: -80px;
+}
+.move-top-70 {
+	@include transform(translateY(-70px));
+	margin-bottom: -70px;
+}
+.move-top-60 {
+	@include transform(translateY(-60px));
+	margin-bottom: -60px;
+}
+.move-top-50 {
+	@include transform(translateY(-50px));
+	margin-bottom: -50px;
+}
+.move-top-40 {
+	@include transform(translateY(-40px));
+	margin-bottom: -40px;
+}
+.move-top-30 {
+	@include transform(translateY(-30px));
+	margin-bottom: -30px;
+}
+.move-top-20 {
+	@include transform(translateY(-20px));
+	margin-bottom: -20px;
+}
+.move-top-10 {
+	@include transform(translateY(-10px));
+	margin-bottom: -10px;
+}

@@ -1,0 +1,97 @@
+//
+// Mixins //
+//
+@mixin display-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin background-size($background-size) {
+  -webkit-background-size: $background-size;
+  -moz-background-size: $background-size;
+  background-size: $background-size;
+}
+
+@mixin box-shadow($box-shadow) {
+  -webkit-box-shadow: $box-shadow;
+  box-shadow:         $box-shadow;
+}
+
+@mixin text-shadow($text-shadow) {
+  -webkit-text-shadow: $text-shadow;
+  text-shadow:         $text-shadow;
+}
+
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+  filter:         $filter;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+  transition-delay:         $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+  transition-duration:         $transition-duration;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  transform:         $transform;
+}
+@mixin transform-origin($transform-origin) {
+  -webkit-transform-origin: $transform-origin;
+  transform-origin:         $transform-origin;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  animation:         $animation;
+}
+@mixin animation-delay($animation-delay) {
+  -webkit-animation-delay: $animation-delay;
+  animation-delay:         $animation-delay;
+}
+@mixin animation-fill-mode($animation-fill-mode) {
+  -webkit-animation-fill-mode: $animation-fill-mode;
+  animation-fill-mode:         $animation-fill-mode;
+}
+
+@mixin breakpoint-above($class) {
+  @if $class == xs {
+    @media (min-width: 0) { @content; }
+  }
+  @else if $class == sm {
+    @media (min-width: 576px) { @content; }
+  }
+  @else if $class == md {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $class == lg {
+    @media (min-width: 992px) { @content; }
+  }
+  @else if $class == xl {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+@mixin breakpoint-less($class) {
+  @if $class == xs {
+    @media (max-width: 575.98px) { @content; }
+  }
+  @else if $class == sm {
+    @media (max-width: 767.98px) { @content; }
+  }
+  @else if $class == md {
+    @media (max-width: 991.98px) { @content; }
+  }
+  @else if $class == lg {
+    @media (max-width: 1199.98px) { @content; }
+  }
+}

@@ -1,0 +1,482 @@
+//
+// Hover box Styles //
+//
+div[class^="hoverbox"] {
+	overflow: hidden;
+	position: relative;
+	@include transform(translate3d(0,0,0));
+	display: inline-block;
+	img {
+		@include transition(transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1));
+	}
+}
+
+//
+// Hover box - Style 1, 2 //
+//
+.hoverbox-1, 
+.hoverbox-2 {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+		background: $color-black-05;
+		width: 100%;
+		height: 100%;
+		@include transition(ease-out 0.12s);
+	}
+	.hover-content {
+		position: absolute;
+		z-index: 2;
+		visibility: hidden;
+		opacity: 0;
+		color: $color-white-07;
+		@include transition(ease-out 0.12s);
+		h1,h2,h3,h4,h5,h6 {
+			color: $color-white;
+		}
+	}
+	&:hover, &:focus {
+		&:before {
+			visibility: visible;
+			opacity: 1;
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+		.hover-content {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+.hoverbox-1 {
+	.hover-content {
+		top: 50%;
+		right: 0;
+		left: 0;
+		@include transform(translateY(-50%));
+		width: 100%;
+		margin-top: 5px;
+		padding: 0 30px;
+		
+	}
+	&:hover, &:focus {
+		.hover-content {
+			margin-top: 0;
+		}
+	}
+}
+.hoverbox-2 {
+	.hover-content {
+		right: 0;
+		bottom: 0;
+		left: 0;
+		@include transform(translateY(5px));
+		width: 100%;
+		padding: 30px;
+	}
+	&:hover, &:focus {
+		.hover-content {
+			@include transform(translateY(0));
+		}
+	}
+}
+
+//
+// Hover box - Style 3 //
+//
+.hoverbox-3 {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		bottom: 16px;
+		left: 16px;
+		@include transform(scale(0.99));
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+		background: $color-white;
+		@include transition(ease-out 0.12s);
+	}
+	.hover-content {
+		position: absolute;
+		top: 50%;
+		right: 16px;
+		left: 16px;
+		@include transform(translateY(-50%));
+		z-index: 2;
+		visibility: hidden;
+		opacity: 0;
+		margin-top: 4px;
+		padding: 0 30px;
+		@include transition(ease-out 0.12s);
+		@include breakpoint-less(md) {
+			padding: 0 20px;
+		}
+	}
+	&:hover, &:focus {
+		&:before {
+			@include transform(scale(1));
+			visibility: visible;
+			opacity: 1;
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+		.hover-content {
+			visibility: visible;
+			opacity: 1;
+			margin-top: 0;
+		}
+	}
+}
+
+//
+// Hover box - Style 4 //
+//
+.hoverbox-4 {
+	.hover-content {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		left: 16px;
+		@include transform(translateY(4px));
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+		background: $color-white;
+		padding: 30px;
+		@include transition(ease-out 0.12s);
+		@include breakpoint-less(md) {
+			padding: 20px;
+		}
+	}
+	&:hover, &:focus {
+		img {
+			@include transform(scale(1.04));
+		}
+		.hover-content {
+			@include transform(translateY(0));
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+//
+// Hover box - Style 5, 6 //
+//
+.hoverbox-5, 
+.hoverbox-6 {
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $color-black-04;
+		width: 100%;
+		height: 100%;
+		@include transition(ease-out 0.12s);
+	}
+	.content, 
+	.hover-content {
+		position: absolute;
+		z-index: 1;
+		color: $color-white-07;
+		@include transition(ease-out 0.12s);
+		h1,h2,h3,h4,h5,h6 {
+			color: $color-white;
+		}
+	}
+	.hover-content {
+		visibility: hidden;
+		opacity: 0;
+	}
+	&:hover, &:focus {
+		&:after {
+			background: $color-black-05;
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+		.content {
+			visibility: hidden;
+			opacity: 0;
+		}
+		.hover-content {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+.hoverbox-5 {
+	.content, 
+	.hover-content {
+		top: 50%;
+		left: 0;
+		@include transform(translateY(-50%));
+		width: 100%;
+		padding: 0 30px;
+	}
+	.hover-content {
+		margin-top: 5px;
+	}
+	&:hover, &:focus {
+		.content {
+			margin-top: -5px;
+		}
+		.hover-content {
+			margin-top: 0;
+		}
+	}
+}
+.hoverbox-6 {
+	.content, 
+	.hover-content {
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 30px;
+	}
+	.hover-content {
+		@include transform(translateY(5px));
+	}
+	&:hover, &:focus {
+		.content {
+			@include transform(translateY(-5px));
+		}
+		.hover-content {
+			@include transform(translateY(0));
+		}
+	}
+}
+
+//
+// Hover box - Style 7 //
+//
+.hoverbox-7 {
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $color-black-04;
+		width: 100%;
+		height: 100%;
+		@include transition(ease-out 0.12s);
+	}
+	.content, 
+	.hover-content {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		width: 100%;
+		padding: 30px;
+		color: $color-white-07;
+		h1,h2,h3,h4,h5,h6 {
+			color: $color-white;
+		}
+	}
+	.content {
+		top: 0;
+	}
+	.hover-content {
+		bottom: 0;
+		@include transform(translateY(5px));
+		visibility: hidden;
+		opacity: 0;
+		@include transition(ease-out 0.12s);
+	}
+	&:hover, &:focus {
+		&:after {
+			background: $color-black-05;
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+		.hover-content {
+			@include transform(translateY(0));
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+//
+// Hover box - Style 8, 9, 10 //
+//
+.hoverbox-8, 
+.hoverbox-9, 
+.hoverbox-10 {
+	a {
+		display: block;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			opacity: 0;
+			background: $color-white-01;
+			width: 100%;
+			height: 100%;
+			@include transition(ease-out 0.12s);
+		}
+	}
+	.content {
+		position: absolute;
+		z-index: 2;
+		display: inline-block;
+		background: $color-white;
+		padding: 10px 16px;
+		color: $color-black-09;
+		h1,h2,h3,h4,h5,h6 {
+			margin: 0;
+			color: $color-black-09;
+		}
+	}
+	&:hover, &:focus {
+		a {
+			&:before {
+				opacity: 1;
+			}
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+	}
+}
+.hoverbox-8 {
+	.content {
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+	}
+}
+.hoverbox-9 {
+	.content { 
+		top: 16px;
+		left: 16px;
+	}
+}
+.hoverbox-10 {
+	.content {
+		bottom: 16px;
+		left: 16px;
+	}
+}
+
+.hoverbox-11 {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+		background: $color-black-05;
+		width: 100%;
+		height: 100%;
+		@include transition(ease-out 0.12s);
+	}
+	.hover-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		color: $color-white-07;
+		h1,h2,h3,h4,h5,h6 {
+			color: $color-white;
+		}
+		.top {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			-webkit-transform: translateY(5px);
+			transform: translateY(5px);
+			opacity: 0;
+			padding: 30px;
+			@include transition(ease-out 0.12s);
+		}
+		.bottom {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			-webkit-transform: translateY(5px);
+			transform: translateY(5px);
+			opacity: 0;
+			padding: 30px;
+			@include transition(ease-out 0.12s);
+		}
+	}
+	&:hover, &:focus {
+		&:before {
+			visibility: visible;
+			opacity: 1;
+		}
+		img {
+			@include transform(scale(1.04));
+		}
+		.hover-content {
+			visibility: visible;
+			opacity: 1;
+			.top, .bottom {
+				-webkit-transform: translateY(0);
+				transform: translateY(0);
+				opacity: 1;
+			}
+			.top { @include transition-delay(0.05s); }
+			.bottom { @include transition-delay(0.10s); }
+		}
+	}
+}
+
+.hoverbox-1, 
+.hoverbox-2, 
+.hoverbox-5, 
+.hoverbox-6, 
+.hoverbox-7, 
+.hoverbox-11 {
+	a {
+		&:not([class^='button']) {
+			color: $color-white-07;
+			&:hover, &:focus { color: $color-white; }
+		}
+	}
+	a {
+		&.button-text-1, 
+		&.button-text-2, 
+		&.button-text-3 {
+			color: $color-white-08;
+			&:hover {
+				color: $color-white;
+			}
+		}
+		&.button-text-1 {
+			&:before { background: $color-white-03; }
+			&:after { background: $color-white; }
+		}
+		&.button-text-2 {
+			&:before { background: $color-white-04; }
+			&:after { background: $color-white; }
+		}
+		&.button-text-3 {
+			&:before { background: $color-white-08; }
+			&:hover {
+				&:before { background: $color-white; }
+			}
+		}
+	}
+}

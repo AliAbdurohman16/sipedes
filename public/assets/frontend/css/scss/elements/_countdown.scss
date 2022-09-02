@@ -1,0 +1,10 @@
+//
+// Countdown Styles //
+//
+.countdown {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+    display: flex;
+	div { width: 25%; }
+}

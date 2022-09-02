@@ -1,0 +1,40 @@
+//
+// Background Styles //
+//
+.bg-image {
+	position: relative;
+	background-position: center center;
+    background-attachment: scroll;
+    @include background-size(cover);
+    background-repeat: no-repeat;
+    &[class^="bg-image-gradient-"], &[class*=" bg-image-gradient-"] {
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&.bg-image-gradient-top { &:before { background-image: linear-gradient(to top, $color-white, $color-white-02); } }
+	&.bg-image-gradient-right { &:before { background-image: linear-gradient(to right, $color-white, $color-white-02); } }
+	&.bg-image-gradient-bottom { &:before { background-image: linear-gradient(to bottom, $color-white, $color-white-02); } }
+	&.bg-image-gradient-left { &:before { background-image: linear-gradient(to left, $color-white, $color-white-02); } }
+	&.bg-image-gradient-black-top { &:before { background-image: linear-gradient(to top, $color-black, $color-black-02); } }
+	&.bg-image-gradient-black-right { &:before { background-image: linear-gradient(to right, $color-black, $color-black-02); } }
+	&.bg-image-gradient-black-bottom { &:before { background-image: linear-gradient(to bottom, $color-black, $color-black-02); } }
+	&.bg-image-gradient-black-left { &:before { background-image: linear-gradient(to left, $color-black, $color-black-02); } }
+}
+
+.bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	video {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+}

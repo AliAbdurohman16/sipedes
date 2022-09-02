@@ -1,0 +1,16 @@
+//
+// Google Map Styles //
+//
+.gmap { width: 100%; }
+.gmap-xs { height: 300px; }
+.gmap-sm { height: 350px; }
+.gmap-md { height: 400px; }
+.gmap-lg { height: 470px; }
+.gmap-xl { height: 550px; }
+@include breakpoint-less(md) {
+	.gmap-xs { height: 250px; }
+	.gmap-sm { height: 300px; }
+	.gmap-md { height: 350px; }
+	.gmap-lg { height: 400px; }
+	.gmap-xl { height: 450px; }
+}

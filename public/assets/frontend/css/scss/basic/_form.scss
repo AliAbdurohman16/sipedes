@@ -1,0 +1,205 @@
+//
+// Form Styles //
+//
+.form-row {
+	margin-right: -8px;
+	margin-left: -8px;
+	div[class^="col-"], div[class*=" col-"], .col {
+		margin: 0;
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+}
+input:not(.form-check-input), 
+textarea {
+	background: transparent;
+	width: 100%;
+	border: 1px solid $color-black-01;
+	margin-bottom: 1rem;
+	padding: 15px 20px;
+	box-shadow: none;
+	font: 400 15px $font-family-primary;
+	line-height: 1.4;
+	@include transition(ease-out 0.16s);
+	&:focus, &:active {
+		outline: 0;
+		box-shadow: none;
+	}
+}
+textarea {
+	height: 140px;
+}
+input:not(.form-check-input), textarea, .form-control {
+	color: $color-primary;
+	&::-webkit-input-placeholder { color: $color-primary-lighter; }
+	&::-moz-placeholder { color: $color-primary-lighter; }
+	&:-ms-placeholder { color: $color-primary-lighter; }
+	&::-ms-placeholder { color: $color-primary-lighter; }
+	&::placeholder { color: $color-primary-lighter; }
+	&:focus {
+		border-color: $color-black-02;
+	}
+}
+.form-control {
+	background: transparent;
+	height: auto;
+	border: 1px solid $color-black-01;
+	border-radius: 0;
+	padding: 15px 20px;
+	font: 400 15px $font-family-primary;
+	line-height: 1.4;
+	&:focus {
+		background: transparent;
+		box-shadow: none;
+	}
+	&:read-only {
+		background: $button-grey;
+		border: 0;
+	}
+	&.form-control-sm {
+		padding: 10px 15px;
+		font-size: 0.875rem;
+	}
+	&.form-control-lg {
+		font-size: 1.25rem;
+	}
+}
+.form-control-plaintext {
+	border: 0;
+}
+.form-check-input:disabled ~ .form-check-label {
+	color: $color-primary-lighter;
+}
+.required {
+	&:after {
+		content: '*';
+		padding-left: 3px;
+	}
+}
+
+//
+// Select //
+//
+select {
+	margin-bottom: 16px;
+}
+.custom-select {
+	background-color: transparent;
+	width: auto;
+	min-width: 160px;
+	height: auto;
+	border-radius: 0;
+	padding: 15px 20px;
+	border-color: $color-black-01;
+	color: $color-primary;
+	font: 400 15px $font-family-primary;
+	line-height: 1.4;
+	@include transition(ease-out 0.16s);
+	&:focus {
+		border-color: $color-black-02;
+		outline: 0;
+		box-shadow: none;
+	}
+	&.custom-select-sm {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 0.875rem;
+	}
+	&.custom-select-lg {
+		height: auto;
+		padding: 15px 20px;
+		font-size: 1.25rem;
+	}
+	&.select-fullwidth {
+		width: 100%;
+	}
+}
+//
+// Form Styles 2,3,4 //
+//
+form.form-style-3, .form-style-3, 
+form.form-style-4, .form-style-4 {
+	input, textarea, .custom-select, .form-control {
+		margin-bottom: 20px;
+		padding: 0 0 10px;
+		border-top-width: 0;
+		border-right-width: 0;
+		border-bottom-width: 1px;
+		border-left-width: 0;
+	}
+}
+form.form-style-2, .form-style-2, 
+form.form-style-4, .form-style-4 {
+	input, textarea, .custom-select, .form-control {
+		&:focus {
+			border-color: $color-black-09;
+		}
+	}
+}
+
+//
+// Form Style 5 //
+//
+form.form-style-5, .form-style-5 {
+	input, textarea, .custom-select, .form-control {
+		background: $bg-grey;
+		border: 0;
+		&:focus {
+			background: $button-grey-lighter;
+		}
+	}
+}
+div[class^='bg-grey'], div[class*=' bg-grey'] {
+	form.form-style-5, .form-style-5 {
+		input, textarea, .custom-select, .form-control {
+			background: $color-white;
+			&:focus {
+				background: $color-white;
+			}
+		}
+	}
+}
+
+//
+// Forms on Dark background //
+//
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	input, textarea, .form-control {
+		background: transparent;
+		border-color: $color-white-02;
+		color: $color-white-07;
+		&::-webkit-input-placeholder { color: $color-white-05; }
+		&::-moz-placeholder { color: $color-white-05; }
+		&:-ms-placeholder { color: $color-white-05; }
+		&::-ms-placeholder { color: $color-white-05; }
+		&::placeholder { color: $color-white-05; }
+		&:focus {
+			border-color: $color-white-03;
+		}
+	}
+	.custom-select {
+		background: transparent;
+		border-color: $color-white-02;
+		color: $color-white-07;
+		&:focus {
+			border-color: $color-white-03;
+		}
+	}
+	form.form-style-2, .form-style-2, 
+	form.form-style-4, .form-style-4 {
+		input, textarea, .custom-select, .form-control {
+			&:focus {
+				border-color: $color-white;
+			}
+		}
+	}
+	form.form-style-5, .form-style-5 {
+		input, textarea, .custom-select, .form-control {
+			background: $color-white-01;
+			border: 0;
+			&:focus {
+				background: $color-white-02;
+			}
+		}
+	}
+}

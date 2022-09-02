@@ -1,0 +1,132 @@
+//
+// Clients Styles //
+//
+.client-box {
+	text-align: center;
+	a {
+		img {
+			opacity: 0.4;
+			@include transition(ease-out 0.16s);
+		}
+		&:hover, &:focus {
+			img {
+				opacity: 1;
+			}
+		}
+	}
+}
+.owl-carousel {
+	.client-box {
+		img { display: inline-block; }
+	}
+}
+//
+// Clients Grid //
+//
+.clients-grid {
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	li {
+		position: relative;
+		float: left;
+		width: 16.6%;
+		margin: 0;
+		padding: 30px;
+		&:before, &:after {
+			content: '';
+			position: absolute;
+		}
+		&:before {
+			top: 0;
+			left: -1px;
+			height: 100%;
+			border-left: 1px dashed $color-black-01;
+		}
+		&:after {
+			left: 0;
+			bottom: -1px;
+			width: 100%;
+			border-bottom: 1px dashed $color-black-01;
+		}
+		a {
+			img {
+				opacity: 0.4;
+				@include transition(ease-out 0.16s);
+			}
+			&:hover, &:focus {
+				img {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	@include breakpoint-less(md) {
+		li { width: 25%; }
+	}
+	@include breakpoint-less(sm) {
+		li { width: 33.3%; }
+	}
+	@include breakpoint-less(xs) {
+		li { width: 50%; }
+	}
+	&.column-5 {
+		li { width: 20%; }
+		@include breakpoint-less(md) {
+			li { width: 25%; }
+		}
+		@include breakpoint-less(sm) {
+			li { width: 33.3%; }
+		}
+		@include breakpoint-less(xs) {
+			li { width: 50%; }
+		}
+	}
+	&.column-4 {
+		li { width: 25%; }
+		@include breakpoint-less(sm) {
+			li { width: 33.3%; }
+		}
+		@include breakpoint-less(xs) {
+			li { width: 50%; }
+		}
+	}
+	&.column-3 {
+		li { width: 33.3%; }
+		@include breakpoint-less(sm) {
+			li { width: 50%; }
+		}
+	}
+	&.column-2 {
+		li { width: 50%; }
+	}
+	//
+	// Border Style - Solid //
+	//
+	&.border-style-solid {
+		border: 0;
+		li {
+			&:before { border-left-style: solid; }
+			&:after { border-bottom-style: solid; }
+		}
+	}
+	//
+	// Border Style - Dotted //
+	//
+	&.border-style-dotted {
+		border: 0;
+		li {
+			&:before { border-left-style: dotted; }
+			&:after { border-bottom-style: dotted; }
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.clients-grid {
+		li {
+			&:before, &:after { border-color: $color-white-02; }
+		}
+	}
+}

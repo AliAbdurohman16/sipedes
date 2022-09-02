@@ -1,0 +1,243 @@
+//
+// Timeline Styles //
+//
+.timeline-wrapper {
+	position: relative;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		background: $border-grey;
+		width: 1px;
+		height: 100%;
+	}
+	.timeline {
+		.timeline-date {
+			position: relative;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 31px;
+				background: $border-grey;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+			}
+			&:after {
+				content: '';
+	    		position: absolute;
+	    		top: 37px;
+	    		background: $color-dark;
+	    		width: 8px;
+	    		height: 8px;
+	    		border-radius: 50%;
+			}
+		}
+	}
+}
+@include breakpoint-above(lg) {
+	.timeline-wrapper {
+		position: relative;
+		&:before {
+			left: 50%;
+			@include transform(translateX(-50%));
+		}
+		.timeline {
+			position: relative;
+			.timeline-date, .timeline-content {
+				width: 50%;
+				padding: 30px;
+			}
+		    .timeline-date {
+				position: absolute;
+				top: 0;
+				left: 0;
+				text-align: right;
+				&:before {
+					right: -10px;
+				}
+				&:after {
+					right: -4px;
+				}
+				h1,h2,h3,h4,h5,h6 {
+					position: relative;
+					text-align: right;
+				}
+			}
+		    .timeline-content {
+		    	margin-left: 50%;
+		    }
+		    &:nth-child(even) {
+		    	.timeline-date {
+		    		left: 50%;
+		    		text-align: left;
+		    		&:before {
+	    				right: auto;
+	    				left: -10px;
+	    			}
+		    		&:after {
+	    				right: auto;
+	    				left: -4px;
+	    			}
+		    		h1,h2,h3,h4,h5,h6 {
+		    			text-align: left;
+		    		}
+		    	}
+		    	.timeline-content {
+		    		margin-left: 0;
+		    		text-align: right;
+		    	}
+		    }
+		}
+		//
+		// Timeline left //
+		//
+		&.timeline-left {
+			&:before {
+				left: 200px;
+				@include transform(translateX(0));
+			}
+			.timeline {
+				.timeline-date {
+					width: 200px;
+					padding: 30px 30px 0 0;
+				}
+				.timeline-content {
+					width: auto;
+					margin: 0 0 0 200px;
+					padding: 30px 0 0 30px;
+					text-align: left;
+				}
+				&:nth-child(even) {
+					.timeline-date {
+						left: auto;
+						text-align: right;
+						&:before {
+		    				right: -10px;
+		    				left: auto;
+		    			}
+						&:after {
+			    			right: -4px;
+		    				left: auto;
+		    			}
+						h1,h2,h3,h4,h5,h6 {
+							text-align: right;
+						}
+					}
+				}
+				&:last-child {
+					.timeline-date, .timeline-content {
+						padding-bottom: 30px;
+					}
+				}
+			}
+		}
+		//
+		// Timeline Right //
+		//
+		&.timeline-right {
+			&:before {
+				right: 200px;
+				left: auto;
+				@include transform(translateX(0));
+			}
+			.timeline {
+				.timeline-date {
+					right: 0;
+					left: auto;
+					width: 200px;
+					padding: 30px 0 0 30px;
+					text-align: left;
+					&:before {
+			    		right: auto;
+			    		left: -10px;
+			    	}
+					&:after {
+		    			right: auto;
+			    		left: -4px;
+			    	}
+					h1,h2,h3,h4,h5,h6 {
+			    		text-align: left;
+			    	}
+				}
+				.timeline-content {
+					width: auto;
+					margin: 0 200px 0 0;
+					padding: 30px 30px 0 0;
+					text-align: right;
+				}
+				&:nth-child(even) {
+					.timeline-date {
+						left: auto;
+						text-align: left;
+						&:before {
+		    				left: -10px;
+		    			}
+						&:after {
+		    				left: -4px;
+		    			}
+						h1,h2,h3,h4,h5,h6 {
+							text-align: left;
+						}
+					}
+				}
+				&:last-child {
+					.timeline-date, .timeline-content {
+						padding-bottom: 30px;
+					}
+				}
+			}
+		} // end Timeline Right //
+	}
+}
+@include breakpoint-less(md) {
+	.timeline-wrapper {
+		padding-left: 30px;
+		&:before {
+			left: 0;
+		}
+		.timeline {
+			margin-bottom: 30px;
+			&:first-child {
+				padding-top: 30px;
+			}
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 30px;
+			}
+			.timeline-date {
+				&:before {
+					top: 1px;
+					left: -40px;
+				}
+				&:after { 
+					top: 7px;
+					left: -34px; 
+				}
+			}
+		}
+	}
+}
+@include breakpoint-less(xs) {
+	.timeline-wrapper {
+		padding-left: 20px;
+		.timeline {
+			.timeline-date {
+				&:before { left: -30px; }
+				&:after { left: -24px; }
+			}
+		}
+	}
+}
+
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.timeline-wrapper {
+		&:before { background: $color-white-02; }
+		.timeline {
+			.timeline-date {
+				&:before { background: $color-white-02; }
+				&:after { background: $color-white; }
+			}
+		}
+	}
+}

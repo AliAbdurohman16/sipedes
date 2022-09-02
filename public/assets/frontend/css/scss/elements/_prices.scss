@@ -1,0 +1,57 @@
+//
+// Prices Styles //
+//
+.prices-box {
+	border: 1px solid $color-black-01;
+	padding: 30px;
+	text-align: center;
+	.price {
+		margin: 20px 0;
+		span {
+			display: block;
+			font: 300 14px $font-family-primary;
+			color: $color-primary-lighter;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			position: relative;
+			display: inline-block;
+			margin: 0;
+			&:before {
+				content: '\f155';
+				font-family: 'Font Awesome 6 Free';
+				position: absolute;
+				top: 10px;
+				left: -10px;
+				font-size: 14px;
+				line-height: 14px;
+			}
+			span {
+				display: inline-block;
+				font: 300 14px $font-family-primary;
+				color: $color-primary-lighter;
+			}
+		}
+	}
+	.price-features {
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	.btn, .button, .button-circle, .button-text-1, .button-text-2, .button-text-3 {
+		margin-top: 30px;
+	}
+	&.prices-box-recommended {
+		border-color: $color-black;
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.prices-box {
+		border-color: $color-white-02;
+		color: $color-white-05;
+		&.prices-box-recommended {
+			border-color: $color-white;
+		}
+	}
+}

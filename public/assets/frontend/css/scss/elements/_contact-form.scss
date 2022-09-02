@@ -1,0 +1,16 @@
+//
+// Contact Form Styles //
+//
+.submit-result {
+	span {
+		display: none;
+		@include transition(ease-out 0.2s);
+		&.show-result {
+			margin-top: 30px;
+			display: block;
+		}
+		&#success { color: $color-green; }
+		&#error { color: $color-red; }
+		.error-color { background: rgba(255, 0, 0, 0.1); }
+	}
+}

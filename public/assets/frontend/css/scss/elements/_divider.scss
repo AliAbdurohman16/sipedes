@@ -1,0 +1,241 @@
+//
+// Divider Style //
+//
+hr {
+	background: $color-black-01;
+	height: 1px;
+	border: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+.text-center {
+	hr {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.text-end {
+	hr {
+		margin-left: auto;
+	}
+}
+
+//
+// Divider - Width //
+//
+.divider-width-10px {
+	hr { width: 10px; }
+}
+.divider-width-20px {
+	hr { width: 20px; }
+}
+.divider-width-30px {
+	hr { width: 30px; }
+}
+.divider-width-40px {
+	hr { width: 40px; }
+}
+.divider-width-50px {
+	hr { width: 50px; }
+}
+.divider-width-60px {
+	hr { width: 60px; }
+}
+.divider-width-70px {
+	hr { width: 70px; }
+}
+
+//
+// Divider - Height //
+//
+.divider-height-2px {
+	hr { height: 2px; }
+}
+.divider-height-3px {
+	hr { height: 3px; }
+}
+
+//
+// Divider on dark //
+//
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	hr { background: $color-white-01; }
+}
+
+//
+// Divider - Dots //
+//
+.divider-dots {
+	span {
+		display: inline-block;
+		background: $color-black-01;
+		width: 6px;
+		height: 6px;
+		margin-right: 8px;
+		border-radius: 50%;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	//
+	// Sizes //
+	//
+	&.divider-dots-sm {
+		span {
+			width: 4px;
+			height: 4px;
+			margin-right: 6px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	&.divider-dots-lg {
+		span {
+			width: 8px;
+			height: 8px;
+			margin-right: 10px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.divider-dots {
+		span {
+			background: $color-white-01;
+		}
+	}
+}
+
+//
+// Divider - ZigZag //
+//
+.divider-zigzag {
+	height: 16px;
+	span {
+		position: relative;
+		display: inline-block;
+		width: 17px;
+		height: 16px;
+		margin-right: -3px;
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			@include transform(translateY(-50%));
+			background: $color-black-02;
+			width: 10px;
+			height: 1px;
+		}
+		&:before {
+			left: 0;
+			@include transform(rotate(45deg));
+		}
+		&:after {
+			right: 0;
+			@include transform(rotate(-45deg));
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	//
+	// Sizes //
+	//
+	&.divider-zigzag-sm {
+		height: 14px;
+		span {
+			width: 12px;
+			height: 14px;
+			margin-right: -2px;
+			&:before, &:after {
+				width: 7px;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	&.divider-zigzag-lg {
+		height: 18px;
+		span {
+			width: 24px;
+			height: 18px;
+			margin-right: -4px;
+			&:before, &:after {
+				width: 14px;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+//
+// ZigZag Colors //
+//
+.divider-zigzag {
+	&.divider-zigzag-color-black {
+		span { &:before, &:after { background: $color-black; } }
+	}
+	&.divider-zigzag-color-black-09 {
+		span { &:before, &:after { background: $color-black-09; } }
+	}
+	&.divider-zigzag-color-black-08 {
+		span { &:before, &:after { background: $color-black-08; } }
+	}
+	&.divider-zigzag-color-black-07 {
+		span { &:before, &:after { background: $color-black-07; } }
+	}
+	&.divider-zigzag-color-black-06 {
+		span { &:before, &:after { background: $color-black-06; } }
+	}
+	&.divider-zigzag-color-black-05 {
+		span { &:before, &:after { background: $color-black-05; } }
+	}
+	&.divider-zigzag-color-black-04 {
+		span { &:before, &:after { background: $color-black-04; } }
+	}
+	&.divider-zigzag-color-black-03 {
+		span { &:before, &:after { background: $color-black-03; } }
+	}
+	&.divider-zigzag-color-black-02 {
+		span { &:before, &:after { background: $color-black-02; } }
+	}
+	&.divider-zigzag-color-black-01 {
+		span { &:before, &:after { background: $color-black-01; } }
+	}
+	&.divider-zigzag-color-white {
+		span { &:before, &:after { background: $color-white; } }
+	}
+	&.divider-zigzag-color-white-09 {
+		span { &:before, &:after { background: $color-white-09; } }
+	}
+	&.divider-zigzag-color-white-08 {
+		span { &:before, &:after { background: $color-white-08; } }
+	}
+	&.divider-zigzag-color-white-07 {
+		span { &:before, &:after { background: $color-white-07; } }
+	}
+	&.divider-zigzag-color-white-06 {
+		span { &:before, &:after { background: $color-white-06; } }
+	}
+	&.divider-zigzag-color-white-05 {
+		span { &:before, &:after { background: $color-white-05; } }
+	}
+	&.divider-zigzag-color-white-04 {
+		span { &:before, &:after { background: $color-white-04; } }
+	}
+	&.divider-zigzag-color-white-03 {
+		span { &:before, &:after { background: $color-white-03; } }
+	}
+	&.divider-zigzag-color-white-02 {
+		span { &:before, &:after { background: $color-white-02; } }
+	}
+	&.divider-zigzag-color-white-01 {
+		span { &:before, &:after { background: $color-white-01; } }
+	}
+}

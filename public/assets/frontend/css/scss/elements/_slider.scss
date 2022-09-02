@@ -1,0 +1,714 @@
+//
+// Slider styles //
+//
+.owl-carousel {
+	&[data-owl-nav="true"] {
+		&:not(.owl-nav-left, .owl-nav-right, .owl-nav-overlay, .owl-nav-overlay-left, .owl-nav-overlay-right, .owl-nav-overlap, .owl-nav-overlap-left, .owl-nav-overlap-right) {
+			padding: 0 56px;
+			@include breakpoint-less(md) {
+				padding: 0 48px;
+			}
+		}
+	}
+	.owl-item {
+		img { width: auto; }
+	}
+	.owl-nav {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		left: 0;
+		@include transform(translateY(-50%));
+		z-index: -1;
+		height: 36px;
+		button {
+			&.owl-prev { left: 0; }
+			&.owl-next { right: 0; }
+			&.owl-next, &.owl-prev {
+				position: absolute;
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				color: $color-black-06;
+				@include transition(ease-out 0.16s);
+				i {
+					font-size: 18px;
+					line-height: 36px;
+				}
+				&:hover, &:focus {
+					background: $bg-grey;
+					color: $color-black;
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			height: 32px;
+			button {
+				&.owl-next, &.owl-prev {
+					width: 32px;
+					height: 32px;
+					i {
+						font-size: 13px;
+						line-height: 32px;
+					}
+				}
+			}
+		}
+	}
+	&.owl-nav-left, &.owl-nav-right {
+		.owl-nav {
+			padding-bottom: 0;
+		}
+	}
+	.owl-dots {
+		margin-top: 20px;
+		margin-right: -2px;
+		margin-left: -2px;
+		text-align: center;
+		line-height: 0;
+		@include breakpoint-less(md) {
+			margin-top: 16px;
+		}
+		.owl-dot {
+			position: relative;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin: 0 2px;
+			vertical-align: middle;
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				border-radius: 50%;
+				@include transition(ease-out 0.16s);
+			}
+			&:before {
+				top: 2px;
+				right: 2px;
+				bottom: 2px;
+				left: 2px;
+				opacity: 0;
+				background: transparent;
+				border: 1px solid $color-black;
+			}
+			&:after {
+				top: 50%;
+				left: 50%;
+				@include transform(translate(-50%,-50%));
+				opacity: 0.4;
+				background: $color-black;
+				width: 4px;
+				height: 4px;
+			}
+			&:hover, &:focus, &.active {
+				&:after {
+					opacity: 1;
+				}
+			}
+			&.active {
+				&:before, &:after {
+					opacity: 1;
+				}
+				&:before {
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+	&:not([data-owl-dots="false"], .owl-dots-overlay, .owl-dots-overlay-left, .owl-dots-overlay-right, .owl-dots-overlap, .owl-dots-overlap-left, .owl-dots-overlap-right) {
+		.owl-nav {
+			margin-top: -20px;
+			@include breakpoint-less(md) {
+				margin-top: -18px;
+			}
+		}
+	}
+}
+div[class^='bg-dark'], div[class*=' bg-dark'], div[class^='bg-black'], div[class*=' bg-black'] {
+	.owl-carousel {
+		.owl-nav {
+			button {
+				&.owl-next, &.owl-prev {
+					color: $color-white-07;
+					&:hover, &:focus {
+						background: $color-white-015;
+						color: $color-white;
+					}
+				}
+			}
+		}
+		.owl-dots {
+			.owl-dot {
+				&:before { border-color: $color-white; }
+				&:after { background: $color-white; }
+				&:hover, &:focus, &.active {
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
+.bg-grey, .bg-grey-lighter, .bg-grey-lightest {
+	.owl-carousel {
+		.owl-nav {
+			button {
+				&.owl-next, &.owl-prev {
+					&:hover, &:focus {
+						background: $color-black-005;
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+// Owl Nav - Left, Right //
+//
+.owl-carousel {
+	&.owl-nav-left, 
+	&.owl-nav-right {
+		.owl-nav {
+			height: auto;
+			button {
+				position: static;
+				display: block;
+				margin: 8px 0;
+				&.owl-prev, &.owl-next {
+					right: auto;
+					left: auto;
+				}
+			}
+		}
+	}
+	&.owl-nav-left {
+		padding: 0 0 0 56px;
+		@include breakpoint-less(md) {
+			padding: 0 0 0 48px;
+		}
+		.owl-nav {
+			right: auto;
+		}
+	}
+	&.owl-nav-right {
+		padding: 0 56px 0 0;
+		@include breakpoint-less(md) {
+			padding: 0 48px 0 0;
+		}
+		.owl-nav {
+			left: auto;
+		}
+	}
+}
+
+//
+// Owl Nav Overlay //
+//
+.owl-carousel {
+	&.owl-nav-overlay, 
+	&.owl-nav-overlay-left, 
+	&.owl-nav-overlay-right {
+		.owl-nav {
+			z-index: 1;
+			padding-bottom: 0;
+			button {
+				&.owl-next, &.owl-prev {
+					opacity: 1;
+					background: $color-black-03;
+					width: 50px;
+					height: 50px;
+					border: 0;
+					border-radius: 50%;
+					color: $color-white-08;
+					text-align: center;
+					i {
+						line-height: 50px;
+					}
+					&:hover, &:focus {
+						opacity: 1;
+						background: $color-black-04;
+						color: $color-white;
+					}
+				}
+			}
+		}
+		@include breakpoint-above(lg) {
+			.owl-nav {
+				opacity: 0;
+				@include transition(ease-out 0.16s);
+			}
+			&:hover {
+				.owl-nav { opacity: 1; }
+			}
+		}
+		@include breakpoint-less(md) {
+			.owl-nav {
+				display: none;
+			}
+		}
+	}
+	&.owl-nav-overlay {
+		.owl-nav {
+			height: 50px;
+			button {
+				&.owl-prev { left: 20px; }
+				&.owl-next { right: 20px; }
+			}
+		}
+		&:not([data-owl-dots="false"], .owl-dots-overlay, .owl-dots-overlay-left, .owl-dots-overlay-right, .owl-dots-overlap, .owl-dots-overlap-left, .owl-dots-overlap-right) {
+			.owl-nav {
+				margin-top: -20px;
+			}
+		}
+	}
+	&.owl-nav-overlay-left, 
+	&.owl-nav-overlay-right {
+		.owl-nav {
+			height: auto;
+			button {
+				&.owl-next, &.owl-prev {
+					position: static;
+					top: auto;
+					right: auto;
+					bottom: auto;
+					left: auto;
+					display: block;
+					margin: 4px 0;
+				}
+			}
+		}
+		&:not([data-owl-dots="false"], .owl-dots-overlay, .owl-dots-overlay-left, .owl-dots-overlay-right, .owl-dots-overlap, .owl-dots-overlap-left, .owl-dots-overlap-right) {
+			.owl-nav {
+				height: 50px;
+			}
+		}
+	}
+	&.owl-nav-overlay-left {
+		.owl-nav {
+			right: auto;
+			left: 20px;
+		}
+	}
+	&.owl-nav-overlay-right {
+		.owl-nav {
+			right: 20px;
+			left: auto;
+		}
+	}
+}
+
+//
+// Owl Dots - Left, Right //
+//
+.owl-carousel {
+	&.owl-dots-left {
+		.owl-dots { text-align: left; }
+	}
+	&.owl-dots-right {
+		.owl-dots { text-align: right; }
+	}
+}
+
+//
+// Owl Dots Overlay //
+//
+.owl-carousel {
+	&.owl-dots-overlay, 
+	&.owl-dots-overlay-left, 
+	&.owl-dots-overlay-right {
+		.owl-dots {
+			position: absolute;
+			bottom: 20px;
+			background: $color-black-03;
+			border-radius: 20px;
+			margin: 0;
+			padding: 5px;
+			@include breakpoint-less(md) {
+				bottom: 16px;
+			}
+			.owl-dot {
+				&:before { border-color: $color-white; }
+				&:after { background: $color-white; }
+				&:hover, &:focus, &.active {
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&.owl-dots-overlay {
+		.owl-dots {
+			right: auto;
+			left: 50%;
+			@include transform(translateX(-50%));
+		}
+		&.owl-nav-overlap-right {
+			.owl-dots {
+				margin-left: -12.5px;
+			}
+		}
+		&.owl-nav-left {
+			.owl-dots {
+				margin-left: 28px;
+			}
+		}
+		&.owl-nav-right {
+			.owl-dots {
+				margin-left: -28px;
+			}
+		}
+		@include breakpoint-above(lg) {
+			&.owl-nav-overlap-left {
+				.owl-dots {
+					margin-left: 12.5px;
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			&.owl-nav-overlap-left, &.owl-nav-overlap-right {
+				.owl-dots {
+					margin-left: -10px;
+				}
+			}
+		}
+	}
+	&.owl-dots-overlay-left {
+		.owl-dots {
+			right: auto;
+			left: 20px;
+			@include breakpoint-less(md) {
+				left: 16px;
+			}
+		}
+		&[data-owl-nav="true"], &.owl-nav-left {
+			&:not(.owl-nav-right, .owl-nav-overlay, .owl-nav-overlay-left, .owl-nav-overlay-right, .owl-nav-overlap, .owl-nav-overlap-left, .owl-nav-overlap-right) {
+				.owl-dots {
+					left: 76px;
+					@include breakpoint-less(md) {
+						left: 64px;
+					}
+				}
+			}
+		}
+		&.owl-nav-overlap {
+			.owl-dots {
+				left: 45px;
+				@include breakpoint-less(md) {
+					left: 36px;
+				}
+			}
+		}
+		@include breakpoint-above(lg) {
+			&.owl-nav-overlap-left {
+				.owl-dots {
+					left: 45px;
+				}
+			}
+		}
+	}
+	&.owl-dots-overlay-right {
+		.owl-dots {
+			right: 20px;
+			left: auto;
+			@include breakpoint-less(md) {
+				right: 16px;
+			}
+		}
+		&[data-owl-nav="true"] {
+			&:not(.owl-nav-left, .owl-nav-overlay, .owl-nav-overlay-left, .owl-nav-overlay-right, .owl-nav-overlap, .owl-nav-overlap-left, .owl-nav-overlap-right) {
+				.owl-dots {
+					right: 76px;
+					@include breakpoint-less(md) {
+						right: 64px;
+					}
+				}
+			}
+		}
+		&.owl-nav-overlap, &.owl-nav-overlap-right {
+			.owl-dots {
+				right: 45px;
+			}
+		}
+		@include breakpoint-above(lg) {
+			&.owl-nav-overlap-left {
+				.owl-dots {
+					right: 20px;
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			&.owl-nav-overlap, &.owl-nav-overlap-left, &.owl-nav-overlap-right {
+				.owl-dots {
+					right: 36px;
+				}
+			}
+		}
+	}
+}
+
+//
+// Owl Dots Overlap //
+//
+.owl-carousel {
+	&.owl-dots-overlap, 
+	&.owl-dots-overlap-left, 
+	&.owl-dots-overlap-right {
+		.owl-dots {
+			position: absolute;
+			bottom: 0;
+			background: $color-black;
+			border-radius: 20px;
+			margin: 0;
+			padding: 5px;
+			.owl-dot {
+				&:before { border-color: $color-white; }
+				&:after { background: $color-white; }
+				&:hover, &:focus, &.active {
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&.owl-dots-overlap {
+		.owl-dots {
+			right: auto;
+			left: 50%;
+			@include transform(translateY(50%) translateX(-50%));
+		}
+		&.owl-nav-left {
+			.owl-dots {
+				margin-left: 28px;
+			}
+		}
+		&.owl-nav-right {
+			.owl-dots {
+				margin-left: -28px;
+			}
+		}
+		&.owl-nav-overlap-right {
+			.owl-dots {
+				margin-left: -12.5px;
+			}
+		}
+		@include breakpoint-above(lg) {
+			&.owl-nav-overlap-left {
+				.owl-dots {
+					margin-left: 12.5px;
+				}
+			}
+		}
+	}
+
+	&.owl-dots-overlap-left, 
+	&.owl-dots-overlap-right {
+		.owl-dots {
+			@include transform(translateY(50%));
+		}
+	}
+	&.owl-dots-overlap-left {
+		.owl-dots {
+			right: auto;
+			left: 20px;
+			@include breakpoint-less(md) {
+				left: 16px;
+			}
+		}
+		&[data-owl-nav="true"], &.owl-nav-left {
+			&:not(.owl-nav-right, .owl-nav-overlay, .owl-nav-overlay-left, .owl-nav-overlay-right, .owl-nav-overlap, .owl-nav-overlap-left, .owl-nav-overlap-right) {
+				.owl-dots {
+					left: 76px;
+					@include breakpoint-less(md) {
+						left: 64px;
+					}
+				}
+			}
+		}
+		&.owl-nav-overlap {
+			.owl-dots {
+				left: 45px;
+			}
+		}
+		@include breakpoint-above(lg) {
+			&.owl-nav-overlap-left {
+				.owl-dots {
+					left: 45px;
+				}
+			}
+		}
+	}
+	&.owl-dots-overlap-right {
+		.owl-dots {
+			right: 20px;
+			left: auto;
+			@include breakpoint-less(md) {
+				right: 16px;
+			}
+		}
+		&[data-owl-nav="true"], &.owl-nav-right {
+			&:not(.owl-nav-left, .owl-nav-overlay, .owl-nav-overlay-left, .owl-nav-overlay-right, .owl-nav-overlap, .owl-nav-overlap-left, .owl-nav-overlap-right) {
+				.owl-dots {
+					right: 76px;
+					@include breakpoint-less(md) {
+						right: 64px;
+					}
+				}
+			}
+		}
+		&.owl-nav-overlap, &.owl-nav-overlap-right {
+			.owl-dots {
+				right: 45px;
+				@include breakpoint-less(md) {
+					right: 36px;
+				}
+			}
+		}
+	}
+}
+
+//
+// Owl Nav Overlap //
+//
+.owl-carousel {
+	&.owl-nav-overlap {
+		padding: 0 25px;
+		.owl-nav {
+			right: 25px;
+			left: 25px;
+			z-index: 1;
+			height: 50px;
+			button {
+				opacity: 0.9;
+				background: $color-black;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				color: $color-white;
+				&.owl-prev {
+					right: auto;
+					left: 0;
+					@include transform(translateX(-50%));
+				}
+				&.owl-next {
+					right: 0;
+					left: auto;
+					@include transform(translateX(50%));
+				}
+				&:hover {
+					opacity: 1;
+					background: $color-black;
+					color: $color-white;
+				}
+			}
+			@include breakpoint-above(lg) {
+				button {
+					&:hover {
+						&.owl-prev { @include transform(translateX(-50%) scale(0.94)); }
+						&.owl-next { @include transform(translateX(50%) scale(0.94)); }
+					}
+				}
+			}
+		}
+		&:not([data-owl-dots="false"], .owl-dots-overlay, .owl-dots-overlay-left, .owl-dots-overlay-right, .owl-dots-overlap, .owl-dots-overlap-left, .owl-dots-overlap-right) {
+			.owl-nav {
+				margin-top: -20px;
+				@include breakpoint-less(md) {
+					margin-top: -18px;
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			padding: 0 20px;
+			.owl-nav {
+				right: 20px;
+				left: 20px;
+				height: 40px;
+				button.owl-prev, 
+				button.owl-next {
+					width: 40px;
+					height: 40px;
+				}
+			}
+		}
+	}
+	&.owl-nav-overlap-left {
+		@include breakpoint-above(lg) {
+			padding: 0 0 0 25px;
+			.owl-nav {
+				left: 25px;
+				right: auto;
+				@include transform(translateY(-50%) translateX(-50%));
+			}
+		}
+	}
+	&.owl-nav-overlap-right {
+		padding: 0 25px 0 0;
+		.owl-nav {
+			left: auto;
+			right: 25px;
+			@include transform(translateY(-50%) translateX(50%));
+		}
+	}
+	&.owl-nav-overlap-left, 
+	&.owl-nav-overlap-right {
+		.owl-nav {
+			z-index: 1;
+			width: 50px;
+			height: auto;
+			padding-bottom: 0;
+			button.owl-prev, 
+			button.owl-next {
+				position: static;
+				right: 0;
+				left: 0;
+				opacity: 0.9;
+				background: $color-black;
+				width: 50px;
+				height: 50px;
+				margin: 4px 0;
+				border-radius: 50%;
+				color: $color-white;
+				&:hover {
+					opacity: 1;
+					color: $color-white;
+				}
+			}
+			@include breakpoint-above(lg) {
+				button {
+					&:hover {
+						@include transform(scale(0.94));
+					}
+				}
+			}
+		}
+		&:not([data-owl-dots="false"], .owl-dots-overlay, .owl-dots-overlay-left, .owl-dots-overlay-right, .owl-dots-overlap, .owl-dots-overlap-left, .owl-dots-overlap-right) {
+			.owl-nav {
+				margin-top: -20px;
+				@include breakpoint-less(md) {
+					margin-top: -18px;
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			padding: 0 20px 0 0;
+			.owl-nav {
+				left: auto;
+				right: 20px;
+				@include transform(translateY(-50%) translateX(50%));
+				width: 40px;
+				button.owl-prev, 
+				button.owl-next {
+					width: 40px;
+					height: 40px;
+				}
+			}
+		}
+	}
+}

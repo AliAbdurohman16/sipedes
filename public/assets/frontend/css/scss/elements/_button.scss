@@ -1,0 +1,1241 @@
+//
+// Button styles //
+//
+a {
+	color: $color-primary;
+	text-decoration: none;
+	@include transition(linear 0.1s);
+	&:hover {
+		color: $color-dark;
+		text-decoration: none;
+	}
+}
+button {
+	background: transparent;
+	box-shadow: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+}
+a, button {
+	&:focus, &:active {
+		box-shadow: none;
+		outline: 0;
+	}
+}
+
+.button {
+	font: 400 13px $font-family-tertiary;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.button {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	background: $button-grey;
+	border: 1px solid $button-grey;
+	padding: 5px 10px;
+	color: $color-dark;
+	@include transition(ease-out 0.12s);
+	i {
+		margin-right: 8px;
+		font-size: 15px;
+	}
+	&:hover {
+		color: $color-dark;
+	}
+}
+
+//
+// Template Button - Sizes //
+//
+.button-sm { padding: 12px 26px; }
+.button-md { padding: 14px 34px; }
+.button-lg { padding: 16px 42px; }
+.button-xl { padding: 18px 50px; }
+.button-fullwidth { width: 100%; text-align: center; }
+
+.button-grey, a.button-grey {
+	background: $button-grey;
+	border: 0;
+	&:hover, &:focus {
+		background: $button-grey-darker;
+		color: $color-dark;
+	}
+}
+.button-dark, a.button-dark {
+	background: $button-dark-lighter;
+	border: 0;
+	color: $color-white;
+	&:hover, &:focus {
+		background: $button-dark;
+		color: $color-white;
+	}
+}
+.button-white, a.button-white {
+	background: $color-white;
+	border: 0;
+	color: $color-dark;
+	&:hover, &:focus {
+		background: $color-white-09;
+		border: 0;
+		color: $color-dark;
+	}
+}
+.button-white-2, a.button-white-2 {
+	background: $color-white;
+	border-color: $color-white;
+	color: $color-dark;
+	&:hover, &:focus {
+		background: transparent;
+		border-color: $color-white;
+		color: $color-white;
+	}
+}
+.button-white-3, a.button-white-3 {
+	background: $color-white-015;
+	border: 0;
+	color: $color-white;
+	&:hover, &:focus {
+		background: $color-white-02;
+		color: $color-white;
+	}
+}
+
+//
+// Template Button - Outline //
+//
+.button-outline-grey, a.button-outline-grey {
+	background: transparent;
+	border-color: $color-black-015;
+	&:hover, &:focus {
+		border-color: $button-dark;
+		color: $color-dark;
+	}
+}
+.button-outline-grey-2, a.button-outline-grey-2 {
+	background: transparent;
+	border-color: $color-black-015;
+	&:hover, &:focus {
+		background: $color-black-01;
+		border-color: transparent;
+		color: $color-dark;
+	}
+}
+.button-outline-dark, a.button-outline-dark {
+	background: transparent;
+	border-color: $button-dark;
+	&:hover, &:focus {
+		border-color: $color-black-015;
+		color: $color-dark;
+	}
+}
+.button-outline-dark-2, a.button-outline-dark-2 {
+	background: transparent;
+	border-color: $button-dark;
+	&:hover, &:focus {
+		background: $button-dark;
+		border-color: transparent;
+		color: $color-white;
+	}
+}
+.button-outline-white, a.button-outline-white {
+	background: transparent;
+	border-color: $color-white-03;
+	color: $color-white;
+	&:hover, &:focus {
+		border-color: $color-white;
+		color: $color-white;
+	}
+}
+.button-outline-white-2, a.button-outline-white-2 {
+	background: transparent;
+	border-color: $color-white;
+	color: $color-white;
+	&:hover, &:focus {
+		background: $color-white;
+		color: $color-dark;
+	}
+}
+
+//
+// Template Button - Outline Fill //
+//
+a, button {
+	&[class*=' button-fill-'], &[class^='button-fill-'] {
+		z-index: 1;
+		background: transparent;
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+	}
+}
+.button-fill-left-outline, a.button-fill-left-outline, 
+.button-fill-top-outline, a.button-fill-top-outline, 
+.button-fill-right-outline, a.button-fill-right-outline, 
+.button-fill-bottom-outline, a.button-fill-bottom-outline {
+	border-color: $button-dark;
+	&:before {
+		background: $button-dark;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+.button-fill-left-outline-white, a.button-fill-left-outline-white, 
+.button-fill-top-outline-white, a.button-fill-top-outline-white, 
+.button-fill-right-outline-white, a.button-fill-right-outline-white, 
+.button-fill-bottom-outline-white, a.button-fill-bottom-outline-white {
+	border-color: $color-white;
+	color: $color-white;
+	&:before {
+		background: $color-white;
+	}
+	&:hover {
+		color: $color-dark;
+	}
+}
+.button-fill-left-outline, a.button-fill-left-outline, 
+.button-fill-left-outline-white, a.button-fill-left-outline-white {
+	&:before {
+		top: 0;
+		left: 0;
+		width: 0%;
+		height: 100%;
+	}
+	&:hover {
+		&:before {
+			width: 100%;
+		}
+	}
+}
+.button-fill-top-outline, a.button-fill-top-outline, 
+.button-fill-top-outline-white, a.button-fill-top-outline-white {
+	&:before {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 0%;
+	}
+	&:hover {
+		&:before {
+			height: 100%;
+		}
+	}
+}
+.button-fill-right-outline, a.button-fill-right-outline, 
+.button-fill-right-outline-white, a.button-fill-right-outline-white {
+	&:before {
+		top: 0;
+		right: 0;
+		width: 0%;
+		height: 100%;
+	}
+	&:hover {
+		&:before {
+			width: 100%;
+		}
+	}
+}
+.button-fill-bottom-outline, a.button-fill-bottom-outline, 
+.button-fill-bottom-outline-white, a.button-fill-bottom-outline-white {
+	&:before {
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0%;
+	}
+	&:hover {
+		&:before {
+			height: 100%;
+		}
+	}
+}
+
+//
+// Template Button - Reveal Icon //
+//
+a, button {
+	&[class*=' button-reveal'], &[class^='button-reveal'] {
+		span, i {
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		span {
+			position: relative;
+		}
+		i {
+			position: absolute;
+			top: 50%;
+			@include transform(translateY(-50%));
+			opacity: 0;
+			margin: 0;
+		}
+		&:hover, &:focus {
+			i {
+				opacity: 1;
+			}
+		}
+	}
+}
+.button-reveal-left-grey, a.button-reveal-left-grey, 
+.button-reveal-left-dark, a.button-reveal-left-dark, 
+.button-reveal-left-white, a.button-reveal-left-white {
+	span { left: 0; }
+	&:hover, &:focus {
+		span { left: 12px; }
+	}
+}
+.button-reveal-right-grey, a.button-reveal-right-grey, 
+.button-reveal-right-dark, a.button-reveal-right-dark, 
+.button-reveal-right-white, a.button-reveal-right-white {
+	span { right: 0; }
+	&:hover, &:focus {
+		span { right: 12px; }
+	}
+}
+.button-reveal-left-grey, a.button-reveal-left-grey, 
+.button-reveal-right-grey, a.button-reveal-right-grey {
+	background: $button-grey;
+	border: 0;
+	&:hover, &:focus {
+		background: $button-grey-darker;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-dark, a.button-reveal-left-dark, 
+.button-reveal-right-dark, a.button-reveal-right-dark {
+	background: $button-dark-lighter;
+	border: 0;
+	color: $color-white;
+	&:hover, &:focus {
+		background: $button-dark;
+		color: $color-white;
+	}
+}
+.button-reveal-left-white, a.button-reveal-left-white, 
+.button-reveal-right-white, a.button-reveal-right-white {
+	background: $color-white;
+	border: 0;
+	color: $color-dark;
+	&:hover, &:focus {
+		background: $color-white;
+		color: $color-dark;
+	}
+}
+
+.button-sm {
+	&.button-reveal-left-grey, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 20px; }
+		&:hover, &:focus {
+			i { left: 10px; }
+		}
+	}
+	&.button-reveal-right-grey, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 20px; }
+		&:hover, &:focus {
+			i { right: 10px; }
+		}
+	}
+}
+.button-md {
+	&.button-reveal-left-grey, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 30px; }
+		&:hover, &:focus {
+			i { left: 18px; }
+		}
+	}
+	&.button-reveal-right-grey, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 30px; }
+		&:hover, &:focus {
+			i { right: 18px; }
+		}
+	}
+}
+.button-lg {
+	&.button-reveal-left-grey, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 40px; }
+		&:hover, &:focus {
+			i { left: 28px; }
+		}
+	}
+	&.button-reveal-right-grey, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 40px; }
+		&:hover, &:focus {
+			i { right: 28px; }
+		}
+	}
+}
+.button-xl {
+	&.button-reveal-left-grey, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 50px; }
+		&:hover, &:focus {
+			i { left: 38px; }
+		}
+	}
+	&.button-reveal-right-grey, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 50px; }
+		&:hover, &:focus {
+			i { right: 38px; }
+		}
+	}
+}
+
+//
+// Template Button - Reveal Icon Outline //
+//
+.button-reveal-left-outline-grey, a.button-reveal-left-outline-grey, 
+.button-reveal-right-outline-grey, a.button-reveal-right-outline-grey {
+	background: transparent;
+	border-color: $color-black-015;
+	&:hover, &:focus {
+		border-color: $button-dark;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-outline-grey, a.button-reveal-left-outline-grey, 
+.button-reveal-left-outline-dark, a.button-reveal-left-outline-dark, 
+.button-reveal-left-outline-white, a.button-reveal-left-outline-white {
+	span { left: 0; }
+	&:hover, &:focus {
+		span { left: 12px; }
+	}
+}
+.button-reveal-right-outline-grey, a.button-reveal-right-outline-grey, 
+.button-reveal-right-outline-dark, a.button-reveal-right-outline-dark, 
+.button-reveal-right-outline-white, a.button-reveal-right-outline-white {
+	span { right: 0; }
+	&:hover, &:focus {
+		span { right: 12px; }
+	}
+}
+.button-reveal-left-outline-dark, a.button-reveal-left-outline-dark, 
+.button-reveal-right-outline-dark, a.button-reveal-right-outline-dark {
+	background: transparent;
+	border-color: $button-dark;
+	&:hover, &:focus {
+		border-color: $color-black-015;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-outline-white, a.button-reveal-left-outline-white, 
+.button-reveal-right-outline-white, a.button-reveal-right-outline-white {
+	background: transparent;
+	border-color: $color-white-03;
+	color: $color-white;
+	&:hover, &:focus {
+		border-color: $color-white;
+		color: $color-white;
+	}
+}
+
+.button-sm {
+	&.button-reveal-left-outline-grey, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 20px; }
+		&:hover, &:focus {
+			i { left: 10px; }
+		}
+	}
+	&.button-reveal-right-outline-grey, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 20px; }
+		&:hover, &:focus {
+			i { right: 10px; }
+		}
+	}
+}
+.button-md {
+	&.button-reveal-left-outline-grey, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 30px; }
+		&:hover, &:focus {
+			i { left: 18px; }
+		}
+	}
+	&.button-reveal-right-outline-grey, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 30px; }
+		&:hover, &:focus {
+			i { right: 18px; }
+		}
+	}
+}
+.button-lg {
+	&.button-reveal-left-outline-grey, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 40px; }
+		&:hover, &:focus {
+			i { left: 28px; }
+		}
+	}
+	&.button-reveal-right-outline-grey, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 40px; }
+		&:hover, &:focus {
+			i { right: 28px; }
+		}
+	}
+}
+.button-xl {
+	&.button-reveal-left-outline-grey, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 50px; }
+		&:hover, &:focus {
+			i { left: 38px; }
+		}
+	}
+	&.button-reveal-right-outline-grey, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 50px; }
+		&:hover, &:focus {
+			i { right: 38px; }
+		}
+	}
+}
+
+
+//
+// Fancy buttons //
+//
+a, button {
+	&[class*=' button-fancy-1'], &[class^='button-fancy-1'] {
+		z-index: 1;
+		overflow: visible;
+		background: transparent;
+		border: 0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleY(1));
+			z-index: -1;
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleY(0.2));
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			border: 1px solid $color-black-09;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:hover {
+			&:before {
+				@include transform(scaleY(0.2));
+				opacity: 0;
+			}
+			&:after {
+				@include transform(scaleY(1));
+				opacity: 1;
+			}
+		}
+	}
+}
+.button-fancy-1, a.button-fancy-1 {
+	&:before {
+		background: $button-grey;
+	}
+}
+.button-fancy-1-dark, a.button-fancy-1-dark {
+	color: $color-white;
+	&:before {
+		background: $button-dark;
+	}
+}
+.button-fancy-1-white, a.button-fancy-1-white {
+	color: $color-dark;
+	&:before {
+		background: $color-white;
+	}
+	&:after {
+		border-color: $color-white;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+.button-fancy-1-outline, a.button-fancy-1-outline {
+	&:before {
+		border: 1px solid $color-black-015;
+	}
+	&:after {
+		z-index: -1;
+		background: $color-dark;
+		border: 0;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+.button-fancy-1-outline-dark, a.button-fancy-1-outline-dark {
+	&:before {
+		border: 1px solid $color-black-09;
+	}
+	&:after {
+		z-index: -1;
+		background: $color-dark;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+.button-fancy-1-outline-white, a.button-fancy-1-outline-white {
+	color: $color-white;
+	&:before {
+		border: 1px solid $color-white-09;
+	}
+	&:after {
+		z-index: -1;
+		background: $color-white;
+	}
+	&:hover {
+		color: $color-dark;
+	}
+}
+
+a, button {
+	&[class*=' button-fancy-2'], &[class^='button-fancy-2'] {
+		z-index: 1;
+		overflow: visible;
+		background: transparent;
+		border: 0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleX(1));
+			z-index: -1;
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleX(0.6));
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			border: 1px solid $color-black-09;
+			border-right: 0;
+			border-left: 0;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:hover {
+			&:before {
+				@include transform(scaleX(0.6));
+				opacity: 0;
+			}
+			&:after {
+				@include transform(scaleX(1));
+				opacity: 1;
+			}
+		}
+	}
+}
+.button-fancy-2, a.button-fancy-2 {
+	&:before {
+		background: $button-grey;
+	}
+}
+.button-fancy-2-dark, a.button-fancy-2-dark {
+	color: $color-white;
+	&:before {
+		background: $button-dark;
+	}
+}
+.button-fancy-2-white, a.button-fancy-2-white {
+	color: $color-dark;
+	&:before {
+		background: $color-white;
+	}
+	&:after {
+		border-color: $color-white;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+.button-fancy-2-outline, a.button-fancy-2-outline {
+	&:before {
+		border: 1px solid $color-black-015;
+	}
+}
+.button-fancy-2-outline-white, a.button-fancy-2-outline-white {
+	color: $color-white;
+	&:before {
+		border: 1px solid $color-white-02;
+	}
+	&:after {
+		border-color: $color-white;
+	}
+	&:hover {
+		color: $color-white;
+	}
+}
+
+
+//
+// Text Buttons //
+//
+.button-text-1, 
+.button-text-2, 
+.button-text-3 {
+	position: relative;
+	display: inline-block;
+	color: $color-black;
+	font-family: $font-family-tertiary;
+	letter-spacing: -0.2px;
+}
+.button-text-1 {
+	&:before {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		background: $color-black-02;
+		width: 100%;
+		height: 1px;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: -1px;
+		left: 0;
+		background: $color-black;
+		height: 1px;
+		@include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:hover {
+		&:after {
+			width: 100%;
+			@include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+		}
+	}
+}
+.button-text-2 {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 40%;
+		right: 0;
+		left: 0;
+		background: $color-black-02;
+		height: 40%;
+		@include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		right: 0;
+		left: 0;
+		background: $color-black;
+		height: 1px;
+		@include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:hover {
+		&:before { @include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both); }
+		&:after { @include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both); }
+	}
+}
+.button-text-3 {
+	padding-left: 30px;
+	@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 0;
+		@include transform(translateY(-50%));
+		background: $color-black;
+		width: 20px;
+		height: 1px;
+		@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+	}
+	&:hover {
+		padding-left: 40px;
+		&:before {
+			width: 30px;
+		}
+	}
+}
+@-webkit-keyframes button-line-out {
+	0% {
+		@include transform(scaleX(1));
+		@include transform-origin(100% 50%);
+	}
+	100% {
+		@include transform(scaleX(0));
+		@include transform-origin(100% 50%);
+	}
+}
+@keyframes button-line-out {
+	0% {
+		@include transform(scaleX(1));
+		@include transform-origin(100% 50%);
+	}
+	100% {
+		@include transform(scaleX(0));
+		@include transform-origin(100% 50%);
+	}
+}
+@-webkit-keyframes button-line-in {
+	0% {
+		@include transform(scaleX(0));
+		@include transform-origin(0 50%);
+	}
+	100% {
+		@include transform(scale(1));
+		@include transform-origin(0 50%);
+	}
+}
+@keyframes button-line-in {
+	0% {
+		@include transform(scaleX(0));
+		@include transform-origin(0 50%);
+	}
+	100% {
+		@include transform(scale(1));
+		@include transform-origin(0 50%);
+	}
+}
+
+div[class^='bg-dark'], div[class*=' bg-dark'], div[class^='bg-black'], div[class*=' bg-black'] {
+	.button-text-1, 
+	.button-text-2, 
+	.button-text-3 {
+		color: $color-white-08;
+		&:hover {
+			color: $color-white;
+		}
+	}
+	.button-text-1 {
+		&:before { background: $color-white-03; }
+		&:after { background: $color-white; }
+	}
+	.button-text-2 {
+		&:before { background: $color-white-04; }
+		&:after { background: $color-white; }
+	}
+	.button-text-3 {
+		&:before { background: $color-white-08; }
+		&:hover {
+			&:before { background: $color-white; }
+		}
+	}
+}
+
+
+//
+// Template Circle Button //
+//
+.button-circle, a.button-circle {
+	background: $button-grey;
+	display: inline-block;
+	border: 1px solid $button-grey;
+	border-radius: 50%;
+	color: $color-dark;
+	text-align: center;
+	@include transition(ease-out 0.12s);
+	&:hover {
+		color: $color-primary;
+	}
+	//
+	// Template Circle Button //
+	//
+	&.button-circle-grey {
+		background: $button-grey;
+		border: 0;
+		&:hover, &:focus {
+			background: $button-grey-darker;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-dark {
+		background: $button-dark-lighter;
+		border: 0;
+		color: $color-white;
+		&:hover, &:focus {
+			background: $button-dark;
+			color: $color-white;
+		}
+	}
+	&.button-circle-white {
+		background: $color-white;
+		border: 0;
+		color: $color-dark;
+		&:hover, &:focus {
+			background: $color-white-09;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-white-2 {
+		background: $color-white;
+		border-color: $color-white;
+		color: $color-dark;
+		&:hover, &:focus {
+			background: transparent;
+			border-color: $color-white;
+			color: $color-white;
+		}
+	}
+	&.button-circle-white-3 {
+		background: $color-white-015;
+		border: 0;
+		color: $color-white;
+		&:hover, &:focus {
+			background: $color-white-02;
+			color: $color-white;
+		}
+	}
+
+
+	//
+	// Template Circle Button - Outline //
+	//
+	&.button-circle-outline-grey {
+		background: transparent;
+		border-color: $color-black-015;
+		&:hover, &:focus {
+			border-color: $button-dark;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-outline-grey-2 {
+		background: transparent;
+		border-color: $color-black-015;
+		&:hover, &:focus {
+			background: $color-black-015;
+			border-color: transparent;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-outline-dark {
+		background: transparent;
+		border-color: $button-dark;
+		&:hover, &:focus {
+			border-color: $color-black-015;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-outline-dark-2 {
+		background: transparent;
+		border-color: $button-dark;
+		&:hover, &:focus {
+			background: $button-dark;
+			border-color: transparent;
+			color: $color-white;
+		}
+	}
+	&.button-circle-outline-white {
+		background: transparent;
+		border-color: $color-white-03;
+		color: $color-white;
+		&:hover, &:focus {
+			border-color: $color-white;
+			color: $color-white;
+		}
+	}
+	&.button-circle-outline-white-2 {
+		background: transparent;
+		border-color: $color-white;
+		color: $color-white;
+		&:hover, &:focus {
+			background: $color-white;
+			color: $color-dark;
+		}
+	}
+}
+
+
+//
+// Template Circle Button - Sizes //
+//
+.button-circle-sm {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	i { line-height: 40px; }
+}
+.button-circle-md {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	i { line-height: 50px; }
+}
+.button-circle-lg {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	i { line-height: 60px; }
+}
+.button-circle-xl {
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	i { line-height: 70px; }
+}
+
+
+//
+// Template Circle Button - Hover Slide //
+//
+.button-circle-hover-slide {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	i {
+		position: absolute;
+		left: 50%;
+		&:first-child {
+			top: 50%;
+			@include transform(translateX(-50%) translateY(-50%));
+		}
+		&:last-child {
+			top: 100%;
+			@include transform(translateX(-50%));
+		}
+	}
+	&:hover {
+		i {
+			&:first-child {
+				@include animation(button-slide-out 0.24s ease-out both);
+			}
+			&:last-child {
+				@include animation(button-slide-in 0.24s ease-out both);
+			}
+		}
+	}
+}
+@-webkit-keyframes button-slide-out {
+	0% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+	100% {
+		top: -100%;
+		@include transform(translateX(-50%) translateY(0));
+		opacity: 0;
+	}
+}
+@keyframes button-slide-out {
+	0% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+	100% {
+		top: -100%;
+		@include transform(translateX(-50%) translateY(0));
+		opacity: 0;
+	}
+}
+@-webkit-keyframes button-slide-in {
+	0% {
+		top: 100%;
+		@include transform(translateX(-50%));
+		opacity: 0;
+	}
+	100% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+}
+@keyframes button-slide-in {
+	0% {
+		top: 100%;
+		@include transform(translateX(-50%));
+		opacity: 0;
+	}
+	100% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+}
+
+
+//
+// Button Animations //
+//
+.button-circle-animation-drop {
+	position: relative;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+		border: 2px solid $color-black-01;
+		border-radius: 50%;
+		@include animation(button-drop 2s ease-out infinite);
+	}
+	&.button-circle-dark {
+		&:before {
+			border-color: $color-black-015;
+		}
+	}
+	&.button-circle-white, &.button-circle-white-2, &.button-circle-white-3 {
+		&:before {
+			border-color: $color-white-04;
+		}
+	}
+	&.button-circle-outline-white, &.button-circle-outline-white-2 {
+		&:before {
+			border-color: $color-white-03;
+		}
+	}
+}
+@-webkit-keyframes button-drop {
+	0% {
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+	}
+	60% {
+		opacity: 0;
+		width: 160%;
+		height: 160%;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+@keyframes button-drop {
+	0% {
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+	}
+	60% {
+		opacity: 0;
+		width: 160%;
+		height: 160%;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+//
+// Buttons Font Styles //
+//
+.button-font-2 {
+	font-size: 14px;
+	letter-spacing: -0.2px;
+	text-transform: none;
+}
+
+//
+// Template Button - Radius //
+//
+.button-radius {
+	border-radius: 0.375em;
+}
+.button-rounded {
+	border-radius: 50px;
+}
+
+//
+// Template Button - Border //
+//
+.button-border-2, 
+.button-border-2.button-circle {
+	border-width: 2px;
+}
+
+//
+// Template Button Hover - Float //
+//
+.button-hover-float, a.button-hover-float {
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+	}
+}
+//
+// Template Button Hover - Scale //
+//
+.button-hover-scale, a.button-hover-scale {
+	&:hover, &:focus {
+		@include transform(scale(1.03));
+	}
+	&.button-circle {
+		&:hover, &:focus {
+			@include transform(scale(1.04));
+		}
+	}
+}
+//
+// Template Button Hover - Shrink //
+//
+.button-hover-shrink, a.button-hover-shrink {
+	&:hover, &:focus {
+		@include transform(scale(0.97));
+	}
+	&.button-circle {
+		&:hover, &:focus {
+			@include transform(scale(0.96));
+		}
+	}
+}
+//
+// Template Button - Shadow //
+//
+.button-shadow, a.button-shadow {
+	@include box-shadow(0 6px 30px 0 rgba(22,24,26,0.13));
+	&:hover, &:focus {
+		@include box-shadow(0 6px 36px 0 rgba(22,24,26,0.19));
+	}
+}

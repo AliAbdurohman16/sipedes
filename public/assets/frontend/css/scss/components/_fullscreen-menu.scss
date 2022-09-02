@@ -1,0 +1,165 @@
+//
+// Fullscreen Menu Styles //
+//
+.fm-toggle {
+	margin-left: auto;
+	cursor: pointer;
+	@include transition(ease-out 0.2s);
+	.lines {
+		position: relative;
+		display: inline-block;
+		background: $color-black;
+		width: 25px;
+		height: 2px;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
+		@include transition(linear 0.12s);
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			background: $color-black;
+			width: 25px;
+			height: 2px;
+			display: inline-block;
+			@include transition(linear 0.12s);
+		}
+		&:before { top: -7px;}
+		&:after { bottom: -7px;}
+	}
+	@include breakpoint-above(lg) {
+		.lines {
+			&:before { @include transform(scaleX(0.8)); @include transform-origin(100% 50%); }
+			&:after { @include transform(scaleX(0.6)); @include transform-origin(100% 50%); }
+		}
+		&:hover {
+			.lines {
+				&:before { @include transform(scaleX(1)); }
+				&:after { @include transform(scaleX(1)); }
+			}
+		}
+	}
+}
+.header {
+	&.dark, &.black, &.absolute-light {
+		.fm-toggle {
+			.lines, .lines:before, .lines:after { background: $color-white; }
+		}
+	}
+}
+
+//
+// Fullscreen Menu //
+//
+.fullscreen-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 996;
+	visibility: hidden;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	@include transition(ease-out 0.2s);
+	.fm-wrapper {
+		@include transform(scale(0.98));
+		height: 100%;
+		@include transition(ease-out 0.2s);
+		.position-top, 
+		.position-middle, 
+		.position-bottom {
+			padding: 0 30px;
+		}
+		@include breakpoint-above(md) {
+			.position-top, 
+			.position-middle, 
+			.position-bottom {
+				padding: 0 50px;
+			}
+			.position-top { top: 50px; }
+			.position-bottom { bottom: 50px; }
+		}
+		.fm-close {
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			cursor: pointer;
+			span {
+				position: relative;
+				display: inline-block;
+				opacity: 0.8;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				@include transition(ease-out 0.18s);
+				&:before, &:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 14px;
+					height: 2px;
+					border-radius: 2px;
+					@include transition(ease-out 0.18s);
+				}
+				&:before { @include transform(translate(-50%, -50%) rotate(45deg)) }
+				&:after { @include transform(translate(-50%, -50%) rotate(-45deg)) }
+			}
+			&:hover {
+				span {
+					opacity: 1;
+					&:before { @include transform(translate(-50%, -50%) rotate(180deg)) }
+					&:after { @include transform(translate(-50%, -50%) rotate(180deg)) }
+				}
+			}
+		}
+		@include breakpoint-less(md) {
+			.fm-close {
+				top: 30px;
+				right: 30px;
+			}
+		}
+		@include breakpoint-less(sm) {
+			.fm-close {
+				top: 20px;
+				right: 20px;
+				span {
+					width: 50px;
+					height: 50px;
+				}
+			}
+		}
+	}
+	&.fm-show {
+		visibility: visible;
+		opacity: 1;
+		.fm-wrapper {
+			@include transform(scale(1));
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	&.fullscreen-menu {
+		.fm-wrapper {
+			.fm-close {
+				span {
+					background: $color-white-01;
+					&:before, &:after { background: $color-white; }
+				}
+			}
+		}
+	}
+}
+.bg-grey, .bg-grey-lighter, .bg-grey-lightest, div[class^='bg-white'], div[class*=' bg-white'] {
+	&.fullscreen-menu {
+		.fm-wrapper {
+			.fm-close {
+				span {
+					background: $color-black-01;
+					&:before, &:after { background: $color-black; }
+				}
+			}
+		}
+	}
+}

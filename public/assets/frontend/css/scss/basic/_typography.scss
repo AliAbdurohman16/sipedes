@@ -1,0 +1,151 @@
+//
+// Typography Styles //
+//
+body {
+	color: $color-primary;
+	font-family: $font-family-primary;
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0;
+	@include breakpoint-less(md) {
+		font-size: 14px;
+	}
+}
+h1,h2,h3,h4,h5,h6 {
+	margin: 0 0 10px;
+	letter-spacing: -0.3px;
+	color: $color-dark;
+	font-family: $font-family-tertiary;
+	font-weight: $font-weight-semi-bold;
+}
+h1 {
+	font-size: 2.66em; /* 40px */
+	line-height: 1.5; /* 60px */
+}
+h2 {
+	font-size: 2.13em; /* 32px */
+	line-height: 1.625; /* 52px */
+}
+h3 {
+	font-size: 1.86em; /* 28px */
+	line-height: 1.65; /* 46px */
+}
+h4 {
+	font-size: 1.6em; /* 24px */
+	line-height: 1.7; /* 40px */
+}
+h5 {
+	font-size: 1.33em; /* 20px */
+	line-height: 1.8; /* 36px */
+}
+h6 {
+	font-size: 1.06em; /* 16px */
+	line-height: 1.87; /* 30px */
+}
+
+p {
+	margin: 0;
+	line-height: 1.86; /* 28px */
+	@include breakpoint-less(md) {
+		line-height: 1.75; /* 24.5px */
+	}
+}
+
+.display-1 { font-size: 6.4em; } /* 96px */
+.display-2 { font-size: 5.86em; } /* 88px */
+.display-3 { font-size: 4.8em; } /* 72px */
+.display-4 { font-size: 3.73em; } /* 56px */
+@include breakpoint-less(sm) {
+	.display-1 { font-size: 5.73em; } /* 86px */
+	.display-2 { font-size: 5.33em; } /* 80px */
+	.display-3 { font-size: 4.26em; } /* 64px */
+	.display-4 { font-size: 3.2em; } /* 48px */
+}
+@include breakpoint-less(xs) {
+	.display-1 { font-size: 5.33em; } /* 80px */
+	.display-2 { font-size: 4.8em; } /* 72px */
+	.display-3 { font-size: 3.73em; } /* 56px */
+	.display-4 { font-size: 3.2em; } /* 48px */
+}
+
+.uppercase {
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.font-small {
+	font-size: 0.875em; /* 13px */
+	line-height: 1.85; /* 24px */
+	@include breakpoint-less(md) {
+		font-size: 0.85em; /* 12px */
+		line-height: 1.66; /* 20px */
+	}
+}
+.font-large {
+	font-size: 1.13em; /* 17px */
+	line-height: 1.8; /* 30px */
+	@include breakpoint-less(md) {
+		font-size: 1.145em; /* 16px */
+	}
+}
+@include breakpoint-above(lg) {
+	.font-lg-large {
+		font-size: 1.13em; /* 17px */
+		line-height: 1.8; /* 30px */
+	}
+	.font-lg-small {
+		font-size: 0.875em; /* 13px */
+		line-height: 1.85; /* 24px */
+	}
+}
+
+//
+// Letter Spacing //
+//
+.letter-spacing-1 { letter-spacing: 1px; }
+.letter-spacing-2 { letter-spacing: 2px; }
+.letter-spacing-3 { letter-spacing: 3px; }
+.letter-spacing-4 { letter-spacing: 4px; }
+
+//
+// Line Heights //
+//
+.line-height-100 { line-height: 100%; }
+.line-height-110 { line-height: 110%; }
+.line-height-120 { line-height: 120%; }
+.line-height-130 { line-height: 130%; }
+.line-height-140 { line-height: 140%; }
+.line-height-150 { line-height: 150%; }
+.line-height-160 { line-height: 160%; }
+
+//
+// Font Icon Styles //
+//
+i {
+	display: inline-block;
+}
+
+//
+// Icon sizes //
+//
+.icon-5xl {
+	i { font-size: 2.8em; } /* 42px */
+}
+.icon-4xl {
+	i { font-size: 2.4em; } /* 36px */
+}
+.icon-3xl {
+	i { font-size: 2.13em; } /* 32px */
+}
+.icon-2xl {
+	i { font-size: 1.86em; } /* 28px */
+}
+.icon-xl {
+	i { font-size: 1.6em; } /* 24px */
+}
+.icon-lg {
+	i { font-size: 1.33em; } /* 20px */
+}
+.icon-sm {
+	i { font-size: 0.86em; } /* 13px */
+}

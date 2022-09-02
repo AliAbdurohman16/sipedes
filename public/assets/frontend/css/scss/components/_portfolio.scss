@@ -1,0 +1,567 @@
+//
+// Portfolio Styles //
+//
+.portfolio-wrapper {
+	&.row {
+		margin: 0;
+		div[class^="col-"], div[class*=" col-"] {
+			margin: 0;
+		}
+	}
+	&:not(.row) {
+		.portfolio-item {
+			width: 100%;
+		}
+	}
+	.portfolio-item {
+		text-align: left;
+	}
+	//
+	// Portfolio Columns //
+	//
+	&.column-1 {
+		.portfolio-item { width: 100%; }
+	}
+	&.column-2 {
+		@include breakpoint-above(md) {
+			.portfolio-item { width: 50%; }
+		}
+	}
+	&.column-3 {
+		@include breakpoint-above(md) {
+			.portfolio-item { width: 50%; }
+		}
+		@include breakpoint-above(lg) {
+			.portfolio-item { width: 33.33%; }
+		}
+	}
+	&.column-4 {
+		@include breakpoint-above(sm) {
+			.portfolio-item { width: 50%; }
+		}
+		@include breakpoint-above(md) {
+			.portfolio-item { width: 33.33%; }
+		}
+		@include breakpoint-above(lg) {
+			.portfolio-item { width: 25%; }
+		}
+	}
+	&.column-5 {
+		@extend .column-4;
+		@include breakpoint-above(xl) {
+			.portfolio-item { width: 20%; }
+		}
+	}
+	&.column-6 {
+		@extend .column-4;
+		@include breakpoint-above(xl) {
+			.portfolio-item { width: 16.66%; }
+		}
+	}
+	//
+	// Portfolio box spacings //
+	//
+	&.spacing-0, &.no-spacing { 
+		.portfolio-item { padding: 0; }
+	}
+	&.spacing-6 {
+		.portfolio-item { padding: 3px; }
+	}
+	&.spacing-10 {
+		.portfolio-item { padding: 5px; }
+	}
+	&.spacing-20 {
+		.portfolio-item { padding: 10px; }
+	}
+	&.spacing-30 {
+		.portfolio-item { padding: 15px; }
+	}
+	&.spacing-40 {
+		.portfolio-item { padding: 20px; }
+	}
+	&.spacing-50 {
+		.portfolio-item { padding: 25px; }
+	}
+	//
+	// Portfolio box border-radius //
+	//
+	&[class*=' border-radius'], &[class^='border-radius'] {
+		.portfolio-item {
+			.portfolio-box {
+				@include transform(translate3d(0,0,0));
+				overflow: hidden;
+			}
+		}
+	}
+	&.border-radius-025 {
+		.portfolio-item .portfolio-box { border-radius: 0.25em; }
+	}
+	&.border-radius-0375 {
+		.portfolio-item .portfolio-box { border-radius: 0.375em; }
+	}
+	&.border-radius-05 {
+		.portfolio-item .portfolio-box { border-radius: 0.5em; }
+	}
+	&.border-radius-10 {
+		.portfolio-item .portfolio-box { border-radius: 1.0em; }
+	}
+	&.border-radius-15 {
+		.portfolio-item .portfolio-box { border-radius: 1.5em; }
+	}
+	&.border-radius-20 {
+		.portfolio-item .portfolio-box { border-radius: 2.0em; }
+	}
+	&.border-radius-25 {
+		.portfolio-item .portfolio-box { border-radius: 2.5em; }
+	}
+	&.border-radius-30 {
+		.portfolio-item .portfolio-box { border-radius: 3.0em; }
+	}
+}
+.text-center {
+	.portfolio-item { text-align: center; }
+}
+.text-end {
+	.portfolio-item { text-align: right; }
+}
+
+.container {
+	.portfolio-wrapper {
+		&.spacing-0, &.no-spacing { margin: 0; }
+		&.spacing-6 { margin: -3px; }
+		&.spacing-10 { margin: -5px; }
+		&.spacing-20 { margin: -10px; }
+		&.spacing-30 { margin: -15px; }
+		&.spacing-40 { margin: -20px; }
+		&.spacing-50 { margin: -25px; }
+	}
+}
+.container-fluid {
+	.portfolio-wrapper {
+		margin: 0 -30px;
+		&.spacing-0, &.no-spacing { margin: 0 -30px; }
+		&.spacing-6 { margin: -3px -27px 3px; }
+		&.spacing-10 { margin: -5px -25px 5px; }
+		&.spacing-20 { margin: -10px -20px 10px; }
+		&.spacing-30 { margin: -15px -15px 15px; }
+		&.spacing-40 { margin: -20px -10px 20px; }
+		&.spacing-50 { margin: -25px -5px 25px; }
+	}
+}
+
+//
+// Portfolio Filter Styles //
+//
+.filter {
+	margin-bottom: 70px;
+	ul {
+		margin: 0 -5px;
+		padding: 0;
+		li {
+			display: inline-block;
+			background: $button-grey-lighter;
+			border-radius: 30px;
+			margin: 0 5px;
+			padding: 7px 15px;
+			font: 400 13px $font-family-tertiary;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			cursor: pointer;
+			@include transition(linear 0.1s);
+			&:hover {
+				background: $button-grey;
+			}
+			&.active, &.mixitup-control-active {
+				background: $bg-dark;
+				color: $color-white;
+			}
+		}
+	}
+	//
+	// Filter Font Styles //
+	//
+	&.filter-font-2 {
+		ul {
+			li {
+				font-size: 15px;
+				letter-spacing: -0.2px;
+				text-transform: none;
+			}
+		}
+	}
+	//
+	// Filter Styles //
+	//
+	&.filter-style-2 {
+		ul {
+			margin: 0 -2px;
+			li {
+				background: transparent;
+				margin: 0 2px;
+				color: $color-primary;
+				&:hover, &.active, &.mixitup-control-active {
+					color: $color-dark;
+				}
+				&.active, &.mixitup-control-active {
+					background: $button-grey-lighter;
+				}
+			}
+		}
+	}
+	&.filter-style-3 {
+		ul {
+			margin: 0 -14px -8px;
+			li {
+				position: relative;
+				background: transparent;
+				margin: 0 14px 8px;
+				padding: 0;
+				color: $color-primary;
+				&:after {
+					content: '';
+					position: absolute;
+					right: 0;
+					bottom: -1px;
+					left: 0;
+					background: $color-dark;
+					height: 1px;
+					@include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+				}
+				&:hover, &.active, &.mixitup-control-active {
+					color: $color-dark;
+				}
+				&.active, &.mixitup-control-active {
+					&:after {
+						width: 100%;
+						@include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+					}
+				}
+			}
+		}
+	}
+	&.filter-style-4 {
+		ul {
+			margin: 0 -14px -7px;
+			li {
+				background: transparent;
+				margin: 0 14px 7px;
+				padding: 0;
+				color: $color-primary-lighter;
+				&:hover, &.active, &.mixitup-control-active {
+					background: transparent;
+					color: $color-dark;
+				}
+			}
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.filter {
+		ul {
+			li {
+				background: transparent;
+				color: $color-white-07;
+				&:hover {
+					background: transparent;
+					color: $color-white;
+				}
+				&.active, &.mixitup-control-active {
+					background: $color-white;
+					color: $color-dark;
+				}
+			}
+		}
+		&.filter-style-2 {
+			ul {
+				li {
+					color: $color-white-07;
+					&:hover, &.active, &.mixitup-control-active {
+						color: $color-white;
+					}
+					&.active, &.mixitup-control-active {
+						background: $color-white;
+						color: $color-dark;
+					}
+				}
+			}
+		}
+		&.filter-style-3 {
+			ul {
+				li {
+					color: $color-white-07;
+					&:after {
+						background: $color-white;
+					}
+					&:hover, &.active, &.mixitup-control-active {
+						color: $color-white;
+					}
+					&.active, &.mixitup-control-active {
+						background: transparent;
+					}
+				}
+			}
+		}
+		&.filter-style-4 {
+			ul {
+				li {
+					background: transparent;
+					color: $color-white-07;
+					&:hover, &.active, &.mixitup-control-active {
+						background: transparent;
+						color: $color-white;
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+// Hover Styles //
+//
+.portfolio-item {
+	.portfolio-box {
+		position: relative;
+		.portfolio-img {
+			position: relative;
+			overflow: hidden;
+			img {
+				@include transform(scale(1));
+				width: 100%;
+				@include transition(transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1));
+			}
+		}
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.portfolio-title {
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			background: $color-black-04;
+			width: 100%;
+			height: 100%;
+			color: $color-white-07;
+			@include transition(ease-out 0.12s);
+			div {
+				position: absolute;
+				left: 30px;
+				bottom: 30px;
+				* {
+					opacity: 0;
+					@include transform(translateY(5px));
+					margin-bottom: 7px;
+					@include transition(ease-out 0.12s);
+					&:first-child { @include transition-delay(0.05s); }
+					&:last-child { @include transition-delay(0.10s); margin-bottom: 0; }
+				}
+				h1,h2,h3,h4,h5,h6 {
+					color: $color-white;
+				}
+				span {
+					display: inline-block;
+				}
+			}
+		}
+		&:hover {
+			.portfolio-img {
+				img {
+					@include transform(scale(1.04));
+					@include filter(blur(1.5px));
+				}
+			}
+			.portfolio-title {
+				opacity: 1;
+				* {
+					opacity: 1;
+					@include transform(translateY(0));
+				}
+			}
+		}
+	}
+}
+
+//
+// Hover Style 2 //
+//
+.hover-style-2 {
+	.portfolio-item {
+		.portfolio-box {
+			.portfolio-title {
+				opacity: 1;
+				background: $color-black-01;
+				div {
+					top: 30px;
+					bottom: auto;
+					* {
+						opacity: 1;
+						@include transform(translateY(0));
+						@include transition(ease-out 0.12s);
+					}
+				}
+				i {
+					position: absolute;
+					right: 30px;
+					bottom: 30px;
+					@include transform(translateY(5px));
+					opacity: 0;
+					color: $color-white;
+					@include transition(ease-out 0.12s);
+				}
+			}
+			&:hover {
+				.portfolio-title {
+					background: $color-black-03;
+					i {
+						@include transform(translateY(0));
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+// Hover Style 3 //
+//
+.hover-style-3 {
+	.portfolio-item {
+		.portfolio-box {
+			overflow: hidden;
+			.portfolio-title {
+				top: auto;
+				right: auto;
+				bottom: 0;
+				left: 0;
+				@include transform(translateY(100%));
+				opacity: 1;
+				background: $bg-dark;
+				height: auto;
+				padding: 15px 30px;
+				@include transition(transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1));
+				div {
+					position: static;
+					opacity: 1;
+					* {
+						@include transform(translateY(0));
+						opacity: 1;
+						margin-bottom: 0;
+					}
+					h1,h2,h3,h4,h5,h6 {
+						float: left;
+					}
+					span {
+						float: right;
+						display: initial;
+					}
+				}
+			}
+			&:hover {
+				.portfolio-img {
+					img {
+						@include transform(translateY(-20px));
+						@include filter(blur(0));
+					}
+				}
+				.portfolio-title {
+					@include transform(translateY(0));
+				}
+			}
+		}
+	}
+}
+
+//
+// Hover Style 4 //
+//
+.hover-style-4 {
+	.portfolio-item {
+		.portfolio-box {
+			overflow: hidden;
+			.portfolio-title {
+				background: $color-white-01;
+				color: $color-primary;
+				&:after {
+					content: '';
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					bottom: 20px;
+					left: 20px;
+					background: $color-white;
+					@include transition(ease-out 0.12s);
+				}
+				div {
+					top: 50%;
+					bottom: auto;
+					left: 0;
+					@include transform(translateY(-50%));
+					z-index: 1;
+					opacity: 0;
+					width: 100%;
+					padding: 0 50px;
+					text-align: center;
+					@include transition(ease-out 0.12s);
+					h1,h2,h3,h4,h5,h6 {
+						color: $color-dark;
+					}
+					span {
+						margin: 0;
+					}
+				}
+			}
+			&:hover {
+				.portfolio-img {
+					img {
+						@include transform(scale(1));
+						@include filter(blur(0));
+					}
+				}
+				.portfolio-title {
+					div {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+// Hover Style 5 //
+//
+.hover-style-5 {
+	.portfolio-item {
+		.portfolio-box {
+			.portfolio-title {
+				background: $color-white-09;
+				color: $color-primary;
+				div {
+					top: 50%;
+					left: 50%;
+					bottom: auto;
+					@include transform(translate(-50%,-50%));
+					text-align: center;
+					h1,h2,h3,h4,h5,h6 {
+						color: $color-dark;
+					}
+				}
+			}
+			&:hover {
+				.portfolio-title {
+					div	{
+						@include transform(translate(-50%,-50%));
+					}
+				}
+			}
+		}
+	}
+}

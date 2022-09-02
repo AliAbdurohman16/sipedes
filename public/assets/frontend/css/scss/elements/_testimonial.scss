@@ -1,0 +1,122 @@
+//
+// Testimonial Styles //
+//
+.testimonial-box {
+	max-width: 730px;
+	margin: 0 auto;
+	text-align: center;
+	img {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+//
+// Testimonial Grid //
+//
+.testimonial-grid {
+	overflow: hidden;
+	
+	&.column-2 {
+		@include breakpoint-above(lg) {
+			.testimonial-grid-box {
+				width: 50%;
+			}
+		}
+	}
+	&.column-1 {
+		.testimonial-grid-box {
+			width: 100%;
+			padding: 30px 0;
+		}
+	}
+
+	.testimonial-grid-box {
+		position: relative;
+		float: left;
+		width: 33.3%;
+		padding: 30px;
+		&:before, &:after {
+			content: '';
+			position: absolute;
+		}
+		&:before {
+			top: 0;
+			left: -1px;
+			height: 100%;
+			border-left: 1px dashed $color-black-01;
+		}
+		&:after {
+			left: 0;
+			bottom: -1px;
+			width: 100%;
+			border-bottom: 1px dashed $color-black-01;
+		}
+		.testimonial-img {
+			float: left;
+			margin-right: 20px;
+			img {
+				width: 80px;
+				height: 80px;
+				border-radius: 50%;
+			}
+		}
+		.testimonial-content {
+			overflow: hidden;
+		}
+	}
+	@include breakpoint-less(md) {
+		.testimonial-grid-box {
+			width: 50%;
+		}
+	}
+	@include breakpoint-less(sm) {
+		.testimonial-grid-box {
+			width: 100%;
+			padding: 30px 0;
+		}
+	}
+	//
+	// Border Style - Solid //
+	//
+	&.border-style-solid {
+		border: 0;
+		.testimonial-grid-box {
+			&:before { border-left-style: solid; }
+			&:after { border-bottom-style: solid; }
+		}
+	}
+	//
+	// Border Style - Dotted //
+	//
+	&.border-style-dotted {
+		border: 0;
+		.testimonial-grid-box {
+			&:before { border-left-style: dotted; }
+			&:after { border-bottom-style: dotted; }
+		}
+	}
+	//
+	// Borderless //
+	//
+	&.border-0 {
+		margin: -15px;
+		.testimonial-grid-box {
+			padding: 15px;
+			&:before, &:after { border: 0; }
+		}
+	}
+	@include breakpoint-less(sm) {
+		&.border-0 {
+			margin: -15px 0;
+			.testimonial-grid-box { padding: 15px 0; }
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.testimonial-grid-box {
+		&:before, &:after { border-color: $color-white-02; }
+	}
+}

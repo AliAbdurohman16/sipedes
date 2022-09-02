@@ -1,0 +1,219 @@
+//
+// Preloader Styles //
+//
+body {
+	&:after {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 998;
+		background: $color-white;
+		width: 100%;
+		height: 100%;
+	}
+	&.loaded {
+		&:after {
+			display: none;
+		}
+	}
+}
+
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	visibility: visible;
+	opacity: 1;
+	background: $color-white;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	div {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%,-50%));
+	}
+	&.dark {
+		background: $color-black;
+	}
+}
+.loaded {
+	.preloader {
+		visibility: hidden;
+		opacity: 0;
+		@include transition(ease-out 0.3s);
+	}
+}
+
+//
+// Preloader 1 //
+//
+.preloader-1 {
+	div	{
+		position: relative;
+		width: 70px;
+		height: 70px;
+		.loader-circular {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			transform-origin: center center;
+			width: 70px;
+			height: 70px;
+			margin: auto;
+			animation: loader-one-rotate 2s linear infinite;
+		}
+		.loader-path {
+			fill: none;
+			stroke: $color-dark;
+			stroke-width: 2.5;
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			animation: loader-one-dash 1.5s ease-in-out infinite;
+		}
+	}
+	&.dark {
+		div {
+			.loader-path {
+				stroke: $color-white;
+			}
+		}
+	}
+}
+
+@keyframes loader-one-rotate {
+	100% { transform: rotate(360deg); }
+}
+@keyframes loader-one-dash {
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35px;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124px;
+	}
+}
+
+//
+// Preloader 2 //
+//
+.preloader-2 {
+	div {
+		span {
+			display: inline-block;
+			opacity: 0.2;
+			background: $color-black;
+			background: linear-gradient(to right, $color-black 10%, transparent 40%);
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			@include animation(loader-two 0.6s infinite linear);
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			&:before {
+				background: $color-black;
+				width: 50%;
+				height: 50%;
+				border-radius: 100% 0 0 0;
+			}
+			&:after {
+				right: 0;
+				bottom: 0;
+				background: $color-white;
+				width: 90%;
+				height: 90%;
+				margin: auto;
+				border-radius: 50%;
+			}
+		}
+	}
+	&.dark {
+		div {
+			span {
+				background: $color-white;
+				background: linear-gradient(to right, $color-white 10%, transparent 40%);
+				&:before {
+					background: $color-white;
+				}
+				&:after {
+					background: $color-black;
+				}
+			}
+		}
+	}
+}
+@keyframes loader-two {
+	0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-webkit-keyframes loader-two {
+	0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+//
+// Preloader 3 //
+//
+.preloader-3 {
+	div {
+		width: 50px;
+		height: 50px;
+		span {
+			position: relative;
+			display: block;
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: $color-black-01;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			&:before { @include animation(loader-three-bounceIn 1.2s infinite ease-in-out); }
+			&:after { @include animation(loader-three-bounceOut 1.2s infinite ease-in-out); }
+		}
+	}
+	&.dark {
+		div {
+			span {
+				&:before, &:after {
+					background: $color-white-01;
+				}
+			}
+		}
+	}
+}
+@-webkit-keyframes loader-three-bounceIn {
+	0%, 100% { -webkit-transform: scale(0); }
+	50% { -webkit-transform: scale(1.0); }
+}
+@keyframes loader-three-bounceIn {
+	0%, 100% { -webkit-transform: scale(0); transform: scale(0); }
+	50% { -webkit-transform: scale(1.0); transform: scale(1.0); }
+}
+@-webkit-keyframes loader-three-bounceOut {
+	0%, 100% { -webkit-transform: scale(1.0); }
+	50% { -webkit-transform: scale(0); }
+}
+@keyframes loader-three-bounceOut {
+	0%, 100% { -webkit-transform: scale(1.0); transform: scale(1.0); }
+	50% { -webkit-transform: scale(0); transform: scale(0); }
+}

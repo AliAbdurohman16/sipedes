@@ -1,0 +1,17 @@
+//
+// Cookie Consent //
+//
+#cookie-consent {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 997;
+	visibility: visible;
+	opacity: 1;
+	@include transition(ease-out 0.2s);
+	&.consent-hidden {
+		visibility: hidden;
+		opacity: 0;
+	}
+}

@@ -1,0 +1,148 @@
+//
+// Blog Styles //
+//
+@include breakpoint-less(md) {
+	.sidebar-wrapper {
+		display: none;
+	}
+}
+
+.sidebar-box {
+	border: 1px solid $border-grey;
+	margin-bottom: 20px;
+	padding: 30px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+	.list-category {
+		list-style-type: none;
+		padding: 0;
+		li {
+			margin: 0;
+			padding: 7px 0;
+			border-bottom: 1px solid $border-grey;
+			&:first-child {
+				padding-top: 0;
+			}
+			&:last-child {
+				padding-bottom: 0;
+				border: 0;
+			}
+			a {
+				display: block;
+				span {
+					float: right;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+	.popular-post {
+		position: relative;
+		margin-bottom: 15px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		img {
+			float: left;
+			width: 80px;
+		}
+		div {
+			padding-left: 100px;
+			h1, h2, h3, h4, h5, h6 {
+				margin-bottom: 0;
+				text-align: left;
+			}
+			a {
+				@include transition(linear 0.1s);
+			}
+			span {
+				font-size: 14px;
+			}
+		}		
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+	.tags {
+		padding: 0;
+		li {
+			display: inline-block;
+			margin: 0 3px 6px 0;
+			a {
+				display: inline-block;
+				background: $button-grey-lighter;
+				padding: 5px 10px;
+				font-size: 14px;
+				&:hover, &:focus {
+					background: $button-grey;
+					color: $color-dark;
+				}
+			}
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	.sidebar-box {
+		border-color: $color-white-02;
+		.list-category {
+			li {
+				border-color: $color-white-02;
+			}
+		}
+		.tags {
+			li {
+				a {
+					background: $color-black-08;
+					color: $color-white-07;
+					&:hover, &:focus {
+						background: $color-black-09;
+						color: $color-white;
+					}
+				}
+			}
+		}
+	}
+}
+
+//
+// Comment box //
+//
+.comment-box {
+	position: relative;
+	margin-bottom: 30px;
+	padding-left: 80px;
+	.comment-user-avatar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $bg-grey;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 60px;
+		img {
+			width: 60px;
+			height: 60px;
+		}
+	}
+	.comment-content {
+		position: relative;
+		.comment-time {
+			position: absolute;
+			top: 0;
+			right: 0;
+			text-align: right;
+			color: $color-primary-lighter;
+			font-style: italic;
+			font-size: 14px;
+		}
+	}
+}

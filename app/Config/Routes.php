@@ -37,7 +37,9 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/beranda', 'Frontend\BerandaController::index');
+$routes->get('/tentang', 'Frontend\BerandaController::tentang');
+$routes->get('/kontak', 'Frontend\BerandaController::kontak');
 
 // Login Penduduk
 $routes->group("", ["filter" => "authFilter:loginPenduduk"], function ($routes) {
@@ -221,7 +223,6 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     // Route Admin -> Laporan
     $routes->get('laporan', 'Admin\ReportController::index');
     $routes->post('laporan/print', 'Admin\ReportController::print');
-
 });
 
 $routes->group("user", ["filter" => "authFilter:logoutPenduduk"], function ($routes) {

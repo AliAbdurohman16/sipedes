@@ -1,0 +1,315 @@
+//
+// List styles //
+//
+ul {
+	margin: 0 0 -7px;
+	li {
+		margin: 0 0 7px;
+		ul, ol {
+			margin-top: 7px;
+		}
+		a {
+			@include transition(linear 0.1s);
+		}
+	}
+	&[class*=' list-'], &[class^='list-'] {
+		padding: 0;
+	}
+	&.list-unstyled, 
+	&.list-dash, 
+	&.list-icon {
+		li {
+			list-style-type: none;
+		}
+	}
+	&.list-dash {
+		li {
+			&:before {
+				content: '-';
+				padding-right: 7px;
+			}
+			a {
+				&:hover {
+					padding-left: 2px;
+				}
+			}
+			ul, ol {
+				padding-left: 40px;
+			}
+		}
+	}
+	//
+	// Horizontal List //
+	//
+	&[class*=' list-inline'], &[class^='list-inline'] {
+		li {
+			display: inline-block;
+		}
+	}
+	&.list-inline {
+		margin-right: -7px;
+		margin-left: -7px;
+		li {
+			padding: 0 7px;
+		}
+	}
+	&.list-inline-sm {
+		margin-right: -3px;
+		margin-left: -3px;
+		li { 
+			padding: 0 3px;
+		}
+	}
+	&.list-inline-lg {
+		margin-right: -14px;
+		margin-left: -14px;
+		li { 
+			padding: 0 14px;
+		}
+	}
+	&.list-inline-dash {
+		li { &:after { content: '-'; } }
+	}
+	&.list-inline-slash {
+		li { &:after { content: '/'; } }
+	}
+	&.list-inline-vbar {
+		li { &:after { content: '|'; } }
+	}
+	&.list-inline-dash, 
+	&.list-inline-slash, 
+	&.list-inline-vbar {
+		li {
+			&:after {
+				padding: 0 3px 0 6px;
+			}
+			&:last-child {
+				&:after {
+					content: '';
+					padding: 0;
+				}
+			}
+		}
+	}
+	//
+	// Icon List //
+	//
+	&.list-icon {
+		li {
+			position: relative;
+			padding-left: 24px;
+			&:before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-family: "Font Awesome 6 Free";
+				font-weight: 900;
+			}
+			a {
+				&:hover {
+					padding-left: 2px;
+				}
+			}
+			ul, ol {
+				padding-left: 40px;
+			}
+		}
+		&.list-icon-check {
+			li { &:before { content: "\f00c"; } }
+		}
+		&.list-icon-close {
+			li { &:before { content: "\f00d"; } }
+		}
+		&.list-icon-plus {
+			li { &:before { content: "\f067"; } }
+		}
+		&.list-icon-arrow {
+			li { padding-left: 16px; &:before { content: "\f105"; } }
+		}
+		&.list-icon-caret {
+			li { padding-left: 16px; &:before { content: "\f0da"; } }
+		}
+		&.list-icon-globe {
+			li { &:before { content: "\f0ac"; } }
+		}
+		&.list-icon-circle-check {
+			li { &:before { content: "\f058"; } }
+		}
+		&.list-icon-circle-plus {
+			li { &:before { content: "\f055"; } }
+		}
+		&.list-icon-circle-arrow {
+			li { &:before { content: "\f138"; } }
+		}
+	}
+}
+ol {
+	margin: 0 0 -7px;
+	li {
+		margin: 0 0 7px;
+	}
+	li {
+		ul, ol {
+			margin-top: 7px;
+		}
+	}
+	&.list-ordered {
+		list-style: none;
+		counter-reset: custom-counter;
+		padding-left: 0;
+		li {
+			position: relative;
+			padding-left: 34px;
+			counter-increment: custom-counter;
+			&::before {
+				content: counter(custom-counter);
+			}
+			ol {
+				list-style: none;
+				padding-left: 0;
+			}
+		}
+		&.style-2, 
+		&.style-3, 
+		&.style-4, 
+		&.style-5 {
+			li {
+				&::before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 24px;
+					height: 24px;
+					border-radius: 50%;
+					font-size: 13px;
+					line-height: 24px;
+					text-align: center;
+				}
+			}
+		}
+		&.style-2 {
+			li {
+				&::before {
+					background: $color-black-01;
+					color: $color-black;
+				}
+			}
+		}
+		&.style-3 {
+			li {
+				&::before {
+					background: $color-black-09;
+					color: $color-white;
+				}
+			}
+		}
+		&.style-4 {
+			li {
+				&::before {
+					border: 1px solid $color-black-02;
+					color: $color-black-05;
+				}
+			}
+		}
+		&.style-5 {
+			li {
+				&::before {
+					border: 1px solid $color-black-09;
+					color: $color-black;
+				}
+			}
+		}
+	}
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+	ol {
+		&.list-ordered {
+			&.style-2 {
+				li {
+					&::before {
+						background: $color-white-02;
+						color: $color-white;
+					}
+				}
+			}
+			&.style-3 {
+				li {
+					&::before {
+						background: $color-white;
+						color: $color-black;
+					}
+				}
+			}
+			&.style-4 {
+				li {
+					&::before {
+						border-color: $color-white-03;
+						color: $color-white-06;
+					}
+				}
+			}
+			&.style-5 {
+				li {
+					&::before {
+						border-color: $color-white;
+						color: $color-white;
+					}
+				}
+			}
+		}
+	}
+}
+@include breakpoint-less(md) {
+	ol {
+		margin: 0 0 -5px;
+		li {
+			margin: 0 0 5px;
+		}
+	}
+	ul {
+		margin: 0 0 -5px;
+		li {
+			margin: 0 0 5px;
+			ul, ol {
+				margin-top: 5px;
+			}
+		}
+		&.list-dash {
+			li {
+				&:before {
+					content: '-';
+					padding-right: 6px;
+				}
+				a {
+					&:hover {
+						padding-left: 2px;
+					}
+				}
+				ul, ol {
+					padding-left: 30px;
+				}
+			}
+		}
+		&.list-inline-lg {
+			margin-right: -12px;
+			margin-left: -12px;
+			li { 
+				padding: 0 12px;
+			}
+		}
+		&.list-inline {
+			margin-right: -6px;
+			margin-left: -6px;
+			li {
+				padding: 0 6px;
+			}
+		}
+		&.list-inline-sm {
+			margin-right: -2px;
+			margin-left: -2px;
+			li { 
+				padding: 0 2px;
+			}
+		}
+	}
+}

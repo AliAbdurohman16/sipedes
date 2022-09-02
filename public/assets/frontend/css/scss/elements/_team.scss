@@ -1,0 +1,118 @@
+//
+// Team Styles //
+//
+.team-wrapper {
+	.team-box {
+		text-align: center;
+		.team-img {
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 20px;
+			img {
+				@include transform(scale(1));
+				width: 100%;
+				@include transition(transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1));
+			}
+			div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				background: $color-black-04;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				@include transition(ease-out 0.12s);
+				ul {
+					list-style-type: none;
+					position: absolute;
+					top: 50%;
+					right: 0;
+					left: 0;
+					@include transform(translateY(-50%) scale(0.96));
+					margin: 0 -7px;
+					padding: 0 30px;
+					@include transition(ease-out 0.12s);
+					li {
+						display: inline-block;
+						margin: 0 7px;
+						a {
+							&:not([class^='button']) {
+								color: $color-white;
+								&:hover {
+									color: $color-white-07;
+								}
+							}
+						}
+					}
+				}
+			}
+			&:hover {
+				img {
+					@include transform(scale(1.04));
+					@include filter(blur(1.5px));
+				}
+				div {
+					opacity: 1;
+					ul {
+						@include transform(translateY(-50%) scale(1));
+					}
+				}
+			}
+		}
+		h1,h2,h3,h4,h5,h6 {
+			margin-bottom: 5px;
+		}
+		span {
+			color: $color-primary-lighter;
+		}
+	}
+	&.team-box-hover-2 {
+		.team-box {
+			.team-img {
+				div {
+					top: auto;
+					bottom: 16px;
+					right: 16px;
+					left: 16px;
+					@include transform(translateY(5px));
+					background: $color-white;
+					width: auto;
+					height: auto;
+					padding: 15px 20px;
+					ul {
+						position: static;
+						top: auto;
+						@include transform(translateY(0) scale(1));
+						padding: 0;
+						li {
+							a {
+								&:not([class^='button']) {
+									color: $color-primary;
+									&:hover, &:focus { color: $color-dark; }
+								}
+							}
+						}
+					}
+				}
+				&:hover {
+					img {
+						@include filter(blur(0));
+					}
+					div {
+						@include transform(translateY(0));
+						ul {
+							@include transform(translateY(0) scale(1));
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.text-start {
+	.team-box { text-align: left; }
+}
+.text-end {
+	.team-box { text-align: right; }
+}

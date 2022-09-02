@@ -1,0 +1,225 @@
+//
+// Accordion styles //
+//
+.accordion {
+    list-style-type: none;
+    padding: 0;
+    li {
+        border: 0;
+        margin-bottom: 8px;
+        padding: 0;
+        @include transition(linear 0.1s);
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .accordion-title {
+            position: relative;
+            border: 1px solid $color-black-01;
+            padding: 14px 24px;
+            cursor: pointer;
+            @include transition(linear 0.1s);
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+                background: $color-black;
+            }
+            &:before {
+                right: 24px;
+                width: 11px;
+                height: 1px;
+            }
+            &:after {
+                right: 29px;
+                width: 1px;
+                height: 11px;
+                @include transition(linear 0.1s);
+            }
+            h1,h2,h3,h4,h5,h6 {
+                margin: 0;
+            }
+            * {
+                @include transition(linear 0.1s);
+            }
+        }
+        .accordion-content {
+            overflow: hidden;
+            max-height: 0;
+            padding: 0 25px;
+            @include transition(ease-out 0.2s);
+            &:before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 20px; 
+            }
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 12px;
+            }
+            ul, ol {
+                li {
+                    border: 0;
+                    padding: 0;
+                    &:last-child {
+                        border: 0;
+                    }
+                }
+            }
+            ul {
+                list-style-type: disc;
+                ul { list-style-type: circle; }
+            }
+            ol {
+                &.list-ordered {
+                    li {
+                        margin-bottom: 8px;
+                        padding-left: 34px;
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            .nav {
+                list-style-type: none;
+            }
+        }
+        &.active {
+            .accordion-title {
+                border-color: $color-black-09;
+                &:after {
+                    @include transform(translateY(-50%) rotate(-90deg));
+                }
+            }
+        }
+    }
+    //
+    // Accordion - Style 2 //
+    //
+    &.style-2 {
+        li {
+            margin-bottom: 14px;
+            padding: 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            .accordion-title {
+                border: 0;
+                border-bottom: 1px solid $color-black-02;
+                padding: 0 0 10px;
+                @include transition(linear 0.1s);
+                &:before, &:after {
+                    margin-top: -6px;
+                }
+                &:before { right: 0; }
+                &:after { right: 5px; }
+            }
+            .accordion-content {
+                padding: 0 20px;
+            }
+            &.active {
+                .accordion-title {
+                    border-bottom-color: $color-black-09;
+                }
+            }
+        }
+    }
+    //
+    // Accordion - Style 3 //
+    //
+    &.style-3 {
+        li {
+            .accordion-title {
+                background: $bg-grey-lighter;
+                border: 0;
+            }
+            .accordion-content {
+                padding: 0 24px;
+            }
+            &.active {
+                .accordion-title {
+                    background: $bg-dark;
+                    color: $color-white-08;
+                    &:before, &:after {
+                        background: $color-white;
+                    }
+                    h1,h2,h3,h4,h5,h6 {
+                        color: $color-white;
+                    }
+                }
+            }
+        }
+    }
+    //
+    // Border Radius //
+    //
+    &.border-radius {
+        &:not(.style-2) {
+            li {
+                .accordion-title {
+                    border-radius: 0.375em;
+                }
+            }
+        }
+    }
+    &.rounded {
+        &:not(.style-2) {
+            li {
+                .accordion-title {
+                    border-radius: 50px;
+                }
+            }
+        }
+    }
+}
+.bg-gray, .bg-light-gray {
+    .accordion {
+        &.style-3 {
+            li {
+                .accordion-title {
+                    background: $color-white;
+                }
+            }
+        }
+    }
+}
+div[class^='bg-black'], div[class*=' bg-black'], div[class^='bg-dark'], div[class*=' bg-dark'] {
+    .accordion {
+        li {
+            .accordion-title {
+                border-color: $color-white-02;
+                &:before, &:after {
+                    background: $color-white;
+                }
+            }
+            &.active {
+                .accordion-title {
+                    border-color: $color-white;
+                }
+            }
+        }
+        &.style-3 {
+            li {
+                .accordion-title {
+                    background: $color-white-01;
+                }
+                &.active {
+                    .accordion-title {
+                        background: $color-white;
+                        color: $color-primary;
+                        &:before, &:after {
+                            background: $color-black;
+                        }
+                        h1,h2,h3,h4,h5,h6 {
+                            color: $color-black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
