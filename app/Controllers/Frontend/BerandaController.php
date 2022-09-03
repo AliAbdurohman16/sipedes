@@ -11,16 +11,4 @@ class BerandaController extends BaseController
         $data = ['title' => 'Beranda'];
         return view('frontend/beranda', $data);
     }
-
-    public function tentang()
-    {
-        $data = ['title' => 'Tentang'];
-        return view('frontend/tentang', $data);
-    }
-
-    public function kontak()
-    {
-        $data = ['title' => 'Kontak'];
-        return view('frontend/kontak', $data);
-    }
 }
