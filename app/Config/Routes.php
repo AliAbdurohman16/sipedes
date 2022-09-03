@@ -37,7 +37,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/beranda', 'Frontend\BerandaController::index');
+$routes->get('/', 'Frontend\BerandaController::index');
 $routes->get('/tentang', 'Frontend\BerandaController::tentang');
 $routes->get('/kontak', 'Frontend\BerandaController::kontak');
 

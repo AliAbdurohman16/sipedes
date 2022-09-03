@@ -41,13 +41,13 @@
                 <div class="header-menu">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/beranda#beranda">Beranda</a>
+                            <a class="nav-link" href="#beranda">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/beranda#faq">FAQ</a>
+                            <a class="nav-link" href="#faq">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/beranda#syarat">Syarat Dan Ketentuan</a>
+                            <a class="nav-link" href="#syarat">Syarat Dan Ketentuan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url() ?>/tentang">Tentang</a>
