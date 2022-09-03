@@ -27,7 +27,7 @@
     $uri = service('uri');
     ?>
     <!-- Header -->
-    <?php if ($uri->getSegment(1) == 'beranda') { ?>
+    <?php if ($uri->getSegment(1) == '#') { ?>
         <div class="header right absolute-light sticky-autohide">
         <?php } else { ?>
             <div class="header right dark">
@@ -41,7 +41,7 @@
                 <div class="header-menu">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#beranda">Beranda</a>
+                            <a class="nav-link" href="<?= base_url() ?>#beranda">Beranda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#faq">FAQ</a>
@@ -81,15 +81,15 @@
                             </div>
                             <div class="col-6 col-sm-6 col-lg-3">
                                 <ul class="list-dash">
-                                    <li><a href="<?= base_url() ?>/beranda#beranda">Beranda</a></li>
-                                    <li><a href="<?= base_url() ?>/beranda#buat-surat">Surat</a></li>
-                                    <li><a href="<?= base_url() ?>/beranda#faq">FAQ</a></li>
-                                    <li><a href="<?= base_url() ?>/beranda#syarat">Syarat Dan Ketentuan</a></li>
+                                    <li><a href="#beranda">Beranda</a></li>
+                                    <li><a href="#buat-surat">Surat</a></li>
+                                    <li><a href="#faq">FAQ</a></li>
+                                    <li><a href="#syarat">Syarat Dan Ketentuan</a></li>
                                 </ul>
                             </div>
                             <div class="col-6 col-sm-6 col-lg-2">
                                 <ul class="list-dash">
-                                    <li><a href="<?= base_url() ?>/beranda#tutorial">Tutorial</a></li>
+                                    <li><a href="#tutorial">Tutorial</a></li>
                                     <li><a href="<?= base_url() ?>/tentang">Tentang</a></li>
                                     <li><a href="<?= base_url() ?>/kontak">Kontak</a></li>
                                 </ul>
