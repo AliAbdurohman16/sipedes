@@ -70,7 +70,7 @@
                             <div class="text-sm-start text-center mx-md-2">
                                 <p class="mb-0 text-muted">© <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Sipedes. Design with <i class="mdi mdi-heart text-danger"></i> by PPK ORMAWA PBK FKOM UNIKU.</p>
+                                    </script> Sistem Pelayanan Desa Cibinuang. Design with <i class="mdi mdi-heart text-danger"></i> by PPK ORMAWA PBK FKOM UNIKU.</p>
                             </div>
                         </div>
                         <!--end col-->
