@@ -27,7 +27,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="header-logo">
-                <h3><a href="<?= base_url() ?>"><img src="images/logo/Sipedes.png" alt="logo"></a></h3>
+                <a href="<?= base_url() ?>"><img src="images/logo/Sipedes.png" alt="logo"></a>
             </div>
             <!-- Menu -->
             <div class="header-menu">
@@ -45,9 +45,10 @@
                         <a class="nav-link" href="#tutorial">Tutorial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Akun</a>
+                        <a class="nav-link" href="#">Login</a>
                         <ul class="nav-dropdown">
-                            <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="<?= base_url() ?>/login">Login</a></li>
+                            <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="<?= base_url() ?>/login">Pengajuan</a></li>
+                            <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="<?= base_url() ?>/admin/login">Aparat Desa</a></li>
                         </ul>
                     </li>
                 </ul>
