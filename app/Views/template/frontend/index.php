@@ -12,7 +12,7 @@
     <meta name="Version" content="v1.0.0" />
     <title>SIPEDES - Desa Cibinuang</title>
     <!-- Favicon -->
-    <link href="images/logo/logoSaja.png" rel="shortcut icon">
+    <link href="images/logo/logo_sipedes.png" rel="shortcut icon">
     <!-- CSS -->
     <link href="<?= base_url() ?>/assets/frontend/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets/frontend/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="header-logo">
-                <a href="<?= base_url() ?>"><img src="images/logo/Sipedes.png" alt="logo"></a>
+                <a href="<?= base_url() ?>"><img src="images/logo/logo.png" alt="logo"></a>
             </div>
             <!-- Menu -->
             <div class="header-menu">
