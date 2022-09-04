@@ -10,18 +10,33 @@
                 <div class="card form-signin p-4 rounded shadow">
                     <?= form_open('admin/login/valid_login') ?>
                     <?= csrf_field(); ?>
-                    <a href="index.html"><img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
-                    <h5 class="mb-3 text-center">SISTEM PELAYANAN DESA</h5>
+                    <div class="row col-12 mb-4">
+                        <div class="col-6 mt-4">
+                            <img src="<?= base_url() ?>/images/logo/cibinuang.png" class="img-fluid"
+                                alt="Logo Desa Cibinuang">
+                        </div>
+                        <div class="col-6">
+                            <img src="<?= base_url() ?>/images/logo/logo.png" class="img-fluid" alt="Logo Sipedes">
+                        </div>
+                    </div>
+                    <h4 class="text-center">LOGIN ADMIN</h4>
+                    <p class="mb-3 fs-6 text-center">SISTEM PELAYANAN DESA CIBINUANG <br> KEC. KUNINGAN, KAB. KUNINGAN
+                    </p>
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>" id="username" name="username" placeholder="Username" value="<?= old('username') ?>" autofocus>
-                        <label for="username">Username</label>
+                        <input type="text"
+                            class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : '' ?>"
+                            id="username" name="username" placeholder="Nama Pengguna" value="<?= old('username') ?>"
+                            autofocus required>
+                        <label for="username">Nama Pengguna</label>
                         <div class="invalid-feedback">
                             <?= $validation->getError('username'); ?>
                         </div>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Password">
+                        <input type="password"
+                            class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>"
+                            id="password" name="password" placeholder="Password" required>
                         <label for="password">Kata Sandi</label>
                         <div class="invalid-feedback">
                             <?= $validation->getError('password'); ?>
@@ -32,14 +47,15 @@
 
                     <div class="d-flex justify-content-center">
                         <p class="forgot-pass mt-3">
-                            <a href="<?= site_url('admin/forgot_password')?>" class="text-dark small fw-bold">Lupa Kata Sandi ?</a>
+                            <a href="<?= site_url('admin/forgot_password')?>" class="text-dark small fw-bold">Lupa Kata
+                                Sandi ?</a>
                         </p>
                     </div>
 
-                    <p class="mb-0 text-muted mt-3 text-center">
+                    <p class="mb-0 text-muted text-center">
                         © <script>
                             document.write(new Date().getFullYear())
-                        </script> Sipedes.</p>
+                        </script> Sistem Pelayanan Desa Cibinuang.</p>
                     <?= form_close() ?>
                 </div>
             </div>
