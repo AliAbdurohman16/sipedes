@@ -1,7 +1,7 @@
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="button" class="btn btn-secondary btn-sm mb-4" onclick="dataKartuKeluarga()">Kembali</button>
 </div>
-<?= form_open('admin/kartu-keluarga/create_anggota', ['class' => 'formAnggotaKeluarga']); ?>
+<?= form_open('admin/kartu_keluarga/create_anggota', ['class' => 'formAnggotaKeluarga']); ?>
 <?= csrf_field(); ?>
 <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">No KK | Kepala Keluarga</label>
@@ -93,7 +93,7 @@
 
     function dataKartuKeluarga() {
         $.ajax({
-            url: "<?= site_url('admin/kartu-keluarga') ?>",
+            url: "<?= site_url('admin/kartu_keluarga') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -169,7 +169,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: '<?= site_url('admin/kartu-keluarga/delete_anggota') ?>',
+                    url: '<?= site_url('admin/kartu_keluarga/delete_anggota') ?>',
                     data: {
                         id: id
                     },

@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\RtModel;
 use App\Models\RwModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class RtController extends BaseController
@@ -15,7 +15,7 @@ class RtController extends BaseController
     {
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

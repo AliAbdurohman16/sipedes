@@ -47,7 +47,7 @@
 
     $('.addButton').click(function() {
         $.ajax({
-            url: "<?= site_url('admin/kartu-keluarga/new') ?>",
+            url: "<?= site_url('admin/kartu_keluarga/new') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewModal').html(response.data).show();
@@ -62,7 +62,7 @@
     function editKartuKeluarga(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('admin/kartu-keluarga/edit') ?>",
+            url: "<?= site_url('admin/kartu_keluarga/edit') ?>",
             data: {
                 id: id
             },
@@ -93,7 +93,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: '<?= site_url('admin/kartu-keluarga/delete') ?>',
+                    url: '<?= site_url('admin/kartu_keluarga/delete') ?>',
                     data: {
                         id: id
                     },
@@ -119,7 +119,7 @@
     function anggotaKartuKeluarga(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('admin/kartu-keluarga/anggota-kk') ?>",
+            url: "<?= site_url('admin/kartu_keluarga/anggota-kk') ?>",
             data: {
                 id: id
             },

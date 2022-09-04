@@ -41,7 +41,7 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li class="<?= ($uri->getSegment(1) == 'penduduk' ? 'active' : '') ?>"><a href="<?= base_url('admin/penduduk') ?>"></i>Data Penduduk</a></li>
-                            <li class="<?= ($uri->getSegment(1) == 'kartu-keluarga' ? 'active' : '') ?>"><a href="<?= base_url('admin/kartu-keluarga') ?>">Data Kartu Keluarga</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'kartu_keluarga' ? 'active' : '') ?>"><a href="<?= base_url('admin/kartu_keluarga') ?>">Data Kartu Keluarga</a></li>
                         </ul>
                     </div>
                 </li>

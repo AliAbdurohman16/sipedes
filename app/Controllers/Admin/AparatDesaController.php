@@ -5,7 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\AparatDesaModel;
 use App\Models\JabatanModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class AparatDesaController extends BaseController
@@ -17,7 +17,7 @@ class AparatDesaController extends BaseController
     {
         $this->aparatDesaModel = new AparatDesaModel();
         $this->jabatanModel = new JabatanModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

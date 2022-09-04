@@ -33,7 +33,7 @@
 <script>
     function dataKartuKeluarga() {
         $.ajax({
-            url: "<?= site_url('admin/kartu-keluarga') ?>",
+            url: "<?= site_url('admin/kartu_keluarga') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);

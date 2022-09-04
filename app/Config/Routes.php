@@ -148,15 +148,15 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     $routes->post('penduduk/detail', 'Admin\PendudukController::detail');
 
     // Route Admin -> Data Kartu Keluarga
-    $routes->get('kartu-keluarga', 'Admin\KartuKeluargaController::index');
-    $routes->get('kartu-keluarga/new', 'Admin\KartuKeluargaController::new');
-    $routes->post('kartu-keluarga/create', 'Admin\KartuKeluargaController::create');
-    $routes->post('kartu-keluarga/edit', 'Admin\KartuKeluargaController::edit');
-    $routes->post('kartu-keluarga/update', 'Admin\KartuKeluargaController::update');
-    $routes->post('kartu-keluarga/delete', 'Admin\KartuKeluargaController::delete');
-    $routes->post('kartu-keluarga/anggota-kk', 'Admin\KartuKeluargaController::anggota_kk');
-    $routes->post('kartu-keluarga/create_anggota', 'Admin\KartuKeluargaController::create_anggota');
-    $routes->post('kartu-keluarga/delete_anggota', 'Admin\KartuKeluargaController::delete_anggota');
+    $routes->get('kartu_keluarga', 'Admin\KartuKeluargaController::index');
+    $routes->get('kartu_keluarga/new', 'Admin\KartuKeluargaController::new');
+    $routes->post('kartu_keluarga/create', 'Admin\KartuKeluargaController::create');
+    $routes->post('kartu_keluarga/edit', 'Admin\KartuKeluargaController::edit');
+    $routes->post('kartu_keluarga/update', 'Admin\KartuKeluargaController::update');
+    $routes->post('kartu_keluarga/delete', 'Admin\KartuKeluargaController::delete');
+    $routes->post('kartu_keluarga/anggota-kk', 'Admin\KartuKeluargaController::anggota_kk');
+    $routes->post('kartu_keluarga/create_anggota', 'Admin\KartuKeluargaController::create_anggota');
+    $routes->post('kartu_keluarga/delete_anggota', 'Admin\KartuKeluargaController::delete_anggota');
 
     // Route Admin -> Aparat 
     $routes->get('aparat-desa', 'Admin\AparatDesaController::index');

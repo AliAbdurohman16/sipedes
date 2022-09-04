@@ -5,7 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 
 use App\Models\UserModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class AccountController extends BaseController
@@ -13,7 +13,7 @@ class AccountController extends BaseController
     public function __construct()
     {
         $this->userModel = new UserModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

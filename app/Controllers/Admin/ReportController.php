@@ -4,14 +4,14 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class ReportController extends BaseController
 {
     public function __construct(){
         $this->pengajuanModel = new PengajuanModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

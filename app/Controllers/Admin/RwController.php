@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\RwModel;
 use App\Models\DusunModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class RwController extends BaseController
@@ -17,7 +17,7 @@ class RwController extends BaseController
     {
         $this->rwModel = new RwModel();
         $this->dusunModel = new DusunModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

@@ -8,7 +8,7 @@ use App\Models\KartuKeluargaModel;
 use App\Models\PendudukModel;
 use App\Models\RtModel;
 use App\Models\RwModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class KartuKeluargaController extends BaseController
@@ -26,7 +26,7 @@ class KartuKeluargaController extends BaseController
         $this->anggotaPendudukModel = new AnggotaPendudukModel();
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()
@@ -39,7 +39,7 @@ class KartuKeluargaController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/KartuKeluarga/table', $data)
+                'data' => view('admin/kartu-keluarga/table', $data)
             ];
 
             echo json_encode($msg);
@@ -48,7 +48,7 @@ class KartuKeluargaController extends BaseController
                 'title' => 'Data Kartu Keluarga'
             ];
 
-            return view('admin/KartuKeluarga/index', $data);
+            return view('admin/kartu-keluarga/index', $data);
         }
     }
 
@@ -61,7 +61,7 @@ class KartuKeluargaController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/KartuKeluarga/add', $data)
+                'data' => view('admin/kartu-keluarga/add', $data)
             ];
 
             echo json_encode($msg);
@@ -215,7 +215,7 @@ class KartuKeluargaController extends BaseController
                 'alamat' => $row->alamat,
             ];
 
-            $msg = ['success' => view('admin/KartuKeluarga/edit', $data)];
+            $msg = ['success' => view('admin/kartu-keluarga/edit', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -397,7 +397,7 @@ class KartuKeluargaController extends BaseController
                 'alamat' => $row->alamat,
             ];
 
-            $msg = ['data' => view('admin/KartuKeluarga/anggota_kk', $data)];
+            $msg = ['data' => view('admin/kartu-keluarga/anggota_kk', $data)];
             echo json_encode($msg);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

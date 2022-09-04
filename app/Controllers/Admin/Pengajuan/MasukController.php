@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
 use App\Models\PendudukModel;
 use App\Models\KartuKeluargaModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class MasukController extends BaseController
@@ -17,7 +17,7 @@ class MasukController extends BaseController
         $this->pengajuanModel = new PengajuanModel();
         $this->pendudukModel = new PendudukModel();
         $this->kartuKeluargaModel = new KartuKeluargaModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()
