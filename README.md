@@ -16,7 +16,7 @@ Tools/Bahasa pemrograman yang dipakai :
 
 ## Kontribusi
 
-Orang-orang yang ikut berkontribusi dalam pembuatan website ini.
+Orang-orang yang ikut berkontribusi dalam pembuatan sistem ini.
 
 <a href="https://github.com/AliAbdurohman16/sipedes/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=AliAbdurohman16/sipedes" />
