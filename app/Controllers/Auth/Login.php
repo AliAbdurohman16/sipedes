@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 use App\Models\RoleModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
 class Login extends BaseController
@@ -15,7 +15,7 @@ class Login extends BaseController
     {
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()
