@@ -10,10 +10,21 @@
                 <div class="card form-signin p-4 rounded shadow">
                     <?= form_open('login/valid_login') ?>
                     <?= csrf_field(); ?>
-                    <a href="index.html"><img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="mb-4 d-block mx-auto" alt=""></a>
-                    <h5 class="mb-3 text-center">SISTEM PELAYANAN DESA</h5>
+                    <div class="row col-12 mb-4">
+                        <div class="col-6 mt-4">
+                            <img src="<?= base_url() ?>/images/logo/cibinuang.png" class="img-fluid"
+                                alt="Logo Desa Cibinuang">
+                        </div>
+                        <div class="col-6">
+                            <img src="<?= base_url() ?>/images/logo/logo.png" class="img-fluid" alt="Logo Sipedes">
+                        </div>
+                    </div>
+                    <p class="mb-3 fs-6 text-center">SISTEM PELAYANAN DESA CIBINUANG <br> KEC. KUNINGAN, KAB. KUNINGAN
+                    </p>
                     <div class="form-floating mb-2">
-                        <input type="number" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : '' ?>" id="nik" name="nik" placeholder="NIK" value="<?= old('nik') ?>" autofocus>
+                        <input type="number"
+                            class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : '' ?>" id="nik"
+                            name="nik" placeholder="NIK" value="<?= old('nik') ?>" autofocus required>
                         <label for="nik">NIK</label>
                         <div class="invalid-feedback">
                             <?= $validation->getError('nik'); ?>
@@ -25,7 +36,7 @@
                     <p class="mb-0 text-muted mt-3 text-center">
                         © <script>
                             document.write(new Date().getFullYear())
-                        </script> Sipedes.</p>
+                        </script> Sistem Pelayanan Desa Cibinuang.</p>
                     <?= form_close() ?>
                 </div>
             </div>
