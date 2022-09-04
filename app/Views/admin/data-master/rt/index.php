@@ -8,7 +8,7 @@
 
             <nav aria-label="breadcrumb" class="d-inline-block mt-2 mt-sm-0">
                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
-                    <li class="breadcrumb-item text-capitalize"><a href="index.html">Data Master</a></li>
+                    <li class="breadcrumb-item text-capitalize">Data Master</li>
                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><?= $title ?></li>
                 </ul>
             </nav>
