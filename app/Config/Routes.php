@@ -159,13 +159,13 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     $routes->post('kartu_keluarga/delete_anggota', 'Admin\KartuKeluargaController::delete_anggota');
 
     // Route Admin -> Aparat 
-    $routes->get('aparat-desa', 'Admin\AparatDesaController::index');
-    $routes->get('aparat-desa/new', 'Admin\AparatDesaController::new');
-    $routes->post('aparat-desa/create', 'Admin\AparatDesaController::create');
-    $routes->post('aparat-desa/edit', 'Admin\AparatDesaController::edit');
-    $routes->post('aparat-desa/update', 'Admin\AparatDesaController::update');
-    $routes->post('aparat-desa/delete', 'Admin\AparatDesaController::delete');
-    $routes->post('aparat-desa/detail', 'Admin\AparatDesaController::detail');
+    $routes->get('aparat_desa', 'Admin\AparatDesaController::index');
+    $routes->get('aparat_desa/new', 'Admin\AparatDesaController::new');
+    $routes->post('aparat_desa/create', 'Admin\AparatDesaController::create');
+    $routes->post('aparat_desa/edit', 'Admin\AparatDesaController::edit');
+    $routes->post('aparat_desa/update', 'Admin\AparatDesaController::update');
+    $routes->post('aparat_desa/delete', 'Admin\AparatDesaController::delete');
+    $routes->post('aparat_desa/detail', 'Admin\AparatDesaController::detail');
 
     // Route Admin -> Data Pengajuan Masuk
     $routes->get('data_pengajuan_masuk', 'Admin\Pengajuan\MasukController::index');

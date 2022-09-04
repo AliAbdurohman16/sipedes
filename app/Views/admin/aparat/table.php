@@ -45,7 +45,7 @@
 
         $('.addButton').click(function() {
             $.ajax({
-                url: "<?= site_url('admin/aparat-desa/new') ?>",
+                url: "<?= site_url('admin/aparat_desa/new') ?>",
                 dataType: "json",
                 success: function(response) {
                     $('.viewModal').html(response.data).show();
@@ -61,7 +61,7 @@
     function editAparat(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('admin/aparat-desa/edit') ?>",
+            url: "<?= site_url('admin/aparat_desa/edit') ?>",
             data: {
                 id: id
             },
@@ -81,7 +81,7 @@
     function detailAparat(id) {
         $.ajax({
             type: 'post',
-            url: "<?= site_url('admin/aparat-desa/detail') ?>",
+            url: "<?= site_url('admin/aparat_desa/detail') ?>",
             data: {
                 id: id
             },
@@ -109,7 +109,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: '<?= site_url('admin/aparat-desa/delete') ?>',
+                    url: '<?= site_url('admin/aparat_desa/delete') ?>',
                     data: {
                         id: id
                     },

@@ -130,7 +130,7 @@
 
         $.ajax({
             type: "post",
-            url: "<?= site_url('admin/aparat-desa/create') ?>",
+            url: "<?= site_url('admin/aparat_desa/create') ?>",
             data: data,
             enctype: 'multipart/form-data',
             processData: false,

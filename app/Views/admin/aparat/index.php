@@ -32,7 +32,7 @@
 <script>
     function dataAparat() {
         $.ajax({
-            url: "<?= site_url('admin/aparat-desa') ?>",
+            url: "<?= site_url('admin/aparat_desa') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);

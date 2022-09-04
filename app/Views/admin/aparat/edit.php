@@ -131,7 +131,7 @@
 
         $.ajax({
             type: "post",
-            url: "<?= site_url('admin/aparat-desa/update') ?>",
+            url: "<?= site_url('admin/aparat_desa/update') ?>",
             data: data,
             enctype: 'multipart/form-data',
             processData: false,
