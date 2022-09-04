@@ -1,6 +1,6 @@
 ## Apa itu SIPEDES?
 
-Sistem Pengajuan Desa (SIPEDES) ini merupakan sistem pengajuan digital. Apabila masyarakat ingin mengajukan pembuatan surat yang diperlukan maka masyarakat tersebut bisa langsung mengajukannya pada sistem ini agar meminimalisir ke antrian pada kantor desa.
+Sistem Pelayanan Desa (SIPEDES) merupakan aplikasi berbasis website untuk menyediakan pelayanan pengajuan tentang surat menyurat kepada masyarakat khususnya masyarakat Desa Cibinuang, Kec.Kuningan, Kab.Kuningan. Apabila masyarakat ingin mengajukan pembuatan surat yang diperlukan maka masyarakat tersebut bisa langsung mengajukannya pada sistem ini agar meminimalisir ke antrian pada kantor desa.
 
 ## Tools/Bahasa Pemrograman
 
