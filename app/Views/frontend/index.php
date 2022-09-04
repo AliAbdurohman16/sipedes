@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <h1 class="fw-normal margin-bottom-20">Pembuatan Surat Desa Cibinuang</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <h1 class="fw-normal margin-bottom-20">Sistem Pengajuan Desa</h1>
+                    <p>Sistem Pengajuan Desa di Desa Cibinuang ini merupakan sistem pengajuan digital. Apabila masyarakat ingin mengajukan pembuatan surat yang diperlukan maka masyarakat tersebut bisa langsung mengajukannya pada sistem ini agar meminimalisir ke antrian pada kantor desa.</p>
                     <a class="button button-lg button-radius button-white-3 margin-top-40" href="#buat-surat">Buat Surat</a>
                     <a class="button button-lg button-radius button-white-3 margin-top-40" href="#tutorial">Tutorial</a>
                 </div>

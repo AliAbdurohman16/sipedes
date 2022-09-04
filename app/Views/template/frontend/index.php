@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title><?= $title ?> - SIPEDES</title>
+    <title>SIPEDES - Desa Cibinuang</title>
     <!-- Favicon -->
     <link href="images/logo/logoSaja.png" rel="shortcut icon">
     <!-- CSS -->
@@ -27,13 +27,13 @@
         <div class="container">
             <!-- Logo -->
             <div class="header-logo">
-                <h3><a href="#">SIPEDES</a></h3>
+                <h3><a href="<?= base_url() ?>"><img src="images/logo/Sipedes.png" alt="logo"></a></h3>
             </div>
             <!-- Menu -->
             <div class="header-menu">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url() ?>#beranda">Beranda</a>
+                        <a class="nav-link active" href="#beranda">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#faq">FAQ</a>

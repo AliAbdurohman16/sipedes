@@ -37,7 +37,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Frontend\BerandaController::index');
+$routes->get('/', 'Frontend\IndexController::index');
 
 // Login Penduduk
 $routes->group("", ["filter" => "authFilter:loginPenduduk"], function ($routes) {
