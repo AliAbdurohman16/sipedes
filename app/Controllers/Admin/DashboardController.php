@@ -9,7 +9,7 @@ use App\Models\RwModel;
 use App\Models\AparatDesaModel;
 use App\Models\PengajuanModel;
 use App\Models\UserModel;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 
 class DashboardController extends BaseController
 {
@@ -21,7 +21,7 @@ class DashboardController extends BaseController
         $this->aparatModel = new AparatDesaModel();
         $this->pengajuanModel = new PengajuanModel();
         $this->userModel = new UserModel();
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()

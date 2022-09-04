@@ -1,5 +1,5 @@
 <!-- sidebar-wrapper -->
-<nav id="sidebar" class="sidebar-wrapper sidebar-dark">
+<nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
         <div class="sidebar-brand">
             <center>
@@ -20,7 +20,7 @@
             ?>
             <li class="<?= ($uri->getSegment(1) == 'dashboard' ? 'active' : '') ?>"><a href="<?= base_url('admin/dashboard') ?>"><i class="ti ti-home me-2"></i>Dashboard</a></li>
             <?php if (session()->get('role')->id == 1 || session()->get('role')->id == 3 || session()->get('role')->id == 4) : ?>
-                <li class="<?= ($uri->getSegment(1) == 'log_activity' ? 'active' : '') ?>"><a href="<?= base_url('admin/log_activity') ?>"><i class="fa-solid fa-clock me-2"></i></i>Log Activity</a></li>
+                <li class="<?= ($uri->getSegment(1) == 'log_aktivitas' ? 'active' : '') ?>"><a href="<?= base_url('admin/log_aktivitas') ?>"><i class="fa-solid fa-clock me-2"></i></i>Log Aktivitas</a></li>
             <?php endif; ?>
             <?php if (session()->get('role')->id == 1) : ?>
                 <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'data_dusun' || $uri->getSegment(1) == 'data_rw' || $uri->getSegment(1) == 'data_rt' || $uri->getSegment(1) == 'data_jabatan' ? 'active' : '') ?>">

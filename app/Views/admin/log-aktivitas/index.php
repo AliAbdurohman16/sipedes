@@ -35,7 +35,7 @@
 <script>
     function dataRt() {
         $.ajax({
-            url: "<?= site_url('admin/log_activity') ?>",
+            url: "<?= site_url('admin/log_aktivitas') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);

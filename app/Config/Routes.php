@@ -90,8 +90,8 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     // Dashboard
     $routes->get('dashboard', 'Admin\DashboardController::index');
 
-    // Log Activity
-    $routes->get('log_activity', 'Admin\LogActivityController::index');
+    // Log Aktivitas
+    $routes->get('log_aktivitas', 'Admin\LogAktivitasController::index');
 
     // Account
     $routes->get('account', 'Admin\AccountController::index');

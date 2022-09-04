@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LogActivityModel extends Model
+class LogAktivitasModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'log_activity';

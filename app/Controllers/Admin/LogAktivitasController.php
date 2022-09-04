@@ -3,13 +3,13 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\LogActivityModel;
+use App\Models\LogAktivitasModel;
 
-class LogActivityController extends BaseController
+class LogAktivitasController extends BaseController
 {
     public function __construct()
     {
-        $this->logModel = new LogActivityModel();
+        $this->logModel = new LogAktivitasModel();
     }
 
     public function index()
@@ -22,16 +22,16 @@ class LogActivityController extends BaseController
             ];
 
             $msg = [
-                'data' => view('admin/logActivity/table', $data)
+                'data' => view('admin/log-aktivitas/table', $data)
             ];
 
             echo json_encode($msg);
         } else {
             $data = [
-                'title' => 'Log Activity'
+                'title' => 'Log Aktivitas'
             ];
     
-            return view('admin/logActivity/index', $data);
+            return view('admin/log-aktivitas/index', $data);
         }
     }
 }
