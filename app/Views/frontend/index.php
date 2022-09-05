@@ -18,6 +18,10 @@
                                 <a class="button button-lg button-radius button-white-3" href="#tutorial">Tutorial</a>
                             </div>
                         </div>
+                        <!-- <div class="col d-none d-sm-none d-lg-block">
+                            <img src="<?= base_url() ?>/images/logo/logo_sipedes.png"
+                                style="width: 200px; margin-left: 200px;" class="img-fluid ml-5" alt="Logo Sipedes">
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -74,7 +78,7 @@
     </div>
 </div>
 
-<div class="section move-top-100">
+<div class="section move-top-100" id="langkah-langkah">
     <div class="container">
         <div class="row text-center">
             <div class="col-12 col-lg-12">
