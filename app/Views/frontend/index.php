@@ -23,12 +23,6 @@
                                 style="width: 200px; margin-left: 200px;" class="img-fluid ml-5" alt="Logo Sipedes">
                         </div>
                     </div>
-            <div class="row g-4">
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <h1 class="fw-normal margin-bottom-20">Sistem Pelayanan Desa (SIPEDES)</h1>
-                    <p>Sistem Pelayanan Desa (SIPEDES) merupakan aplikasi berbasis website untuk menyediakan pelayanan pengajuan tentang surat menyurat kepada masyarakat khususnya masyarakat Desa Cibinuang, Kec.Kuningan, Kab.Kuningan.</p>
-                    <a class="button button-lg button-radius button-white-3 margin-top-40" href="#buat-surat">Buat Surat</a>
-                    <a class="button button-lg button-radius button-white-3 margin-top-40" href="#tutorial">Tutorial</a>
                 </div>
             </div>
         </div>
