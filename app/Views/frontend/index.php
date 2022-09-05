@@ -20,7 +20,7 @@
                         </div>
                         <div class="col d-none d-sm-none d-lg-block">
                             <img src="<?= base_url() ?>/images/content/ilustration.svg"
-                                style="margin-left: 50px;" class="img-fluid ml-5" alt="Logo Sipedes">
+                                style="margin-left: 50px;" class="img-fluid ml-5" alt="ilustration">
                         </div>
                     </div>
                 </div>
