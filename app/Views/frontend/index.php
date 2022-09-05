@@ -1,13 +1,13 @@
 <?= $this->extend('template/frontend/index'); ?>
 
 <?= $this->section('content'); ?>
-<div class="section-fullscreen bg-image parallax" data-bg-src="<?= base_url() ?>/images/content/home1.jpg">
+<div class="section-fullscreen bg-image parallax" data-bg-src="<?= base_url() ?>/images/content/bg-blue.jpg">
     <div class="bg-black-02 section-divider-wavesOpacity-bottom">
         <div class="container">
             <div class="position-middle">
                 <div class="d-flex justify-content-between">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col">
                             <h1 class="fw-bold margin-bottom-20 font-family-secondary">Sistem Pengajuan Desa Cibinuang (SIPEDES)</h1>
                             <p class="text-white font-family-tertiary">SIPEDES (Sistem Pengajuan Desa Cibinuang) merupakan aplikasi berbasis
                                 website untuk menyediakan pengajuan tentang surat menyurat kepada masyarakat khususnya
@@ -18,10 +18,10 @@
                                 <a class="button button-lg button-radius button-white-3" href="#tutorial">Tutorial</a>
                             </div>
                         </div>
-                        <!-- <div class="col d-none d-sm-none d-lg-block">
-                            <img src="<?= base_url() ?>/images/logo/logo_sipedes.png"
-                                style="width: 200px; margin-left: 200px;" class="img-fluid ml-5" alt="Logo Sipedes">
-                        </div> -->
+                        <div class="col d-none d-sm-none d-lg-block">
+                            <img src="<?= base_url() ?>/images/content/ilustration.svg"
+                                style="margin-left: 100px;" class="img-fluid ml-5" alt="Logo Sipedes">
+                        </div>
                     </div>
                 </div>
             </div>
