@@ -1,13 +1,13 @@
 <?= $this->extend('template/frontend/index'); ?>
 
 <?= $this->section('content'); ?>
-<div class="section-fullscreen bg-image parallax" data-bg-src="<?= base_url() ?>/assets/frontend/images/hero.png">
+<div class="section-fullscreen bg-image parallax" data-bg-src="<?= base_url() ?>/images/content/home1.jpg">
     <div class="bg-black-02 section-divider-wavesOpacity-bottom">
         <div class="container">
             <div class="position-middle">
                 <div class="d-flex justify-content-between">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-7">
                             <h1 class="fw-bold margin-bottom-20 font-family-secondary">Sistem Pengajuan Desa Cibinuang (SIPEDES)</h1>
                             <p class="text-white font-family-tertiary">SIPEDES (Sistem Pengajuan Desa Cibinuang) merupakan aplikasi berbasis
                                 website untuk menyediakan pengajuan tentang surat menyurat kepada masyarakat khususnya
@@ -17,10 +17,6 @@
                                     Pengajuan</a>
                                 <a class="button button-lg button-radius button-white-3" href="#tutorial">Tutorial</a>
                             </div>
-                        </div>
-                        <div class="col d-none d-sm-none d-lg-block">
-                            <img src="<?= base_url() ?>/images/logo/logo_sipedes.png"
-                                style="width: 200px; margin-left: 200px;" class="img-fluid ml-5" alt="Logo Sipedes">
                         </div>
                     </div>
                 </div>
@@ -267,7 +263,7 @@
             </div>
             <div class="col-12 col-lg-6 order-lg-2">
                 <a class="lightbox-media-box border-radius-025 icon-lg" href="https://www.youtube.com/watch?v=W-j4QGAgNu8">
-                    <img src="<?= base_url() ?>/assets/frontend/images/col-1.jpg" alt="">
+                    <img src="<?= base_url() ?>/images/content/tutor.jpg" alt="thumbnail">
                     <i class="bi bi-play"></i>
                 </a>
             </div>
@@ -300,12 +296,9 @@
 <div class="section border-top">
     <div class="container">
         <ul class="clients-grid column-4">
-            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/ppk.jpg" style="width: 100px;"
-                        alt=""></a></li>
-            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/pbk.png" style="width: 60px;" alt=""></a>
-            </li>
-            <li><a href="#"><img src="<?= base_url() ?>/images/logo/cibinuang.png" style="width: 160px;" alt=""></a>
-            </li>
+            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/ppk.jpg" style="width: 100px;" alt=""></a></li>
+            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/pbk.png" style="width: 60px;" alt=""></a></li>
+            <li><a href="#"><img src="<?= base_url() ?>/images/logo/cibinuang.png" style="width: 160px;" alt=""></a></li>
             <li><a href="#"><img src="<?= base_url() ?>/images/logo/logo.png" style="width: 90px;" alt=""></a></li>
         </ul>
     </div>
