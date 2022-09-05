@@ -48,7 +48,7 @@
             <?php endif; ?>
             <?php if (session()->get('role')->id == 1) : ?>
                 <li class="<?= ($uri->getSegment(1) == 'users' ? 'active' : '') ?>"><a href="<?= base_url('admin/users') ?>"><i class="fa-solid fa-users me-2"></i>Pengguna</a></li>
-                <li class="<?= ($uri->getSegment(1) == 'aparat-desa' ? 'active' : '') ?>"><a href="<?= base_url('admin/aparat-desa') ?>"><i class="fa-solid fa-user-tie me-2"></i>Aparat Desa</a></li>
+                <li class="<?= ($uri->getSegment(1) == 'aparat_desa' ? 'active' : '') ?>"><a href="<?= base_url('admin/aparat_desa') ?>"><i class="fa-solid fa-user-tie me-2"></i>Aparat Desa</a></li>
             <?php endif; ?>
             <?php if (session()->get('role')->id == 1 || session()->get('role')->id == 3) : ?>
                 <li class="sidebar-dropdown <?= ($uri->getSegment(1) == 'data_pengajuan_masuk' || $uri->getSegment(1) == 'data_pengajuan_sudah_dibuat' ? 'active' : '') ?>">

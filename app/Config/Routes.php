@@ -39,6 +39,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Frontend\IndexController::index');
 
+$routes->get('/tulis_pengajuan', 'Frontend\TulisPengajuanController::index');
+$routes->post('tulis_pengajuan/create', 'Frontend\TulisPengajuanController::create');
+
 // Login Penduduk
 $routes->group("", ["filter" => "authFilter:loginPenduduk"], function ($routes) {
     $routes->get('login', 'Auth\User\LoginController::index');

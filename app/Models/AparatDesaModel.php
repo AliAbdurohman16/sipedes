@@ -39,4 +39,11 @@ class AparatDesaModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function withJabatan()
+    {
+        $this->select('jabatan.name as nama_jabatan, aparat_desa.*');
+        
+        return $this->join('jabatan', 'jabatan.id = aparat_desa.jabatan_id')->findAll();
+    }
 }
