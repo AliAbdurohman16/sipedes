@@ -30,24 +30,6 @@ class TulisPengajuanController extends BaseController
     public function create()
     {
         if (!$this->validate([
-            'no_kk' => [
-                'label' => 'No Kartu Keluarga',
-                'rules' => 'required|min_length[16]|max_length[16]',
-                'errors' => [
-                    'required' => '{field} tidak boleh kosong.',
-                    'min_length' => '{field} harus memiliki panjang {param} angka',
-                    'max_length' => '{field} harus memiliki panjang {param} angka'
-                ]
-            ],
-            'nik' => [
-                'label' => 'NIK',
-                'rules' => 'required|min_length[16]|max_length[16]',
-                'errors' => [
-                    'required' => '{field} tidak boleh kosong.',
-                    'min_length' => '{field} harus memiliki panjang {param} angka',
-                    'max_length' => '{field} harus memiliki panjang {param} angka'
-                ]
-            ],
             'telepon' => [
                 'label' => 'No Telepon',
                 'rules' => 'required|min_length[10]|max_length[15]',
@@ -75,49 +57,26 @@ class TulisPengajuanController extends BaseController
             return redirect()->to('user/tulis_pengajuan')->withInput();
         }
 
-        $no_kk = $this->request->getVar('no_kk');
-        $checkNoKK = $this->kartuKeluargaModel->getWhere(['no_kk' => $no_kk])->getRow();
-        
-        if ($checkNoKK) {
-            $nik = $this->request->getVar('nik');
-            $checkNik = $this->pendudukModel->getWhere(['nik' => $nik])->getRow();
-            if ($checkNik) {
-                $result = [
-                    'no_kk' => $no_kk,
-                    'nik' => $nik,
-                    'nama' => $checkNik->name,
-                    'telepon' => $this->request->getVar('telepon'),
-                    'jenis' => $this->request->getVar('jenis'),
-                    'keterangan' => $this->request->getVar('keterangan'),
-                    'created_at' => Time::now('Asia/Jakarta', 'en_ID')
-                ];
+        $nik = session()->get('penduduk')->nik;
+        $checkNik = $this->pendudukModel->getWhere(['nik' => $nik])->getRow();
+        $result = [
+            'no_kk' => session()->get('penduduk')->no_kk,
+            'nik' => $nik,
+            'nama' => $checkNik->name,
+            'telepon' => $this->request->getVar('telepon'),
+            'jenis' => $this->request->getVar('jenis'),
+            'keterangan' => $this->request->getVar('keterangan'),
+            'created_at' => Time::now('Asia/Jakarta', 'en_ID')
+        ];
 
-                $this->pengajuanModel->insert($result);
+        $this->pengajuanModel->insert($result);
 
-                $sessSuccess = [
-                    'success_message' => 'Pengajuan anda berhasil dikirim!'
-                ];
-    
-                session()->setFlashdata($sessSuccess);
-    
-                return redirect()->to('user/tulis_pengajuan');
-            } else {
-                $sessError = [
-                    'error_message' => 'NIK yang anda masukan salah!'
-                ];
-    
-                session()->setFlashdata($sessError);
-    
-                return redirect()->to('user/tulis_pengajuan');
-            }
-        } else {
-            $sessError = [
-                'error_message' => 'No Kartu Keluarga yang anda masukan salah!'
-            ];
+        $sessSuccess = [
+            'success_message' => 'Pengajuan anda berhasil dikirim!'
+        ];
 
-            session()->setFlashdata($sessError);
+        session()->setFlashdata($sessSuccess);
 
-            return redirect()->to('user/tulis_pengajuan');
-        }
+        return redirect()->to('user/tulis_pengajuan');
     }
 }

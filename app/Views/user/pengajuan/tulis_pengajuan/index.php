@@ -26,10 +26,7 @@
                                         <label class="form-label">No Kartu Keluarga <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                            <input name="no_kk" type="number" class="form-control ps-5 <?= ($validation->hasError('no_kk')) ? 'is-invalid' : '' ?>" value="<?= old('no_kk') ?>" placeholder="No Kartu Keluarga :">
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('no_kk'); ?>
-                                            </div>
+                                            <input name="no_kk" type="number" class="form-control ps-5" value="<?= session()->get('penduduk')->no_kk ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -39,10 +36,7 @@
                                         <label class="form-label">NIK <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                            <input name="nik" type="number" class="form-control ps-5 <?= ($validation->hasError('nik')) ? 'is-invalid' : '' ?>" value="<?= old('nik') ?>" placeholder="NIK :">
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('nik'); ?>
-                                            </div>
+                                            <input name="nik" type="number" class="form-control ps-5" value="<?= session()->get('penduduk')->nik ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
