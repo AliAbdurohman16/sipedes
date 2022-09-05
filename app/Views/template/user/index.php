@@ -13,7 +13,7 @@
     <meta name="Version" content="v4.2.0" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logoSaja.png" />
+    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logo_sipedes.png" />
     <!-- Css -->
     <link href="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
     <!-- Bootstrap Css -->

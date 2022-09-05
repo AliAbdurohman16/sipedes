@@ -1,13 +1,13 @@
 <!-- sidebar-wrapper -->
-<nav id="sidebar" class="sidebar-wrapper sidebar-dark">
+<nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
         <div class="sidebar-brand">
             <center>
                 <a href="<?= base_url() ?>">
-                    <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="logo-light-mode" alt="">
-                    <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" class="logo-dark-mode" alt="">
+                    <img src="<?= base_url() ?>/images/logo/logo.png" width="35%" class="logo-light-mode" alt="">
+                    <img src="<?= base_url() ?>/images/logo/logo.png" width="35%" class="logo-dark-mode" alt="">
                     <span class="sidebar-colored">
-                        <img src="<?= base_url() ?>/images/logo/Sipedes.png" width="35%" alt="">
+                        <img src="<?= base_url() ?>/images/logo/logo.png" width="35%" alt="">
                     </span>
                 </a>
             </center>

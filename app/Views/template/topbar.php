@@ -12,10 +12,10 @@ $result = $db->table('pengajuan')->where('status', 'Belum Dibuat')->where('read_
     <div class="header-bar d-flex justify-content-between border-bottom">
         <div class="d-flex align-items-center">
             <a href="#" class="logo-icon me-3">
-                <img src="<?= base_url() ?>/images/logo/logo_sipedes.png" height="30" class="small" alt="">
+                <img src="<?= base_url() ?>/images/logo/logo.png" height="30" class="small" alt="">
                 <span class="big">
-                    <img src="<?= base_url() ?>/images/logo/logo_sipedes.png" height="24" class="logo-light-mode" alt="">
-                    <img src="<?= base_url() ?>/images/logo/logo_sipedes.png" height="24" class="logo-dark-mode" alt="">
+                    <img src="<?= base_url() ?>/images/logo/logo.png" height="24" class="logo-light-mode" alt="">
+                    <img src="<?= base_url() ?>/images/logo/logo.png" height="24" class="logo-dark-mode" alt="">
                 </span>
             </a>
             <a id="close-sidebar" class="btn btn-icon btn-soft-light" href="javascript:void(0)">
