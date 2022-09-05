@@ -300,8 +300,8 @@
 <div class="section border-top">
     <div class="container">
         <ul class="clients-grid column-4">
-            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/ppk.jpg" style="width: 100px;" alt=""></a></li>
-            <li><a href="#"><img src="<?= base_url() ?>/assets/frontend/images/pbk.png" style="width: 60px;" alt=""></a></li>
+            <li><a href="#"><img src="<?= base_url() ?>/images/logo/ppk.jpg" style="width: 100px;" alt=""></a></li>
+            <li><a href="#"><img src="<?= base_url() ?>/images/logo/pbk.png" style="width: 60px;" alt=""></a></li>
             <li><a href="#"><img src="<?= base_url() ?>/images/logo/cibinuang.png" style="width: 160px;" alt=""></a></li>
             <li><a href="#"><img src="<?= base_url() ?>/images/logo/logo.png" style="width: 90px;" alt=""></a></li>
         </ul>
