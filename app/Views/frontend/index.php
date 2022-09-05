@@ -176,12 +176,12 @@
                     <h5 class="fw-normal font-family-secondary">Surat Keterangan Tidak Mampu</h5>
                     <p class="font-family-tertiary">Surat untuk keterangan tidak mampu.</p>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <h2 class="fw-bold text-dark font-family-secondary">10.</h2>
                     <h5 class="fw-normal font-family-secondary">Surat Keterangan Catatan Kepolisian</h5>
                     <p class="font-family-tertiary">Surat untuk keterangan catatan kepolisian.</p>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <h2 class="fw-bold text-dark font-family-secondary">11.</h2>
                     <h5 class="fw-normal font-family-secondary">Surat Keterangan Kematian</h5>
                     <p class="font-family-tertiary">Surat untuk keterangan kematian.</p>
