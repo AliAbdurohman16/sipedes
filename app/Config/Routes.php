@@ -87,6 +87,7 @@ $routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($r
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
     $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
+    $routes->post('pengajuan_sudah_dibuat/download/(:num)', 'User\PengajuanDibuatController::download/$1');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($routes) {
