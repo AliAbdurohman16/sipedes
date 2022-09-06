@@ -174,7 +174,9 @@
                                 <option value="SD" <?= $pendidikan_terakhir == 'SD' ? 'selected' : '' ?>>SD</option>
                                 <option value="SMP" <?= $pendidikan_terakhir == 'SMP' ? 'selected' : '' ?>>SMP</option>
                                 <option value="SMA" <?= $pendidikan_terakhir == 'SMA' ? 'selected' : '' ?>>SMA</option>
+                                <option value="D3" <?= $pendidikan_terakhir == 'D3' ? 'selected' : '' ?>>D3</option>
                                 <option value="S1" <?= $pendidikan_terakhir == 'S1' ? 'selected' : '' ?>>S1</option>
+                                <option value="S2" <?= $pendidikan_terakhir == 'S2' ? 'selected' : '' ?>>S2</option>
                             </select>
                             <div class="invalid-feedback errorPendidikanTerakhir">
                             </div>

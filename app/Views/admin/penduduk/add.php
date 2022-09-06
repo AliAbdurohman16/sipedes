@@ -173,7 +173,9 @@
                                 <option value="SD">SD</option>
                                 <option value="SMP">SMP</option>
                                 <option value="SMA">SMA</option>
+                                <option value="D3">D3</option>
                                 <option value="S1">S1</option>
+                                <option value="S2">S2</option>
                             </select>
                             <div class="invalid-feedback errorPendidikanTerakhir">
                             </div>
