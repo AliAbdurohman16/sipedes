@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?= $title ?></title>
+    <title><title><?= $title ?> - Sistem Pengajuan Desa Cibinuang</title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
     <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
@@ -13,7 +13,7 @@
     <meta name="Version" content="v4.2.0" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logoSaja.png" />
+    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logo.png" />
     <!-- Css -->
     <link href="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
     <!-- Bootstrap Css -->
