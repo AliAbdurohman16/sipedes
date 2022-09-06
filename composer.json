@@ -13,7 +13,8 @@
         "fzaninotto/faker": "^1.9",
         "kint-php/kint": "^4.1.1",
         "laminas/laminas-escaper": "^2.9",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "twilio/sdk": "^6.41"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.1",

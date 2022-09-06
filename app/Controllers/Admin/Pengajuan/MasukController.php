@@ -2,12 +2,15 @@
 
 namespace App\Controllers\Admin\Pengajuan;
 
+require_once '../vendor/autoload.php';
+
 use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
 use App\Models\PendudukModel;
 use App\Models\KartuKeluargaModel;
 use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
+use Twilio\Rest\Client;
 
 class MasukController extends BaseController
 {
@@ -84,10 +87,21 @@ class MasukController extends BaseController
                     ]
                 ];
             } else {
-                // $telepon = $this->request->getVar('telepon');
+                $telepon = $this->request->getVar('telepon');
                 $informasi = $this->request->getVar('informasi');
 
-                // file_get_contents('https://api.whatsapp.com/send?phone='.$telepon.'&text='.$informasi);
+                // Send Whatsapp with twilio
+                $sid    = "AC8864285d5382d0192ce5c1150dd96adb";
+                $token  = "50d5a415e25d039d571128b3b35e547c";
+                $twilio = new Client($sid, $token);
+
+                $twilio->messages->create(
+                    "whatsapp:+$telepon", // to 
+                    array(
+                        "from" => "whatsapp:+14155238886",
+                        "body" => $informasi
+                    )
+                );
 
                 $request = [
                     'informasi' => $informasi,
@@ -122,9 +136,9 @@ class MasukController extends BaseController
             $id = $this->request->getVar('id');
             $row = $this->pengajuanModel->find($id);
             $pddk = $this->pendudukModel->select('rt.number as no_rt, rw.number as no_rw, penduduk.*')
-                                        ->join('rt', 'rt.id = penduduk.rt_id')
-                                        ->join('rw', 'rw.id = penduduk.rw_id')
-                                        ->getWhere(['nik' => $row->nik])->getRow();
+                ->join('rt', 'rt.id = penduduk.rt_id')
+                ->join('rw', 'rw.id = penduduk.rw_id')
+                ->getWhere(['nik' => $row->nik])->getRow();
 
             $data = [
                 'pd'    => $row,
