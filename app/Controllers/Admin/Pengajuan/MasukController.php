@@ -64,8 +64,6 @@ class MasukController extends BaseController
 
     public function create()
     {
-        $id = $this->request->getVar('id');
-
         if ($this->request->isAJAX()) {
             $validation = \Config\Services::validation();
             $valid = $this->validate(
@@ -128,7 +126,7 @@ class MasukController extends BaseController
                     'informasi' => $informasi,
                     'file'      => $file_surat,
                     'status'    => 'Sudah Dibuat',
-                    'updated_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                    'updated_at'=> Time::now('Asia/Jakarta', 'en_ID')
                 ];
 
                 $id = $this->request->getVar('id');
