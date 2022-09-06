@@ -49,7 +49,7 @@ return [
     'seconds'        => '{0, plural, =1{# detik} other{# detik}}',
     'ago'            => '{0} yang lalu',
     'inFuture'       => 'in {0}',
-    'yesterday'      => 'Yesterday',
-    'tomorrow'       => 'Tomorrow',
-    'now'            => 'Just now',
+    'yesterday'      => 'Kemarin',
+    'tomorrow'       => 'Besok',
+    'now'            => 'Baru saja',
 ];
