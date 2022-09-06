@@ -11,7 +11,6 @@
             <div class="modal-body">
                 <div class="row">
                     <input type="hidden" name="id" value="<?= $pd->id ?>">
-                    <input type="hidden" name="file_old" value="<?= $pd->file ?>">
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">No Whatsapp <span class="text-danger">*</span></label>
@@ -53,20 +52,20 @@
 </div>
 
 <script>
-    $('#send').click(function(e) {
+    $("#send").click(function(e) {
         e.preventDefault();
         let form = $('.formPengajuanMasuk')[0];
         let data = new FormData(form);
 
         $.ajax({
             type: "post",
-            url: <?= site_url('admin/data_pengajuan_masuk/create') ?>,
+            url: "<?= site_url('admin/data_pengajuan_masuk/create') ?>",
             data: data,
             enctype: 'multipart/form-data',
             processData: false,
             contentType: false,
             cache: false,
-            dataType: "json",
+            dataType: 'json',
             beforeSend: function() {
                 $('#send').attr('disable', 'disabled');
                 $('#send').html('<i class="fa-solid fa-spin fa-spinner"></i>');
