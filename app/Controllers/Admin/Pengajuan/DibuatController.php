@@ -20,7 +20,7 @@ class DibuatController extends BaseController
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->orderBy('created_at','DESC')->get()->getResult();
+            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->orderBy('updated_at','DESC')->get()->getResult();
 
             $data = [
                 'pds' => $pd

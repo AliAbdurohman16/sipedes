@@ -22,7 +22,7 @@ class PengajuanDibuatController extends BaseController
         if ($this->request->isAJAX()) {
             $nik = session()->get('penduduk')->nik;
 
-            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->where('nik', $nik)->orderBy('created_at','DESC')->get()->getResult();
+            $pd = $this->pengajuanModel->where('status', 'Sudah Dibuat')->where('nik', $nik)->orderBy('updated_at','DESC')->get()->getResult();
 
             $data = [
                 'pds' => $pd
