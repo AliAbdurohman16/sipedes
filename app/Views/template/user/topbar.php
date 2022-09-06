@@ -4,7 +4,7 @@ use CodeIgniter\I18n\Time;
 
 $db = db_connect();
 $user = $db->table('penduduk')->getWhere(['id' => session()->get('penduduk')->id])->getRow();
-$pengajuan = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->get()->getResult();
+$pengajuan = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->orderBy('id','DESC')->get()->getResult();
 $result = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->where('read_user', 'no')->get()->getNumRows();
 ?>
 <!-- Top Header -->
