@@ -4,7 +4,7 @@ use CodeIgniter\I18n\Time;
 
 $db = db_connect();
 $user = $db->table('users')->getWhere(['id' => session()->get('user')->id])->getRow();
-$pengajuan = $db->table('pengajuan')->where('status', 'Belum Dibuat')->orderBy('id','DESC')->get()->getResult();
+$pengajuan = $db->table('pengajuan')->where('status', 'Belum Dibuat')->orderBy('created_at','DESC')->get()->getResult();
 $result = $db->table('pengajuan')->where('status', 'Belum Dibuat')->where('read_admin', 'no')->get()->getNumRows();
 ?>
 <!-- Top Header -->

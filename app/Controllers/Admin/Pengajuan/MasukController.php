@@ -26,7 +26,7 @@ class MasukController extends BaseController
     public function index()
     {
         if ($this->request->isAJAX()) {
-            $pd = $this->pengajuanModel->where('status', 'Belum Dibuat')->orderBy('id','DESC')->get()->getResult();
+            $pd = $this->pengajuanModel->where('status', 'Belum Dibuat')->orderBy('created_at','DESC')->get()->getResult();
 
             $data = [
                 'pds' => $pd
