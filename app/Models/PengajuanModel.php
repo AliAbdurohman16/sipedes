@@ -42,7 +42,7 @@ class PengajuanModel extends Model
 
     public function report($start, $end)
     {
-        return $this->select('pengajuan.*')->where('status', 'Sudah Dibuat')
+        return $this->where('status', 'Sudah Dibuat')
                     ->where('created_at >=', $start)->where('created_at <=', $end)
                     ->findAll();
     }
