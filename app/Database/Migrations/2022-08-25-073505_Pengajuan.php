@@ -38,6 +38,10 @@ class Pengajuan extends Migration
             'keterangan' => [
                 'type'       => 'TEXT',
             ],
+            'file' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'informasi' => [
                 'type'       => 'TEXT',
             ],

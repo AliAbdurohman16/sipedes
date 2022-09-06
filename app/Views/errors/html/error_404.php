@@ -10,7 +10,7 @@
     <meta name="Version" content="v4.2.0" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logo_sipedes.png" />
     <!-- Css -->
     <!-- Bootstrap Css -->
     <link href="<?= base_url() ?>/assets/css/bootstrap.min.css" class="theme-opt" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12 text-center">
-                    <img src="<?= base_url() ?>/assets/images/404.svg" style="max-width: 500px;" alt="">
+                    <img src="<?= base_url() ?>/images/error/404.svg" style="max-width: 500px;" alt="">
                     <div class="text-uppercase mt-4 display-5 fw-semibold">Page Not Found</div>
                     <div class="text-capitalize text-dark mb-4 error-page"></div>
                     <p class="text-muted para-desc mx-auto">

@@ -6,17 +6,28 @@
                 <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?= form_open('admin/data_pengajuan_masuk/create', ['class' => 'formPengajuanMasuk']); ?>
+            <?= form_open_multipart('', ['class' => 'formPengajuanMasuk']); ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="row">
-                    <input type="hidden" name="id" value="<?= $pd->id?>">
+                    <input type="hidden" name="id" value="<?= $pd->id ?>">
+                    <input type="hidden" name="file_old" value="<?= $pd->file ?>">
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">No Whatsapp <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
                                 <input name="telepon" id="telepon" type="number" class="form-control" value="<?= $pd->telepon ?>" placeholder="No Whatsapp : contoh 628****" readonly>
                                 <small>Gunakan no whatsapp di awali dengan 62 seperti contoh : 6281234***</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Upload File Surat <span class="text-danger">*</span></label>
+                            <div class="form-icon position-relative">
+                                <input name="file_surat" id="file_surat" type="file" class="form-control" placeholder="Upload File Surat : ">
+                                <div class="invalid-feedback errorFileSurat"></div>
                             </div>
                         </div>
                     </div>
@@ -42,13 +53,20 @@
 </div>
 
 <script>
-    $('.formPengajuanMasuk').submit(function(e) {
+    $('#send').click(function(e) {
         e.preventDefault();
+        let form = $('.formPengajuanMasuk')[0];
+        let data = new FormData(form);
+
         $.ajax({
             type: "post",
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: 'json',
+            url: <?= site_url('admin/data_pengajuan_masuk/create') ?>,
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: "json",
             beforeSend: function() {
                 $('#send').attr('disable', 'disabled');
                 $('#send').html('<i class="fa-solid fa-spin fa-spinner"></i>');
@@ -66,25 +84,22 @@
                         $('#informasi').removeClass('is-invalid');
                         $('.errorInformasi').html('');
                     }
-                } else {
-                    if (response.error_message) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Gagal',
-                            text: response.error_message,
-                        })
-                        $('#editModal').modal('hide');
-                        pengajuanMasuk();
-                        
+
+                    if (response.error.file_surat) {
+                        $('file_surat').addClass('is-invalid');
+                        $('.errorFileSurat').html(response.error.file_surat);
                     } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Sukses',
-                            text: response.success,
-                        })
-                        $('#editModal').modal('hide');
-                        pengajuanMasuk();
+                        $('file_surat').removeClass('is-invalid');
+                        $('.errorFileSurat').html('');
                     }
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: response.success,
+                    })
+                    $('#editModal').modal('hide');
+                    pengajuanMasuk();
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {

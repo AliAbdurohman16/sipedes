@@ -77,6 +77,15 @@ class MasukController extends BaseController
                             'required' => '{field} tidak boleh kosong.',
                         ]
                     ],
+                    'file' => [
+                        'label' => 'Upload File Surat',
+                        'rules' => 'required|max_size[file,5000]|mime_in[file,userfile,application/pdf,application/msword,]',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong.',
+                            'max_size' => 'Ukuran file maksimal 5 mb',
+                            'mime_in' => '{field} harus berupa file (pdf atau docx)',
+                        ]
+                    ],
                 ]
             );
 
@@ -84,6 +93,7 @@ class MasukController extends BaseController
                 $msg = [
                     'error' => [
                         'informasi' => $validation->getError('informasi'),
+                        'file_surat' => $validation->getError('file'),
                     ]
                 ];
             } else {
@@ -103,8 +113,20 @@ class MasukController extends BaseController
                     )
                 );
 
+                $file_surat = $this->request->getFile('file_surat');
+                $file_old = $this->request->getVar('file_old');
+
+                if ($file_surat->getError() == 4) {
+                    $file_name = $file_old;
+                } else {
+                    $file_name = $file_surat->getRandomName();
+                    $file_surat->move('document/surat/', $file_name);
+                    unlink('document/surat/' . $file_old);
+                }
+
                 $request = [
                     'informasi' => $informasi,
+                    'file'      => $file_surat,
                     'status'    => 'Sudah Dibuat',
                     'updated_at'    => Time::now('Asia/Jakarta', 'en_ID')
                 ];
