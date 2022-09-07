@@ -75,9 +75,9 @@ class MasukController extends BaseController
                             'required' => '{field} tidak boleh kosong.',
                         ]
                     ],
-                    'file_surat' => [
+                    'file' => [
                         'label' => 'Upload File Surat',
-                        'rules' => 'required|max_size[file_surat,5000]|mime_in[file_surat,application/pdf,application/docx]',
+                        'rules' => 'required|max_size[file,5000]|mime_in[file,application/pdf,application/docx]',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong.',
                             'max_size' => 'Ukuran file maksimal 5 mb',
@@ -91,7 +91,7 @@ class MasukController extends BaseController
                 $msg = [
                     'error' => [
                         'informasi' => $validation->getError('informasi'),
-                        'file_surat' => $validation->getError('file_surat'),
+                        'file' => $validation->getError('file'),
                     ]
                 ];
             } else {
@@ -111,7 +111,7 @@ class MasukController extends BaseController
                     )
                 );
 
-                $file_surat = $this->request->getFile('file_surat');
+                $file_surat = $this->request->getFile('file');
                 $file_old = $this->request->getVar('file_old');
 
                 if ($file_surat->getError() == 4) {

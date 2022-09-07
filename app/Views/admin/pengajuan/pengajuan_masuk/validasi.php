@@ -25,8 +25,8 @@
                         <div class="mb-3">
                             <label class="form-label">Upload File Surat <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
-                                <input name="file_surat" id="file_surat" type="file" class="form-control" placeholder="Upload File Surat : ">
-                                <div class="invalid-feedback errorFileSurat"></div>
+                                <input name="file" id="file" type="file" class="form-control" placeholder="Upload File Surat : ">
+                                <div class="invalid-feedback errorFile"></div>
                             </div>
                         </div>
                     </div>
@@ -84,12 +84,12 @@
                         $('.errorInformasi').html('');
                     }
 
-                    if (response.error.file_surat) {
-                        $('file_surat').addClass('is-invalid');
-                        $('.errorFileSurat').html(response.error.file_surat);
+                    if (response.error.file) {
+                        $('file').addClass('is-invalid');
+                        $('.errorFile').html(response.error.file);
                     } else {
-                        $('file_surat').removeClass('is-invalid');
-                        $('.errorFileSurat').html('');
+                        $('file').removeClass('is-invalid');
+                        $('.errorFile').html('');
                     }
                 } else {
                     Swal.fire({
