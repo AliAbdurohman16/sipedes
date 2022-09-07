@@ -10,7 +10,6 @@
         "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "fzaninotto/faker": "^1.9",
         "kint-php/kint": "^4.1.1",
         "laminas/laminas-escaper": "^2.9",
         "psr/log": "^1.1",
@@ -18,7 +17,6 @@
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.1",
-        "fakerphp/faker": "^1.9",
         "friendsofphp/php-cs-fixer": "3.6.*",
         "mikey179/vfsstream": "^1.6",
         "nexusphp/cs-config": "^3.3",
