@@ -113,31 +113,35 @@ class MasukController extends BaseController
                 $file_surat = $this->request->getFile('file');
 
                 if ($file_surat->getError() == 4) {
+                    $msg = ['error' => 'Terdapat kesalahan pada file!'];
+
+                    echo json_encode($msg);
+                } else {
                     $file_name = $file_surat->getRandomName();
-                    $file_surat->move('document/surat/', $file_name);
+                    $file_surat->move('dokumen/surat/', $file_name);
+
+                    $request = [
+                        'informasi' => $informasi,
+                        'file'      => $file_name,
+                        'status'    => 'Sudah Dibuat',
+                        'updated_at'=> Time::now('Asia/Jakarta', 'en_ID')
+                    ];
+
+                    $id = $this->request->getVar('id');
+
+                    $this->pengajuanModel->update($id, $request);
+
+                    // Log Activity
+                    $params = [
+                        'user_id'       => session()->get('user')->id,
+                        'activities'    => 'Validasi Data Pengajuan',
+                        'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
+                    ];
+
+                    $this->logModel->insert($params);
+                    
+                    $msg = ['success' => 'Validasi berhasil dikirim!'];
                 }
-
-                $request = [
-                    'informasi' => $informasi,
-                    'file'      => $file_surat,
-                    'status'    => 'Sudah Dibuat',
-                    'updated_at'=> Time::now('Asia/Jakarta', 'en_ID')
-                ];
-
-                $id = $this->request->getVar('id');
-
-                $this->pengajuanModel->update($id, $request);
-
-                // Log Activity
-                $params = [
-                    'user_id'       => session()->get('user')->id,
-                    'activities'    => 'Validasi Data Pengajuan',
-                    'created_at'    => Time::now('Asia/Jakarta', 'en_ID')
-                ];
-
-                $this->logModel->insert($params);
-
-                $msg = ['success' => 'Validasi berhasil dikirim!'];
             }
             echo json_encode($msg);
         } else {
