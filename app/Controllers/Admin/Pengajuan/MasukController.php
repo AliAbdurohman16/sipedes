@@ -77,7 +77,7 @@ class MasukController extends BaseController
                     ],
                     'file_surat' => [
                         'label' => 'Upload File Surat',
-                        'rules' => 'required|max_size[file_surat,5000]|mime_in[file_surat,application/pdf,application/msword]',
+                        'rules' => 'required|max_size[file_surat,5000]|mime_in[file_surat,application/pdf,application/docx]',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong.',
                             'max_size' => 'Ukuran file maksimal 5 mb',
