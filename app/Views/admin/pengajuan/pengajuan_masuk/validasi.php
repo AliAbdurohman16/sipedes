@@ -85,10 +85,10 @@
                     }
 
                     if (response.error.file) {
-                        $('file').addClass('is-invalid');
+                        $('#file').addClass('is-invalid');
                         $('.errorFile').html(response.error.file);
                     } else {
-                        $('file').removeClass('is-invalid');
+                        $('#file').removeClass('is-invalid');
                         $('.errorFile').html('');
                     }
                 } else {
