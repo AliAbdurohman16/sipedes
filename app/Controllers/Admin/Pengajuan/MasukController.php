@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin\Pengajuan;
 
-require_once '../vendor/autoload.php';
+// require_once '../vendor/autoload.php';
 
 use App\Controllers\BaseController;
 use App\Models\PengajuanModel;
@@ -10,7 +10,7 @@ use App\Models\PendudukModel;
 use App\Models\KartuKeluargaModel;
 use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
-use Twilio\Rest\Client;
+// use Twilio\Rest\Client;
 
 class MasukController extends BaseController
 {
@@ -89,9 +89,9 @@ class MasukController extends BaseController
                 $telepon = $this->request->getVar('telepon');
 
                 // Send Whatsapp with twilio
-                $sid    = "AC8864285d5382d0192ce5c1150dd96adb";
-                $token  = "50d5a415e25d039d571128b3b35e547c";
-                $twilio = new Client($sid, $token);
+                // $sid    = "AC8864285d5382d0192ce5c1150dd96adb";
+                // $token  = "50d5a415e25d039d571128b3b35e547c";
+                // $twilio = new Client($sid, $token);
 
                 // $twilio->messages->create(
                 //     "whatsapp:+$telepon", // to 
