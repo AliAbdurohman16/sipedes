@@ -14,7 +14,7 @@ class PengajuanModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_kk', 'nik', 'nama', 'telepon', 'jenis', 'keterangan', 'file', 'informasi', 'status', 'read_user', 'read_admin', 'created_at', 'updated_at'];
+    protected $allowedFields    = ['no_kk', 'nik', 'nama', 'telepon', 'jenis', 'keterangan', 'file', 'status', 'read_user', 'read_admin', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps = false;

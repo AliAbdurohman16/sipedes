@@ -68,13 +68,6 @@ class MasukController extends BaseController
             $validation = \Config\Services::validation();
             $valid = $this->validate(
                 [
-                    'informasi' => [
-                        'label' => 'Informasi',
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => '{field} tidak boleh kosong.',
-                        ]
-                    ],
                     'file' => [
                         'label' => 'Upload File Surat',
                         'rules' => 'max_size[file,5000]|mime_in[file,application/pdf]',
@@ -89,13 +82,11 @@ class MasukController extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
-                        'informasi' => $validation->getError('informasi'),
                         'file' => $validation->getError('file'),
                     ]
                 ];
             } else {
-                // $telepon = $this->request->getVar('telepon');
-                $informasi = $this->request->getVar('informasi');
+                $telepon = $this->request->getVar('telepon');
 
                 // Send Whatsapp with twilio
                 $sid    = "AC8864285d5382d0192ce5c1150dd96adb";
@@ -121,7 +112,6 @@ class MasukController extends BaseController
                     $file_surat->move('dokumen/surat/', $file_name);
 
                     $request = [
-                        'informasi' => $informasi,
                         'file'      => $file_name,
                         'status'    => 'Sudah Dibuat',
                         'updated_at'=> Time::now('Asia/Jakarta', 'en_ID')
@@ -130,6 +120,27 @@ class MasukController extends BaseController
                     $id = $this->request->getVar('id');
 
                     $this->pengajuanModel->update($id, $request);
+
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://whatsapp.fikriks.com/send-message',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => 'number='.$telepon.'&message='. site_url('dokumen/surat/'.$file_name),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/x-www-form-urlencoded'
+                    ),
+                    ));
+    
+                    $response = curl_exec($curl);
+    
+                    curl_close($curl);
 
                     // Log Activity
                     $params = [

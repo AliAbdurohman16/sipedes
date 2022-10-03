@@ -42,9 +42,6 @@ class Pengajuan extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'informasi' => [
-                'type'       => 'TEXT',
-            ],
             'status' => [
                 'type'       => 'ENUM',
                 'constraint' => ['Belum Dibuat', 'Sudah Dibuat'],
