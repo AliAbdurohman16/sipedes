@@ -165,9 +165,10 @@ class MasukController extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getVar('id');
             $row = $this->pengajuanModel->find($id);
-            $pddk = $this->pendudukModel->select('rt.number as no_rt, rw.number as no_rw, penduduk.*')
+            $pddk = $this->pendudukModel->select('rt.number as no_rt, rw.number as no_rw, dusun.name as dusun, penduduk.*')
                 ->join('rt', 'rt.id = penduduk.rt_id')
                 ->join('rw', 'rw.id = penduduk.rw_id')
+                ->join('dusun', 'dusun.id = penduduk.dusun_id')
                 ->getWhere(['nik' => $row->nik])->getRow();
 
             $data = [

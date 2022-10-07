@@ -146,10 +146,19 @@
                         <!--end col-->
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label class="form-label">Kelurahan : </label>
+                                <label class="form-label">Dusun : </label>
                             </div>
                             <div class="col-md-7 mb-3">
-                                <?= $pddk->kelurahan ?>
+                                <?= $pddk->dusun ?>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label class="form-label">Desa : </label>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <?= $pddk->desa ?>
                             </div>
                         </div>
                         <!--end col-->
