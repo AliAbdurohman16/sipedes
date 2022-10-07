@@ -57,8 +57,6 @@
                             <div class="invalid-feedback errorProvinsi">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Kabupaten <span class="text-danger">*</span></label>
                             <select name="kabupaten" id="kabupaten" class="form-control">
@@ -71,6 +69,8 @@
                             <div class="invalid-feedback errorKabupaten">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Kecamatan <span class="text-danger">*</span></label>
                             <select name="kecamatan" id="kecamatan" class="form-control">
@@ -85,15 +85,26 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Kelurahan <span class="text-danger">*</span></label>
-                            <select name="kelurahan" id="kelurahan" class="form-control">
-                                <option value="">-- Pilih Kelurahan --</option>
-                                <option value="Cibeurem" <?= $kelurahan == 'Cibeurem' ? 'selected' : '' ?>>Cibeurem</option>
-                                <option value="Ancaran" <?= $kelurahan == 'Ancaran' ? 'selected' : '' ?>>Ancaran</option>
-                                <option value="Cibinuang" <?= $kelurahan == 'Cibinuang' ? 'selected' : '' ?>>Cibinuang</option>
-                                <option value="Karangtawang" <?= $kelurahan == 'Karangtawang' ? 'selected' : '' ?>>Karangtawang</option>
+                            <label class="form-label">Desa <span class="text-danger">*</span></label>
+                            <select name="desa" id="desa" class="form-control">
+                                <option value="">-- Pilih Desa --</option>
+                                <option value="Cibeurem" <?= $desa == 'Cibeurem' ? 'selected' : '' ?>>Cibeurem</option>
+                                <option value="Ancaran" <?= $desa == 'Ancaran' ? 'selected' : '' ?>>Ancaran</option>
+                                <option value="Cibinuang" <?= $desa == 'Cibinuang' ? 'selected' : '' ?>>Cibinuang</option>
+                                <option value="Karangtawang" <?= $desa == 'Karangtawang' ? 'selected' : '' ?>>Karangtawang</option>
                             </select>
-                            <div class="invalid-feedback errorKelurahan">
+                            <div class="invalid-feedback errorDesa">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Dusun <span class="text-danger">*</span></label>
+                            <select name="dusun" id="dusun" class="form-control">
+                                <option value="">-- Pilih Dusun --</option>
+                                <?php foreach ($dusuns as $dusun) : ?>
+                                    <option value="<?= $dusun->id ?>" <?= $dusun->id == $dusun_id ? 'selected' : '' ?>><?= $dusun->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="invalid-feedback errorDesa">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -139,8 +150,6 @@
                             <div class="invalid-feedback errorGolDarah">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Agama <span class="text-danger">*</span></label>
                             <select name="agama" id="agama" class="form-control">
@@ -155,6 +164,8 @@
                             <div class="invalid-feedback errorAgama">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4">
                         <div class="mb-3">
                             <label class="form-label">Status Kawin <span class="text-danger">*</span></label>
                             <select name="status_kawin" id="status_kawin" class="form-control">
@@ -309,13 +320,22 @@
                         $('.errorKecamatan').html('');
                     }
 
-                    //Kelurahan
-                    if (response.error.kelurahan) {
-                        $('#kelurahan').addClass('is-invalid');
-                        $('.errorKelurahan').html(response.error.kelurahan);
+                    //Desa
+                    if (response.error.desa) {
+                        $('#desa').addClass('is-invalid');
+                        $('.errorDesa').html(response.error.desa);
                     } else {
-                        $('#kelurahan').removeClass('is-invalid');
-                        $('.errorKelurahan').html('');
+                        $('#desa').removeClass('is-invalid');
+                        $('.errorDesa').html('');
+                    }
+
+                    //Dusun
+                    if (response.error.dusun) {
+                        $('#dusun').addClass('is-invalid');
+                        $('.errorDusun').html(response.error.dusun);
+                    } else {
+                        $('#dusun').removeClass('is-invalid');
+                        $('.errorDusun').html('');
                     }
 
                     //RW

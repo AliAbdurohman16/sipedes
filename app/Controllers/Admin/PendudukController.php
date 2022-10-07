@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PendudukModel;
 use App\Models\RtModel;
 use App\Models\RwModel;
+use App\Models\DusunModel;
 use App\Models\LogAktivitasModel;
 use CodeIgniter\I18n\Time;
 
@@ -15,12 +16,14 @@ class PendudukController extends BaseController
     protected $pendudukModel;
     protected $rtModel;
     protected $rwModel;
+    protected $dusunModel;
 
     public function __construct()
     {
         $this->pendudukModel = new PendudukModel();
         $this->rtModel = new RtModel();
         $this->rwModel = new RwModel();
+        $this->dusunModel = new DusunModel();
         $this->logModel = new LogAktivitasModel();
     }
 
@@ -52,7 +55,8 @@ class PendudukController extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 'rts' => $this->rtModel->findAll(),
-                'rws' => $this->rwModel->findAll()
+                'rws' => $this->rwModel->findAll(),
+                'dusuns' => $this->dusunModel->findAll()
             ];
 
             $msg = [
@@ -131,8 +135,15 @@ class PendudukController extends BaseController
                             'required' => '{field} tidak boleh kosong',
                         ]
                     ],
-                    'kelurahan' => [
-                        'label' => 'Kelurahan',
+                    'desa' => [
+                        'label' => 'Desa',
+                        'rules' => 'required|string',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                        ]
+                    ],
+                    'dusun' => [
+                        'label' => 'Dusun',
                         'rules' => 'required|string',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
@@ -222,7 +233,8 @@ class PendudukController extends BaseController
                         'provinsi' => $validation->getError('provinsi'),
                         'kabupaten' => $validation->getError('kabupaten'),
                         'kecamatan' => $validation->getError('kecamatan'),
-                        'kelurahan' => $validation->getError('kelurahan'),
+                        'desa' => $validation->getError('desa'),
+                        'dusun' => $validation->getError('dusun'),
                         'rw' => $validation->getError('rw'),
                         'rt' => $validation->getError('rt'),
                         'alamat' => $validation->getError('alamat'),
@@ -244,7 +256,8 @@ class PendudukController extends BaseController
                     'tgl_lahir' => $this->request->getPost('tgl_lahir'),
                     'rt_id' => $this->request->getPost('rt'),
                     'rw_id' => $this->request->getPost('rw'),
-                    'kelurahan' => $this->request->getPost('kelurahan'),
+                    'desa' => $this->request->getPost('desa'),
+                    'dusun_id' => $this->request->getPost('dusun'),
                     'kecamatan' => $this->request->getPost('kecamatan'),
                     'kabupaten' => $this->request->getPost('kabupaten'),
                     'provinsi' => $this->request->getPost('provinsi'),
@@ -288,6 +301,7 @@ class PendudukController extends BaseController
             $data = [
                 'rts' => $this->rtModel->findAll(),
                 'rws' => $this->rwModel->findAll(),
+                'dusuns' => $this->dusunModel->findAll(),
                 'id' => $row->id,
                 'nik' => $row->nik,
                 'name' => $row->name,
@@ -296,7 +310,8 @@ class PendudukController extends BaseController
                 'tgl_lahir' => $row->tgl_lahir,
                 'rt_id' => $row->rt_id,
                 'rw_id' => $row->rw_id,
-                'kelurahan' => $row->kelurahan,
+                'dusun_id' => $row->dusun_id,
+                'desa' => $row->desa,
                 'kecamatan' => $row->kecamatan,
                 'kabupaten' => $row->kabupaten,
                 'provinsi' => $row->provinsi,
@@ -392,8 +407,15 @@ class PendudukController extends BaseController
                             'required' => '{field} tidak boleh kosong',
                         ]
                     ],
-                    'kelurahan' => [
-                        'label' => 'Kelurahan',
+                    'desa' => [
+                        'label' => 'Desa',
+                        'rules' => 'required|string',
+                        'errors' => [
+                            'required' => '{field} tidak boleh kosong',
+                        ]
+                    ],
+                    'dusun' => [
+                        'label' => 'Dusun',
                         'rules' => 'required|string',
                         'errors' => [
                             'required' => '{field} tidak boleh kosong',
@@ -483,7 +505,8 @@ class PendudukController extends BaseController
                         'provinsi' => $validation->getError('provinsi'),
                         'kabupaten' => $validation->getError('kabupaten'),
                         'kecamatan' => $validation->getError('kecamatan'),
-                        'kelurahan' => $validation->getError('kelurahan'),
+                        'desa' => $validation->getError('desa'),
+                        'dusun' => $validation->getError('dusun'),
                         'rw' => $validation->getError('rw'),
                         'rt' => $validation->getError('rt'),
                         'alamat' => $validation->getError('alamat'),
@@ -505,7 +528,8 @@ class PendudukController extends BaseController
                     'tgl_lahir' => $this->request->getPost('tgl_lahir'),
                     'rt_id' => $this->request->getPost('rt'),
                     'rw_id' => $this->request->getPost('rw'),
-                    'kelurahan' => $this->request->getPost('kelurahan'),
+                    'desa' => $this->request->getPost('desa'),
+                    'dusun_id' => $this->request->getPost('dusun'),
                     'kecamatan' => $this->request->getPost('kecamatan'),
                     'kabupaten' => $this->request->getPost('kabupaten'),
                     'provinsi' => $this->request->getPost('provinsi'),

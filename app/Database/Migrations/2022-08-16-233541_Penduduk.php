@@ -43,7 +43,12 @@ class Penduduk extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'kelurahan' => [
+            'dusun_id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+            ],
+            'desa' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
@@ -109,6 +114,7 @@ class Penduduk extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('rw_id', 'rw', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('rt_id', 'rt', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('dusun_id', 'dusun', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('penduduk');
     }
 
