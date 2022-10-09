@@ -138,6 +138,8 @@
     <script src="<?= base_url() ?>/assets/frontend/js/functions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
 
+    <?= $this->renderSection('javascript') ?>
+
     <?php if (session()->has("error_message")) { ?>
     <script>
         $(function() {
