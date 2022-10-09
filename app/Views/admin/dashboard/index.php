@@ -298,32 +298,16 @@
             type: 'bar',
             data: {
                 labels: [
-                    'Keterangan Nama',
-                    'Keterangan Domisli',
-                    'Keterangan Belum Nikah',
-                    'Keterangan Lahir',
-                    'Keterangan Penghasilan',
-                    'Keterangan Pindah KK',
-                    'Keterangan Rame-rame',
-                    'Keterangan SKU',
-                    'Keterangan SKTM',
-                    'Keterangan SKCK',
-                    'Keterangan Kematian',
+                    <?php foreach ($statistics as $row) : ?> 
+                        '<?= $row->jenis; ?>',
+                    <?php endforeach; ?>
                 ],
                 datasets: [{
                     label: 'Pengajuan',
                     data: [
-                        <?= $ketNama ?>,
-                        <?= $ketDomisli ?>,
-                        <?= $ketBlmNikah ?>,
-                        <?= $ketLahir ?>,
-                        <?= $ketPenghasilan ?>,
-                        <?= $ketPindahKK ?>,
-                        <?= $ketRame ?>,
-                        <?= $ketSKU ?>,
-                        <?= $ketSKTM ?>,
-                        <?= $ketSKCK ?>,
-                        <?= $ketKematian ?>,
+                        <?php foreach ($statistics as $row) : ?> 
+                            '<?= $row->jumlah; ?>',
+                        <?php endforeach; ?>
                     ],
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)',

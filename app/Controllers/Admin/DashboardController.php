@@ -38,17 +38,7 @@ class DashboardController extends BaseController
             'sdh_dibuat' => $this->pengajuanModel->where('status', 'Sudah Dibuat')->get()->getNumRows(),
             'users' => $this->userModel->findAll(),
             'logs' => $this->logModel->withLimit(),
-            'ketNama' => $this->pengajuanModel->where('jenis', 'Keterangan Nama')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketDomisli' => $this->pengajuanModel->where('jenis', 'Keterangan Domisli')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketBlmNikah' => $this->pengajuanModel->where('jenis', 'Keterangan Belum Nikah')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketLahir' => $this->pengajuanModel->where('jenis', 'Keterangan Lahir')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketPenghasilan' => $this->pengajuanModel->where('jenis', 'Keterangan Penghasilan')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketPindahKK' => $this->pengajuanModel->where('jenis', 'Keterangan Pindah KK')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketRame' => $this->pengajuanModel->where('jenis', 'Keterangan Rame-rame')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketSKU' => $this->pengajuanModel->where('jenis', 'Keterangan SKU')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketSKTM' => $this->pengajuanModel->where('jenis', 'Keterangan SKTM')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketSKCK' => $this->pengajuanModel->where('jenis', 'Keterangan SKCK')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
-            'ketKematian' => $this->pengajuanModel->where('jenis', 'Keterangan Kematian')->where('status', 'Sudah Dibuat')->get()->getNumRows(),
+            'statistics' => $this->pengajuanModel->select('COUNT(jenis) as jumlah, jenis')->where('status', 'Sudah Dibuat')->groupBy('jenis')->findAll()
         ];
 
         return view('admin/dashboard/index', $data);
