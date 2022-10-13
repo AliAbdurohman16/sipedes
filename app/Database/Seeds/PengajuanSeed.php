@@ -21,7 +21,7 @@ class PengajuanSeed extends Seeder
                 'telepon' => $faker->e164PhoneNumber ,
                 'jenis' => $faker->randomElement([
                     'Keterangan Nama', 
-                    'Keterangan Domisli',
+                    'Keterangan Domisili',
                     'Keterangan Belum Nikah',
                     'Keterangan Lahir',
                     'Keterangan Penghasilan',

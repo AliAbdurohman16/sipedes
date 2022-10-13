@@ -65,7 +65,7 @@
                     <div class="sidebar-submenu <?= ($uri->getSegment(1) == 'surat_keterangan_nama' || $uri->getSegment(1) == 'surat_keterangan_domisli' || $uri->getSegment(1) == 'surat_keterangan_belum_nikah' ? 'd-block' : '') ?>">
                         <ul>
                             <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_nama' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_nama') ?>">Surat Keterangan Nama</a></li>
-                            <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_domisli' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_domisli') ?>">Surat Keterangan Domisli</a></li>
+                            <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_domisili' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_domisili') ?>">Surat Keterangan Domisili</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_belum_nikah' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_belum_nikah') ?>">Surat Keterangan Belum Nikah</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_lahir' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_lahir') ?>">Surat Keterangan Lahir</a></li>
                             <li class="<?= ($uri->getSegment(1) == 'surat_keterangan_penghasilan' ? 'active' : '') ?>"><a href="<?= base_url('admin/surat_keterangan_penghasilan') ?>">Surat Keterangan Penghasilan</a></li>

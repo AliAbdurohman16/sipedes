@@ -55,9 +55,11 @@
                             <label class="form-label">Jenis Pengajuan Surat <span class="text-danger">*</span></label>
                             <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" id="jenis" required>
                                 <option value="">Pilih Jenis Pengajuan Surat</option>
-                                <option value="Keterangan Beda Nama (Beda KTP Dan KK)">Keterangan Beda Nama (KTP Dan KK)</option>
-                                <option value="Keterangan Beda Nama (Untuk Ke ATM)">Keterangan Beda Nama (Untuk Ke ATM)</option>
-                                <option value="Keterangan Domisli">Keterangan Domisli</option>
+                                <option value="Keterangan Nama">Keterangan Nama</option>
+                                <!-- <option value="Keterangan Beda Nama (KTP Dan KK)">Keterangan Beda Nama (KTP Dan KK)</option>
+                                <option value="Keterangan Beda Nama (Ke ATM)">Keterangan Beda Nama (Ke ATM)</option> -->
+                                <option value="Keterangan Domisili">Keterangan Domisili</option>
+                                <!-- <option value="Keterangan Domisli (Lembaga)">Keterangan Domisli (Lembaga)</option> -->
                                 <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
                                 <option value="Keterangan Lahir">Keterangan Lahir</option>
                                 <option value="Keterangan Penghasilan">Keterangan Penghasilan</option>
@@ -74,7 +76,43 @@
                         </div>
                     </div>
                     <!--end col-->
-                    <div class="col-md-12" id="atmCard" hidden>
+                    <!-- <div class="col-md-12" id="nameInKTP" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Nama di KTP <span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <input name="nameInKTP" type="text" class="form-control <?= ($validation->hasError('nameInKTP')) ? 'is-invalid' : '' ?>" value="<?= old('nameInKTP') ?>" placeholder="Nama di KTP" required>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('nameInKTP'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                    <!-- <div class="col-md-12" id="placeOfBirth" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Tempat Lahir di KTP <span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <input name="placeOfBirth" type="text" class="form-control <?= ($validation->hasError('placeOfBirth')) ? 'is-invalid' : '' ?>" value="<?= old('placeOfBirth') ?>" placeholder="Tempat lahir di KTP" required>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('placeOfBirth'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                    <!-- <div class="col-md-12" id="dateOfBirth" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Lahir di KTP <span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <input name="dateOfBirth" type="text" class="form-control <?= ($validation->hasError('dateOfBirth')) ? 'is-invalid' : '' ?>" value="<?= old('dateOfBirth') ?>" placeholder="Tanggal lahir di KTP" required>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('dateOfBirth'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                    <!-- <div class="col-md-12" id="atmCard" hidden>
                         <div class="mb-3">
                             <label class="form-label">Kartu ATM <span class="text-danger">*</span></label>
                             <div class="position-relative">
@@ -84,31 +122,55 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--end col-->
-                    <div class="col-md-12" id="noRek" hidden>
+                    <!-- <div class="col-md-12" id="noRek" hidden>
                         <div class="mb-3">
                             <label class="form-label">No Rekening <span class="text-danger">*</span></label>
                             <div class="position-relative">
-                                <input name="noRek" type="text" class="form-control <?= ($validation->hasError('noRek')) ? 'is-invalid' : '' ?>" value="<?= old('noRek') ?>" placeholder="No Rekening" required>
+                                <input name="noRek" type="number" class="form-control <?= ($validation->hasError('noRek')) ? 'is-invalid' : '' ?>" value="<?= old('noRek') ?>" placeholder="No Rekening" required>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('noRek'); ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--end col-->
-                    <div class="col-md-12" id="name" hidden>
+                    <!-- <div class="col-md-12" id="nameInAtm" hidden>
                         <div class="mb-3">
                             <label class="form-label">Nama di ATM<span class="text-danger">*</span></label>
                             <div class="position-relative">
-                                <input name="name" type="text" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : '' ?>" value="<?= old('name') ?>" placeholder="Nama di ATM" required>
+                                <input name="nameInAtm" type="text" class="form-control <?= ($validation->hasError('nameInAtm')) ? 'is-invalid' : '' ?>" value="<?= old('nameInAtm') ?>" placeholder="Nama di ATM" required>
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('name'); ?>
+                                    <?= $validation->getError('nameInAtm'); ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <!--end col-->
+                    <!-- <div class="col-md-12" id="nameLembaga" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lembaga<span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <input name="nameLembaga" type="text" class="form-control <?= ($validation->hasError('nameLembaga')) ? 'is-invalid' : '' ?>" value="<?= old('nameLembaga') ?>" placeholder="Nama Lembaga" required>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('nameLembaga'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                    <!-- <div class="col-md-12" id="addressLembaga" hidden>
+                        <div class="mb-3">
+                            <label class="form-label">Alamat Lembaga <span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <textarea name="addressLembaga" rows="4" class="form-control <?= ($validation->hasError('addressLembaga')) ? 'is-invalid' : '' ?>" placeholder="Alamat Lembaga"><?= old('addressLembaga') ?></textarea>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('addressLembaga'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                     <!--end col-->
                     <div class="col-md-12">
                         <div class="mb-3">
@@ -121,6 +183,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--end col-->
                 </div>
                 <!--end row-->
                 <div class="row">
@@ -136,17 +199,35 @@
 </div>
 <?= $this->endSection(); ?>
 <?= $this->section('javascript'); ?>
-<script>
+<!-- <script>
     $('#jenis').on('change', function() {;
-        if ($('#jenis option:selected').val() === 'Keterangan Beda Nama (Untuk Ke ATM)') {
+        if ($('#jenis option:selected').val() === 'Keterangan Beda Nama (KTP Dan KK)') {
+            $('#nameInKTP').prop('hidden', false);
+            $('#placeOfBirth').prop('hidden', false);
+            $('#dateOfBirth').prop('hidden', false);
+        } else {
+            $('#nameInKTP').prop('hidden', 'true');
+            $('#placeOfBirth').prop('hidden', 'true');
+            $('#dateOfBirth').prop('hidden', 'true');
+        }
+
+        if ($('#jenis option:selected').val() === 'Keterangan Beda Nama (Ke ATM)') {
             $('#atmCard').prop('hidden', false);
             $('#noRek').prop('hidden', false);
-            $('#name').prop('hidden', false);
+            $('#nameInAtm').prop('hidden', false);
         } else {
             $('#atmCard').prop('hidden', 'true');
             $('#noRek').prop('hidden', 'true');
-            $('#name').prop('hidden', 'true');
+            $('#nameInAtm').prop('hidden', 'true');
+        }
+
+        if ($('#jenis option:selected').val() === 'Keterangan Domisili (Lembaga)') {
+            $('#nameLembaga').prop('hidden', false);
+            $('#addressLembaga').prop('hidden', false);
+        } else {
+            $('#nameLembaga').prop('hidden', 'true');
+            $('#addressLembaga').prop('hidden', 'true');
         }
     });
-</script>
+</script> -->
 <?= $this->endSection(); ?>

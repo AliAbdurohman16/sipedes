@@ -15,7 +15,7 @@
         </div>
 
         <div class="row">
-            <div class="col-8 mt-4">
+            <div class="col-12 mt-4">
                 <div class="card">
                     <div class="card-body">
 
@@ -61,7 +61,7 @@
                                         <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" aria-label="Default select example">
                                             <option value="">Pilih Jenis Pengajuan Surat</option>
                                             <option value="Keterangan Nama">Keterangan Nama</option>
-                                            <option value="Keterangan Domisli">Keterangan Domisli</option>
+                                            <option value="Keterangan Domisili">Keterangan Domisili</option>
                                             <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
                                             <option value="Keterangan Lahir">Keterangan Lahir</option>
                                             <option value="Keterangan Penghasilan">Keterangan Penghasilan</option>

@@ -186,9 +186,9 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     $routes->get('surat_keterangan_nama', 'Admin\Surat\KeteranganNamaController::index');
     $routes->post('surat_keterangan_nama/detail', 'Admin\Surat\KeteranganNamaController::detail');
 
-    // Route Admin -> Surat Keterangan Domisli
-    $routes->get('surat_keterangan_domisli', 'Admin\Surat\KeteranganDomisliController::index');
-    $routes->post('surat_keterangan_domisli/detail', 'Admin\Surat\KeteranganDomisliController::detail');
+    // Route Admin -> Surat Keterangan Domisili
+    $routes->get('surat_keterangan_domisili', 'Admin\Surat\KeteranganDomisiliController::index');
+    $routes->post('surat_keterangan_domisili/detail', 'Admin\Surat\KeteranganDomisiliController::detail');
 
     // Route Admin -> Surat Keterangan Belum Nikah
     $routes->get('surat_keterangan_belum_nikah', 'Admin\Surat\KeteranganBelumNikahController::index');
