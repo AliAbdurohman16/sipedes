@@ -70,7 +70,6 @@ $result = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)
                             <img src="<?= base_url('images/avatar/Avatar.png') ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                             <div class="flex-1 ms-2">
                                 <span class="d-block"><?= $user->name ?></span>
-                                <small class="text-muted"><?= session()->get('role')->name ?></small>
                             </div>
                         </a>
                         <a class="dropdown-item text-dark" href="<?= site_url('user/dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
