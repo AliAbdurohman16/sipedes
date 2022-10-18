@@ -56,8 +56,8 @@
                             <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" id="jenis" required>
                                 <option value="">Pilih Jenis Pengajuan Surat</option>
                                 <option value="Keterangan Nama">Keterangan Nama</option>
-                                <!-- <option value="Keterangan Beda Nama (KTP Dan KK)">Keterangan Beda Nama (KTP Dan KK)</option>
-                                <option value="Keterangan Beda Nama (Ke ATM)">Keterangan Beda Nama (Ke ATM)</option> -->
+                                <!-- <option value="Keterangan Beda Nama (KTP Dan KK)">Keterangan Beda Nama (KTP Dan KK)</option> -->
+                                <!-- <option value="Keterangan Beda Nama (Ke ATM)">Keterangan Beda Nama (Ke ATM)</option> -->
                                 <option value="Keterangan Domisili">Keterangan Domisili</option>
                                 <!-- <option value="Keterangan Domisli (Lembaga)">Keterangan Domisli (Lembaga)</option> -->
                                 <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
@@ -198,8 +198,8 @@
     </div>
 </div>
 <?= $this->endSection(); ?>
-<?= $this->section('javascript'); ?>
-<!-- <script>
+<!-- <?= $this->section('javascript'); ?>
+<script>
     $('#jenis').on('change', function() {;
         if ($('#jenis option:selected').val() === 'Keterangan Beda Nama (KTP Dan KK)') {
             $('#nameInKTP').prop('hidden', false);
@@ -229,5 +229,5 @@
             $('#addressLembaga').prop('hidden', 'true');
         }
     });
-</script> -->
-<?= $this->endSection(); ?>
+</script>
+<?= $this->endSection(); ?> -->
