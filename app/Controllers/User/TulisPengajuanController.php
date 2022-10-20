@@ -100,7 +100,7 @@ class TulisPengajuanController extends BaseController
             file_put_contents('public/dokumen/surat/'.$filename, $output);
 
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -152,7 +152,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -204,7 +204,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -256,7 +256,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -308,7 +308,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -360,7 +360,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
@@ -412,7 +412,7 @@ class TulisPengajuanController extends BaseController
             $dompdf->render();
     
             $output = $dompdf->output();
-            file_put_contents('dokumen/surat/'.$filename, $output);
+            file_put_contents(ROOTPATH . 'public/dokumen/surat/'.$filename, $output);
 
             $curl = curl_init();
 
