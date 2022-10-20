@@ -3,7 +3,7 @@
 use CodeIgniter\I18n\Time;
 
 $db = db_connect();
-$user = $db->table('penduduk')->getWhere(['id' => session()->get('penduduk')->id])->getRow();
+$user = $db->table('penduduk')->getWhere(['id' => session()->get('penduduk')->penduduk_id])->getRow();
 $pengajuan = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->orderBy('updated_at','DESC')->get()->getResult();
 $result = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->where('read_user', 'no')->get()->getNumRows();
 ?>
