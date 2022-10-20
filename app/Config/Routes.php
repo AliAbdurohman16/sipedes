@@ -88,6 +88,8 @@ $routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($r
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
     $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
     $routes->post('pengajuan_sudah_dibuat/download/(:num)', 'User\PengajuanDibuatController::download/$1');
+
+    $routes->get('surat', 'User\TulisPengajuanController::surat');
 });
 
 $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($routes) {
