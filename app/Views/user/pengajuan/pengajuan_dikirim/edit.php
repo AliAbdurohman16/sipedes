@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <!--end col-->
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Keterangan <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
@@ -78,7 +78,7 @@
                                 <div class="invalid-feedback errorKeterangan"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="modal-footer">

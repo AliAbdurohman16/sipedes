@@ -58,15 +58,17 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Jenis Pengajuan Surat <span class="text-danger">*</span></label>
-                                        <select class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" aria-label="Default select example">
-                                            <option value="">Pilih Jenis Pengajuan Surat</option>
+                                        <select id="jenis-surat" class="form-select form-control <?= ($validation->hasError('jenis')) ? 'is-invalid' : '' ?>" name="jenis" aria-label="Default select example" required>
+                                            <option value="" selected disabled>Pilih Jenis Pengajuan Surat</option>
                                             <option value="Keterangan Nama">Keterangan Nama</option>
                                             <option value="Keterangan Domisili">Keterangan Domisili</option>
                                             <option value="Keterangan Belum Nikah">Keterangan Belum Nikah</option>
+                                            <option value="Keterangan Belum Bekerja">Keterangan Belum Bekerja</option>
                                             <option value="Keterangan Lahir">Keterangan Lahir</option>
                                             <option value="Keterangan Penghasilan">Keterangan Penghasilan</option>
                                             <option value="Keterangan Pindah KK">Keterangan Pindah KK</option>
                                             <option value="Keterangan Rame-rame">Keterangan Rame-rame</option>
+                                            <option value="Keterangan Miskin">Keterangan Miskin</option>
                                             <option value="Keterangan SKU">Keterangan SKU</option>
                                             <option value="Keterangan SKTM">Keterangan SKTM</option>
                                             <option value="Keterangan SKCK">Keterangan SKCK</option>
@@ -78,14 +80,32 @@
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="keterangan">
                                     <div class="mb-3">
                                         <label class="form-label">Keterangan <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="message-circle" class="fea icon-sm icons"></i>
-                                            <textarea name="keterangan" rows="4" class="form-control ps-5 <?= ($validation->hasError('keterangan')) ? 'is-invalid' : '' ?>" placeholder="Keterangan :"><?= old('keterangan') ?></textarea>
+                                            <textarea id="keterangan-field" name="keterangan" rows="4" class="form-control ps-5 <?= ($validation->hasError('keterangan')) ? 'is-invalid' : '' ?>" placeholder="Keterangan :"><?= old('keterangan') ?></textarea>
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('keterangan'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="ket-penghasilan">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Sebagai <span class="text-danger">*</span></label>
+                                            <div class="position-relative">
+                                                <input id="sebagai" type="text" name="sebagai" class="form-control" placeholder="Contoh: Karyawan Swasta yang bergerak dibidang kontruksi"><?= old('sebagai') ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Gaji: <span class="text-danger">*</span></label>
+                                            <div class="position-relative">
+                                                <input id="gaji" type="number" name="gaji" class="form-control" placeholder="Contoh: 4000000"><?= old('gaji') ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -113,6 +133,34 @@
 
 <script>
         $(function() {
+            $('#ket-penghasilan').hide();
+            $("#keterangan").hide();
+
+            $('#jenis-surat').on('change', function(e){
+                if(this.value == "Keterangan Penghasilan"){
+                    $('#ket-penghasilan').show();
+                    $("#sebagai").attr('required',true);
+                    $("#gaji").attr('required',true);
+                    $('#keterangan').hide();
+                    $("#keterangan-field").attr('required',false);
+                } else if(this.value == "Keterangan Belum Nikah"){
+                    $('#keterangan').hide();
+                    $('#ket-penghasilan').hide();
+                    $("#keterangan-field").attr('required',false);
+                } else if(this.value == "Keterangan Belum Bekerja"){
+                    $('#keterangan').hide();
+                    $('#ket-penghasilan').hide();
+                    $("#keterangan-field").attr('required',false);
+                } else if(this.value == "Keterangan Domisili"){
+                    $('#keterangan').hide();
+                    $('#ket-penghasilan').hide();
+                    $("#keterangan-field").attr('required',false);
+                }else{
+                    $('#keterangan').hide();
+                    $('#ket-penghasilan').hide();
+                }
+            })
+
             <?php if (session()->has("error_message")) { ?>
                 Swal.fire({
                     icon: 'error',
