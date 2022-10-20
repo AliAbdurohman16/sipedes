@@ -4,6 +4,9 @@ namespace App\Controllers\Auth\User;
 
 use App\Controllers\BaseController;
 use App\Models\AnggotaPendudukModel;
+use App\Models\DusunModel;
+use App\Models\RtModel;
+use App\Models\RwModel;
 use App\Models\RoleModel;
 
 class LoginController extends BaseController
@@ -11,6 +14,9 @@ class LoginController extends BaseController
     public function __construct()
     {
         $this->userModel = new AnggotaPendudukModel();
+        $this->dusunModel = new DusunModel();
+        $this->rtModel = new RtModel();
+        $this->rwModel = new RwModel();
         $this->roleModel = new RoleModel();
     }
 
@@ -46,7 +52,14 @@ class LoginController extends BaseController
 
         if ($checkUser) {
             $roleUser = $this->roleModel->getRole($checkUser->role_id);
+            $dusun = $this->dusunModel->find($checkUser->dusun_id);
+            $rw = $this->rwModel->find($checkUser->rw_id);
+            $rt = $this->rtModel->find($checkUser->rt_id);
+
             session()->set('penduduk', $checkUser);
+            session()->set('dusun', $dusun);
+            session()->set('rw', $rw);
+            session()->set('rt', $rt);
             session()->set('role', $roleUser);
 
             return redirect()->to('user/dashboard');
