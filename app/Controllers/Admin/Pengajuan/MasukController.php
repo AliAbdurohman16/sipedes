@@ -109,7 +109,7 @@ class MasukController extends BaseController
                     echo json_encode($msg);
                 } else {
                     $file_name = $file_surat->getRandomName();
-                    $file_surat->move('dokumen/surat/', $file_name);
+                    $file_surat->move('document/surat/', $file_name);
 
                     $request = [
                         'file'      => $file_name,
@@ -132,7 +132,7 @@ class MasukController extends BaseController
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => 'number='.$telepon.'&message='. site_url('dokumen/surat/'.$file_name),
+                    CURLOPT_POSTFIELDS => 'number='.$telepon.'&message='. site_url('document/surat/'.$file_name),
                     CURLOPT_HTTPHEADER => array(
                         'Content-Type: application/x-www-form-urlencoded'
                     ),

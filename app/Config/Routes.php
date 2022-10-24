@@ -86,7 +86,6 @@ $routes->group("user", ["filter" => "authFilter:loggedInPenduduk"], function ($r
 
     // Pengajuan -> Pengajuan Sudah Dibuat
     $routes->get('pengajuan_sudah_dibuat', 'User\PengajuanDibuatController::index');
-    $routes->post('pengajuan_sudah_dibuat/detail', 'User\PengajuanDibuatController::detail');
     $routes->post('pengajuan_sudah_dibuat/download/(:num)', 'User\PengajuanDibuatController::download/$1');
 });
 
@@ -185,46 +184,57 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     // Route Admin -> Surat Keterangan Nama
     $routes->get('surat_keterangan_nama', 'Admin\Surat\KeteranganNamaController::index');
     $routes->post('surat_keterangan_nama/detail', 'Admin\Surat\KeteranganNamaController::detail');
+    $routes->post('surat_keterangan_nama/download/(:num)', 'Admin\Surat\KeteranganNamaController::download/$1');
 
     // Route Admin -> Surat Keterangan Domisili
     $routes->get('surat_keterangan_domisili', 'Admin\Surat\KeteranganDomisiliController::index');
     $routes->post('surat_keterangan_domisili/detail', 'Admin\Surat\KeteranganDomisiliController::detail');
+    $routes->post('surat_keterangan_domisili/download/(:num)', 'Admin\Surat\KeteranganDomisiliController::download/$1');
 
     // Route Admin -> Surat Keterangan Belum Nikah
     $routes->get('surat_keterangan_belum_nikah', 'Admin\Surat\KeteranganBelumNikahController::index');
     $routes->post('surat_keterangan_belum_nikah/detail', 'Admin\Surat\KeteranganBelumNikahController::detail');
+    $routes->post('surat_keterangan_belum_nikah/download/(:num)', 'Admin\Surat\KeteranganBelumNikahController::download/$1');
 
     // Route Admin -> Surat Keterangan Lahir
     $routes->get('surat_keterangan_lahir', 'Admin\Surat\KeteranganLahirController::index');
     $routes->post('surat_keterangan_lahir/detail', 'Admin\Surat\KeteranganLahirController::detail');
+    $routes->post('surat_keterangan_lahir/download/(:num)', 'Admin\Surat\KeteranganLahirController::download/$1');
 
     // Route Admin -> Surat Keterangan Penghasilan
     $routes->get('surat_keterangan_penghasilan', 'Admin\Surat\KeteranganPenghasilanController::index');
     $routes->post('surat_keterangan_penghasilan/detail', 'Admin\Surat\KeteranganPenghasilanController::detail');
+    $routes->post('surat_keterangan_penghasilan/download/(:num)', 'Admin\Surat\KeteranganPenghasilanController::download/$1');
 
     // Route Admin -> Surat Keterangan Pindah KK
     $routes->get('surat_keterangan_pindah_kk', 'Admin\Surat\KeteranganPindahKKController::index');
     $routes->post('surat_keterangan_pindah_kk/detail', 'Admin\Surat\KeteranganPindahKKController::detail');
+    $routes->post('surat_keterangan_pindah_kk/download/(:num)', 'Admin\Surat\KeteranganPindahKKController::download/$1');
 
     // Route Admin -> Surat Keterangan Rame-rame
     $routes->get('surat_keterangan_rame_rame', 'Admin\Surat\KeteranganRameRameController::index');
     $routes->post('surat_keterangan_rame_rame/detail', 'Admin\Surat\KeteranganRameRameController::detail');
+    $routes->post('surat_keterangan_rame_rame/download/(:num)', 'Admin\Surat\KeteranganRameRameController::download/$1');
 
     // Route Admin -> Surat Keterangan SKU
     $routes->get('surat_keterangan_sku', 'Admin\Surat\KeteranganSKUController::index');
     $routes->post('surat_keterangan_sku/detail', 'Admin\Surat\KeteranganSKUController::detail');
+    $routes->post('surat_keterangan_sku/download/(:num)', 'Admin\Surat\KeteranganSKUController::download/$1');
 
     // Route Admin -> Surat Keterangan SKTM
     $routes->get('surat_keterangan_sktm', 'Admin\Surat\KeteranganSKTMController::index');
     $routes->post('surat_keterangan_sktm/detail', 'Admin\Surat\KeteranganSKTMController::detail');
+    $routes->post('surat_keterangan_sktm/download/(:num)', 'Admin\Surat\KeteranganSKTMController::download/$1');
 
     // Route Admin -> Surat Keterangan SKTM
     $routes->get('surat_keterangan_skck', 'Admin\Surat\KeteranganSKCKController::index');
     $routes->post('surat_keterangan_skck/detail', 'Admin\Surat\KeteranganSKCKController::detail');
+    $routes->post('surat_keterangan_skck/download/(:num)', 'Admin\Surat\KeteranganSKCKController::download/$1');
 
     // Route Admin -> Surat Keterangan Kematian
     $routes->get('surat_keterangan_kematian', 'Admin\Surat\KeteranganKematianController::index');
     $routes->post('surat_keterangan_kematian/detail', 'Admin\Surat\KeteranganKematianController::detail');
+    $routes->post('surat_keterangan_kematian/download/(:num)', 'Admin\Surat\KeteranganKematianController::download/$1');
 
     // Route Admin -> Laporan
     $routes->get('laporan', 'Admin\ReportController::index');

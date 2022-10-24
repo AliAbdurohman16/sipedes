@@ -55,4 +55,10 @@ class KeteranganSKUController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
+
+    public function download($id)
+    {
+        $data = $this->pengajuanModel->find($id);
+		return $this->response->download('document/surat/' . $data->file, null);
+    }
 }

@@ -42,28 +42,6 @@ class PengajuanDibuatController extends BaseController
         }
     }
 
-    public function detail()
-    {
-        if ($this->request->isAJAX()) {
-            $id = $this->request->getVar('id');
-
-            $data = [
-                'pd' => $this->pengajuanModel->find($id),
-            ];
-
-            $param = [
-                'read_user' => 'yes'
-            ];
-
-            $this->pengajuanModel->update($id, $param);
-
-            $msg = ['success' => view('user/pengajuan/pengajuan_sudah_dibuat/detail', $data)];
-            echo json_encode($msg);
-        } else {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
-    }
-
     public function download($id)
     {
         $data = $this->pengajuanModel->find($id);
