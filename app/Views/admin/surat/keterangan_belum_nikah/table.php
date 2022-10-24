@@ -26,8 +26,8 @@
                 <td class="p-3"><?= $pd->jenis; ?></td>
                 <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
                 <td style="width: 12%;">
-                    <button type="button" class="btn btn-info btn-sm mb-2" onclick="detail(<?= $pd->id ?>)"><i class="fa-solid fa-circle-info"></i> Informasi</button>
-                    <form action="<?= site_url('admin/surat_keterangan_belum_nikah/download/' . $pd->id); ?>" method="post">
+                    <!-- <button type="button" class="btn btn-info btn-sm mb-2" onclick="detail(<?= $pd->id ?>)"><i class="fa-solid fa-circle-info"></i> Informasi</button> -->
+                    <form action="<?= site_url('admin/data_pengajuan_sudah_dibuat/download/' . $pd->id); ?>" method="post">
                         <button href="submit" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-download"></i> Unduh</button>
                     </form>
                 </td>
