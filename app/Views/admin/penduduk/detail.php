@@ -33,9 +33,9 @@
                 <td><?= $row->rt_number; ?> / <?= $row->rw_number; ?></td>
             </tr>
             <tr>
-                <th class="border-bottom p-3">Kelurahan</th>
+                <th class="border-bottom p-3">Desa</th>
                 <td style="width: 1%;">:</td>
-                <td><?= $row->kelurahan; ?></td>
+                <td><?= $row->desa; ?></td>
             </tr>
             <tr>
                 <th class="border-bottom p-3">Kecamatan</th>
