@@ -7,7 +7,7 @@
             <th class="border-bottom p-3">Nama Lengkap</th>
             <th class="border-bottom p-3">No Whatsapp</th>
             <th class="border-bottom p-3">Jenis Pengajuan Surat</th>
-            <th class="border-bottom p-3">Keterangan</th>
+            <!-- <th class="border-bottom p-3">Keterangan</th> -->
             <th class="border-bottom p-3">Status</th>
             <th class="border-bottom p-3">Aksi</th>
         </tr>
