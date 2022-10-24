@@ -59,6 +59,6 @@ class KeteranganPindahKKController extends BaseController
     public function download($id)
     {
         $data = $this->pengajuanModel->find($id);
-		return $this->response->download('document/surat/' . $data->file, null);
+		return $this->response->download('dokumen/surat/' . $data->file, null);
     }
 }
