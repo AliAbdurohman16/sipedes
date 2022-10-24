@@ -25,7 +25,7 @@
                 <td class="p-3"><?= $pd->nama; ?></td>
                 <td class="p-3"><?= $pd->telepon; ?></td>
                 <td class="p-3"><?= $pd->jenis; ?></td>
-                <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td>
+                <!-- <td class="p-3"><?= word_limiter($pd->keterangan, 5); ?></td> -->
                 <td class="p-3"><span class="badge bg-soft-danger"> <?= $pd->status; ?> </span></td>
                 <td style="width: 12%;">
                     <button type="button" class="btn btn-info btn-sm mb-2" onclick="detailPengajuanMasuk(<?= $pd->id ?>)"><i class="fa-solid fa-eye"></i> Detail</button>

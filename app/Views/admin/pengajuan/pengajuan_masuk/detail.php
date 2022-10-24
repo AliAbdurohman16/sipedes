@@ -57,14 +57,14 @@
                             </div>
                         </div>
                         <!--end col-->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-4">
                                 <label class="form-label">Keterangan : </label>
                             </div>
                             <div class="col-md-8">
                                 <?= $pd->keterangan ?>
                             </div>
-                        </div>
+                        </div> -->
                         <!--end col-->
                     </div>
                 </div>
