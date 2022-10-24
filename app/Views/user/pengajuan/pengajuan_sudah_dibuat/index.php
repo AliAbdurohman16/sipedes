@@ -34,22 +34,6 @@
 <div class="viewModal" style="display: none;"></div>
 
 <script>
-     $(function() {
-        <?php if (session()->has("error_message")) { ?>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '<?= session("error_message") ?>'
-                })
-            <?php } else if (session()->has("success_message")) { ?>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Selamat!',
-                    text: '<?= session("success_message") ?>'
-                })
-            <?php } ?>
-    });
-
     function pengajuanDibuat() {
         $.ajax({
             url: "<?= site_url('user/pengajuan_sudah_dibuat') ?>",

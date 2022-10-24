@@ -3,7 +3,7 @@
 use CodeIgniter\I18n\Time;
 
 $db = db_connect();
-$user = $db->table('penduduk')->getWhere(['id' => session()->get('penduduk')->penduduk_id])->getRow();
+$user = $db->table('penduduk')->getWhere(['id' => session()->get('penduduk')->id])->getRow();
 $pengajuan = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->orderBy('updated_at','DESC')->get()->getResult();
 $result = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)->where('status', 'Sudah Dibuat')->where('read_user', 'no')->get()->getNumRows();
 ?>
@@ -70,6 +70,7 @@ $result = $db->table('pengajuan')->where('nik', session()->get('penduduk')->nik)
                             <img src="<?= base_url('images/avatar/Avatar.png') ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                             <div class="flex-1 ms-2">
                                 <span class="d-block"><?= $user->name ?></span>
+                                <small class="text-muted"><?= session()->get('role')->name ?></small>
                             </div>
                         </a>
                         <a class="dropdown-item text-dark" href="<?= site_url('user/dashboard') ?>"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Dashboard</a>
