@@ -54,25 +54,6 @@
                             <?= $pd->jenis ?>
                         </div>
                     </div>
-                    <!--end col-->
-                    <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label class="form-label">Keterangan : </label>
-                        </div>
-                        <div class="col-md-7 mb-3">
-                            <?= $pd->keterangan ?>
-                        </div>
-                    </div>
-                    <!--end col-->
-                    <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label class="form-label">Informasi : </label>
-                        </div>
-                        <div class="col-md-7 mb-3">
-                            <?= $pd->informasi ?>
-                        </div>
-                    </div>
-                    <!--end col-->
                 </div>
             </div>
             <div class="modal-footer">

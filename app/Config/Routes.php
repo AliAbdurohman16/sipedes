@@ -180,6 +180,7 @@ $routes->group("admin", ["filter" => "authFilter:loggedInAdmin"], function ($rou
     // Route Admin -> Data Pengajuan Sudah Dibuat
     $routes->get('data_pengajuan_sudah_dibuat', 'Admin\Pengajuan\DibuatController::index');
     $routes->post('data_pengajuan_sudah_dibuat/detail', 'Admin\Pengajuan\DibuatController::detail');
+    $routes->post('data_pengajuan_sudah_dibuat/download/(:num)', 'Admin\Surat\DibuatController::download/$1');
 
     // Route Admin -> Surat Keterangan Nama
     $routes->get('surat_keterangan_nama', 'Admin\Surat\KeteranganNamaController::index');
