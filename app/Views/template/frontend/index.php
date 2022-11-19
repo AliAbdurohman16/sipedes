@@ -15,7 +15,7 @@
     <meta name="Version" content="v1.0.0" />
     <title>Sistem Pengajuan Desa Cibinuang</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logo_sipedes.png">
+    <link rel="shortcut icon" href="<?= base_url() ?>/images/logo/logo_sipedes.png" type="image/x-icon">
     <!-- CSS -->
     <link href="<?= base_url() ?>/assets/frontend/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets/frontend/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
